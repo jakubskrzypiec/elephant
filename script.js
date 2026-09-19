@@ -63,11 +63,27 @@ const contactForm = document.querySelector('[data-contact-form]');
 contactForm?.addEventListener('submit', e => {
   e.preventDefault();
   const data = new FormData(contactForm);
-  const name = (data.get('name') || '').toString().trim();
-  const email = (data.get('email') || '').toString().trim();
-  const message = (data.get('message') || '').toString().trim();
-  const subject = `Zapytanie ze strony${name ? ' — ' + name : ''}`;
-  const body = `${message}\n\n${name}${email ? '\n' + email : ''}`;
+  const get = key => (data.get(key) || '').toString().trim();
+  const name = get('name');
+  const metraz = get('metraz');
+  const rooms = data.getAll('pomieszczenia').join(', ');
+
+  // Only answered questions go into the e-mail.
+  const rows = [
+    ['Oferta', get('oferta')],
+    ['Rodzaj przestrzeni', get('typ')],
+    ['Metraż', metraz && `${metraz} m²`],
+    ['Miasto', get('miasto')],
+    ['Stan', get('stan')],
+    ['Pomieszczenia', rooms],
+    ['Start', get('termin')],
+    ['Budżet', get('budzet')],
+  ].filter(([, value]) => value).map(([label, value]) => `${label}: ${value}`);
+
+  const message = get('message');
+  const contact = [name, get('email'), get('phone')].filter(Boolean).join('\n');
+  const subject = `Zapytanie ze strony${get('oferta') ? ' — ' + get('oferta') : ''}${name ? ' — ' + name : ''}`;
+  const body = [rows.join('\n'), message && `Opis:\n${message}`, contact].filter(Boolean).join('\n\n');
   location.href = `mailto:elephant.interiordesignstudio@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
 

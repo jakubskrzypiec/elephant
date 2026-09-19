@@ -19,7 +19,7 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{display:block;width:100%}
-button,input,textarea{font:inherit;color:inherit}
+button,input,textarea,select{font:inherit;color:inherit}
 h1,h2,h3,p{margin-top:0}
 
 /* ---------- shared ---------- */
@@ -181,17 +181,42 @@ h1,h2,h3,p{margin-top:0}
 .review-arrow{font-size:26px;font-weight:300}
 
 /* ---------- contact ---------- */
-.contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:8vw;background:var(--paper)}
+.contact{display:grid;grid-template-columns:4fr 7fr;gap:7vw;align-items:start;background:var(--paper)}
+.contact-copy{position:sticky;top:120px}
 .contact-copy h2{font-family:var(--serif);font-weight:300;font-size:clamp(52px,5.4vw,80px);line-height:1;margin-bottom:22px}
 .contact-copy p{max-width:420px;color:#6e6a64;font-size:12px}
 .contact-list{list-style:none;margin:34px 0 0;padding:0;border-top:1px solid var(--line);max-width:440px}
 .contact-list li{display:grid;grid-template-columns:96px 1fr;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
 .contact-list span{font-size:7px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
 .contact-list a{font-size:12px;overflow-wrap:anywhere}
-.contact-form{align-self:end}
-.field{display:block;border-top:1px solid var(--line)}
-.field:last-of-type{border-bottom:1px solid var(--line)}
-.field input,.field textarea{width:100%;background:transparent;border:0;outline:none;padding:20px 4px;font-size:11px;resize:none}
+/* expanded enquiry form, grouped in steps I–IV */
+.contact-form{min-width:0}
+.form-step{border:0;margin:0 0 48px;padding:0;min-width:0}
+.form-step legend{display:flex;align-items:baseline;gap:16px;width:100%;padding:0 0 14px;margin-bottom:22px;border-bottom:1px solid var(--ink);font-family:var(--serif);font-weight:400;font-size:30px;line-height:1}
+.form-step legend span{font-family:var(--sans);font-size:9px;letter-spacing:.24em;color:var(--muted);min-width:26px}
+.choices{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.choices-label{margin:26px 0 12px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.choice{position:relative;cursor:pointer}
+.choice input{position:absolute;opacity:0;pointer-events:none}
+.choice span{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 18px;border:1px solid var(--line);background:#fff;font-size:11px;letter-spacing:.03em;transition:background .2s,color .2s,border-color .2s}
+.choice span b{font-family:var(--serif);font-weight:400;font-size:17px;color:var(--muted)}
+.choice input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}
+.choice input:checked+span b{color:#bdbab3}
+.choice input:focus-visible+span,.consent input:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+.choices-small .choice span{min-height:38px;padding:0 14px;font-size:10.5px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+.field{display:grid;grid-template-columns:78px 1fr auto;align-items:center;border-bottom:1px solid var(--line);transition:border-color .2s}
+.field:focus-within{border-bottom-color:var(--ink)}
+.field small{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.field em{font-style:normal;font-size:11px;color:var(--muted)}
+.field input,.field select,.field textarea{width:100%;min-width:0;background:transparent;border:0;border-radius:0;outline:none;padding:18px 4px;font-size:13px;resize:none;-webkit-appearance:none;appearance:none}
+.field select{cursor:pointer;padding-right:22px;background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2710%27 height=%276%27%3E%3Cpath d=%27M1 1l4 4 4-4%27 fill=%27none%27 stroke=%27%231b1b1a%27/%3E%3C/svg%3E") right 4px center no-repeat}
+.field input::-webkit-outer-spin-button,.field input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.field input[type=number]{-moz-appearance:textfield}
+.field-area{align-items:start}
+.field-area small{padding-top:21px}
+.consent{display:flex;gap:12px;align-items:flex-start;margin-top:22px;font-size:11px;line-height:1.6;color:var(--text);cursor:pointer}
+.consent input{accent-color:var(--ink);margin:3px 0 0;width:15px;height:15px;flex:none}
 .contact-form button{margin-top:20px;width:100%;border:0;background:var(--ink);color:#fff;min-height:52px;font-size:8px;text-transform:uppercase;letter-spacing:.11em;display:flex;align-items:center;justify-content:space-between;padding:0 20px;cursor:pointer}
 
 /* ---------- footer ---------- */
@@ -242,6 +267,7 @@ h1,h2,h3,p{margin-top:0}
   .material-break{grid-template-columns:1fr}
   .material-break>img{height:430px}
   .contact{grid-template-columns:1fr;gap:56px}
+  .contact-copy{position:static}
   .footer-top{grid-template-columns:1fr}
   .footer-top nav{display:none}
   .footer-logo{width:min(330px,85vw);justify-self:center}
@@ -258,6 +284,9 @@ h1,h2,h3,p{margin-top:0}
   .section-heading h2{font-size:52px}
   .about-media{min-height:350px}
   .about-copy p{font-size:16px;line-height:1.85}
+  .field-row{grid-template-columns:1fr}
+  .field{grid-template-columns:70px 1fr auto}
+  .form-step legend{font-size:26px}
   .cards{grid-template-columns:1fr;gap:12px}
   .card{padding:34px 24px 30px}
   .card-no{font-size:64px;padding-bottom:40px}
