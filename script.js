@@ -14,6 +14,44 @@ mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () =>
   mobileMenu.setAttribute('aria-hidden','true');
 }));
 
+// Hero: frames cross-fade so only the light and shadows move.
+// Each new frame fades in on top of the previous one (no dip in brightness),
+// and the order runs forth and back (1→9→1) so the loop never jumps.
+const heroFrames = [...document.querySelectorAll('[data-hero-frames] img')];
+if (heroFrames.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const HOLD = 3600; // ms per frame; the fade itself is 3.2s (style.css)
+  const idx = [...heroFrames.keys()];
+  const order = [...idx, ...idx.slice(1, -1).reverse()];
+  let step = 0;
+  let z = 1;
+  let current = heroFrames[0];
+
+  const next = () => {
+    // Wait until the current frame has fully faded in (timers can drift).
+    if (document.hidden || getComputedStyle(current).opacity !== '1') return;
+    step = (step + 1) % order.length;
+    const prev = current;
+    current = heroFrames[order[step]];
+    // Instantly hide everything under the fully visible previous frame.
+    heroFrames.forEach(img => {
+      if (img !== prev && img.classList.contains('is-on')) {
+        img.style.transition = 'none';
+        img.classList.remove('is-on');
+      }
+    });
+    void current.offsetWidth;
+    heroFrames.forEach(img => { img.style.transition = ''; });
+    current.style.zIndex = ++z;
+    current.classList.add('is-on');
+  };
+
+  window.addEventListener('load', () => {
+    heroFrames.forEach(img => { if (img.dataset.src) img.src = img.dataset.src; });
+    Promise.all(heroFrames.map(img => img.decode().catch(() => {})))
+      .then(() => setInterval(next, HOLD));
+  });
+}
+
 const wrap = document.querySelector('[data-carousel]');
 const track = document.querySelector('[data-track]');
 if (wrap && track) {

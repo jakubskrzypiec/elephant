@@ -1,11 +1,10 @@
-# ELEPHANT — concept v5
+# ELEPHANT — Architecture & Interiors
 
-Kierunek: minimalistyczny editorial / gazeta, wysoka estetyka, mało interakcji.
+Kierunek: minimalizm, biel / szarości / czerń, zero „skaczącej” interakcji.
+Motyw przewodni: rysunek architektoniczny — arkusze, plany, linie wymiarowe.
 
-- nagłówki: DM Serif Display
-- tekst: Montserrat Light
-- logo: wycięte i zapisane na przezroczystym tle
-- hero: statyczny do czasu zatwierdzenia realistycznej animacji gazety
-- oferta: poziome pasy + liczby rzymskie, bez accordionów i strzałek
-- portfolio: wolna karuzela + hover ELEPHANT
-- proces i filozofia: układ editorial, bez kart
+- nagłówki: Cormorant Garamond (light), tekst: Montserrat Light
+- hero: `frame-01…09.webp` — powolne przenikanie klatek (ruch cieni), pętla tam i z powrotem, pauza gdy karta jest w tle
+- oferta: arkusz rysunkowy na tle `background-plans.webp`
+- proces: etapy na linii wymiarowej
+- opinie: zdjęcie notesu + CTA do Google (link do podmiany na docelowy)
