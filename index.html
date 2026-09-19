@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="frame-01.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="hero-01.webp" fetchpriority="high">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -50,23 +50,20 @@
   <main id="top">
     <section class="hero" aria-label="ELEPHANT Architecture & Interiors">
       <div class="hero-frames" data-hero-frames aria-hidden="true">
-        <img src="frame-01.webp" alt="" fetchpriority="high" class="is-on" />
-        <img data-src="frame-02.webp" alt="" />
-        <img data-src="frame-03.webp" alt="" />
-        <img data-src="frame-04.webp" alt="" />
-        <img data-src="frame-05.webp" alt="" />
-        <img data-src="frame-06.webp" alt="" />
-        <img data-src="frame-07.webp" alt="" />
-        <img data-src="frame-08.webp" alt="" />
-        <img data-src="frame-09.webp" alt="" />
+        <img src="hero-01.webp" alt="" fetchpriority="high" class="is-on" />
+        <img data-src="hero-02.webp" alt="" />
+        <img data-src="hero-03.webp" alt="" />
+        <img data-src="hero-04.webp" alt="" />
+        <img data-src="hero-05.webp" alt="" />
+        <img data-src="hero-06.webp" alt="" />
+        <img data-src="hero-07.webp" alt="" />
+        <img data-src="hero-08.webp" alt="" />
+        <img data-src="hero-09.webp" alt="" />
       </div>
       <div class="hero-shade"></div>
 
-      <div class="hero-panel">
-        <div class="hero-panel-top">
-          <span>ELEPHANT</span>
-          <span>Architektura wnętrz</span>
-        </div>
+      <div class="hero-copy">
+        <span class="hero-kicker">ELEPHANT — architektura wnętrz</span>
         <h1>Wnętrza, w których<br>światło ma miejsce.</h1>
         <p>Projektuję spokojne, uporządkowane przestrzenie — dopasowane do codziennego życia, nie do chwilowego trendu.</p>
         <div class="hero-actions">
@@ -95,43 +92,53 @@
     </section>
 
     <section class="offer section-pad" id="oferta">
-      <div class="offer-bg" aria-hidden="true"></div>
       <header class="section-heading">
         <span>02 / ZAKRES</span>
         <h2>Oferta</h2>
       </header>
 
-      <div class="sheet">
-        <div class="sheet-head">
-          <span>ELEPHANT / Interior Design</span>
-          <strong>Zakres współpracy</strong>
-          <span>Arkusz 02 · 4 pozycje</span>
-        </div>
-        <div class="sheet-grid">
-          <article class="sheet-item">
-            <div class="sheet-item-top"><span class="sheet-no">I</span><span class="sheet-code">A.01</span></div>
-            <h3>Konsultacja</h3>
-            <p>Rozmowa, która porządkuje kierunek i pozwala spojrzeć na przestrzeń z właściwej perspektywy. To dobry punkt wyjścia, kiedy potrzebujesz uporządkować pomysły, omówić układ funkcjonalny i sprawdzić, które decyzje warto podjąć na początku.</p>
+      <div class="offer-layout">
+        <aside class="offer-aside">
+          <figure class="offer-figure">
+            <img src="background-plans.webp" alt="Rzuty i szkice projektowe ELEPHANT" loading="lazy" />
+          </figure>
+          <p class="offer-intro">Każdą współpracę dopasowuję do etapu, na którym jesteś — od jednej rozmowy po prowadzenie projektu aż do realizacji.</p>
+          <a href="#kontakt" class="btn btn-dark">Zapytaj o termin</a>
+        </aside>
+
+        <div class="offer-list">
+          <article class="offer-row">
+            <span class="offer-no">01</span>
+            <div class="offer-row-body">
+              <h3>Konsultacja</h3>
+              <p>Rozmowa, która porządkuje kierunek i pozwala spojrzeć na przestrzeń z właściwej perspektywy. Dobry punkt wyjścia, kiedy chcesz uporządkować pomysły, omówić układ funkcjonalny i sprawdzić, które decyzje warto podjąć na początku.</p>
+              <span class="offer-tag">Na start</span>
+            </div>
           </article>
-          <article class="sheet-item">
-            <div class="sheet-item-top"><span class="sheet-no">II</span><span class="sheet-code">A.02</span></div>
-            <h3>Projekt koncepcyjny</h3>
-            <p>Funkcja, proporcje i klimat wnętrza zebrane w jeden czytelny kierunek dalszej pracy. Powstaje wizja, która porządkuje charakter wnętrza, sposób korzystania z przestrzeni oraz estetykę — kolejne decyzje stają się spójne i naturalne.</p>
+          <article class="offer-row">
+            <span class="offer-no">02</span>
+            <div class="offer-row-body">
+              <h3>Projekt koncepcyjny</h3>
+              <p>Funkcja, proporcje i klimat wnętrza zebrane w jeden czytelny kierunek. Powstaje wizja, która porządkuje charakter wnętrza, sposób korzystania z przestrzeni i estetykę — kolejne decyzje stają się spójne i naturalne.</p>
+              <span class="offer-tag">Układ i kierunek</span>
+            </div>
           </article>
-          <article class="sheet-item">
-            <div class="sheet-item-top"><span class="sheet-no">III</span><span class="sheet-code">A.03</span></div>
-            <h3>Projekt kompleksowy</h3>
-            <p>Pełne opracowanie wnętrza — od pierwszych decyzji po rozwiązania przygotowane do wdrożenia. Dla osób, które chcą przejść przez cały proces w uporządkowany sposób i otrzymać spójną dokumentację, materiały i rozwiązania gotowe do realizacji.</p>
+          <article class="offer-row">
+            <span class="offer-no">03</span>
+            <div class="offer-row-body">
+              <h3>Projekt kompleksowy</h3>
+              <p>Pełne opracowanie wnętrza — od pierwszych decyzji po rozwiązania gotowe do wdrożenia. Spójna dokumentacja, materiały i detale, z którymi ekipa wykonawcza wie dokładnie, co robić.</p>
+              <span class="offer-tag">Od A do Z</span>
+            </div>
           </article>
-          <article class="sheet-item">
-            <div class="sheet-item-top"><span class="sheet-no">IV</span><span class="sheet-code">A.04</span></div>
-            <h3>Nadzór autorski</h3>
-            <p>Wsparcie podczas realizacji, aby finalny efekt zachował jakość, proporcje i charakter projektu. Założenia wypracowane wcześniej nie gubią się na etapie wykonawczym, a wnętrze zachowuje konsekwencję i spokojny rytm.</p>
+          <article class="offer-row">
+            <span class="offer-no">04</span>
+            <div class="offer-row-body">
+              <h3>Nadzór autorski</h3>
+              <p>Wsparcie podczas realizacji, aby finalny efekt zachował jakość, proporcje i charakter projektu. Założenia nie gubią się na budowie, a wnętrze zachowuje konsekwencję i spokojny rytm.</p>
+              <span class="offer-tag">Podczas realizacji</span>
+            </div>
           </article>
-        </div>
-        <div class="sheet-foot">
-          <span>Nie wiesz, od czego zacząć? Najczęściej od konsultacji.</span>
-          <a href="#kontakt" class="text-link">Zapytaj o termin</a>
         </div>
       </div>
     </section>
@@ -169,26 +176,38 @@
         <h2>Proces</h2>
       </header>
 
-      <ol class="steps">
-        <li class="step">
-          <span class="step-label">Etap 01</span>
-          <h3>Rozmowa</h3>
-          <p>Poznanie potrzeb, stylu życia i tego, jak przestrzeń ma działać na co dzień.</p>
+      <ol class="stairs">
+        <li class="stair">
+          <span class="stair-no">1</span>
+          <div class="stair-body">
+            <span class="stair-label">Etap pierwszy</span>
+            <h3>Rozmowa</h3>
+            <p>Poznanie potrzeb, stylu życia i tego, jak przestrzeń ma działać na co dzień.</p>
+          </div>
         </li>
-        <li class="step">
-          <span class="step-label">Etap 02</span>
-          <h3>Kierunek</h3>
-          <p>Układ, proporcje i decyzje, które porządkują projekt i nadają mu właściwy ton.</p>
+        <li class="stair">
+          <span class="stair-no">2</span>
+          <div class="stair-body">
+            <span class="stair-label">Etap drugi</span>
+            <h3>Kierunek</h3>
+            <p>Układ, proporcje i decyzje, które porządkują projekt i nadają mu właściwy ton.</p>
+          </div>
         </li>
-        <li class="step">
-          <span class="step-label">Etap 03</span>
-          <h3>Projekt</h3>
-          <p>Rozwinięcie koncepcji w materiały, konkretne rozwiązania i czytelny plan działania.</p>
+        <li class="stair">
+          <span class="stair-no">3</span>
+          <div class="stair-body">
+            <span class="stair-label">Etap trzeci</span>
+            <h3>Projekt</h3>
+            <p>Rozwinięcie koncepcji w materiały, konkretne rozwiązania i czytelny plan działania.</p>
+          </div>
         </li>
-        <li class="step">
-          <span class="step-label">Etap 04</span>
-          <h3>Realizacja</h3>
-          <p>Dopilnowanie, aby końcowy efekt zachował jakość i charakter założony na początku.</p>
+        <li class="stair">
+          <span class="stair-no">4</span>
+          <div class="stair-body">
+            <span class="stair-label">Etap czwarty</span>
+            <h3>Realizacja</h3>
+            <p>Dopilnowanie, aby końcowy efekt zachował jakość i charakter założony na początku.</p>
+          </div>
         </li>
       </ol>
 
@@ -219,35 +238,42 @@
     </section>
 
     <section class="social section-pad" id="instagram">
-      <div class="social-head">
-        <div>
+      <div class="social-layout">
+        <div class="social-intro">
           <div class="section-label">06 / Instagram</div>
-          <h2>@elephant.interiordesignstudio</h2>
+          <h2>Codzienność<br>pracowni.</h2>
+          <p>Szkice, próbki materiałów i wnętrza w trakcie powstawania — to, czego nie widać w gotowym projekcie.</p>
+          <a class="social-handle" href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener">@elephant.interiordesignstudio</a>
+          <a class="btn btn-line" href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener">Obserwuj na Instagramie</a>
         </div>
-        <a class="btn btn-line" href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener">Obserwuj</a>
-      </div>
 
-      <div class="social-grid">
-        <a href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener" class="social-tile social-type"><strong>ELEPHANT</strong><small>architecture &amp; interiors</small></a>
-        <a href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener" class="social-tile"><span>POST / REALIZACJA</span></a>
-        <a href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener" class="social-tile"><span>POST / DETAL</span></a>
-        <a href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener" class="social-tile social-follow"><span>FOLLOW</span></a>
+        <div class="social-collage">
+          <a class="social-shot social-shot-main" href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener" aria-label="Instagram ELEPHANT — wnętrze w świetle dnia"><img src="hero-05.webp" alt="" loading="lazy" /></a>
+          <a class="social-shot" href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener" aria-label="Instagram ELEPHANT — plany"><img src="background-plans.webp" alt="" loading="lazy" /></a>
+          <a class="social-shot" href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener" aria-label="Instagram ELEPHANT — notes projektowy"><img src="divider-notebook.webp" alt="" loading="lazy" /></a>
+          <a class="social-shot" href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener" aria-label="Instagram ELEPHANT — materiały"><img src="divider-materials.webp" alt="" loading="lazy" /></a>
+          <a class="social-shot" href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener" aria-label="Instagram ELEPHANT — detal"><img src="divider-horizontal.webp" alt="" loading="lazy" /></a>
+          <a class="social-shot social-shot-mark" href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener"><strong>ELEPHANT</strong><small>interior design</small></a>
+        </div>
       </div>
     </section>
 
     <section class="reviews section-pad" id="opinie">
-      <div class="review-feature">
-        <div class="review-media">
-          <img src="divider-notebook.webp" alt="Notes ELEPHANT Interior Design na kamiennym blacie" loading="lazy" />
-        </div>
-        <div class="review-body">
-          <span class="review-kicker">Opinie klientów · Google</span>
-          <div class="review-quote" aria-hidden="true">&ldquo;</div>
-          <h2>Zostaw kilka słów<br>o naszej współpracy.</h2>
-          <p>Jeśli projekt z ELEPHANT spełnił Twoje oczekiwania, podziel się krótką opinią w Google. To najlepsza rekomendacja dla osób, które dopiero szukają projektanta.</p>
-          <div class="review-actions">
+      <div class="note-stack">
+        <div class="note">
+          <div class="note-inner">
+            <div class="note-top">
+              <span>Opinie klientów</span>
+              <span class="note-stars" aria-label="Pięć gwiazdek">★★★★★</span>
+              <span>Google</span>
+            </div>
+            <h2>Zostaw kilka słów<br>o naszej współpracy.</h2>
+            <p>Jeśli projekt z ELEPHANT spełnił Twoje oczekiwania, podziel się krótką opinią w Google. To najlepsza rekomendacja dla osób, które dopiero szukają projektanta.</p>
             <a class="btn btn-dark" href="#kontakt">Dodaj opinię w Google</a>
-            <small>Zajmie to mniej niż minutę.</small>
+            <div class="note-sign">
+              <span>Dziękuję,</span>
+              <strong>Natasza</strong>
+            </div>
           </div>
         </div>
       </div>

@@ -19,7 +19,9 @@ mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () =>
 // and the order runs forth and back (1→9→1) so the loop never jumps.
 const heroFrames = [...document.querySelectorAll('[data-hero-frames] img')];
 if (heroFrames.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const HOLD = 3600; // ms per frame; the fade itself is 3.2s (style.css)
+  const HOLD = 2000; // ms per frame
+  const FADE = 1600; // must match the transition in style.css
+  let lastSwitch = 0;
   const idx = [...heroFrames.keys()];
   const order = [...idx, ...idx.slice(1, -1).reverse()];
   let step = 0;
@@ -28,10 +30,12 @@ if (heroFrames.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').mat
 
   const next = () => {
     // Wait until the current frame has fully faded in (timers can drift).
-    if (document.hidden || getComputedStyle(current).opacity !== '1') return;
+    if (document.hidden || performance.now() - lastSwitch < FADE + 150) return;
+    const upcoming = heroFrames[order[(step + 1) % order.length]];
+    if (!upcoming.complete || !upcoming.naturalWidth) return; // not loaded yet
     step = (step + 1) % order.length;
     const prev = current;
-    current = heroFrames[order[step]];
+    current = upcoming;
     // Instantly hide everything under the fully visible previous frame.
     heroFrames.forEach(img => {
       if (img !== prev && img.classList.contains('is-on')) {
@@ -43,13 +47,15 @@ if (heroFrames.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').mat
     heroFrames.forEach(img => { img.style.transition = ''; });
     current.style.zIndex = ++z;
     current.classList.add('is-on');
+    lastSwitch = performance.now();
   };
 
-  window.addEventListener('load', () => {
+  const start = () => {
     heroFrames.forEach(img => { if (img.dataset.src) img.src = img.dataset.src; });
-    Promise.all(heroFrames.map(img => img.decode().catch(() => {})))
-      .then(() => setInterval(next, HOLD));
-  });
+    setInterval(next, HOLD);
+  };
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start);
 }
 
 const wrap = document.querySelector('[data-carousel]');
