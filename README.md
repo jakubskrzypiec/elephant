@@ -1,16 +1,11 @@
-# ELEPHANT — concept v4
+# ELEPHANT — concept v5
 
-Wersja po reworku 19.09.2026.
+Kierunek: minimalistyczny editorial / gazeta, wysoka estetyka, mało interakcji.
 
-- stały header bez zmiany wysokości podczas scrolla
-- logo po lewej, cała nawigacja po prawej
-- Bodoni Moda (nagłówki) + Montserrat (tekst)
-- hero bez animacji gazety na tym etapie
-- O mnie: centralny nagłówek + zdjęcie lewo / tekst prawo
-- uproszczona, statyczna oferta bez accordionów i strzałek
-- karuzela realizacji z hoverem ELEPHANT
-- uproszczony przerywnik po projektach
-- całkowicie przebudowany proces współpracy
-- przebudowana, typograficzna sekcja filozofii
-- przerywnik materiałowy z wyśrodkowanym tekstem
-- social, kontakt i czarna stopka zachowane
+- nagłówki: DM Serif Display
+- tekst: Montserrat Light
+- logo: wycięte i zapisane na przezroczystym tle
+- hero: statyczny do czasu zatwierdzenia realistycznej animacji gazety
+- oferta: poziome pasy + liczby rzymskie, bez accordionów i strzałek
+- portfolio: wolna karuzela + hover ELEPHANT
+- proces i filozofia: układ editorial, bez kart
