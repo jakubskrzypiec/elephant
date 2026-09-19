@@ -59,5 +59,3 @@ if (wrap && track) {
   wrap.addEventListener('pointerup', endDrag);
   wrap.addEventListener('pointercancel', endDrag);
 }
-
-// Hero stays static in this revision. Newspaper animation will return after realistic frames are approved.

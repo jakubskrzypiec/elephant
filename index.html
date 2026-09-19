@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f5f3ee" />
+  <meta name="theme-color" content="#efefeb" />
   <meta name="description" content="ELEPHANT Architecture & Interiors — architektura wnętrz, mikroprzestrzenie i świadomy detal." />
   <title>ELEPHANT — Architecture & Interiors</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -22,6 +22,8 @@
       <a href="#oferta">Oferta</a>
       <a href="#projekty">Projekty</a>
       <a href="#proces">Proces</a>
+      <a href="#filozofia">Filozofia</a>
+      <a href="#opinie">Opinie</a>
       <a href="#instagram">Instagram</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
@@ -38,6 +40,7 @@
       <a href="#projekty">Projekty</a>
       <a href="#proces">Proces</a>
       <a href="#filozofia">Filozofia</a>
+      <a href="#opinie">Opinie</a>
       <a href="#instagram">Instagram</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
@@ -49,8 +52,16 @@
       <div class="hero-shade"></div>
       <div class="hero-edition">ELEPHANT / INTERIOR DESIGN / 2026</div>
       <div class="hero-cta" aria-label="Skróty strony">
-        <a href="#omnie"><span>01</span><strong>Poznaj studio</strong></a>
-        <a href="#projekty"><span>02</span><strong>Zobacz realizacje</strong></a>
+        <a href="#omnie" class="hero-button">
+          <span class="hero-button-no">01</span>
+          <span class="hero-button-copy"><strong>Poznaj studio</strong><small>architektura wnętrz</small></span>
+          <span class="hero-button-arrow">↗</span>
+        </a>
+        <a href="#projekty" class="hero-button hero-button-alt">
+          <span class="hero-button-no">02</span>
+          <span class="hero-button-copy"><strong>Zobacz realizacje</strong><small>selected work</small></span>
+          <span class="hero-button-arrow">↗</span>
+        </a>
       </div>
     </section>
 
@@ -64,8 +75,8 @@
         <div class="about-media placeholder"><span>miejsce na zdjęcie</span></div>
         <div class="about-copy">
           <div class="copy-kicker">Natasza / ELEPHANT</div>
-          <p>Stworzyłam ELEPHANT, bo małe mieszkanie nie musi być kompromisem. Jako architektka patrzę na wnętrze jednocześnie technicznie i estetycznie — szukam dobrych proporcji, naturalnego światła i rozwiązań, które naprawdę ułatwiają codzienność. Nie projektuję pod chwilowy trend. Każda przestrzeń ma wynikać z człowieka, który będzie w niej żył.</p>
-          <div class="about-index"><span>ARCHITEKTURA</span><span>MIKROPRZESTRZENIE</span><span>WNĘTRZA</span></div>
+          <p>ELEPHANT powstało z przekonania, że nawet niewielki metraż może dawać poczucie jakości, spokoju i komfortu. Projektuję wnętrza tak, aby były estetyczne, ale przede wszystkim dopasowane do codziennego życia.</p>
+          <p>Najważniejsze są dla mnie proporcja, światło i decyzje, które realnie porządkują przestrzeń. Zamiast projektować pod chwilowy trend, szukam rozwiązań, które zostają na dłużej i mają sens w praktyce.</p>
         </div>
       </div>
     </section>
@@ -76,26 +87,26 @@
         <h2>Oferta</h2>
       </header>
 
-      <div class="offer-ledger">
-        <article class="offer-strip">
-          <div class="offer-roman">I</div>
+      <div class="offer-board">
+        <article class="offer-card">
+          <div class="offer-card-top"><span class="offer-roman">I</span><span class="offer-tag">forma współpracy</span></div>
           <h3>Konsultacja</h3>
-          <p>Konkretna rozmowa o układzie, funkcji i decyzjach, które warto podjąć przed dalszym projektowaniem.</p>
+          <p>Punkt wyjścia do dobrych decyzji: rozmowa o układzie, możliwościach wnętrza i kierunku dalszych działań.</p>
         </article>
-        <article class="offer-strip">
-          <div class="offer-roman">II</div>
+        <article class="offer-card">
+          <div class="offer-card-top"><span class="offer-roman">II</span><span class="offer-tag">forma współpracy</span></div>
           <h3>Projekt koncepcyjny</h3>
-          <p>Kierunek wnętrza: funkcjonalny układ, proporcje, materiały i język wizualny całej przestrzeni.</p>
+          <p>Spójna wizja przestrzeni: funkcja, proporcje, materiały i klimat wnętrza zebrane w czytelny kierunek.</p>
         </article>
-        <article class="offer-strip">
-          <div class="offer-roman">III</div>
+        <article class="offer-card">
+          <div class="offer-card-top"><span class="offer-roman">III</span><span class="offer-tag">forma współpracy</span></div>
           <h3>Projekt kompleksowy</h3>
-          <p>Pełne opracowanie wnętrza — od koncepcji po rozwiązania przygotowane do wdrożenia.</p>
+          <p>Pełne opracowanie wnętrza — od koncepcji po rozwiązania przygotowane do sprawnego wdrożenia.</p>
         </article>
-        <article class="offer-strip">
-          <div class="offer-roman">IV</div>
+        <article class="offer-card">
+          <div class="offer-card-top"><span class="offer-roman">IV</span><span class="offer-tag">forma współpracy</span></div>
           <h3>Nadzór autorski</h3>
-          <p>Wsparcie podczas realizacji, aby finalne wnętrze zachowało założenia i charakter projektu.</p>
+          <p>Wsparcie podczas realizacji, aby końcowy efekt pozostał wierny założeniom projektu i jego charakterowi.</p>
         </article>
       </div>
     </section>
@@ -122,8 +133,8 @@
       <img src="divider-horizontal.webp" alt="Materiały i światło w pracowni ELEPHANT" loading="lazy" />
       <div class="wide-divider-copy">
         <span>ELEPHANT / SELECTED WORK / 2026</span>
-        <p>PROJECT<br>NOTES</p>
-        <small>01—05</small>
+        <p>Mikroprzestrzenie.<br>Duży efekt.</p>
+        <small>projektowane pod codzienne życie</small>
       </div>
     </section>
 
@@ -133,17 +144,27 @@
         <h2>Proces</h2>
       </header>
 
-      <div class="process-spread">
-        <div class="process-intro">
-          <span>OD PIERWSZEJ ROZMOWY</span>
-          <strong>do gotowego wnętrza.</strong>
-        </div>
-        <div class="process-list">
-          <article><span>01</span><h3>Rozmowa</h3><p>Poznanie miejsca, potrzeb i tego, jak ma działać codzienność.</p></article>
-          <article><span>02</span><h3>Kierunek</h3><p>Układ funkcjonalny, proporcje i decyzje, które porządkują projekt.</p></article>
-          <article><span>03</span><h3>Projekt</h3><p>Rozwinięcie koncepcji w spójne materiały i konkretne rozwiązania.</p></article>
-          <article><span>04</span><h3>Realizacja</h3><p>Dopilnowanie, aby projekt dobrze przeszedł z papieru do wnętrza.</p></article>
-        </div>
+      <div class="process-board">
+        <article class="process-card">
+          <span class="process-no">I</span>
+          <h3>Rozmowa</h3>
+          <p>Poznanie potrzeb, rytmu życia i tego, jak przestrzeń ma działać na co dzień.</p>
+        </article>
+        <article class="process-card">
+          <span class="process-no">II</span>
+          <h3>Kierunek</h3>
+          <p>Porządkowanie układu, proporcji i decyzji, które wyznaczają charakter projektu.</p>
+        </article>
+        <article class="process-card">
+          <span class="process-no">III</span>
+          <h3>Projekt</h3>
+          <p>Przekucie idei w spójne materiały, konkretne rozwiązania i czytelny plan działania.</p>
+        </article>
+        <article class="process-card">
+          <span class="process-no">IV</span>
+          <h3>Realizacja</h3>
+          <p>Dopilnowanie, aby końcowy efekt zachował jakość, proporcję i założony klimat wnętrza.</p>
+        </article>
       </div>
     </section>
 
@@ -153,11 +174,24 @@
         <h2>Filozofia</h2>
       </header>
 
-      <div class="philosophy-statement">Poza trendami. <em>Sztuka detalu.</em> Funkcja.</div>
-      <div class="philosophy-columns">
-        <article><span>01</span><p>Projekt zaczyna się od człowieka, nie od gotowej estetyki. Wnętrze ma być osobiste i odporne na chwilową modę.</p></article>
-        <article><span>02</span><p>Światło, materiał i proporcja nie są dodatkiem. To właśnie one nadają przestrzeni charakter i spokój.</p></article>
-        <article><span>03</span><p>Piękno ma sens wtedy, kiedy dobrze działa. Każdy metr powinien mieć swoje uzasadnienie.</p></article>
+      <div class="philosophy-editorial">
+        <div class="philosophy-lead">
+          <h3>Poza trendami.<br>Sztuka detalu.</h3>
+        </div>
+        <div class="philosophy-texts">
+          <article>
+            <span>01</span>
+            <p>Nie zaczynam od stylu ani od gotowej estetyki. Punkt wyjścia stanowi człowiek, jego rytm dnia i to, czego naprawdę potrzebuje od własnej przestrzeni.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <p>Światło, materiał i proporcja nie są dodatkiem. To właśnie one budują atmosferę wnętrza i sprawiają, że całość pozostaje spokojna, spójna i ponadczasowa.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <p>Minimalizm nie oznacza pustki. Oznacza selekcję — zostaje tylko to, co służy jakości życia, funkcji i estetyce jednocześnie.</p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -186,6 +220,35 @@
       </div>
     </section>
 
+    <section class="reviews section-pad" id="opinie">
+      <div class="review-banner">
+        <div class="review-banner-side">
+          <span>OPINIE KLIENTÓW</span>
+          <strong>Google</strong>
+        </div>
+        <div class="review-banner-copy">
+          <h2>Zobacz, jak klienci oceniają współpracę z pracownią.</h2>
+          <p>Aktualne opinie mogą prowadzić bezpośrednio do profilu Google lub zostać tu przedstawione w formie skrótu.</p>
+        </div>
+        <a class="review-banner-link" href="#kontakt">Zobacz opinie</a>
+      </div>
+
+      <div class="review-grid">
+        <article class="review-card">
+          <span>5.0 / 5</span>
+          <p>„Bardzo przemyślany projekt, ogromna dbałość o detale i świetne wyczucie proporcji.”</p>
+        </article>
+        <article class="review-card">
+          <span>5.0 / 5</span>
+          <p>„Wnętrze zostało dopasowane do codziennego życia, a cały proces był spokojny i uporządkowany.”</p>
+        </article>
+        <article class="review-card">
+          <span>5.0 / 5</span>
+          <p>„Mała przestrzeń zyskała zupełnie nową jakość. Minimalizm, ale bez chłodu i bez przesady.”</p>
+        </article>
+      </div>
+    </section>
+
     <section class="contact section-pad" id="kontakt">
       <div class="contact-copy">
         <div class="section-label">07 / Kontakt</div>
@@ -195,21 +258,31 @@
       </div>
 
       <form class="contact-form" onsubmit="event.preventDefault()">
-        <div class="field"><input aria-label="Imię i nazwisko" type="text" autocomplete="name" placeholder="Imię i nazwisko"></div>
-        <div class="field"><input aria-label="Adres e-mail" type="email" autocomplete="email" placeholder="Adres e-mail"></div>
-        <div class="field field-message"><textarea aria-label="Wiadomość" rows="4" placeholder="Kilka słów o projekcie"></textarea></div>
-        <button type="submit">Wyślij wiadomość <span>→</span></button>
+        <label class="field"><input type="text" name="name" placeholder="Imię i nazwisko" /></label>
+        <label class="field"><input type="email" name="email" placeholder="Adres e-mail" /></label>
+        <label class="field"><textarea name="message" rows="5" placeholder="Krótko opowiedz o projekcie"></textarea></label>
+        <button type="submit"><span>Wyślij wiadomość</span><span>↗</span></button>
       </form>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="footer-top">
-      <nav><a href="#omnie">O mnie</a><a href="#projekty">Projekty</a><a href="#oferta">Oferta</a></nav>
+      <nav>
+        <a href="#omnie">O mnie</a>
+        <a href="#oferta">Oferta</a>
+        <a href="#projekty">Projekty</a>
+      </nav>
       <a class="footer-logo" href="#top"><img src="logo-elephant-invert.png" alt="ELEPHANT Interior Design" /></a>
-      <nav><a href="#instagram">Instagram</a><a href="#kontakt">Kontakt</a></nav>
+      <nav>
+        <a href="#instagram">Instagram</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
     </div>
-    <div class="footer-bottom"><span>© 2026 ELEPHANT. Wszelkie prawa zastrzeżone.</span><span>ARCHITECTURE &amp; INTERIORS / ISSUE 01</span></div>
+    <div class="footer-bottom">
+      <span>© 2026 ELEPHANT Architecture &amp; Interiors</span>
+      <span>Minimalizm / mikroprzestrzenie / świadomy detal</span>
+    </div>
   </footer>
 
   <script src="script.js"></script>
