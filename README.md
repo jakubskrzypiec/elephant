@@ -1,17 +1,16 @@
-# ELEPHANT — concept v3
+# ELEPHANT — concept v4
 
-Wstępny rework strony ELEPHANT Architecture & Interiors.
+Wersja po reworku 19.09.2026.
 
-## Najważniejsze zmiany
-- dokładne logo z dostarczonego podglądu w headerze i stopce,
-- hero pozostawione statyczne do czasu przygotowania realistycznej animacji gazety,
-- mocniejsza typografia nagłówków: Playfair Display + Montserrat,
-- uproszczona i bardziej editorialowa sekcja oferty,
-- karuzela realizacji z hoverem ELEPHANT,
-- nowy tekst i układ przerywnika po projektach,
-- uproszczony proces współpracy,
-- przebudowana sekcja filozofii i materiałów,
-- uproszczony kontakt,
-- czarna stopka.
-
-Pliki: `index.html`, `style.css`, `script.js` + obrazy.
+- stały header bez zmiany wysokości podczas scrolla
+- logo po lewej, cała nawigacja po prawej
+- Bodoni Moda (nagłówki) + Montserrat (tekst)
+- hero bez animacji gazety na tym etapie
+- O mnie: centralny nagłówek + zdjęcie lewo / tekst prawo
+- uproszczona, statyczna oferta bez accordionów i strzałek
+- karuzela realizacji z hoverem ELEPHANT
+- uproszczony przerywnik po projektach
+- całkowicie przebudowany proces współpracy
+- przebudowana, typograficzna sekcja filozofii
+- przerywnik materiałowy z wyśrodkowanym tekstem
+- social, kontakt i czarna stopka zachowane
