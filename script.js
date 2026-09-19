@@ -1,133 +1,71 @@
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-// HERO — deliberately slow: 1.1 s pause after load, gentle page turn, then ~5 s of stillness.
-const frames = [...document.querySelectorAll('.hero-frame')];
-if (frames.length && !reducedMotion) {
-  let current = 0;
-  const show = (index) => {
-    frames.forEach((frame, i) => frame.classList.toggle('is-visible', i === index));
-    current = index;
-  };
-
-  const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-  const moveTo = async (target) => {
-    const direction = target > current ? 1 : -1;
-    while (current !== target) {
-      show(current + direction);
-      await sleep(520);
-    }
-  };
-
-  const loop = async () => {
-    await sleep(1100);
-    while (true) {
-      await moveTo(frames.length - 1);
-      await sleep(5000);
-      await moveTo(0);
-      await sleep(5000);
-    }
-  };
-  loop();
-}
-
-// Mobile menu.
-const menuBtn = document.querySelector('[data-menu-toggle]');
+const header = document.querySelector('[data-header]');
+const toggle = document.querySelector('[data-menu-toggle]');
 const mobileMenu = document.querySelector('[data-mobile-menu]');
-if (menuBtn && mobileMenu) {
-  const closeMenu = () => {
-    mobileMenu.classList.remove('is-open');
-    mobileMenu.setAttribute('aria-hidden', 'true');
-    menuBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  };
-  menuBtn.addEventListener('click', () => {
-    const open = !mobileMenu.classList.contains('is-open');
-    mobileMenu.classList.toggle('is-open', open);
-    mobileMenu.setAttribute('aria-hidden', String(!open));
-    menuBtn.setAttribute('aria-expanded', String(open));
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-}
 
-// Offer accordion.
-document.querySelectorAll('.offer-item').forEach(item => {
-  const trigger = item.querySelector('.offer-trigger');
-  const icon = item.querySelector('.offer-plus');
-  trigger?.addEventListener('click', () => {
-    const willOpen = !item.classList.contains('is-open');
-    document.querySelectorAll('.offer-item').forEach(other => {
-      other.classList.remove('is-open');
-      other.querySelector('.offer-trigger')?.setAttribute('aria-expanded', 'false');
-      const otherIcon = other.querySelector('.offer-plus');
-      if (otherIcon) otherIcon.textContent = '+';
-    });
-    if (willOpen) {
-      item.classList.add('is-open');
-      trigger.setAttribute('aria-expanded', 'true');
-      if (icon) icon.textContent = '−';
-    }
-  });
+window.addEventListener('scroll', () => header?.classList.toggle('is-scrolled', window.scrollY > 24), { passive: true });
+
+toggle?.addEventListener('click', () => {
+  const open = toggle.getAttribute('aria-expanded') === 'true';
+  toggle.setAttribute('aria-expanded', String(!open));
+  mobileMenu?.classList.toggle('is-open', !open);
+  mobileMenu?.setAttribute('aria-hidden', String(open));
 });
+mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  toggle?.setAttribute('aria-expanded','false');
+  mobileMenu.classList.remove('is-open');
+  mobileMenu.setAttribute('aria-hidden','true');
+}));
 
-// Projects — endless, very slow auto-scroll + mouse/touch drag.
-const carousel = document.querySelector('[data-carousel]');
-const track = document.querySelector('[data-track]');
-if (carousel && track) {
-  [...track.children].forEach(card => track.appendChild(card.cloneNode(true)));
-  let isDragging = false;
-  let startX = 0;
-  let startScroll = 0;
-  let paused = false;
-
-  const normalize = () => {
-    const half = carousel.scrollWidth / 2;
-    if (carousel.scrollLeft >= half) carousel.scrollLeft -= half;
-    if (carousel.scrollLeft < 0) carousel.scrollLeft += half;
-  };
-
-  const animate = () => {
-    if (!reducedMotion && !isDragging && !paused) {
-      carousel.scrollLeft += 0.32;
-      normalize();
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
     }
-    requestAnimationFrame(animate);
-  };
-  requestAnimationFrame(animate);
+  });
+}, { threshold: .12, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  carousel.addEventListener('pointerdown', e => {
-    isDragging = true;
-    carousel.classList.add('is-dragging');
-    carousel.setPointerCapture(e.pointerId);
-    startX = e.clientX;
-    startScroll = carousel.scrollLeft;
-  });
-  carousel.addEventListener('pointermove', e => {
-    if (!isDragging) return;
-    carousel.scrollLeft = startScroll - (e.clientX - startX);
-    normalize();
-  });
-  const stopDrag = () => {
-    isDragging = false;
-    carousel.classList.remove('is-dragging');
+const wrap = document.querySelector('[data-carousel]');
+const track = document.querySelector('[data-track]');
+if (wrap && track) {
+  // duplicate once to keep the strip visually continuous
+  track.innerHTML += track.innerHTML;
+  let x = 0;
+  let paused = false;
+  let dragging = false;
+  let lastX = 0;
+  let velocity = 0;
+
+  const halfWidth = () => track.scrollWidth / 2;
+  const loop = () => {
+    if (!paused && !dragging) x -= 0.28;
+    if (!dragging && Math.abs(velocity) > .03) {
+      x += velocity;
+      velocity *= .94;
+    }
+    const half = halfWidth();
+    if (x <= -half) x += half;
+    if (x > 0) x -= half;
+    track.style.transform = `translate3d(${x}px,0,0)`;
+    requestAnimationFrame(loop);
   };
-  carousel.addEventListener('pointerup', stopDrag);
-  carousel.addEventListener('pointercancel', stopDrag);
-  carousel.addEventListener('mouseenter', () => paused = true);
-  carousel.addEventListener('mouseleave', () => { paused = false; stopDrag(); });
+  requestAnimationFrame(loop);
+
+  wrap.addEventListener('mouseenter', () => paused = true);
+  wrap.addEventListener('mouseleave', () => { paused = false; dragging = false; });
+  wrap.addEventListener('pointerdown', e => {
+    dragging = true; paused = true; lastX = e.clientX; velocity = 0; wrap.setPointerCapture?.(e.pointerId);
+  });
+  wrap.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    const dx = e.clientX - lastX;
+    x += dx; velocity = dx; lastX = e.clientX;
+  });
+  const endDrag = () => { dragging = false; paused = false; };
+  wrap.addEventListener('pointerup', endDrag);
+  wrap.addEventListener('pointercancel', endDrag);
 }
 
-// Quiet scroll reveals.
-if (!reducedMotion) {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-in');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -4% 0px' });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-} else {
-  document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in'));
-}
+// Hero animation intentionally disabled for this revision.
+// The final newspaper-page motion will be reintroduced only after approving realistic source frames.

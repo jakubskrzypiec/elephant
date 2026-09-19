@@ -1,24 +1,17 @@
-# ELEPHANT — concept v2
+# ELEPHANT — concept v3
 
-Wstępny landing page dla ELEPHANT Architecture & Interiors.
+Wstępny rework strony ELEPHANT Architecture & Interiors.
 
-## Kierunek
-- minimalizm / editorial / architektura
-- Bodoni Moda 500–600 dla nagłówków, bez kursywy
-- Montserrat Light dla tekstów
-- spokojna animacja hero: start po 1.1 s, powolna zmiana klatek, 5 s pauzy
-- oferta przed projektami
-- projekty jako zapętlona karuzela z drag
-- wykorzystane 3 przygotowane wcześniej przerywniki ELEPHANT
-- zdjęcia portfolio / studio / portret pozostawione jako placeholdery
+## Najważniejsze zmiany
+- dokładne logo z dostarczonego podglądu w headerze i stopce,
+- hero pozostawione statyczne do czasu przygotowania realistycznej animacji gazety,
+- mocniejsza typografia nagłówków: Playfair Display + Montserrat,
+- uproszczona i bardziej editorialowa sekcja oferty,
+- karuzela realizacji z hoverem ELEPHANT,
+- nowy tekst i układ przerywnika po projektach,
+- uproszczony proces współpracy,
+- przebudowana sekcja filozofii i materiałów,
+- uproszczony kontakt,
+- czarna stopka.
 
-## Pliki
-- `index.html`
-- `style.css`
-- `script.js`
-- `frame-01.webp` ... `frame-07.webp`
-- `divider-horizontal.webp`
-- `divider-notebook.webp`
-- `divider-materials.webp`
-
-Instagram jest ustawiony roboczo jako `@elephant.interiordesignstudio`.
+Pliki: `index.html`, `style.css`, `script.js` + obrazy.

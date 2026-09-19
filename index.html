@@ -3,27 +3,28 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f2f0eb" />
-  <meta name="description" content="ELEPHANT Architecture & Interiors — świadome wnętrza, funkcjonalność i detal." />
+  <meta name="theme-color" content="#f5f4f1" />
+  <meta name="description" content="ELEPHANT Architecture & Interiors — minimalistyczne wnętrza, mikroprzestrzenie i świadomy detal." />
   <title>ELEPHANT — Architecture & Interiors</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="site-header" data-header>
-    <a class="brand" href="#top" aria-label="ELEPHANT — strona główna">
-      <span>ELEPHANT</span>
-      <small>Architecture &amp; Interiors</small>
+    <nav class="desktop-nav nav-left" aria-label="Nawigacja główna">
+      <a href="#studio">O nas</a>
+      <a href="#projekty">Projekty</a>
+      <a href="#oferta">Oferta</a>
+    </nav>
+
+    <a class="brand-image" href="#top" aria-label="ELEPHANT — strona główna">
+      <img src="logo-elephant.png" alt="ELEPHANT Interior Design" />
     </a>
 
-    <nav class="desktop-nav" aria-label="Nawigacja główna">
-      <a href="#studio">Studio</a>
-      <a href="#oferta">Oferta</a>
-      <a href="#projekty">Projekty</a>
-      <a href="#proces">Proces</a>
-      <a href="#omnie">O mnie</a>
+    <nav class="desktop-nav nav-right" aria-label="Nawigacja dodatkowa">
+      <a href="#instagram">Instagram</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
 
@@ -34,331 +35,178 @@
 
   <aside class="mobile-menu" data-mobile-menu aria-hidden="true">
     <nav>
-      <a href="#studio">Studio</a>
+      <a href="#studio">O nas</a>
       <a href="#oferta">Oferta</a>
       <a href="#projekty">Projekty</a>
       <a href="#proces">Proces</a>
-      <a href="#omnie">O mnie</a>
+      <a href="#instagram">Instagram</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
-    <a class="mobile-social" href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener">Instagram ↗</a>
   </aside>
 
   <main id="top">
     <section class="hero" aria-label="ELEPHANT Architecture & Interiors">
-      <div class="hero-media" data-hero>
-        <img class="hero-frame is-visible" src="frame-01.webp" alt="Minimalistyczne wnętrze z osobą czytającą gazetę" fetchpriority="high" />
-        <img class="hero-frame" src="frame-02.webp" alt="" aria-hidden="true" />
-        <img class="hero-frame" src="frame-03.webp" alt="" aria-hidden="true" />
-        <img class="hero-frame" src="frame-04.webp" alt="" aria-hidden="true" />
-        <img class="hero-frame" src="frame-05.webp" alt="" aria-hidden="true" />
-        <img class="hero-frame" src="frame-06.webp" alt="" aria-hidden="true" />
-        <img class="hero-frame" src="frame-07.webp" alt="" aria-hidden="true" />
-        <div class="hero-shade"></div>
-      </div>
-
-      <div class="hero-copy">
-        <p class="eyebrow light">Architecture &amp; Interiors · 2026</p>
-        <h1>Wnętrza<br>poza trendami.</h1>
+      <img class="hero-image" src="frame-01.webp" alt="Minimalistyczne wnętrze z osobą czytającą gazetę" fetchpriority="high" />
+      <div class="hero-wash"></div>
+      <div class="hero-bottom">
         <div class="hero-actions">
-          <a class="button button-light" href="#studio">Poznaj studio</a>
-          <a class="button button-ghost" href="#projekty">Zobacz projekty</a>
+          <a class="button button-dark" href="#studio">Poznaj studio <span>→</span></a>
+          <a class="button button-light" href="#projekty">Zobacz projekty</a>
         </div>
+        <span class="hero-note">Architecture &amp; Interiors · 2026</span>
       </div>
-
-      <div class="hero-side">Warsaw · Poland</div>
     </section>
 
     <section class="studio section-pad" id="studio">
-      <div class="section-label reveal">01 / Studio</div>
-      <div class="studio-grid">
-        <div class="placeholder large reveal" aria-label="Miejsce na zdjęcie pracowni">
-          <div class="placeholder-grid"></div>
-          <span>TU BĘDZIE ZDJĘCIE</span>
-          <small>pracownia / detal / portret przestrzeni</small>
-        </div>
+      <div class="studio-media placeholder reveal">
+        <span>miejsce na zdjęcie</span>
+      </div>
 
-        <div class="studio-copy reveal">
-          <p class="eyebrow">ELEPHANT Architecture &amp; Interiors</p>
-          <h2>Przestrzeń dopasowana<br>do człowieka.</h2>
-          <p class="lead">W ELEPHANT projektowanie zaczyna się od sposobu życia, nie od nazwy stylu. Wnętrze ma być precyzyjnie dopasowane do osoby, która będzie z niego korzystać — funkcjonalne, świadome i pozbawione przypadkowych gestów.</p>
-          <p>Minimalizm oznacza tu intencjonalność. Światło, proporcja, naturalne materiały i detal zostają tylko wtedy, gdy mają znaczenie dla całości.</p>
-          <a class="text-link" href="#omnie">Poznaj historię studia <span>↗</span></a>
-        </div>
+      <div class="studio-copy reveal">
+        <div class="section-label">01 / Studio</div>
+        <p class="intro-kicker">Hej, jestem Natasza.</p>
+        <h1>Przestrzeń dopasowana<br>do Ciebie.</h1>
+        <p class="lead">ELEPHANT powstało z przekonania, że niewielki metraż nie powinien ograniczać jakości życia. Projektuję wnętrza, które wynikają z codzienności ich mieszkańców — precyzyjne, spokojne i funkcjonalne.</p>
+        <p>W centrum są proporcje, światło, materiał i sposób poruszania się po przestrzeni. Styl jest efektem tych decyzji, nie punktem wyjścia.</p>
+        <a class="text-link" href="#proces">Poznaj sposób pracy <span>→</span></a>
       </div>
     </section>
 
     <section class="offer section-pad" id="oferta">
-      <div class="section-head reveal">
-        <div>
-          <div class="section-label">02 / Oferta</div>
-          <h2>Zakres współpracy</h2>
-        </div>
-        <p>Od pojedynczej konsultacji po pełną dokumentację wykonawczą. Każdy zakres można dopasować do etapu inwestycji i potrzeb wnętrza.</p>
+      <div class="offer-title reveal">
+        <div class="section-label">02 / Zakres współpracy</div>
+        <h2>Oferta</h2>
       </div>
 
-      <div class="offer-accordion" data-offer>
-        <article class="offer-item is-open reveal">
-          <button class="offer-trigger" type="button" aria-expanded="true">
-            <span class="offer-no">00</span>
-            <span class="offer-title">Konsultacja</span>
-            <span class="offer-tag">pierwszy kierunek</span>
-            <span class="offer-plus">−</span>
-          </button>
-          <div class="offer-panel">
-            <div></div>
-            <p>Pierwszy krok, który porządkuje decyzje przed rozpoczęciem projektu: analiza rzutu lub pomieszczenia, kierunek estetyczny, kolorystyka i materiały.</p>
-            <ul>
-              <li>spotkanie online</li>
-              <li>analiza układu funkcjonalnego</li>
-              <li>koncepcja wizualna</li>
-            </ul>
-          </div>
+      <div class="offer-list">
+        <article class="offer-row reveal">
+          <div class="offer-no">01</div>
+          <h3>Konsultacja</h3>
+          <p>Rozmowa o potrzebach, układzie i kierunku wnętrza.</p>
+          <span class="offer-arrow">↗</span>
         </article>
-
-        <article class="offer-item reveal">
-          <button class="offer-trigger" type="button" aria-expanded="false">
-            <span class="offer-no">01</span>
-            <span class="offer-title">Koncept</span>
-            <span class="offer-tag">baza projektu</span>
-            <span class="offer-plus">+</span>
-          </button>
-          <div class="offer-panel">
-            <div></div>
-            <p>Plan pozwalający rozpocząć zmiany w uporządkowany sposób: analiza potrzeb, dwa warianty układu funkcjonalnego 2D i spójny moodboard materiałowy.</p>
-            <ul>
-              <li>konsultacja projektowa</li>
-              <li>2 warianty układu 2D</li>
-              <li>moodboard</li>
-            </ul>
-          </div>
+        <article class="offer-row reveal">
+          <div class="offer-no">02</div>
+          <h3>Projekt koncepcyjny</h3>
+          <p>Układ funkcjonalny, moodboard i spójna idea przestrzeni.</p>
+          <span class="offer-arrow">↗</span>
         </article>
-
-        <article class="offer-item reveal">
-          <button class="offer-trigger" type="button" aria-expanded="false">
-            <span class="offer-no">02</span>
-            <span class="offer-title">Standard</span>
-            <span class="offer-tag">pełna wizja 3D</span>
-            <span class="offer-plus">+</span>
-          </button>
-          <div class="offer-panel">
-            <div></div>
-            <p>Koncept rozszerzony o model 3D, fotorealistyczne wizualizacje i zestawienie elementów potrzebnych do realizacji wnętrza.</p>
-            <ul>
-              <li>zakres pakietu Koncept</li>
-              <li>model wnętrza 3D</li>
-              <li>wizualizacje + lista zakupów</li>
-            </ul>
-          </div>
+        <article class="offer-row reveal">
+          <div class="offer-no">03</div>
+          <h3>Projekt kompleksowy</h3>
+          <p>Pełna koncepcja wnętrza rozwinięta do etapu realizacji.</p>
+          <span class="offer-arrow">↗</span>
         </article>
-
-        <article class="offer-item reveal">
-          <button class="offer-trigger" type="button" aria-expanded="false">
-            <span class="offer-no">03</span>
-            <span class="offer-title">Detal</span>
-            <span class="offer-tag">projekt wykonawczy</span>
-            <span class="offer-plus">+</span>
-          </button>
-          <div class="offer-panel">
-            <div></div>
-            <p>Najpełniejszy zakres — od koncepcji po techniczne opracowanie detali, które pozwala wykonawcom przełożyć projekt na gotową przestrzeń.</p>
-            <ul>
-              <li>zakres pakietu Standard</li>
-              <li>dokumentacja wykonawcza</li>
-              <li>detale techniczne</li>
-            </ul>
-          </div>
+        <article class="offer-row reveal">
+          <div class="offer-no">04</div>
+          <h3>Nadzór autorski</h3>
+          <p>Wsparcie przy decyzjach wykonawczych i wdrożeniu projektu.</p>
+          <span class="offer-arrow">↗</span>
         </article>
       </div>
     </section>
 
     <section class="projects" id="projekty">
-      <div class="projects-head section-pad reveal">
-        <div class="section-label">03 / Wybrane projekty</div>
-        <div class="projects-title-row">
-          <h2>Portfolio</h2>
-          <p>Wstępny sposób prezentacji. Na tym etapie zostawiamy neutralne pola — docelowe realizacje zostaną podmienione bez zmiany układu.</p>
+      <div class="projects-head section-pad-small reveal">
+        <div>
+          <div class="section-label">03 / Projekty</div>
+          <h2>Wybrane realizacje</h2>
         </div>
+        <a class="text-link" href="#kontakt">Zobacz wszystkie projekty <span>→</span></a>
       </div>
 
       <div class="carousel-wrap" data-carousel>
         <div class="projects-track" data-track>
-          <article class="project-card">
-            <div class="project-placeholder"><span>01</span><b>TU BĘDZIE ZDJĘCIE</b></div>
-            <div class="project-info"><h3>Bathroom</h3><p>Rome</p></div>
-          </article>
-          <article class="project-card">
-            <div class="project-placeholder"><span>02</span><b>TU BĘDZIE ZDJĘCIE</b></div>
-            <div class="project-info"><h3>Bedroom</h3><p>Warsaw</p></div>
-          </article>
-          <article class="project-card">
-            <div class="project-placeholder"><span>03</span><b>TU BĘDZIE ZDJĘCIE</b></div>
-            <div class="project-info"><h3>Livingroom</h3><p>Madrid</p></div>
-          </article>
-          <article class="project-card">
-            <div class="project-placeholder"><span>04</span><b>TU BĘDZIE ZDJĘCIE</b></div>
-            <div class="project-info"><h3>Kitchen</h3><p>Oslo</p></div>
-          </article>
-          <article class="project-card">
-            <div class="project-placeholder"><span>05</span><b>TU BĘDZIE ZDJĘCIE</b></div>
-            <div class="project-info"><h3>Bedroom</h3><p>Stockholm</p></div>
-          </article>
-          <article class="project-card">
-            <div class="project-placeholder"><span>06</span><b>TU BĘDZIE ZDJĘCIE</b></div>
-            <div class="project-info"><h3>Bathroom</h3><p>Lyon</p></div>
-          </article>
+          <article class="project-card"><div class="project-placeholder"><span>01</span><b>TU BĘDZIE ZDJĘCIE</b><i>ELEPHANT</i></div><div class="project-meta"><h3>Projekt 01</h3><p>wnętrze / 2026</p></div></article>
+          <article class="project-card"><div class="project-placeholder"><span>02</span><b>TU BĘDZIE ZDJĘCIE</b><i>ELEPHANT</i></div><div class="project-meta"><h3>Projekt 02</h3><p>wnętrze / 2026</p></div></article>
+          <article class="project-card"><div class="project-placeholder"><span>03</span><b>TU BĘDZIE ZDJĘCIE</b><i>ELEPHANT</i></div><div class="project-meta"><h3>Projekt 03</h3><p>wnętrze / 2026</p></div></article>
+          <article class="project-card"><div class="project-placeholder"><span>04</span><b>TU BĘDZIE ZDJĘCIE</b><i>ELEPHANT</i></div><div class="project-meta"><h3>Projekt 04</h3><p>wnętrze / 2026</p></div></article>
+          <article class="project-card"><div class="project-placeholder"><span>05</span><b>TU BĘDZIE ZDJĘCIE</b><i>ELEPHANT</i></div><div class="project-meta"><h3>Projekt 05</h3><p>wnętrze / 2026</p></div></article>
         </div>
-      </div>
-
-      <div class="carousel-note section-pad-small reveal">
-        <span>← przeciągnij</span>
-        <a class="text-link" href="#kontakt">Porozmawiajmy o projekcie <span>↗</span></a>
       </div>
     </section>
 
-    <section class="wide-divider" aria-label="Przerywnik — detal pracowni">
-      <img src="divider-horizontal.webp" alt="Notatnik ELEPHANT i materiały projektowe w świetle słonecznym" loading="lazy" />
-      <div class="wide-divider-shade"></div>
+    <section class="wide-divider" aria-label="Przerywnik projektowy">
+      <img src="divider-horizontal.webp" alt="Materiały i światło w pracowni ELEPHANT" loading="lazy" />
       <div class="wide-divider-copy reveal">
-        <span>ELEPHANT / 2026</span>
-        <p>W świecie, który ciągle prosi o więcej,<br>wybieramy lepiej.</p>
+        <p>Każdy projekt zaczyna się<br>od uważnego spojrzenia.</p>
+        <span>proporcja · światło · funkcja</span>
       </div>
     </section>
 
     <section class="process section-pad" id="proces">
-      <div class="section-head reveal">
-        <div>
-          <div class="section-label">04 / Proces</div>
-          <h2>Proces współpracy</h2>
-        </div>
-        <p>Roboczy schemat do dalszego doprecyzowania z pracownią. Ma pokazywać klientowi jasną drogę od pierwszej rozmowy do gotowego projektu.</p>
+      <div class="process-heading reveal">
+        <div class="section-label">04 / Proces</div>
+        <h2>Jak pracujemy</h2>
       </div>
 
-      <div class="process-line reveal">
-        <article>
-          <span>01</span>
-          <h3>Rozmowa</h3>
-          <p>Poznanie potrzeb, stylu życia, zakresu inwestycji i możliwości przestrzeni.</p>
-        </article>
-        <article>
-          <span>02</span>
-          <h3>Kierunek</h3>
-          <p>Układ funkcjonalny, proporcje i język materiałów tworzą pierwszą spójną koncepcję.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>Projekt</h3>
-          <p>Rozwinięcie koncepcji w wizualizacje, dobór elementów i rozwiązania wykonawcze.</p>
-        </article>
-        <article>
-          <span>04</span>
-          <h3>Realizacja</h3>
-          <p>Finalne opracowanie dokumentacji i przekazanie projektu gotowego do wdrożenia.</p>
-        </article>
+      <div class="process-grid reveal">
+        <article><span>01</span><h3>Rozmowa</h3><p>Poznajemy Twoje potrzeby i przestrzeń.</p></article>
+        <article><span>02</span><h3>Koncepcja</h3><p>Budujemy układ i kierunek projektu.</p></article>
+        <article><span>03</span><h3>Projekt</h3><p>Precyzujemy rozwiązania i detale.</p></article>
+        <article><span>04</span><h3>Realizacja</h3><p>Przekładamy projekt na gotowe wnętrze.</p></article>
       </div>
     </section>
 
-    <section class="notebook-interlude section-pad" aria-label="Przerywnik — szkic procesu">
-      <div class="notebook-copy reveal">
-        <span class="section-label">Idea / proporcja / detal</span>
-        <p class="big-quote">Każdy centymetr<br>to świadomy wybór.</p>
-        <p>Nie chodzi o wypełnienie przestrzeni. Chodzi o pozostawienie w niej dokładnie tego, co jest potrzebne.</p>
+    <section class="philosophy section-pad">
+      <div class="philosophy-copy reveal">
+        <div class="section-label">05 / Filozofia</div>
+        <h2>Mniej elementów.<br>Więcej znaczenia.</h2>
+        <p>Minimalizm nie oznacza pustki. To decyzja, by zostawić tylko to, co służy funkcji, atmosferze i osobie, która będzie w tej przestrzeni żyć.</p>
       </div>
-      <figure class="notebook-image reveal">
-        <img src="divider-notebook.webp" alt="Notatnik ELEPHANT na stole z próbkami materiałów" loading="lazy" />
-      </figure>
+      <div class="philosophy-media placeholder reveal"><span>miejsce na zdjęcie / detal</span></div>
     </section>
 
-    <section class="about section-pad" id="omnie">
-      <div class="section-label reveal">05 / O mnie</div>
-      <div class="about-grid">
-        <div class="about-copy reveal">
-          <p class="eyebrow">Hej, jestem Natasza</p>
-          <h2>Precyzja<br>i artyzm.</h2>
-          <p class="lead">Stworzyłam ELEPHANT, żeby pokazać, że metraż nie definiuje jakości życia ani funkcjonalności wnętrza. W mikroprzestrzeniach każda decyzja ma znaczenie — dlatego projekt zaczyna się od proporcji, ruchu i codziennych potrzeb.</p>
-          <p>Jako absolwentka architektury patrzę na wnętrza z dwóch perspektyw: technicznej precyzji i wrażliwości na detal. Inspirację czerpię z japońskiego minimalizmu oraz skandynawskiej funkcjonalności, traktując je jako sposób myślenia, nie gotową receptę stylistyczną.</p>
-          <a class="text-link" href="#kontakt">Zacznijmy projekt <span>↗</span></a>
-        </div>
-
-        <div class="placeholder portrait reveal" aria-label="Miejsce na portret Nataszy">
-          <div class="placeholder-grid"></div>
-          <span>TU BĘDZIE ZDJĘCIE</span>
-          <small>portret / studio / detal pracy</small>
-        </div>
-      </div>
-    </section>
-
-    <section class="materials-interlude">
-      <figure class="materials-image reveal">
-        <img src="divider-materials.webp" alt="Próbki materiałów i identyfikacja ELEPHANT" loading="lazy" />
-      </figure>
-      <div class="materials-copy reveal">
-        <span class="section-label">Detail / Material / Light</span>
-        <h2>Detal nie jest<br>dodatkiem.</h2>
-        <p>To materiał, światło i proporcja budują charakter wnętrza — zanim pojawi się w nim jakikolwiek dekoracyjny gest.</p>
+    <section class="material-break">
+      <img src="divider-materials.webp" alt="Próbki materiałów ELEPHANT" loading="lazy" />
+      <div class="material-copy reveal">
+        <div class="material-rule"></div>
+        <p>Materiał, światło i proporcja<br>budują charakter przestrzeni.</p>
+        <span>ELEPHANT / DETAIL STUDY</span>
       </div>
     </section>
 
     <section class="social section-pad" id="instagram">
-      <div class="social-top reveal">
+      <div class="social-head reveal">
         <div>
           <div class="section-label">06 / Instagram</div>
-          <h2>Poza stroną.</h2>
+          <h2>@elephant.interiordesignstudio</h2>
         </div>
-        <div class="social-account">
-          <p>Proces, materiały i fragmenty realizacji.</p>
-          <a href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener">@elephant.interiordesignstudio <span>↗</span></a>
-        </div>
+        <a class="button button-outline" href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener">Obserwuj <span>↗</span></a>
       </div>
 
       <div class="social-grid reveal">
-        <a class="social-tile tile-type" href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener">
-          <small>01</small>
-          <strong>ELEPHANT</strong>
-          <span>architecture &amp; interiors</span>
-        </a>
-        <a class="social-tile tile-placeholder" href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener">
-          <small>02</small><span>POST / REALIZACJA</span>
-        </a>
-        <a class="social-tile tile-placeholder" href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener">
-          <small>03</small><span>POST / DETAL</span>
-        </a>
-        <a class="social-tile tile-line" href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener">
-          <small>04</small>
-          <i></i><i></i><i></i>
-          <span>FOLLOW ↗</span>
-        </a>
+        <a href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener" class="social-tile social-type"><strong>ELEPHANT</strong><small>architecture &amp; interiors</small></a>
+        <a href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener" class="social-tile"><span>POST / REALIZACJA</span></a>
+        <a href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener" class="social-tile"><span>POST / DETAL</span></a>
+        <a href="https://www.instagram.com/elephant.interiordesignstudio/" target="_blank" rel="noopener" class="social-tile social-follow"><span>FOLLOW ↗</span></a>
       </div>
     </section>
 
     <section class="contact section-pad" id="kontakt">
-      <div class="contact-head reveal">
+      <div class="contact-copy reveal">
         <div class="section-label">07 / Kontakt</div>
-        <h2>Zacznijmy<br>projekt.</h2>
+        <h2>Zacznijmy projekt.</h2>
+        <p>Opowiedz krótko o swojej przestrzeni. Wrócę do Ciebie z propozycją kolejnego kroku.</p>
+        <a href="mailto:elephant.interiordesignstudio@gmail.com">elephant.interiordesignstudio@gmail.com</a>
       </div>
 
-      <div class="contact-grid">
-        <div class="contact-intro reveal">
-          <p>Niezależnie od etapu — od pierwszej wizji po gotowy rzut — zacznijmy od rozmowy o przestrzeni i jej możliwościach.</p>
-          <a href="mailto:elephant.interiordesignstudio@gmail.com">elephant.interiordesignstudio@gmail.com</a>
-        </div>
-
-        <form class="contact-form reveal" onsubmit="event.preventDefault()">
-          <label><span>Imię i nazwisko</span><input type="text" autocomplete="name" placeholder="Twoje dane"></label>
-          <label><span>Email</span><input type="email" autocomplete="email" placeholder="adres@email.pl"></label>
-          <label><span>Wiadomość</span><textarea rows="3" placeholder="Napisz kilka słów o projekcie"></textarea></label>
-          <button type="submit">Wyślij wiadomość <span>↗</span></button>
-        </form>
-      </div>
+      <form class="contact-form reveal" onsubmit="event.preventDefault()">
+        <div class="field"><input aria-label="Imię i nazwisko" type="text" autocomplete="name" placeholder="Imię i nazwisko"></div>
+        <div class="field"><input aria-label="Adres e-mail" type="email" autocomplete="email" placeholder="Adres e-mail"></div>
+        <div class="field field-message"><textarea aria-label="Wiadomość" rows="4" placeholder="Kilka słów o projekcie"></textarea></div>
+        <button type="submit">Wyślij wiadomość <span>→</span></button>
+      </form>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-brand"><strong>ELEPHANT</strong><small>Architecture &amp; Interiors</small></div>
-    <div class="footer-links">
-      <a href="#studio">Studio</a><a href="#oferta">Oferta</a><a href="#projekty">Projekty</a><a href="#kontakt">Kontakt</a>
+    <div class="footer-top">
+      <nav><a href="#studio">O nas</a><a href="#projekty">Projekty</a><a href="#oferta">Oferta</a></nav>
+      <a class="footer-logo" href="#top"><img src="logo-elephant-invert.png" alt="ELEPHANT Interior Design" /></a>
+      <nav><a href="#instagram">Instagram</a><a href="#kontakt">Kontakt</a></nav>
     </div>
-    <div class="footer-meta"><span>© 2026</span><a href="#top">Do góry ↑</a></div>
+    <div class="footer-bottom"><span>© 2026 ELEPHANT. Wszelkie prawa zastrzeżone.</span><span>Lepsze wnętrza. Piękniejsza codzienność.</span></div>
   </footer>
 
   <script src="script.js"></script>
