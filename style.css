@@ -786,3 +786,192 @@ h1,h2,h3,p{margin-top:0}
   .process-listing article{grid-template-columns:44px 1fr;padding:15px 14px}
   .process-listing .process-no{font-size:34px}
 }
+
+
+/* ===== ELEPHANT v10 — layout clarification ===== */
+/* Hero CTA: simpler editorial links instead of chunky buttons */
+.hero-cta{
+  display:flex;
+  gap:34px;
+  align-items:flex-end;
+  background:none;
+  box-shadow:none;
+  left:4.8vw;
+  bottom:4.1vw;
+}
+.hero-button,
+.hero-button:hover,
+.hero-button-alt,
+.hero-button-alt:hover{
+  min-width:0;
+  min-height:0;
+  padding:0 0 10px 0;
+  display:grid;
+  grid-template-columns:26px auto;
+  align-items:end;
+  gap:12px;
+  background:none !important;
+  border:0 !important;
+  border-bottom:1px solid rgba(255,255,255,.42) !important;
+  box-shadow:none !important;
+  color:#fff !important;
+}
+.hero-button-no{
+  font-family:var(--serif);
+  font-size:26px;
+  line-height:.9;
+  color:#fff;
+  opacity:.96;
+}
+.hero-button-copy strong{
+  font-family:var(--sans);
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:.18em;
+  color:#fff;
+}
+
+/* Oferta: newspaper stretched across the whole gray block, white frames on top */
+.offer{background:#d8d7d1}
+.offer-editorial{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:38px 6vw 42px;
+  background:#d8d7d1;
+  border:0;
+  box-shadow:none;
+  overflow:hidden;
+}
+.offer-editorial-bg{
+  opacity:.18;
+  filter:grayscale(1) contrast(1.08) brightness(1.02);
+  background:url('elephant-newspaper-bg.png') center/cover no-repeat;
+}
+.offer-editorial-head{
+  position:relative;
+  z-index:2;
+  margin:0 0 22px;
+  padding:0 4px;
+  background:none;
+  border-bottom:0;
+  color:#2a2926;
+}
+.offer-editorial-grid{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:26px;
+}
+.offer-editorial-item{
+  margin:0;
+  min-height:360px;
+  padding:30px 32px 28px;
+  border:1px solid rgba(0,0,0,.10);
+  background:rgba(252,251,248,.90);
+  box-shadow:0 12px 36px rgba(0,0,0,.05);
+}
+.offer-editorial-item .offer-roman{
+  font-size:58px;
+  margin-bottom:16px;
+  color:rgba(0,0,0,.09);
+}
+.offer-category{font-size:24px; margin-bottom:14px}
+.offer-editorial-item p{font-size:13px; line-height:1.95; max-width:420px}
+
+/* Proces: same idea, full-width newspaper under white content blocks */
+.process{background:#f8f7f3}
+.process-newsroom{
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:34px 6vw;
+  background:#d9d8d2;
+  border:0;
+  overflow:hidden;
+}
+.process-newsroom-bg{
+  opacity:.17;
+  filter:grayscale(1) contrast(1.06);
+  background:url('elephant-newspaper-bg.png') center/cover no-repeat;
+}
+.process-listing{
+  position:relative;
+  z-index:2;
+  max-width:1120px;
+  padding:0;
+}
+.process-listing article{
+  grid-template-columns:72px 1fr;
+  gap:18px;
+  padding:24px 26px;
+  margin:0 0 16px 0;
+  background:rgba(252,251,248,.90);
+  border:0;
+  box-shadow:0 10px 28px rgba(0,0,0,.05);
+}
+.process-listing article:last-child{margin-bottom:0}
+.process-listing .process-no{font-size:38px;color:rgba(0,0,0,.14)}
+.process-content h3{font-size:27px}
+.process-content p{font-size:13px;line-height:1.9;max-width:620px}
+
+/* Reviews: only the main banner, with newspaper texture in bottom corners */
+.reviews{background:#f6f5f1}
+.review-banner{
+  max-width:1320px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:250px 1fr 170px;
+  gap:34px;
+  align-items:center;
+  padding:34px 34px;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+}
+.review-banner.editorial-fade:before,
+.review-banner.editorial-fade:after{
+  opacity:.16;
+  width:300px;
+  height:210px;
+}
+.review-banner.editorial-fade:before{
+  left:-26px;
+  bottom:-34px;
+  top:auto;
+  mask-image:linear-gradient(135deg, rgba(0,0,0,.98), rgba(0,0,0,0));
+  -webkit-mask-image:linear-gradient(135deg, rgba(0,0,0,.98), rgba(0,0,0,0));
+}
+.review-banner.editorial-fade:after{
+  right:-26px;
+  bottom:-34px;
+  top:auto;
+  mask-image:linear-gradient(45deg, rgba(0,0,0,.98), rgba(0,0,0,0));
+  -webkit-mask-image:linear-gradient(45deg, rgba(0,0,0,.98), rgba(0,0,0,0));
+}
+.review-grid{display:none !important}
+
+@media(max-width:1100px){
+  .offer-editorial-grid{grid-template-columns:1fr 1fr; gap:20px}
+}
+@media(max-width:900px){
+  .hero-cta{left:5vw; right:5vw; gap:20px; flex-wrap:wrap}
+  .hero-button,.hero-button:hover,.hero-button-alt,.hero-button-alt:hover{grid-template-columns:22px auto; padding-bottom:8px}
+  .hero-button-no{font-size:22px}
+  .offer-editorial{padding:26px 5vw 30px}
+  .offer-editorial-grid{grid-template-columns:1fr}
+  .offer-editorial-item{min-height:auto; padding:24px 22px}
+  .process-newsroom{padding:24px 5vw}
+  .process-listing article{grid-template-columns:56px 1fr; padding:20px 18px}
+  .review-banner{grid-template-columns:1fr; gap:18px}
+  .review-banner-side{border-right:0; border-bottom:1px solid var(--line); padding-right:0; padding-bottom:18px}
+  .review-banner-link{justify-self:start}
+}
+@media(max-width:620px){
+  .hero-cta{display:grid; gap:14px}
+  .hero-button-no{font-size:18px}
+  .offer-category{font-size:21px}
+  .offer-editorial-item p,.process-content p{font-size:12px}
+  .review-banner.editorial-fade:before,
+  .review-banner.editorial-fade:after{width:170px;height:120px}
+}
