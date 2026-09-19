@@ -58,6 +58,19 @@ if (heroFrames.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').mat
   else window.addEventListener('load', start);
 }
 
+// Contact form: no backend yet, so open the visitor's mail app with the message filled in.
+const contactForm = document.querySelector('[data-contact-form]');
+contactForm?.addEventListener('submit', e => {
+  e.preventDefault();
+  const data = new FormData(contactForm);
+  const name = (data.get('name') || '').toString().trim();
+  const email = (data.get('email') || '').toString().trim();
+  const message = (data.get('message') || '').toString().trim();
+  const subject = `Zapytanie ze strony${name ? ' — ' + name : ''}`;
+  const body = `${message}\n\n${name}${email ? '\n' + email : ''}`;
+  location.href = `mailto:elephant.interiordesignstudio@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
+
 const wrap = document.querySelector('[data-carousel]');
 const track = document.querySelector('[data-track]');
 if (wrap && track) {
