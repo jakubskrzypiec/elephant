@@ -69,11 +69,12 @@ h1,h2,h3,p{margin-top:0}
 /* ---------- offer: large even rectangles on white ---------- */
 .offer{background:#fff}
 .offer .section-heading{margin-bottom:64px}
+/* cards share row tracks (subgrid), so titles and their rules line up across all cards */
 .cards{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
-.card{display:flex;flex-direction:column;min-height:540px;padding:40px 34px 38px;background:var(--gray-1)}
-.card-no{display:block;font-family:var(--serif);font-weight:300;font-size:88px;line-height:.85}
-.card-kicker{display:block;margin-top:auto;font-size:7px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);padding-top:40px;margin-bottom:12px}
-.card h3{font-family:var(--serif);font-weight:400;font-size:32px;line-height:1.05;margin:0 0 18px;padding-bottom:18px;border-bottom:1px solid rgba(27,27,26,.18)}
+.card{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0;padding:40px 34px 38px;background:var(--gray-1)}
+.card-no{display:block;font-family:var(--serif);font-weight:300;font-size:88px;line-height:.85;padding-bottom:170px}
+.card-kicker{display:block;align-self:end;font-size:7px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.card h3{display:flex;align-items:flex-end;font-family:var(--serif);font-weight:400;font-size:32px;line-height:1.05;margin:0 0 18px;padding-bottom:18px;border-bottom:1px solid rgba(27,27,26,.18)}
 .card p{margin:0;font-size:12.5px;line-height:1.95;color:var(--text)}
 .offer-cta{text-align:center;margin-top:72px}
 
@@ -114,12 +115,13 @@ h1,h2,h3,p{margin-top:0}
 /* ---------- process: roman numeral timeline ---------- */
 .process{background:#fff}
 .timeline{list-style:none;margin:0 auto;padding:0;max-width:1320px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
-.phase{position:relative;padding:8px 40px 6px;border-left:1px solid var(--line);text-align:center}
-.phase:first-child{border-left:0}
-.phase-no{display:block;font-family:var(--serif);font-weight:300;font-size:120px;line-height:.85;margin:0 0 30px}
-.phase-no:after{content:"";display:block;width:34px;height:1px;background:var(--ink);margin:30px auto 0}
-.phase h3{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1;margin:0 0 14px}
-.phase p{margin:0 auto;color:var(--text);font-size:13px;line-height:1.95;max-width:260px}
+/* large light roman numeral sits behind each stage, title overlaps its lower half */
+.timeline{gap:28px}
+.phase{position:relative;padding:150px 16px 0;text-align:center}
+.phase-no{position:absolute;left:0;right:0;top:0;font-family:var(--serif);font-weight:300;font-size:230px;line-height:.8;letter-spacing:-.02em;color:rgba(27,27,26,.1);pointer-events:none;user-select:none}
+.phase h3{position:relative;font-family:var(--serif);font-weight:400;font-size:36px;line-height:1;margin:0 0 22px}
+.phase h3:after{content:"";display:block;width:30px;height:1px;background:var(--ink);margin:22px auto 0}
+.phase p{position:relative;margin:0 auto;color:var(--text);font-size:13px;line-height:1.95;max-width:250px}
 .process-foot{max-width:1320px;margin:80px auto 0;padding-top:26px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:24px}
 .process-foot p{margin:0;font-size:12px;color:var(--muted)}
 
@@ -137,8 +139,8 @@ h1,h2,h3,p{margin-top:0}
 .material-copy p{font-family:var(--serif);font-weight:300;font-size:clamp(40px,4.4vw,64px);line-height:1.06;margin:0}
 
 /* ---------- instagram: profile cards ---------- */
-.social{background:var(--paper)}
-.social-panel{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:5fr 7fr;gap:4vw;align-items:center;padding:80px 6vw;background:linear-gradient(135deg,#f3f3f0,#ebebe7);border:1px solid var(--line);overflow:hidden}
+.social{background:#fff}
+.social-panel{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:5fr 7fr;gap:4vw;align-items:center;padding:0}
 .social-intro h2{font-family:var(--serif);font-weight:300;font-size:clamp(54px,5.4vw,84px);line-height:.98;margin:0 0 24px}
 .social-intro p{font-size:13px;line-height:1.95;color:var(--text);max-width:430px;margin:0}
 .pills{display:flex;gap:12px;flex-wrap:wrap;margin-top:38px}
@@ -148,15 +150,16 @@ h1,h2,h3,p{margin-top:0}
 
 .phones{position:relative;height:520px;display:flex;align-items:center;justify-content:center}
 .phone{position:relative;width:310px;background:#fff;border-radius:24px;padding:20px 20px 16px;box-shadow:0 34px 80px rgba(0,0,0,.14),0 2px 8px rgba(0,0,0,.05)}
-.phone-front{width:390px;transform:rotate(-3deg)}
+.phone-front{width:390px}
 .phone-top{display:flex;justify-content:space-between;align-items:center;font-size:7px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
 .phone-top span{display:inline-flex;align-items:center;gap:7px}
 .phone-top svg{width:12px;height:12px}
 .phone-logo{width:72%;margin:22px auto 18px}
 .phone-tag{font-size:7px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);text-align:center;margin:-4px 0 16px}
 .phone-grid{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:1fr 1fr;gap:8px;height:290px}
-.phone-grid img{height:100%;object-fit:cover;border-radius:14px;filter:grayscale(1)}
-.phone-main{grid-row:1/3;object-position:22% center}
+.phone-slot{display:flex;align-items:center;justify-content:center;border-radius:14px;border:1px solid rgba(27,27,26,.14);background-color:#f6f6f4;background-image:linear-gradient(rgba(27,27,26,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(27,27,26,.07) 1px,transparent 1px);background-size:16px 16px;background-position:-1px -1px}
+.phone-slot span{font-size:6.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);background:#f6f6f4;padding:5px 8px;text-align:center}
+.phone-main{grid-row:1/3}
 .phone-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
 .phone-foot strong{font-size:8px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .phone-foot span{font-size:8px;color:var(--muted);white-space:nowrap}
@@ -171,6 +174,8 @@ h1,h2,h3,p{margin-top:0}
 .review-link{display:grid;grid-template-columns:48px 1fr auto;gap:22px;align-items:center;padding:24px 4px;border-bottom:1px solid var(--line)}
 .review-icon{width:48px;height:48px;border-radius:12px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center}
 .review-icon svg{width:18px;height:18px}
+.review-icon-google{background:#fff;border:1px solid var(--line);box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.review-icon-google svg{width:22px;height:22px;stroke:none}
 .review-text strong{display:block;font-weight:300;font-size:22px;letter-spacing:.12em;text-transform:uppercase;line-height:1.2}
 .review-text small{display:block;font-size:10px;color:var(--muted);margin-top:4px}
 .review-arrow{font-size:26px;font-weight:300}
@@ -200,14 +205,12 @@ h1,h2,h3,p{margin-top:0}
   .desktop-nav{gap:18px;font-size:7px}
   .brand-image{width:225px}
   .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .card{min-height:440px}
+  .card-no{padding-bottom:120px}
 }
 @media(max-width:980px){
   .about-layout{gap:5vw}
-  .timeline{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:56px}
-  .phase:nth-child(3){border-left:0}
-  .phase-no{font-size:96px}
-  .social-panel{grid-template-columns:1fr;gap:40px;padding:64px 6vw 40px}
+  .timeline{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:64px}
+  .social-panel{grid-template-columns:1fr;gap:40px}
   .phones{height:auto;padding:10px 0 20px}
   .review-panel{grid-template-columns:1fr;gap:40px;padding:52px 40px}
 }
@@ -252,29 +255,24 @@ h1,h2,h3,p{margin-top:0}
   .about-media{min-height:350px}
   .about-copy p{font-size:16px;line-height:1.85}
   .cards{grid-template-columns:1fr;gap:12px}
-  .card{min-height:0;padding:34px 24px 30px}
-  .card-no{font-size:64px}
-  .card-kicker{padding-top:34px}
+  .card{padding:34px 24px 30px}
+  .card-no{font-size:64px;padding-bottom:40px}
   .offer-cta{margin-top:52px}
   .project-card{width:84vw}
   .project-placeholder{height:350px}
   .wide-divider{height:340px}
   .wide-divider-copy p{font-size:48px}
-  .timeline{grid-template-columns:1fr;row-gap:0}
-  .phase,.phase:nth-child(3){border-left:0;border-top:1px solid var(--line);padding:40px 0}
-  .phase:first-child{border-top:0;padding-top:0}
-  .phase:last-child{padding-bottom:0}
-  .phase-no{font-size:80px;margin-bottom:22px}
-  .phase-no:after{margin-top:22px}
-  .phase h3{font-size:30px}
+  .timeline{grid-template-columns:1fr;row-gap:56px}
+  .phase{padding-top:110px}
+  .phase-no{font-size:170px}
+  .phase h3{font-size:32px}
   .material-break>img{height:340px}
   .material-copy{padding:58px 6vw}
-  .social-panel{padding:52px 22px 28px}
   .pill{flex:1 1 140px;justify-content:flex-start;padding-right:20px}
   .phone,.phone-front{width:min(290px,82vw);padding:16px 16px 12px;border-radius:20px}
   .phone-logo{margin:14px auto 12px}
   .phone-grid{height:190px;gap:6px}
-  .phone-grid img{border-radius:10px}
+  .phone-slot{border-radius:10px}
   .phone-foot strong,.phone-foot span{font-size:7px}
   .review-panel{padding:40px 22px;border-radius:18px}
   .review-link{grid-template-columns:42px 1fr auto;gap:14px}
