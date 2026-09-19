@@ -66,18 +66,12 @@ contactForm?.addEventListener('submit', e => {
   const get = key => (data.get(key) || '').toString().trim();
   const name = get('name');
   const metraz = get('metraz');
-  const rooms = data.getAll('pomieszczenia').join(', ');
 
   // Only answered questions go into the e-mail.
   const rows = [
     ['Oferta', get('oferta')],
     ['Rodzaj przestrzeni', get('typ')],
     ['Metraż', metraz && `${metraz} m²`],
-    ['Miasto', get('miasto')],
-    ['Stan', get('stan')],
-    ['Pomieszczenia', rooms],
-    ['Start', get('termin')],
-    ['Budżet', get('budzet')],
   ].filter(([, value]) => value).map(([label, value]) => `${label}: ${value}`);
 
   const message = get('message');

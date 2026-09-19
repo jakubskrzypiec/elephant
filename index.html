@@ -255,7 +255,7 @@
       <div class="contact-copy">
         <div class="section-label">VIII / Kontakt</div>
         <h2>Zacznijmy projekt.</h2>
-        <p>Kilka odpowiedzi pomoże mi przygotować się do pierwszej rozmowy. Wrócę do Ciebie z propozycją kolejnego kroku.</p>
+        <p>Opowiedz krótko o swojej przestrzeni. Wrócę do Ciebie z propozycją kolejnego kroku.</p>
         <ul class="contact-list">
           <li><span>E-mail</span><a href="mailto:elephant.interiordesignstudio@gmail.com">elephant.interiordesignstudio@gmail.com</a></li>
           <li><span>Telefon</span><a href="tel:+48573720580">573 720 580</a></li>
@@ -264,87 +264,46 @@
       </div>
 
       <form class="contact-form" data-contact-form>
-        <fieldset class="form-step">
-          <legend><span>I</span>Czego szukasz?</legend>
-          <div class="choices">
-            <label class="choice"><input type="radio" name="oferta" value="Konsultacja" /><span><b>I</b>Konsultacja</span></label>
-            <label class="choice"><input type="radio" name="oferta" value="Projekt koncepcyjny" /><span><b>II</b>Projekt koncepcyjny</span></label>
-            <label class="choice"><input type="radio" name="oferta" value="Projekt kompleksowy" /><span><b>III</b>Projekt kompleksowy</span></label>
-            <label class="choice"><input type="radio" name="oferta" value="Nadzór autorski" /><span><b>IV</b>Nadzór autorski</span></label>
-            <label class="choice"><input type="radio" name="oferta" value="Jeszcze nie wiem" /><span>Jeszcze nie wiem</span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="form-step">
-          <legend><span>II</span>Twoja przestrzeń</legend>
-          <div class="choices">
-            <label class="choice"><input type="radio" name="typ" value="Mieszkanie" /><span>Mieszkanie</span></label>
-            <label class="choice"><input type="radio" name="typ" value="Dom" /><span>Dom</span></label>
-            <label class="choice"><input type="radio" name="typ" value="Pojedyncze pomieszczenie" /><span>Pojedyncze pomieszczenie</span></label>
-            <label class="choice"><input type="radio" name="typ" value="Lokal usługowy" /><span>Lokal usługowy</span></label>
-          </div>
-          <div class="field-row">
-            <label class="field"><small>Metraż</small><input type="number" name="metraz" min="1" inputmode="numeric" placeholder="np. 54" /><em>m²</em></label>
-            <label class="field"><small>Miasto</small><input type="text" name="miasto" placeholder="np. Wrocław" /></label>
-          </div>
-          <label class="field"><small>Stan</small>
-            <select name="stan">
-              <option value="">Wybierz</option>
-              <option>Stan deweloperski</option>
-              <option>Do remontu</option>
-              <option>Wykończone — odświeżenie wnętrza</option>
-              <option>W trakcie budowy</option>
+        <label class="field"><small>Imię</small><input type="text" name="name" required autocomplete="name" placeholder="Imię i nazwisko" /></label>
+        <div class="field-row">
+          <label class="field"><small>E-mail</small><input type="email" name="email" required autocomplete="email" placeholder="adres@email.pl" /></label>
+          <label class="field"><small>Telefon</small><input type="tel" name="phone" autocomplete="tel" placeholder="opcjonalnie" /></label>
+        </div>
+        <label class="field"><small>Oferta</small>
+          <select name="oferta">
+            <option value="">Czym jesteś zainteresowany/a?</option>
+            <option>Konsultacja</option>
+            <option>Projekt koncepcyjny</option>
+            <option>Projekt kompleksowy</option>
+            <option>Nadzór autorski</option>
+            <option>Jeszcze nie wiem</option>
+          </select>
+        </label>
+        <div class="field-row">
+          <label class="field"><small>Wnętrze</small>
+            <select name="typ">
+              <option value="">Rodzaj przestrzeni</option>
+              <option>Mieszkanie</option>
+              <option>Dom</option>
+              <option>Pojedyncze pomieszczenie</option>
+              <option>Lokal usługowy</option>
             </select>
           </label>
-          <p class="choices-label">Które pomieszczenia?</p>
-          <div class="choices choices-small">
-            <label class="choice"><input type="checkbox" name="pomieszczenia" value="Całość" /><span>Całość</span></label>
-            <label class="choice"><input type="checkbox" name="pomieszczenia" value="Salon" /><span>Salon</span></label>
-            <label class="choice"><input type="checkbox" name="pomieszczenia" value="Kuchnia" /><span>Kuchnia</span></label>
-            <label class="choice"><input type="checkbox" name="pomieszczenia" value="Sypialnia" /><span>Sypialnia</span></label>
-            <label class="choice"><input type="checkbox" name="pomieszczenia" value="Łazienka" /><span>Łazienka</span></label>
-            <label class="choice"><input type="checkbox" name="pomieszczenia" value="Pokój dziecka" /><span>Pokój dziecka</span></label>
-            <label class="choice"><input type="checkbox" name="pomieszczenia" value="Gabinet" /><span>Gabinet</span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="form-step">
-          <legend><span>III</span>Termin i budżet</legend>
-          <div class="field-row">
-            <label class="field"><small>Start</small>
-              <select name="termin">
-                <option value="">Wybierz</option>
-                <option>Jak najszybciej</option>
-                <option>W ciągu 1–3 miesięcy</option>
-                <option>W ciągu 3–6 miesięcy</option>
-                <option>Później / jeszcze nie wiem</option>
-              </select>
-            </label>
-            <label class="field"><small>Budżet</small>
-              <select name="budzet">
-                <option value="">Wolę omówić</option>
-                <option>do 50 tys. zł</option>
-                <option>50–100 tys. zł</option>
-                <option>100–200 tys. zł</option>
-                <option>powyżej 200 tys. zł</option>
-              </select>
-            </label>
-          </div>
-          <label class="field field-area"><small>Opis</small><textarea name="message" rows="4" placeholder="Co chcesz zmienić, co jest najważniejsze, jak ma się tu żyć…"></textarea></label>
-        </fieldset>
-
-        <fieldset class="form-step">
-          <legend><span>IV</span>Kontakt</legend>
-          <label class="field"><small>Imię</small><input type="text" name="name" required autocomplete="name" placeholder="Imię i nazwisko" /></label>
-          <div class="field-row">
-            <label class="field"><small>E-mail</small><input type="email" name="email" required autocomplete="email" placeholder="adres@email.pl" /></label>
-            <label class="field"><small>Telefon</small><input type="tel" name="phone" autocomplete="tel" placeholder="opcjonalnie" /></label>
-          </div>
-          <label class="consent"><input type="checkbox" name="zgoda" required /><span>Wyrażam zgodę na kontakt w sprawie mojego zapytania.</span></label>
-        </fieldset>
-
+          <label class="field"><small>Metraż</small><input type="number" name="metraz" min="1" inputmode="numeric" placeholder="np. 54" /><em>m²</em></label>
+        </div>
+        <label class="field field-area"><small>Opis</small><textarea name="message" rows="4" placeholder="Krótko opowiedz o projekcie"></textarea></label>
+        <label class="consent"><input type="checkbox" name="zgoda" required /><span>Wyrażam zgodę na kontakt w sprawie mojego zapytania.</span></label>
         <button type="submit"><span>Wyślij zapytanie</span><span>↗</span></button>
       </form>
+
+      <div class="booking">
+        <div class="booking-head">
+          <span class="section-label">Spotkanie</span>
+          <h3>Umów spotkanie</h3>
+          <p>Wybierz dogodny termin pierwszej rozmowy.</p>
+        </div>
+        <div class="booking-slot"><span>Miejsce na kalendarz rezerwacji spotkań</span></div>
+      </div>
     </section>
   </main>
 

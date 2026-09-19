@@ -189,21 +189,8 @@ h1,h2,h3,p{margin-top:0}
 .contact-list li{display:grid;grid-template-columns:96px 1fr;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
 .contact-list span{font-size:7px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
 .contact-list a{font-size:12px;overflow-wrap:anywhere}
-/* expanded enquiry form, grouped in steps I–IV */
-.contact-form{min-width:0}
-.form-step{border:0;margin:0 0 48px;padding:0;min-width:0}
-.form-step legend{display:flex;align-items:baseline;gap:16px;width:100%;padding:0 0 14px;margin-bottom:22px;border-bottom:1px solid var(--ink);font-family:var(--serif);font-weight:400;font-size:30px;line-height:1}
-.form-step legend span{font-family:var(--sans);font-size:9px;letter-spacing:.24em;color:var(--muted);min-width:26px}
-.choices{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-.choices-label{margin:26px 0 12px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-.choice{position:relative;cursor:pointer}
-.choice input{position:absolute;opacity:0;pointer-events:none}
-.choice span{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 18px;border:1px solid var(--line);background:#fff;font-size:11px;letter-spacing:.03em;transition:background .2s,color .2s,border-color .2s}
-.choice span b{font-family:var(--serif);font-weight:400;font-size:17px;color:var(--muted)}
-.choice input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}
-.choice input:checked+span b{color:#bdbab3}
-.choice input:focus-visible+span,.consent input:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
-.choices-small .choice span{min-height:38px;padding:0 14px;font-size:10.5px}
+/* enquiry form: simple lines, choices from dropdowns */
+.contact-form{min-width:0;border-top:1px solid var(--line)}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
 .field{display:grid;grid-template-columns:78px 1fr auto;align-items:center;border-bottom:1px solid var(--line);transition:border-color .2s}
 .field:focus-within{border-bottom-color:var(--ink)}
@@ -216,6 +203,12 @@ h1,h2,h3,p{margin-top:0}
 .field-area{align-items:start}
 .field-area small{padding-top:21px}
 .consent{display:flex;gap:12px;align-items:flex-start;margin-top:22px;font-size:11px;line-height:1.6;color:var(--text);cursor:pointer}
+/* placeholder for the meeting-booking calendar (widget to be embedded later) */
+.booking{grid-column:1/-1;display:grid;grid-template-columns:4fr 7fr;gap:7vw;margin-top:40px;padding-top:70px;border-top:1px solid var(--line)}
+.booking-head h3{font-family:var(--serif);font-weight:300;font-size:clamp(36px,3.4vw,52px);line-height:1;margin:0 0 16px}
+.booking-head p{margin:0;font-size:12px;color:#6e6a64;max-width:320px}
+.booking-slot{min-height:420px;display:flex;align-items:center;justify-content:center;background-color:#f3f3f0;background-image:linear-gradient(rgba(27,27,26,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,27,26,.06) 1px,transparent 1px);background-size:22px 22px;background-position:-1px -1px;border:1px solid rgba(27,27,26,.12)}
+.booking-slot span{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);background:#f3f3f0;padding:8px 12px;text-align:center}
 .consent input{accent-color:var(--ink);margin:3px 0 0;width:15px;height:15px;flex:none}
 .contact-form button{margin-top:20px;width:100%;border:0;background:var(--ink);color:#fff;min-height:52px;font-size:8px;text-transform:uppercase;letter-spacing:.11em;display:flex;align-items:center;justify-content:space-between;padding:0 20px;cursor:pointer}
 
@@ -268,6 +261,8 @@ h1,h2,h3,p{margin-top:0}
   .material-break>img{height:430px}
   .contact{grid-template-columns:1fr;gap:56px}
   .contact-copy{position:static}
+  .booking{grid-template-columns:1fr;gap:28px;margin-top:0;padding-top:56px}
+  .booking-slot{min-height:320px}
   .footer-top{grid-template-columns:1fr}
   .footer-top nav{display:none}
   .footer-logo{width:min(330px,85vw);justify-self:center}
@@ -286,7 +281,6 @@ h1,h2,h3,p{margin-top:0}
   .about-copy p{font-size:16px;line-height:1.85}
   .field-row{grid-template-columns:1fr}
   .field{grid-template-columns:70px 1fr auto}
-  .form-step legend{font-size:26px}
   .cards{grid-template-columns:1fr;gap:12px}
   .card{padding:34px 24px 30px}
   .card-no{font-size:64px;padding-bottom:40px}
