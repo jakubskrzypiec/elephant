@@ -244,3 +244,329 @@ h1,h2,h3,p{margin-top:0}
   .site-footer{padding-left:5vw;padding-right:5vw}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+/* ===== ELEPHANT v7 — newspaper/editorial rework ===== */
+
+/* Hero buttons: static, no hover interaction for now */
+.hero-button,
+.hero-button:hover{
+  transform:none;
+  background:rgba(250,249,246,.94);
+  color:var(--ink);
+  border-color:rgba(33,33,31,.10);
+}
+.hero-button-alt,
+.hero-button-alt:hover{background:rgba(239,239,235,.94)}
+.hero-button:hover .hero-button-copy small{color:#736f67}
+.hero-button-arrow{opacity:.42}
+
+/* O mnie — readable body copy */
+.about-copy{max-width:760px}
+.about-copy p{font-size:17px;line-height:1.92;max-width:720px;color:#3f3d39}
+.copy-kicker{font-size:9px;margin-bottom:32px}
+
+/* Oferta — one newspaper issue, not four SaaS cards */
+.offer{
+  position:relative;
+  background:#ddd url('newspaper-texture.webp') center/cover no-repeat;
+  isolation:isolate;
+}
+.offer:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(234,234,230,.42);
+  z-index:-1;
+}
+.offer .section-heading>span{color:#5b5955}
+.offer-newspaper{
+  max-width:1420px;
+  margin:0 auto;
+  background:rgba(248,248,245,.94);
+  border:1px solid rgba(0,0,0,.18);
+  box-shadow:0 20px 70px rgba(0,0,0,.10);
+}
+.offer-masthead{
+  min-height:88px;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:24px;
+  padding:18px 28px;
+  border-bottom:3px double rgba(0,0,0,.46);
+  font-size:8px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+}
+.offer-masthead strong{
+  font-family:var(--sans);
+  font-size:22px;
+  font-weight:500;
+  letter-spacing:-.03em;
+  text-transform:none;
+}
+.offer-masthead span:last-child{text-align:right}
+.offer-columns{display:grid;grid-template-columns:repeat(4,1fr)}
+.offer-column{
+  min-height:410px;
+  padding:28px 26px 24px;
+  border-right:1px solid rgba(0,0,0,.15);
+  display:flex;
+  flex-direction:column;
+  background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,0));
+}
+.offer-column:last-child{border-right:0}
+.offer-column .offer-roman{
+  font-family:var(--serif);
+  font-size:104px;
+  line-height:.82;
+  color:rgba(0,0,0,.14);
+  margin-bottom:28px;
+}
+.offer-category{
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  padding:10px 0 9px;
+  border-top:1px solid rgba(0,0,0,.40);
+  border-bottom:1px solid rgba(0,0,0,.12);
+  margin-bottom:20px;
+}
+.offer-column h3{
+  font-family:var(--sans);
+  font-size:25px;
+  font-weight:500;
+  letter-spacing:-.04em;
+  line-height:1.08;
+  margin:0 0 18px;
+}
+.offer-column p{
+  font-family:var(--sans);
+  font-size:13px;
+  line-height:1.82;
+  color:#3f3d39;
+  margin:0 0 26px;
+}
+.offer-foot{
+  margin-top:auto;
+  padding-top:14px;
+  border-top:1px solid rgba(0,0,0,.12);
+  font-size:7px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#77736c;
+}
+
+/* Process — editorial article flow, no tiles */
+.process-editorial{
+  max-width:1320px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:.78fr 1.22fr;
+  gap:7vw;
+  align-items:start;
+  border-top:3px double rgba(0,0,0,.32);
+  padding-top:34px;
+}
+.process-index{padding-right:3vw;position:sticky;top:120px}
+.process-index>span{
+  display:block;
+  font-size:8px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#7a766f;
+  margin-bottom:16px;
+}
+.process-index>strong{
+  display:block;
+  font-family:var(--sans);
+  font-size:clamp(36px,4.7vw,68px);
+  font-weight:500;
+  line-height:.96;
+  letter-spacing:-.055em;
+  max-width:480px;
+}
+.process-index>small{
+  display:block;
+  font-size:12px;
+  line-height:1.7;
+  margin-top:24px;
+  max-width:300px;
+  color:#66625d;
+}
+.process-rows{border-top:1px solid rgba(0,0,0,.18)}
+.process-rows article{
+  display:grid;
+  grid-template-columns:92px 190px 1fr;
+  gap:22px;
+  align-items:start;
+  padding:26px 0 28px;
+  border-bottom:1px solid rgba(0,0,0,.18);
+}
+.process-no{
+  font-family:var(--serif);
+  font-size:54px;
+  line-height:.85;
+  color:rgba(0,0,0,.15);
+}
+.process-title{
+  font-family:var(--sans);
+  font-weight:500;
+  font-size:19px;
+  letter-spacing:-.025em;
+  padding-top:4px;
+}
+.process-rows p{
+  margin:0;
+  font-size:13px;
+  line-height:1.82;
+  color:#4d4a45;
+  max-width:440px;
+}
+
+/* Philosophy — only section title is serif; manifesto/content are sans */
+.philosophy{background:#e5e5e2}
+.philosophy-editorial-v2{max-width:1320px;margin:0 auto}
+.philosophy-kicker{
+  font-size:8px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#77736d;
+  padding-bottom:18px;
+  border-bottom:1px solid rgba(0,0,0,.18);
+}
+.philosophy-phrase{
+  font-family:var(--sans);
+  font-size:clamp(48px,7vw,110px);
+  font-weight:500;
+  line-height:.90;
+  letter-spacing:-.075em;
+  padding:38px 0 42px;
+  max-width:1080px;
+}
+.philosophy-copy-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:42px;
+  border-top:1px solid rgba(0,0,0,.18);
+  padding-top:26px;
+}
+.philosophy-copy-grid article span{
+  display:block;
+  font-family:var(--serif);
+  font-size:34px;
+  color:rgba(0,0,0,.22);
+  margin-bottom:10px;
+}
+.philosophy-copy-grid article p{
+  margin:0;
+  font-family:var(--sans);
+  font-size:14px;
+  line-height:1.9;
+  color:#3f3d39;
+}
+
+/* Material divider exactly 50/50 */
+.material-break{grid-template-columns:1fr 1fr}
+
+/* Google reviews — newspaper collage as the actual visual hook */
+.reviews-news{
+  position:relative;
+  padding:92px 6vw;
+  background:#111 url('newspaper-texture.webp') center/cover no-repeat;
+  overflow:hidden;
+}
+.reviews-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.22);
+}
+.reviews-paper{
+  position:relative;
+  z-index:2;
+  max-width:1320px;
+  margin:0 auto;
+  background:rgba(248,248,245,.95);
+  border:1px solid rgba(0,0,0,.15);
+  box-shadow:0 24px 80px rgba(0,0,0,.18);
+}
+.reviews-paper-top{
+  min-height:44px;
+  padding:0 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  font-size:7px;
+  letter-spacing:.20em;
+  text-transform:uppercase;
+  border-bottom:3px double rgba(0,0,0,.38);
+}
+.reviews-paper-main{
+  display:grid;
+  grid-template-columns:220px 1fr 160px;
+  align-items:center;
+  gap:34px;
+  padding:34px 28px 30px;
+}
+.reviews-google{
+  min-height:110px;
+  border-right:1px solid rgba(0,0,0,.18);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.reviews-google span{font-size:7px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px}
+.reviews-google strong{font-family:var(--sans);font-size:34px;font-weight:300;line-height:1}
+.reviews-headline h2{
+  font-family:var(--sans);
+  font-size:clamp(34px,4.3vw,66px);
+  font-weight:500;
+  line-height:.95;
+  letter-spacing:-.055em;
+  margin:0 0 12px;
+}
+.reviews-headline p{font-size:11px;margin:0;color:#7a766f}
+.reviews-link{justify-self:end;font-size:8px;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:6px}
+.reviews-placeholders{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid rgba(0,0,0,.16);
+}
+.reviews-placeholders article{
+  min-height:120px;
+  padding:20px 24px;
+  border-right:1px solid rgba(0,0,0,.14);
+}
+.reviews-placeholders article:last-child{border-right:0}
+.reviews-placeholders span{font-family:var(--serif);font-size:28px;color:rgba(0,0,0,.22)}
+.reviews-placeholders p{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#79756e;margin-top:14px}
+
+@media(max-width:1100px){
+  .offer-columns{grid-template-columns:repeat(2,1fr)}
+  .offer-column:nth-child(2){border-right:0}
+  .offer-column:nth-child(-n+2){border-bottom:1px solid rgba(0,0,0,.15)}
+  .process-editorial{grid-template-columns:1fr;gap:42px}
+  .process-index{position:static}
+  .reviews-paper-main{grid-template-columns:1fr}
+  .reviews-google{border-right:0;border-bottom:1px solid rgba(0,0,0,.18);padding-bottom:18px;min-height:auto}
+  .reviews-link{justify-self:start}
+}
+@media(max-width:760px){
+  .about-copy p{font-size:15px}
+  .offer-masthead{grid-template-columns:1fr;gap:8px;text-align:left}
+  .offer-masthead span:last-child{text-align:left}
+  .offer-columns{grid-template-columns:1fr}
+  .offer-column{border-right:0;border-bottom:1px solid rgba(0,0,0,.15);min-height:320px}
+  .offer-column:last-child{border-bottom:0}
+  .process-rows article{grid-template-columns:60px 1fr;gap:10px 18px}
+  .process-rows p{grid-column:2}
+  .philosophy-phrase{font-size:50px;letter-spacing:-.06em}
+  .philosophy-copy-grid{grid-template-columns:1fr;gap:28px}
+  .material-break{grid-template-columns:1fr}
+  .reviews-news{padding:64px 5vw}
+  .reviews-placeholders{grid-template-columns:1fr}
+  .reviews-placeholders article{border-right:0;border-bottom:1px solid rgba(0,0,0,.14)}
+  .reviews-placeholders article:last-child{border-bottom:0}
+}
