@@ -204,9 +204,9 @@ h1,h2,h3,p{margin-top:0}
 .consent{display:flex;gap:12px;align-items:flex-start;margin-top:22px;font-size:11px;line-height:1.6;color:var(--text);cursor:pointer}
 /* placeholder for the meeting-booking calendar (widget to be embedded later) */
 .contact-main{min-width:0}
-.booking{margin-top:72px}
+.booking{grid-column:1/-1;width:100%;max-width:980px;margin:40px auto 0;padding-top:80px;border-top:1px solid var(--line);text-align:center}
 .booking h3{font-family:var(--serif);font-weight:300;font-size:clamp(34px,3vw,46px);line-height:1;margin:0 0 12px}
-.booking p{margin:0 0 24px;font-size:12px;color:#6e6a64}
+.booking p{margin:0 0 32px;font-size:12px;color:#6e6a64}
 .booking-slot{min-height:380px;display:flex;align-items:center;justify-content:center;background-color:#f3f3f0;background-image:linear-gradient(rgba(27,27,26,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,27,26,.06) 1px,transparent 1px);background-size:22px 22px;background-position:-1px -1px;border:1px solid rgba(27,27,26,.12)}
 .booking-slot span{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);background:#f3f3f0;padding:8px 12px;text-align:center}
 .consent input{accent-color:var(--ink);margin:3px 0 0;width:15px;height:15px;flex:none}
@@ -260,7 +260,7 @@ h1,h2,h3,p{margin-top:0}
   .material-break{grid-template-columns:1fr}
   .material-break>img{height:430px}
   .contact{grid-template-columns:1fr;gap:56px}
-  .booking{margin-top:56px}
+  .booking{margin-top:0;padding-top:56px}
   .booking-slot{min-height:300px}
   .footer-top{grid-template-columns:1fr}
   .footer-top nav{display:none}
