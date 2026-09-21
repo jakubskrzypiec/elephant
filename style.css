@@ -572,3 +572,46 @@ h1,h2,h3,p{margin-top:0}
     padding-top:30px;
   }
 }
+
+
+/* ===== ELEPHANT — korekta oferty i opinii ===== */
+/* Wszystkie kafelki oferty w jednym kolorze klientki */
+.offer .card,
+.offer .card:nth-child(1),
+.offer .card:nth-child(2),
+.offer .card:nth-child(3),
+.offer .card:nth-child(4){
+  background:#95886f;
+  color:#f6f4f1;
+}
+.offer .card .card-no{
+  color:#f6f4f1;
+  opacity:.92;
+}
+.offer .card .card-kicker,
+.offer .card p{
+  color:#f6f4f1;
+  opacity:.84;
+}
+.offer .card h3{
+  color:#f6f4f1;
+  border-bottom-color:rgba(246,244,241,.32);
+}
+
+/* Opinie Google — biały pasek, kolor tylko na logo/akcentach */
+.review-link{
+  background:#fff;
+  color:#2a2421;
+  border:1px solid rgba(149,136,111,.26);
+}
+.review-icon-google{
+  background:#95886f;
+  color:#f6f4f1;
+  border-color:#95886f;
+}
+.review-text small{
+  color:#95886f;
+}
+.review-arrow{
+  color:#95886f;
+}
