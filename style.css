@@ -309,3 +309,266 @@ h1,h2,h3,p{margin-top:0}
   *{scroll-behavior:auto!important}
   .hero-frames img{transition:none}
 }
+
+
+/* ===== ELEPHANT — mocniejsza ekspozycja palety klientki ===== */
+.section-heading>span,
+.section-label,
+.copy-kicker,
+.card-kicker,
+.project-meta p,
+.phone-top,
+.phone-tag,
+.contact-list span,
+.field small{
+  color:#95886f;
+}
+
+/* Header */
+.site-header{
+  background:rgba(246,244,241,.98);
+  border-bottom:1px solid rgba(149,136,111,.28);
+}
+
+/* Hero — dwa wyraźne, markowe CTA */
+.hero-actions .hero-btn:first-child{
+  background:#95886f;
+  color:#f6f4f1;
+}
+.hero-actions .hero-btn:first-child .hero-btn-no{
+  color:#f6f4f1;
+  border-right-color:rgba(246,244,241,.42);
+}
+.hero-actions .hero-btn:nth-child(2){
+  background:#2a2421;
+  color:#f6f4f1;
+}
+.hero-actions .hero-btn:nth-child(2) .hero-btn-no{
+  color:#95886f;
+  border-right-color:rgba(246,244,241,.26);
+}
+
+/* O mnie */
+.about .section-heading h2{
+  color:#2a2421;
+}
+.about-copy{
+  border-left:2px solid #95886f;
+  padding-left:38px;
+}
+
+/* Oferta — wyraźny blok brandowy */
+.offer{
+  background:#f6f4f1;
+}
+.offer .cards{
+  gap:14px;
+}
+.offer .card:nth-child(1),
+.offer .card:nth-child(4){
+  background:#fff;
+}
+.offer .card:nth-child(2){
+  background:#95886f;
+  color:#f6f4f1;
+}
+.offer .card:nth-child(3){
+  background:#2a2421;
+  color:#f6f4f1;
+}
+.offer .card:nth-child(3) .card-kicker,
+.offer .card:nth-child(3) p{
+  color:#f6f4f1;
+  opacity:.82;
+}
+.offer .card:nth-child(3) h3{
+  border-bottom-color:rgba(246,244,241,.28);
+}
+.offer .card:nth-child(1) .card-no,
+.offer .card:nth-child(4) .card-no{
+  color:#95886f;
+}
+.offer .card:nth-child(2) .card-no{
+  color:rgba(246,244,241,.92);
+}
+.offer .card:nth-child(3) .card-no{
+  color:#95886f;
+}
+.offer-cta .btn-dark{
+  background:#95886f;
+  border-color:#95886f;
+  color:#f6f4f1;
+}
+
+/* Portfolio */
+.projects{
+  background:#fff;
+}
+.projects .section-heading h2{
+  color:#2a2421;
+}
+.project-meta h3{
+  color:#2a2421;
+}
+.project-placeholder>span{
+  color:#95886f;
+}
+
+/* Proces */
+.process{
+  background:#f6f4f1;
+}
+.process .section-heading h2{
+  color:#2a2421;
+}
+.phase-no{
+  color:rgba(149,136,111,.38);
+}
+.phase h3{
+  color:#2a2421;
+}
+.phase h3:after{
+  width:42px;
+  background:#95886f;
+}
+.process-foot{
+  border-top-color:rgba(149,136,111,.38);
+}
+.process-foot .text-link{
+  color:#95886f;
+}
+
+/* Filozofia — najmocniejszy ciemny blok */
+.philosophy{
+  background:#2a2421;
+  color:#f6f4f1;
+}
+.philosophy .section-heading>span{
+  color:#95886f;
+}
+.philosophy .section-heading h2{
+  color:#f6f4f1;
+}
+.philosophy-simple p{
+  color:rgba(246,244,241,.88);
+}
+
+/* Materiały — mocny taupe na prawej połowie */
+.material-break{
+  background:#2a2421;
+}
+.material-copy{
+  background:#95886f;
+  color:#f6f4f1;
+}
+.material-copy>span{
+  color:rgba(246,244,241,.72);
+}
+.material-copy p{
+  color:#f6f4f1;
+}
+
+/* Social */
+.social{
+  background:#fff;
+}
+.social-intro h2{
+  color:#2a2421;
+}
+.pill{
+  border-color:rgba(149,136,111,.48);
+}
+.pill-icon{
+  background:#95886f;
+  color:#f6f4f1;
+}
+.phone{
+  border:1px solid rgba(149,136,111,.22);
+}
+.phone-foot{
+  border-top-color:rgba(149,136,111,.28);
+}
+
+/* Opinie */
+.review-panel{
+  background:rgba(246,244,241,.97);
+  border:1px solid rgba(149,136,111,.28);
+}
+.review-intro h2{
+  color:#2a2421;
+}
+.review-links{
+  border-top-color:rgba(149,136,111,.34);
+}
+.review-link{
+  background:#2a2421;
+  color:#f6f4f1;
+  padding-left:18px;
+  padding-right:18px;
+  border-bottom:0;
+}
+.review-icon-google{
+  background:#95886f;
+  color:#f6f4f1;
+  border-color:#95886f;
+}
+.review-text small{
+  color:rgba(246,244,241,.68);
+}
+.review-arrow{
+  color:#95886f;
+}
+
+/* Kontakt */
+.contact{
+  background:#f6f4f1;
+}
+.contact-copy h2{
+  color:#2a2421;
+}
+.contact-list{
+  border-top-color:rgba(149,136,111,.32);
+}
+.contact-list li,
+.contact-form,
+.field,
+.booking{
+  border-color:rgba(149,136,111,.30);
+}
+.field:focus-within{
+  border-bottom-color:#95886f;
+}
+.consent input{
+  accent-color:#95886f;
+}
+.contact-form button{
+  background:#2a2421;
+  color:#f6f4f1;
+}
+.booking-slot{
+  border-color:rgba(149,136,111,.30);
+}
+
+/* Stopka */
+.site-footer{
+  background:#2a2421;
+}
+.footer-top,
+.footer-contact{
+  border-color:rgba(149,136,111,.34);
+}
+.footer-contact{
+  color:#d9cfbf;
+}
+.footer-bottom{
+  color:#95886f;
+}
+
+@media(max-width:900px){
+  .about-copy{
+    border-left:0;
+    padding-left:0;
+    border-top:2px solid #95886f;
+    padding-top:30px;
+  }
+}
