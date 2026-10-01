@@ -69,17 +69,20 @@ h1,h2,h3,p{margin-top:0}
 .hero-btn-no{font-size:10px;font-weight:400;line-height:1;letter-spacing:0;opacity:.65}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-/* ---------- offer: large even rectangles on white ---------- */
-.offer{background:#fff}
-.offer .section-heading{margin-bottom:64px}
-/* cards share row tracks (subgrid), so titles and their rules line up across all cards */
-.cards{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
-.card{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0;padding:40px 34px 38px;background:#f6f4f1;color:#2a2421}.card:nth-child(2){background:#95886f;color:#fff}.card:nth-child(4){background:#2a2421;color:#f6f4f1}.card:nth-child(2) .card-kicker,.card:nth-child(2) p,.card:nth-child(4) .card-kicker,.card:nth-child(4) p{color:inherit;opacity:.82}.card:nth-child(2) h3,.card:nth-child(4) h3{border-bottom-color:rgba(255,255,255,.30)}
-.card-no{display:block;font-family:var(--serif);font-weight:300;font-size:88px;line-height:.85;padding-bottom:170px}
-.card-kicker{display:block;align-self:end;font-size:7px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-.card h3{display:flex;align-items:flex-end;font-family:var(--serif);font-weight:400;font-size:32px;line-height:1.05;margin:0 0 18px;padding-bottom:18px;border-bottom:1px solid rgba(27,27,26,.18)}
-.card p{margin:0;font-size:12.5px;line-height:1.95;color:var(--text)}
-.offer-cta{text-align:center;margin-top:72px}
+/* ---------- offer ---------- */
+.offer{background:#f6f4f1;color:#000}
+.material-divider{position:relative;height:clamp(260px,29vw,440px);overflow:hidden}
+.material-divider>img{height:100%;object-fit:cover;object-position:center}
+.material-divider h2{position:absolute;left:var(--gutter);bottom:28px;margin:0;font-family:var(--serif);font-weight:300;font-size:clamp(64px,8vw,128px);line-height:1;letter-spacing:-.025em;color:#000}
+.cards{max-width:1520px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.card{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0;padding:36px 28px 38px;background:#fff;color:#000;border:1px solid rgba(0,0,0,.55);box-shadow:5px 5px 0 #e7e3de,0 12px 24px rgba(34,20,11,.055)}
+.card-no{display:block;font-family:var(--serif);font-weight:300;font-size:72px;line-height:1;padding-bottom:100px}
+.card-kicker{display:block;align-self:end;font-size:8px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:16px}
+.card h3{display:flex;align-items:flex-end;font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.08;margin:0 0 20px;padding-bottom:20px;border-bottom:1px solid rgba(0,0,0,.2)}
+.card p{margin:0;font-size:13px;line-height:1.8;color:#000}
+.offer .card-kicker{color:#000}
+.offer-cta{text-align:center;margin-top:64px}
+.offer-cta .btn-dark{background:transparent;border-color:#000;color:#000}
 
 /* ---------- about ---------- */
 .about{background:#f6f4f1;color:#000}
@@ -231,10 +234,11 @@ h1,h2,h3,p{margin-top:0}
 /* ---------- responsive ---------- */
 @media(max-width:1140px){
   .desktop-nav{gap:18px;font-size:7px}
-  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .card-no{padding-bottom:120px}
+  .card{padding:30px 20px 32px}
+  .card h3{font-size:26px}
 }
 @media(max-width:980px){
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
   .timeline{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:64px}
   .social-panel{grid-template-columns:1fr;gap:40px}
   .phones{height:auto;padding:10px 0 20px}
@@ -283,7 +287,9 @@ h1,h2,h3,p{margin-top:0}
   .about-copy p+p{margin-top:12px}
   .field-row{grid-template-columns:1fr}
   .field{grid-template-columns:70px 1fr auto}
-  .cards{grid-template-columns:1fr;gap:12px}
+  .material-divider{height:240px}
+  .material-divider h2{font-size:64px;bottom:22px}
+  .cards{grid-template-columns:1fr;gap:24px}
   .card{padding:34px 24px 30px}
   .card-no{font-size:64px;padding-bottom:40px}
   .offer-cta{margin-top:52px}
@@ -325,49 +331,6 @@ h1,h2,h3,p{margin-top:0}
 .contact-list span,
 .field small{
   color:#95886f;
-}
-
-/* Oferta — wyraźny blok brandowy */
-.offer{
-  background:#f6f4f1;
-}
-.offer .cards{
-  gap:14px;
-}
-.offer .card:nth-child(1),
-.offer .card:nth-child(4){
-  background:#fff;
-}
-.offer .card:nth-child(2){
-  background:#95886f;
-  color:#f6f4f1;
-}
-.offer .card:nth-child(3){
-  background:#2a2421;
-  color:#f6f4f1;
-}
-.offer .card:nth-child(3) .card-kicker,
-.offer .card:nth-child(3) p{
-  color:#f6f4f1;
-  opacity:.82;
-}
-.offer .card:nth-child(3) h3{
-  border-bottom-color:rgba(246,244,241,.28);
-}
-.offer .card:nth-child(1) .card-no,
-.offer .card:nth-child(4) .card-no{
-  color:#95886f;
-}
-.offer .card:nth-child(2) .card-no{
-  color:rgba(246,244,241,.92);
-}
-.offer .card:nth-child(3) .card-no{
-  color:#95886f;
-}
-.offer-cta .btn-dark{
-  background:#95886f;
-  border-color:#95886f;
-  color:#f6f4f1;
 }
 
 /* Portfolio */
@@ -535,29 +498,6 @@ h1,h2,h3,p{margin-top:0}
 }
 
 /* ===== ELEPHANT — korekta oferty i opinii ===== */
-/* Wszystkie kafelki oferty w jednym kolorze klientki */
-.offer .card,
-.offer .card:nth-child(1),
-.offer .card:nth-child(2),
-.offer .card:nth-child(3),
-.offer .card:nth-child(4){
-  background:#95886f;
-  color:#f6f4f1;
-}
-.offer .card .card-no{
-  color:#f6f4f1;
-  opacity:.92;
-}
-.offer .card .card-kicker,
-.offer .card p{
-  color:#f6f4f1;
-  opacity:.84;
-}
-.offer .card h3{
-  color:#f6f4f1;
-  border-bottom-color:rgba(246,244,241,.32);
-}
-
 /* Opinie Google — biały pasek, kolor tylko na logo/akcentach */
 .review-link{
   background:#fff;
