@@ -9,15 +9,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="hero-elephant.png" fetchpriority="high">
+  <link rel="preload" as="image" href="motion.png" fetchpriority="high">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="site-header">
-    <a class="brand-image" href="#top" aria-label="ELEPHANT — strona główna">
-      <img src="logo-elephant.png" alt="ELEPHANT Interior Design" />
-    </a>
-
     <nav class="desktop-nav" aria-label="Nawigacja główna">
       <a href="#omnie">O mnie</a>
       <a href="#oferta">Oferta</a>
@@ -50,11 +46,13 @@
   <main id="top">
     <section class="hero" aria-label="ELEPHANT Architecture & Interiors">
       <div class="hero-frames" data-hero-frames aria-hidden="true">
-        <img src="hero-elephant.png" alt="" fetchpriority="high" class="is-on" />
+        <img src="motion.png" alt="" fetchpriority="high" class="is-on" />
       </div>
       <div class="hero-shade"></div>
 
-      <h1 class="sr-only">ELEPHANT — architektura i projektowanie wnętrz</h1>
+      <h1 class="hero-logo">
+        <img src="logo-elephant-invert.png" alt="ELEPHANT Interior Design" width="1200" height="156" />
+      </h1>
       <div class="hero-actions">
         <a href="#omnie" class="hero-btn"><span class="hero-btn-no">I</span><span>Poznaj studio</span></a>
         <a href="#projekty" class="hero-btn"><span class="hero-btn-no">II</span><span>Zobacz realizacje</span></a>
