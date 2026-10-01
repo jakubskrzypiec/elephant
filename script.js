@@ -126,3 +126,51 @@ if (wrap && track) {
   wrap.addEventListener('pointerup', endDrag);
   wrap.addEventListener('pointercancel', endDrag);
 }
+
+// Process: the range, touch scrolling and mouse dragging share one position.
+const processViewport = document.querySelector('[data-process-viewport]');
+const processRange = document.querySelector('[data-process-range]');
+const processCards = [...document.querySelectorAll('.process-card')];
+const processCurrent = document.querySelector('[data-process-current]');
+if (processViewport && processRange && processCards.length) {
+  const numerals = ['I', 'II', 'III', 'IV'];
+  const maxScroll = () => Math.max(0, processViewport.scrollWidth - processViewport.clientWidth);
+  const syncProcess = () => {
+    const max = maxScroll();
+    const progress = max ? processViewport.scrollLeft / max : 0;
+    const index = Math.max(0, Math.min(processCards.length - 1, Math.round(progress * (processCards.length - 1))));
+    processRange.value = String(progress * 100);
+    processRange.disabled = max === 0;
+    processRange.setAttribute('aria-valuetext', processCards[index].querySelector('h3').textContent);
+    processCards.forEach((card, i) => card.classList.toggle('is-active', i === index));
+    processCurrent.textContent = `${numerals[index]} / ${numerals[processCards.length - 1]}`;
+  };
+  processRange.addEventListener('input', () => {
+    processViewport.scrollLeft = Number(processRange.value) / 100 * maxScroll();
+    syncProcess();
+  });
+  processViewport.addEventListener('scroll', syncProcess, { passive: true });
+  processViewport.addEventListener('keydown', e => {
+    const direction = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (!direction) return;
+    e.preventDefault();
+    processViewport.scrollBy({ left: direction * maxScroll() / (processCards.length - 1), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  });
+  let drag = null;
+  processViewport.addEventListener('pointerdown', e => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    drag = { x: e.clientX, scroll: processViewport.scrollLeft };
+    processViewport.setPointerCapture(e.pointerId);
+    processViewport.classList.add('is-dragging');
+    e.preventDefault();
+  });
+  processViewport.addEventListener('pointermove', e => {
+    if (drag) processViewport.scrollLeft = drag.scroll + drag.x - e.clientX;
+  });
+  const stopDrag = () => { drag = null; processViewport.classList.remove('is-dragging'); };
+  processViewport.addEventListener('pointerup', stopDrag);
+  processViewport.addEventListener('pointercancel', stopDrag);
+  processViewport.addEventListener('lostpointercapture', stopDrag);
+  new ResizeObserver(syncProcess).observe(processViewport);
+  syncProcess();
+}

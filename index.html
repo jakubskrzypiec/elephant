@@ -132,47 +132,48 @@
       </div>
     </section>
 
-    <section class="wide-divider" aria-label="Przerywnik projektowy">
-      <img src="poziomy.png" alt="Materiały i światło w pracowni ELEPHANT" loading="lazy" />
-      <div class="wide-divider-copy">
-        <span>ELEPHANT / SELECTED WORK / MMXXVI</span>
-        <p>Mikroprzestrzenie.<br>Duży efekt.</p>
-        <small>projektowane pod codzienne życie</small>
-      </div>
-    </section>
-
-    <section class="process section-pad" id="proces">
-      <header class="section-heading">
-        <span>IV / WSPÓŁPRACA</span>
-        <h2>Proces</h2>
+    <section class="process" id="proces" aria-labelledby="process-title">
+      <header class="material-divider">
+        <img src="assets/materials/02-oak.png" alt="" loading="lazy" width="2172" height="724" />
+        <h2 id="process-title">Proces</h2>
       </header>
+      <div class="process-content section-pad">
+        <h3 class="process-heading">Jak wygląda<br>proces</h3>
+        <div class="process-slider" data-process-slider>
+        <div class="process-viewport" data-process-viewport tabindex="0" role="region" aria-label="Etapy współpracy — przewijaj poziomo">
+      <ol class="process-track">
 
-      <ol class="timeline">
-        <li class="phase">
-          <span class="phase-no">I</span>
+        <li class="process-card">
+          <span class="process-card-no">I</span>
           <h3>Rozmowa</h3>
           <p>Poznanie potrzeb, stylu życia i tego, jak przestrzeń ma działać na co dzień.</p>
         </li>
-        <li class="phase">
-          <span class="phase-no">II</span>
+        <li class="process-card">
+          <span class="process-card-no">II</span>
           <h3>Kierunek</h3>
           <p>Układ, proporcje i decyzje, które porządkują projekt i nadają mu właściwy ton.</p>
         </li>
-        <li class="phase">
-          <span class="phase-no">III</span>
+        <li class="process-card">
+          <span class="process-card-no">III</span>
           <h3>Projekt</h3>
           <p>Rozwinięcie koncepcji w materiały, konkretne rozwiązania i czytelny plan działania.</p>
         </li>
-        <li class="phase">
-          <span class="phase-no">IV</span>
+        <li class="process-card">
+          <span class="process-card-no">IV</span>
           <h3>Realizacja</h3>
           <p>Dopilnowanie, aby końcowy efekt zachował jakość i charakter założony na początku.</p>
         </li>
       </ol>
-
+        </div>
+        <div class="process-controls">
+          <span class="process-current" data-process-current aria-hidden="true">I / IV</span>
+          <input class="process-range" data-process-range type="range" min="0" max="100" step="0.1" value="0" aria-label="Przesuń etapy procesu" aria-valuetext="Rozmowa" />
+        </div>
+        </div>
       <div class="process-foot">
         <p>Czas trwania każdego etapu ustalamy wspólnie — zależy od metrażu i zakresu prac.</p>
         <a href="#kontakt" class="text-link">Umów pierwszą rozmowę</a>
+      </div>
       </div>
     </section>
 
