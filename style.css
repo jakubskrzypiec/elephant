@@ -72,8 +72,11 @@ h1,h2,h3,p{margin-top:0}
 /* ---------- offer ---------- */
 .offer{background:#f6f4f1;color:#000}
 .material-divider{position:relative;height:clamp(260px,29vw,440px);overflow:hidden}
-.material-divider>img{height:100%;object-fit:cover;object-position:center}
-.material-divider h2{position:absolute;left:var(--gutter);bottom:28px;margin:0;font-family:var(--serif);font-weight:300;font-size:clamp(64px,8vw,128px);line-height:1;letter-spacing:-.025em;color:#000}
+.material-divider>img{height:100%;object-fit:cover;object-position:center;transform:scale(1.045);animation:material-drift 22s ease-in-out infinite alternate}
+.material-divider:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(34,20,11,.36),rgba(34,20,11,.1) 42%,transparent 72%)}
+@keyframes material-drift{from{transform:scale(1.045) translateX(-.65%)}to{transform:scale(1.075) translateX(.65%)}}
+@media(prefers-reduced-motion:reduce){.material-divider>img{animation:none;transform:none}}
+.material-divider h2{position:absolute;z-index:1;left:var(--gutter);bottom:28px;margin:0;font-family:var(--serif);font-weight:300;font-size:clamp(64px,8vw,128px);line-height:1;letter-spacing:-.025em;color:#fff}
 .cards{max-width:1520px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
 .card{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0;padding:36px 28px 38px;background:#fff;color:#000;border:1px solid rgba(0,0,0,.55);box-shadow:5px 5px 0 #e7e3de,0 12px 24px rgba(34,20,11,.055)}
 .card-no{display:block;font-family:var(--serif);font-weight:300;font-size:72px;line-height:1;padding-bottom:100px}
