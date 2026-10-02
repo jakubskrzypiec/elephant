@@ -75,8 +75,9 @@
     </section>
 
     <section class="offer" id="oferta" aria-labelledby="offer-title">
-      <header class="material-divider">
-        <img src="assets/materials/01-travertine.png" alt="" loading="lazy" width="2172" height="724" />
+      <header class="material-divider material-motion" data-material-motion>
+        <img src="assets/materials/01-travertine.webp" alt="" loading="lazy" width="2172" height="724" />
+        <div class="material-shadow" aria-hidden="true"></div>
         <h2 id="offer-title">Oferta</h2>
       </header>
 
@@ -121,7 +122,7 @@
         <a class="quiet-link" href="#kontakt">Zobacz wszystkie projekty</a>
       </header>
 
-      <div class="carousel-wrap" data-carousel>
+      <div class="carousel-wrap" data-carousel tabindex="0" role="region" aria-label="Wybrane realizacje — przewijaj poziomo">
         <div class="projects-track" data-track>
           <article class="project-card"><div class="project-placeholder"><span>I</span><b>TU BĘDZIE ZDJĘCIE</b><i>ELEPHANT</i></div><div class="project-meta"><h3>Projekt I</h3><p>wnętrze / MMXXVI</p></div></article>
           <article class="project-card"><div class="project-placeholder"><span>II</span><b>TU BĘDZIE ZDJĘCIE</b><i>ELEPHANT</i></div><div class="project-meta"><h3>Projekt II</h3><p>wnętrze / MMXXVI</p></div></article>
@@ -130,11 +131,16 @@
           <article class="project-card"><div class="project-placeholder"><span>V</span><b>TU BĘDZIE ZDJĘCIE</b><i>ELEPHANT</i></div><div class="project-meta"><h3>Projekt V</h3><p>wnętrze / MMXXVI</p></div></article>
         </div>
       </div>
+      <div class="portfolio-controls">
+        <span>ELEPHANT / PORTFOLIO</span>
+        <div><button type="button" data-project-prev aria-label="Poprzednie realizacje">←</button><button type="button" data-project-next aria-label="Następne realizacje">→</button></div>
+      </div>
     </section>
 
     <section class="process" id="proces" aria-labelledby="process-title">
-      <header class="material-divider">
-        <img src="assets/materials/02-oak.png" alt="" loading="lazy" width="2172" height="724" />
+      <header class="material-divider material-motion" data-material-motion>
+        <img src="assets/materials/02-oak.webp" alt="" loading="lazy" width="2172" height="724" />
+        <div class="material-shadow" aria-hidden="true"></div>
         <h2 id="process-title">Proces</h2>
       </header>
       <div class="process-content section-pad">
@@ -177,8 +183,9 @@
       </div>
     </section>
 
-    <section class="philosophy" id="filozofia" aria-labelledby="philosophy-title">
-      <img class="philosophy-background" src="assets/materials/03-linen.png" alt="" loading="lazy" width="2172" height="724" />
+    <section class="philosophy material-motion" data-material-motion id="filozofia" aria-labelledby="philosophy-title">
+      <img class="philosophy-background" src="assets/materials/03-linen.webp" alt="" loading="lazy" width="2172" height="724" />
+      <div class="material-shadow" aria-hidden="true"></div>
       <div class="philosophy-content">
         <h2 id="philosophy-title">Filozofia</h2>
       <div class="philosophy-simple">
@@ -202,18 +209,11 @@
           </div>
         </div>
 
-        <div class="phones" aria-hidden="true">
-          <a class="phone phone-front" href="https://www.instagram.com/elephant.interiordesign.studio/" target="_blank" rel="noopener" tabindex="-1">
-            <div class="phone-top"><span><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/></svg>Instagram</span><span>···</span></div>
-            <img class="phone-logo" src="logo-elephant.png" alt="" />
-            <div class="phone-grid">
-              <div class="phone-slot phone-main"><span>Miejsce na realizację</span></div>
-              <div class="phone-slot"><span>Realizacja</span></div>
-              <div class="phone-slot"><span>Realizacja</span></div>
-            </div>
-            <div class="phone-foot"><strong>@elephant.interiordesign.studio</strong><span>Zobacz profil</span></div>
-          </a>
-        </div>
+        <a class="social-materials" href="https://www.instagram.com/elephant.interiordesign.studio/" target="_blank" rel="noopener" aria-label="Zobacz materiały i codzienną pracę studia na Instagramie">
+          <div class="social-swatch"><img src="assets/materials/01-travertine.webp" alt="Naturalna faktura trawertynu" loading="lazy" width="2172" height="724" /></div>
+          <div class="social-swatch"><img src="assets/materials/03-linen.webp" alt="Światło na naturalnym lnie" loading="lazy" width="2172" height="724" /></div>
+          <span class="social-caption">@elephant.interiordesign.studio <span aria-hidden="true">↗</span></span>
+        </a>
       </div>
     </section>
 
@@ -234,7 +234,24 @@
       </div>
     </section>
 
-    <section class="contact section-pad" id="kontakt">
+    <section class="contact-section" id="kontakt" aria-labelledby="contact-banner-title">
+      <header class="material-divider water-divider material-motion" data-material-motion>
+        <svg class="water-surface" data-water-surface viewBox="0 0 2172 724" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <filter id="water-ripple" x="-5%" y="-8%" width="110%" height="116%" color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency=".008 .024" numOctaves="2" seed="7" result="ripples">
+                <animate attributeName="baseFrequency" values=".008 .024;.011 .019;.008 .024" dur="24s" repeatCount="indefinite" />
+              </feTurbulence>
+              <feDisplacementMap in="SourceGraphic" in2="ripples" scale="12" xChannelSelector="R" yChannelSelector="G">
+                <animate attributeName="scale" values="8;18;8" dur="18s" repeatCount="indefinite" />
+              </feDisplacementMap>
+            </filter>
+          </defs>
+          <image href="assets/materials/04-water.webp" width="2172" height="724" filter="url(#water-ripple)" />
+        </svg>
+        <h2 id="contact-banner-title">Kontakt</h2>
+      </header>
+    <div class="contact section-pad">
       <div class="contact-copy">
         <div class="section-label">VIII / Kontakt</div>
         <h2>Zacznijmy projekt.</h2>
@@ -287,6 +304,7 @@
         <p>Wolisz od razu wybrać termin? Zarezerwuj pierwszą rozmowę w kalendarzu.</p>
         <div class="booking-slot"><span>Miejsce na kalendarz rezerwacji spotkań</span></div>
       </div>
+    </div>
     </section>
   </main>
 

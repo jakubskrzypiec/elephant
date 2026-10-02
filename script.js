@@ -81,50 +81,30 @@ contactForm?.addEventListener('submit', e => {
   location.href = `mailto:elephant.interiordesignstudio@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
 
+// Portfolio remains still until the visitor chooses to browse.
 const wrap = document.querySelector('[data-carousel]');
-const track = document.querySelector('[data-track]');
-if (wrap && track) {
-  track.innerHTML += track.innerHTML;
-  let x = 0;
-  let paused = false;
-  let dragging = false;
-  let lastX = 0;
-  let velocity = 0;
-
-  const halfWidth = () => track.scrollWidth / 2;
-  const loop = () => {
-    if (!paused && !dragging) x -= 0.22;
-    if (!dragging && Math.abs(velocity) > .03) {
-      x += velocity;
-      velocity *= .94;
-    }
-    const half = halfWidth();
-    if (x <= -half) x += half;
-    if (x > 0) x -= half;
-    track.style.transform = `translate3d(${x}px,0,0)`;
-    requestAnimationFrame(loop);
+const projectPrev = document.querySelector('[data-project-prev]');
+const projectNext = document.querySelector('[data-project-next]');
+if (wrap && projectPrev && projectNext) {
+  const updateButtons = () => {
+    projectPrev.disabled = wrap.scrollLeft < 2;
+    projectNext.disabled = wrap.scrollLeft >= wrap.scrollWidth - wrap.clientWidth - 2;
   };
-  requestAnimationFrame(loop);
-
-  wrap.addEventListener('mouseenter', () => paused = true);
-  wrap.addEventListener('mouseleave', () => { paused = false; dragging = false; });
+  const browse = direction => wrap.scrollBy({left: direction * wrap.clientWidth * .7, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  projectPrev.addEventListener('click', () => browse(-1));
+  projectNext.addEventListener('click', () => browse(1));
+  wrap.addEventListener('scroll', updateButtons, {passive: true});
+  let drag = null;
   wrap.addEventListener('pointerdown', e => {
-    dragging = true;
-    paused = true;
-    lastX = e.clientX;
-    velocity = 0;
-    wrap.setPointerCapture?.(e.pointerId);
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    drag = {x:e.clientX, scroll:wrap.scrollLeft};
+    wrap.setPointerCapture(e.pointerId);
+    e.preventDefault();
   });
-  wrap.addEventListener('pointermove', e => {
-    if (!dragging) return;
-    const dx = e.clientX - lastX;
-    x += dx;
-    velocity = dx;
-    lastX = e.clientX;
-  });
-  const endDrag = () => { dragging = false; paused = false; };
-  wrap.addEventListener('pointerup', endDrag);
-  wrap.addEventListener('pointercancel', endDrag);
+  wrap.addEventListener('pointermove', e => { if (drag) wrap.scrollLeft = drag.scroll + drag.x - e.clientX; });
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(event => wrap.addEventListener(event, () => drag = null));
+  new ResizeObserver(updateButtons).observe(wrap);
+  updateButtons();
 }
 
 // Process: the range, touch scrolling and mouse dragging share one position.
@@ -174,3 +154,28 @@ if (processViewport && processRange && processCards.length) {
   new ResizeObserver(syncProcess).observe(processViewport);
   syncProcess();
 }
+
+// Material light moves only while visible, and respects reduced-motion settings.
+const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+const materialScenes = [...document.querySelectorAll('[data-material-motion]')];
+const visibleScenes = new Set();
+const updateMaterialMotion = () => materialScenes.forEach(scene => {
+  const animate = visibleScenes.has(scene) && !document.hidden && !motionPreference.matches;
+  scene.classList.toggle('is-visible', animate);
+  const water = scene.querySelector('[data-water-surface]');
+  if (water) {
+    if (animate) water.unpauseAnimations();
+    else water.pauseAnimations();
+  }
+});
+materialScenes.forEach(scene => scene.querySelector('[data-water-surface]')?.pauseAnimations());
+const materialObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) visibleScenes.add(entry.target);
+    else visibleScenes.delete(entry.target);
+  });
+  updateMaterialMotion();
+}, {threshold: 0.05});
+materialScenes.forEach(scene => materialObserver.observe(scene));
+motionPreference.addEventListener('change', updateMaterialMotion);
+document.addEventListener('visibilitychange', updateMaterialMotion);
