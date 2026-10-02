@@ -79,13 +79,13 @@ h1,h2,h3,p{margin-top:0}
 .material-divider h2{position:absolute;z-index:1;left:var(--gutter);bottom:28px;margin:0;font-family:var(--serif);font-weight:300;font-size:clamp(64px,8vw,128px);line-height:1;letter-spacing:-.025em;color:#fff}
 .cards{max-width:1520px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
 .card{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0;padding:36px 28px 38px;background:#fff;color:#000;border:1px solid rgba(0,0,0,.55);box-shadow:5px 5px 0 #e7e3de,0 12px 24px rgba(34,20,11,.055)}
-.card-no{display:block;font-family:var(--serif);font-weight:300;font-size:72px;line-height:1;padding-bottom:100px}
+.card-no{color:#98a4ac;display:block;font-family:var(--serif);font-weight:300;font-size:72px;line-height:1;padding-bottom:100px}
 .card-kicker{display:block;align-self:end;font-size:8px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:16px}
 .card h3{display:flex;align-items:flex-end;font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.08;margin:0 0 20px;padding-bottom:20px;border-bottom:1px solid rgba(0,0,0,.2)}
 .card p{margin:0;font-size:13px;line-height:1.8;color:#000}
 .offer .card-kicker{color:#000}
 .offer-cta{text-align:center;margin-top:64px}
-.offer-cta .btn-dark{background:transparent;border-color:#000;color:#000}
+.offer-cta .btn-dark{background:#98a4ac;border-color:#98a4ac;color:#22140b}
 
 /* ---------- about ---------- */
 .about{background:#f6f4f1;color:#000}
@@ -162,7 +162,7 @@ h1,h2,h3,p{margin-top:0}
 @media(max-width:620px){.philosophy-content{padding:52px 7vw 60px}.philosophy h2{font-size:64px;margin-bottom:28px}.philosophy-simple p{font-size:15px;line-height:1.8}.philosophy:before{background:rgba(34,20,11,.65)}}
 
 /* ---------- instagram: profile cards ---------- */
-.social{background:#fff}
+.social{background:#98a4ac}
 .social-panel{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:5fr 7fr;gap:4vw;align-items:center;padding:0}
 .social-intro h2{font-family:var(--serif);font-weight:300;font-size:clamp(54px,5.4vw,84px);line-height:.98;margin:0 0 24px}
 .social-intro p{font-size:13px;line-height:1.95;color:var(--text);max-width:430px;margin:0}
@@ -354,8 +354,9 @@ h1,h2,h3,p{margin-top:0}
 
 /* Social */
 .social{
-  background:#fff;
+  background:#98a4ac;
 }
+.social .section-label{color:#22140b}
 .social-intro h2{
   color:#22140b;
 }
@@ -375,12 +376,13 @@ h1,h2,h3,p{margin-top:0}
 
 /* Opinie */
 .review-panel{
-  background:rgba(246,244,241,.97);
+  background:#98a4ac;
   border:1px solid rgba(152,164,172,.28);
 }
 .review-intro h2{
   color:#22140b;
 }
+.review-intro .section-label{color:#22140b}
 .review-links{
   border-top-color:rgba(152,164,172,.34);
 }
@@ -426,8 +428,8 @@ h1,h2,h3,p{margin-top:0}
   accent-color:#98a4ac;
 }
 .contact-form button{
-  background:#22140b;
-  color:#f6f4f1;
+  background:#98a4ac;
+  color:#22140b;
 }
 .booking-slot{
   border-color:rgba(152,164,172,.30);
@@ -466,3 +468,9 @@ h1,h2,h3,p{margin-top:0}
 .review-arrow{
   color:#98a4ac;
 }
+
+/* Larger blue fields balance the material photography. */
+.booking{background:#98a4ac;padding:48px 40px 40px;border:0}
+.booking p{color:#22140b}
+.booking-slot{background-color:#f6f4f1}
+@media(max-width:620px){.booking{padding:36px 20px 24px}}
