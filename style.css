@@ -676,3 +676,6 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 .material-divider.living-scene:after{background:linear-gradient(90deg,rgba(246,244,241,.25),rgba(246,244,241,.06) 58%,transparent);z-index:1}
 .material-divider.living-scene .material-copy{position:relative;z-index:3}
 @media(prefers-reduced-motion:reduce){.living-motion-image{filter:none}}
+.living-light-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.living-light-canvas[hidden]{display:none}
+@media(prefers-reduced-motion:reduce){.living-light-canvas{display:none}}
