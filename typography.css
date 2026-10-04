@@ -105,3 +105,11 @@
 :root .journal-page .journal-card h2{font-size:clamp(23px,2vw,30px);letter-spacing:.1em}
 @media(max-width:980px){:root .journal-page .journal-grid{gap:26px}:root .journal-page .journal-card h2{font-size:23px;letter-spacing:.06em}}
 @media(max-width:620px){:root .contact{padding-top:40px;padding-bottom:55px}:root .contact-page .page-banner{height:320px}:root .contact-page .page-banner-copy p{font-size:14px;max-width:85%;line-height:1.75}:root .journal-page .journal-grid{grid-template-columns:1fr;gap:35px}:root .journal-page .journal-card h2{font-size:26px;letter-spacing:.1em}}
+
+/* New interior interludes: readable copy over genuinely moving light. */
+:root .philosophy.living-scene:before{background:linear-gradient(90deg,rgba(246,244,241,.46),rgba(246,244,241,.24) 48%,transparent 78%)}
+:root .philosophy.living-scene .philosophy-content{position:relative;z-index:3}
+:root .philosophy.living-scene .philosophy-simple{max-width:760px}
+:root .contact-section .material-divider.living-scene .material-copy p{max-width:760px}
+:root .contact-section .material-divider.living-scene:after{background:linear-gradient(90deg,rgba(246,244,241,.46),rgba(246,244,241,.24) 48%,transparent 78%)}
+@media(max-width:620px){:root .philosophy.living-scene:before,:root .contact-section .material-divider.living-scene:after{background:rgba(246,244,241,.68)}}

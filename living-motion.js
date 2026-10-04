@@ -6,7 +6,7 @@
     void main(){uv=position*.5+.5;gl_Position=vec4(position,0.,1.);}`;
   const fragment = `precision mediump float;
     varying vec2 uv; uniform sampler2D photo; uniform sampler2D light;
-    uniform float time; uniform float aspect; uniform float curtain; uniform float interior;
+    uniform float time; uniform float aspect; uniform float curtain; uniform float interior; uniform float shadowEnd; uniform float horizon;
     float luma(vec3 c){return dot(c,vec3(.2126,.7152,.0722));}
     void main(){
       vec2 cover=aspect<3.?vec2(aspect/3.,1.):vec2(1.,3./aspect);
@@ -19,7 +19,7 @@
       float objectEdge=mix(.92,.85,curtain);
       float wall=start*(1.-smoothstep(objectEdge-.08,objectEdge,p.x));
       if(curtain<.5)wall*=smoothstep(.10,.20,p.y);
-      if(interior>.5){wall=start*(1.-smoothstep(.64,.70,p.x));wall*=smoothstep(.012,.035,abs(p.y-.315));}
+      if(interior>.5){wall=start*(1.-smoothstep(shadowEnd-.06,shadowEnd,p.x));wall*=smoothstep(.012,.035,abs(p.y-horizon));}
       float originalLight=luma(texture2D(light,p).rgb);
       float movedLight=luma(texture2D(light,p+drift).rgb);
       float ratio=clamp(movedLight/max(originalLight,.08),.70,1.40);
@@ -56,6 +56,8 @@
       const time=gl.getUniformLocation(program,'time'),aspect=gl.getUniformLocation(program,'aspect');
       gl.uniform1f(gl.getUniformLocation(program,'curtain'),svg.dataset.sceneKind==='curtain'||svg.dataset.sceneKind==='interior'?1:0);
       gl.uniform1f(gl.getUniformLocation(program,'interior'),svg.dataset.sceneKind==='interior'?1:0);
+      gl.uniform1f(gl.getUniformLocation(program,'shadowEnd'),Number(svg.dataset.shadowEnd||.70));
+      gl.uniform1f(gl.getUniformLocation(program,'horizon'),Number(svg.dataset.horizon||.315));
       let seconds=0,last=0,frame=0,visible=false;
       const render=()=>{const rect=host.getBoundingClientRect();const dpr=Math.min(devicePixelRatio,1.5);const width=Math.round(rect.width*dpr),height=Math.round(rect.height*dpr);if(!width||!height)return;if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;gl.viewport(0,0,width,height);}gl.uniform1f(aspect,rect.width/rect.height);gl.uniform1f(time,seconds);gl.drawArrays(gl.TRIANGLES,0,6);};
       const tick=now=>{frame=0;if(last)seconds+=(now-last)/1000;last=now;render();frame=requestAnimationFrame(tick);};

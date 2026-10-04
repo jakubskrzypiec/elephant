@@ -148,9 +148,8 @@
       </div>
     </section>
 
-    <section class="philosophy material-motion shadow-fabric" data-material-motion id="filozofia" aria-labelledby="philosophy-title">
-      <img class="philosophy-background" src="assets/materials/03-linen.webp" alt="" loading="lazy" width="2172" height="724" />
-      <div class="material-shadow" aria-hidden="true"></div>
+    <section class="philosophy material-motion living-scene" data-material-motion id="filozofia" aria-labelledby="philosophy-title">
+      <svg class="living-surface" data-living-surface data-scene-kind="interior" data-shadow-end="0.77" data-horizon="0.12" viewBox="0 0 2172 724" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><image href="assets/materials/philosophy-interior-v2.webp" width="2172" height="724"/></svg>
       <div class="philosophy-content">
         <h2 id="philosophy-title">Filozofia</h2>
       <div class="philosophy-simple">
@@ -210,20 +209,8 @@
     </section>
 
     <section class="contact-section" id="kontakt" aria-labelledby="contact-banner-title">
-      <header class="material-divider water-divider material-motion" data-material-motion>
-        <svg class="water-surface" data-water-surface viewBox="0 0 2172 724" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <defs>
-            <filter id="water-ripple" x="-5%" y="-8%" width="110%" height="116%" color-interpolation-filters="sRGB">
-              <feTurbulence type="fractalNoise" baseFrequency=".008 .024" numOctaves="2" seed="7" result="ripples">
-                <animate attributeName="baseFrequency" values=".008 .024;.011 .019;.008 .024" dur="24s" repeatCount="indefinite" />
-              </feTurbulence>
-              <feDisplacementMap in="SourceGraphic" in2="ripples" scale="12" xChannelSelector="R" yChannelSelector="G">
-                <animate attributeName="scale" values="8;18;8" dur="18s" repeatCount="indefinite" />
-              </feDisplacementMap>
-            </filter>
-          </defs>
-          <image href="assets/materials/04-water.webp" width="2172" height="724" filter="url(#water-ripple)" />
-        </svg>
+      <header class="material-divider material-motion living-scene" data-material-motion>
+        <svg class="living-surface" data-living-surface data-scene-kind="interior" data-shadow-end="0.86" data-horizon="0.10" viewBox="0 0 2172 724" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><image href="assets/materials/contact-interior-v2.webp" width="2172" height="724"/></svg>
         <div class="material-copy"><h2 id="contact-banner-title">Kontakt</h2><p>Każdy projekt zaczyna się od rozmowy. Opowiedz o swojej przestrzeni, potrzebach i pomysłach — wspólnie znajdziemy właściwy kierunek. Niezależnie od metrażu, pierwszy krok jest ten sam: poznać Ciebie i to, jak chcesz mieszkać.</p></div>
       </header>
     <div class="contact section-pad">
@@ -298,6 +285,6 @@
     </div>
   </footer>
 
-  <script src="living-motion.js?v=3"></script><script src="script.js"></script>
+  <script src="living-motion.js?v=4"></script><script src="script.js"></script>
 </body>
 </html>
