@@ -164,6 +164,7 @@ if (processViewport && processRange && processCards.length) {
     const progress = max ? processViewport.scrollLeft / max : 0;
     const index = Math.max(0, Math.min(processCards.length - 1, Math.round(progress * (processCards.length - 1))));
     processRange.value = String(index);
+    processRange.style.setProperty('--process-progress', `${progress * 100}%`);
     document.querySelectorAll('[data-process-step]').forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
     processRange.disabled = max === 0;
     processRange.setAttribute('aria-valuetext', processCards[index].querySelector('h3').textContent);
@@ -201,6 +202,38 @@ if (processViewport && processRange && processCards.length) {
   processViewport.addEventListener('lostpointercapture', stopDrag);
   new ResizeObserver(syncProcess).observe(processViewport);
   syncProcess();
+}
+
+// Reveal once, float only in view, and let the illustrations follow the pointer.
+const processScene = document.querySelector('.process');
+if (processScene && processViewport) {
+  const reducedProcessMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  processScene.classList.add('process-motion-ready');
+  const processObserver = new IntersectionObserver(entries => {
+    const visible = entries.some(entry => entry.isIntersecting);
+    processScene.classList.toggle('is-process-visible', visible && !document.hidden);
+    if (visible) processScene.classList.add('is-process-revealed');
+  }, {threshold:0.08});
+  processObserver.observe(processViewport);
+  document.addEventListener('visibilitychange', () => {
+    const rect = processViewport.getBoundingClientRect();
+    processScene.classList.toggle('is-process-visible', !document.hidden && rect.bottom > 0 && rect.top < innerHeight);
+  });
+  processCards.forEach(card => {
+    const reset = () => {
+      card.style.removeProperty('--process-rx');
+      card.style.removeProperty('--process-ry');
+    };
+    card.addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse' || reducedProcessMotion.matches || processViewport.classList.contains('is-dragging')) return;
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--process-rx', `${(0.5 - (e.clientY - rect.top) / rect.height) * 5}deg`);
+      card.style.setProperty('--process-ry', `${((e.clientX - rect.left) / rect.width - 0.5) * 7}deg`);
+    });
+    card.addEventListener('pointerleave', reset);
+    card.addEventListener('pointerdown', reset);
+    reducedProcessMotion.addEventListener('change', reset);
+  });
 }
 
 // Material light moves only while visible, and respects reduced-motion settings.

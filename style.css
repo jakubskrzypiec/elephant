@@ -534,3 +534,30 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 @media(max-width:980px){.process-intro{gap:30px}.process .process-card{flex-basis:58%}.process-track:after{flex-basis:39%}.process .process-illustration{height:330px}}
 @media(max-width:620px){.process-intro{grid-template-columns:1fr;gap:24px;margin-bottom:20px}.process-intro>p{font-size:13px;max-width:290px}.process .process-card{flex-basis:88%}.process-track:after{flex-basis:9%}.process .process-illustration{height:300px;padding:0 8px}.process .process-card-copy{padding-top:24px;column-gap:12px;min-height:180px}.process .process-card h3{font-size:32px}.process .process-card p{font-size:13px;line-height:1.8}.process .process-card-no{margin-top:7px}.process .process-foot{margin-top:32px}}
 @media(prefers-reduced-motion:reduce){.process .process-card,.process .process-card-copy,.process-illustration img{transition:none}}
+
+/* Soft architectural backdrops and motion in the studio palette. */
+.process .process-viewport{padding-top:30px;padding-bottom:34px}
+.process .process-illustration{isolation:isolate;perspective:900px;transform:rotateX(var(--process-rx,0deg)) rotateY(var(--process-ry,0deg));transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.process .process-illustration:before{content:"";position:absolute;z-index:-1;inset:18px 8% 12px;background:#e5e9e9;border-radius:48% 48% 3px 3px;transform:scale(.85) translateY(20px);opacity:.55;transition:transform 1s cubic-bezier(.16,1,.3,1),background 1s,opacity 1s}
+.process .process-card.is-active .process-illustration:before{transform:scale(1) translateY(0);background:#98a4ac;opacity:.62}
+.process .process-illustration img{filter:grayscale(.6) saturate(.55) drop-shadow(0 14px 12px rgba(38,52,61,.12));transition:transform 1s cubic-bezier(.16,1,.3,1),filter .8s;will-change:auto}
+.process .process-card.is-active .process-illustration img{filter:grayscale(.45) saturate(.55) drop-shadow(0 23px 16px rgba(38,52,61,.2))}
+.process.is-process-visible .process-card.is-active .process-illustration img{animation:process-float 6s ease-in-out infinite}
+.process .process-card-copy{position:relative}
+.process .process-card-copy:before{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;background:#98a4ac;transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.16,1,.3,1)}
+.process .process-card.is-active .process-card-copy:before{transform:scaleX(1)}
+.process .process-card-no{color:#5f747f}
+.process .process-card h3{color:#26363f;transition:color .6s,translate .6s;translate:0 3px}
+.process .process-card.is-active h3{color:#000;translate:0 0}
+.process .process-controls{padding:18px 0}
+.process .process-range{background:linear-gradient(to right,#778e9c 0%,#778e9c var(--process-progress,0%),#d4dcdf var(--process-progress,0%),#d4dcdf 100%)}
+.process .process-range::-webkit-slider-thumb{box-shadow:0 0 0 1px #98a4ac,0 0 0 7px rgba(152,164,172,.12);transition:box-shadow .3s}
+.process .process-range:hover::-webkit-slider-thumb{box-shadow:0 0 0 1px #98a4ac,0 0 0 11px rgba(152,164,172,.17)}
+.process.process-motion-ready .process-intro,.process.process-motion-ready .process-card{opacity:0;translate:0 35px}
+.process.process-motion-ready.is-process-revealed .process-intro,.process.process-motion-ready.is-process-revealed .process-card{opacity:1;translate:0 0;transition:opacity 1s ease,translate 1.1s cubic-bezier(.16,1,.3,1)}
+.process.process-motion-ready.is-process-revealed .process-card:nth-child(1){transition-delay:.12s}
+.process.process-motion-ready.is-process-revealed .process-card:nth-child(2){transition-delay:.24s}
+.process.process-motion-ready.is-process-revealed .process-card:nth-child(3){transition-delay:.36s}
+@keyframes process-float{0%,100%{translate:0 0}50%{translate:0 -12px}}
+@media(max-width:620px){.process .process-illustration:before{inset:20px 4% 15px}.process .process-controls{padding:12px 0}.process .process-illustration{transform:none}}
+@media(prefers-reduced-motion:reduce){.process .process-illustration,.process .process-illustration:before,.process .process-illustration img,.process .process-card-copy:before,.process .process-card h3{animation:none!important;transition:none;transform:none}.process.process-motion-ready .process-intro,.process.process-motion-ready .process-card{opacity:1;translate:0 0;transition:none}}
