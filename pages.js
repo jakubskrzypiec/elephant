@@ -3,6 +3,8 @@ const filters = [...document.querySelectorAll('[data-filter]')];
 const portfolioItems = [...document.querySelectorAll('[data-category]')];
 filters.forEach(button => button.addEventListener('click', () => {
   const category = button.dataset.filter;
+  const grid=document.querySelector(".portfolio-grid");
+  if(grid)grid.dataset.filtered=String(category!=="Wszystkie");
   filters.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
   let visible = 0;
   portfolioItems.forEach(item => { item.hidden = category !== 'Wszystkie' && item.dataset.category !== category; if (!item.hidden) visible++; });
