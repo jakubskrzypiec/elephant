@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="motion.png" fetchpriority="high">
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="art-direction.css" />
 </head>
 <body>
   <header class="site-header">
@@ -44,7 +45,7 @@
   </aside>
 
   <main id="top">
-    <section class="hero" aria-label="ELEPHANT Architecture & Interiors">
+    <section class="hero" data-material-motion aria-label="ELEPHANT Architecture & Interiors">
       <div class="hero-frames" data-hero-frames aria-hidden="true">
         <img src="motion.png" alt="" fetchpriority="high" class="is-on" />
       </div>
@@ -53,6 +54,7 @@
       <h1 class="hero-logo">
         <img src="logo-elephant-invert.png" alt="ELEPHANT Interior Design" width="1200" height="156" />
       </h1>
+      <div class="hero-edition" aria-hidden="true"><span>ARCHITECTURE &amp; INTERIORS</span><span>Świadomie. Na co dzień.</span></div>
       <div class="hero-actions">
         <a href="#omnie" class="hero-btn"><span class="hero-btn-no">I</span><span>Poznaj studio</span></a>
         <a href="#projekty" class="hero-btn"><span class="hero-btn-no">II</span><span>Zobacz realizacje</span></a>
@@ -66,7 +68,7 @@
           <img src="natasza-portrait.jpg" alt="Natasza, projektantka wnętrz i założycielka ELEPHANT Studio" loading="lazy" width="426" height="614" />
         </div>
         <div class="about-copy">
-          <h2 id="about-title">HEJ!</h2>
+          <div class="about-title-block"><span class="album-label">Natasza / ELEPHANT Studio</span><h2 id="about-title">HEJ!</h2></div>
           <div class="about-text">
             <p>ELEPHANT powstało z przekonania, że nawet niewielki metraż może dawać poczucie jakości, spokoju i komfortu. Projektuję wnętrza tak, aby były estetyczne, ale przede wszystkim dopasowane do codziennego życia.</p>
             <p>Najważniejsze są dla mnie proporcja, światło i decyzje, które realnie porządkują przestrzeń. Zamiast projektować pod chwilowy trend, szukam rozwiązań, które zostają na dłużej i mają sens w praktyce.</p>
@@ -79,7 +81,7 @@
       <header class="material-divider material-motion shadow-stone" data-material-motion>
         <img src="assets/materials/01-travertine.webp" alt="" loading="lazy" width="2172" height="724" />
         <div class="material-shadow" aria-hidden="true"></div>
-        <div class="material-copy"><h2 id="offer-title">Oferta</h2><p>Każda przestrzeń potrzebuje własnego podejścia. Od pierwszej rozmowy i uporządkowania pomysłów, przez koncepcję, aż po projekt i realizację — wybierz zakres wsparcia dopasowany do swoich potrzeb. Wspólnie zadbamy o funkcję, proporcje i detale, które tworzą spokojne, spójne wnętrze.</p></div>
+        <div class="material-copy"><span class="material-index">II / Zakres współpracy</span><h2 id="offer-title">Oferta</h2><p>Każda przestrzeń potrzebuje własnego podejścia. Od pierwszej rozmowy i uporządkowania pomysłów, przez koncepcję, aż po projekt i realizację — wybierz zakres wsparcia dopasowany do swoich potrzeb. Wspólnie zadbamy o funkcję, proporcje i detale, które tworzą spokojne, spójne wnętrze.</p></div>
       </header>
 
       <div class="offer-content section-pad">
@@ -120,7 +122,7 @@
     <section class="projects" id="projekty">
       <header class="section-heading projects-heading section-pad-small">
         <span>III / PORTFOLIO</span>
-        <h2>Wybrane realizacje</h2>
+        <h2>Wybrane<br>realizacje<span class="heading-dot">.</span></h2>
         <a class="quiet-link" href="#kontakt">Zobacz wszystkie projekty</a>
       </header>
 
@@ -140,11 +142,11 @@
       <header class="material-divider material-motion shadow-wood" data-material-motion>
         <img src="assets/materials/02-oak.webp" alt="" loading="lazy" width="2172" height="724" />
         <div class="material-shadow" aria-hidden="true"></div>
-        <div class="material-copy"><h2 id="process-title">Proces</h2><p>Dobry projekt powstaje krok po kroku. Zaczynamy od rozmowy o Twojej codzienności, potem szukamy właściwego kierunku i przekładamy go na konkretne rozwiązania. Każdy etap to przestrzeń na dialog i świadome decyzje — od pierwszych pomysłów do gotowego wnętrza.</p></div>
+        <div class="material-copy"><span class="material-index">IV / Krok po kroku</span><h2 id="process-title">Proces</h2><p>Dobry projekt powstaje krok po kroku. Zaczynamy od rozmowy o Twojej codzienności, potem szukamy właściwego kierunku i przekładamy go na konkretne rozwiązania. Każdy etap to przestrzeń na dialog i świadome decyzje — od pierwszych pomysłów do gotowego wnętrza.</p></div>
       </header>
       <div class="process-content section-pad">
 <div class="chapter-rail"><span>IV / Współpraca</span><span>Krok po kroku</span></div>
-        <h3 class="process-heading">Jak wygląda<br>proces</h3>
+        <h3 class="process-heading">Jak wygląda<br>proces<span class="heading-dot">.</span></h3>
         <div class="process-slider" data-process-slider>
         <div class="process-viewport" data-process-viewport tabindex="0" role="region" aria-label="Etapy współpracy — przewijaj poziomo">
       <ol class="process-track">
@@ -187,6 +189,7 @@
       <img class="philosophy-background" src="assets/materials/03-linen.webp" alt="" loading="lazy" width="2172" height="724" />
       <div class="material-shadow" aria-hidden="true"></div>
       <div class="philosophy-content">
+        <span class="material-index">V / Świadome decyzje</span>
         <h2 id="philosophy-title">Filozofia</h2>
       <div class="philosophy-simple">
         <p>W ELEPHANT najważniejsze są świadome decyzje. Projekt nie zaczyna się od trendu, lecz od człowieka, jego rytmu dnia i potrzeb, które przestrzeń ma wspierać.</p>
@@ -200,7 +203,7 @@
 <div class="chapter-rail"><span>VI / Pracownia</span><span>Wnętrza / materiały / codzienność</span></div>
         <div class="social-intro">
 
-          <h2>Śledź pracownię.</h2>
+          <h2>Śledź<br>pracownię<span class="heading-dot">.</span></h2>
           <p>Na Instagramie pokazuję realizacje, szkice, próbki materiałów i codzienną pracę nad projektami. To dobre miejsce, żeby poznać styl ELEPHANT jeszcze przed pierwszą rozmową.</p>
           <div class="pills">
             <a class="pill" href="https://www.instagram.com/elephant.interiordesign.studio/" target="_blank" rel="noopener">
@@ -259,7 +262,7 @@
           </defs>
           <image href="assets/materials/04-water.webp" width="2172" height="724" filter="url(#water-ripple)" />
         </svg>
-        <div class="material-copy"><h2 id="contact-banner-title">Kontakt</h2><p>Każdy projekt zaczyna się od rozmowy. Opowiedz o swojej przestrzeni, potrzebach i pomysłach — wspólnie znajdziemy właściwy kierunek. Niezależnie od metrażu, pierwszy krok jest ten sam: poznać Ciebie i to, jak chcesz mieszkać.</p></div>
+        <div class="material-copy"><span class="material-index">VIII / Pierwsza rozmowa</span><h2 id="contact-banner-title">Kontakt</h2><p>Każdy projekt zaczyna się od rozmowy. Opowiedz o swojej przestrzeni, potrzebach i pomysłach — wspólnie znajdziemy właściwy kierunek. Niezależnie od metrażu, pierwszy krok jest ten sam: poznać Ciebie i to, jak chcesz mieszkać.</p></div>
       </header>
     <div class="contact section-pad">
 <div class="chapter-rail"><span>VIII / Pierwszy krok</span><span>Porozmawiajmy o Twojej przestrzeni</span></div>
@@ -320,6 +323,7 @@
   </main>
 
   <footer class="site-footer">
+    <a class="footer-invitation" href="#kontakt"><span>Porozmawiajmy o Twojej przestrzeni.</span><span class="footer-invitation-arrow" aria-hidden="true">↗</span></a>
     <div class="footer-top">
       <nav>
         <a href="#omnie">O mnie</a>
