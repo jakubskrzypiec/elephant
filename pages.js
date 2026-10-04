@@ -1,15 +1,20 @@
-// Switch the portfolio between photographic collection and city index.
+// Full-screen project index; native modal handles focus and Escape.
 const projectListToggle = document.querySelector('[data-project-list-toggle]');
 if (projectListToggle) {
-  const cityList = document.querySelector('#lista-projektow');
-  const gallery = document.querySelector('#realizacje');
+  const listDialog = document.querySelector('#lista-projektow-overlay');
+  let previousOverflow = '';
   projectListToggle.hidden = false;
   projectListToggle.addEventListener('click', () => {
-    const showList = projectListToggle.getAttribute('aria-expanded') !== 'true';
-    projectListToggle.setAttribute('aria-expanded', String(showList));
-    cityList.hidden = !showList;
-    gallery.hidden = showList;
-    projectListToggle.innerHTML = showList ? 'Galeria projektów <span aria-hidden="true">↗</span>' : 'Lista projektów <span aria-hidden="true">↗</span>';
+    previousOverflow = document.body.style.overflow;
+    listDialog.showModal();
+    document.body.style.overflow = 'hidden';
+    projectListToggle.setAttribute('aria-expanded', 'true');
+  });
+  listDialog.querySelector('[data-project-list-close]').addEventListener('click', () => listDialog.close());
+  listDialog.addEventListener('close', () => {
+    document.body.style.overflow = previousOverflow;
+    projectListToggle.setAttribute('aria-expanded', 'false');
+    projectListToggle.focus({preventScroll:true});
   });
 }
 const dialog = document.querySelector('.photo-dialog');

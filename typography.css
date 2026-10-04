@@ -138,3 +138,14 @@
 :root .portfolio-page :is(.portfolio-grid,.project-city-list,.project-list-toggle)[hidden]{display:none!important}
 @media(max-width:620px){:root .collection-view{margin:22px 0 35px}:root .project-city-list{margin:45px auto 60px;min-height:280px}:root .project-city-list a{font-size:17px}:root .city-list-arrow{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){:root .city-list-arrow{transition:none}}
+
+/* Full-screen white project index. */
+:root .project-list-overlay{position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:110px 7vw 70px;border:0;background:#fff;color:#111;overflow:auto;overscroll-behavior:contain}
+:root .project-list-overlay[open]{display:grid;place-items:center}
+:root .project-list-overlay::backdrop{background:#fff}
+:root .project-list-overlay>h2{position:absolute;top:40px;left:6vw;margin:0;font-size:14px;letter-spacing:.24em;line-height:1.8}
+:root .project-list-close{position:absolute;top:24px;right:5vw;width:54px;height:54px;background:none;border:0;color:#111;font-family:var(--sans);font-size:38px;font-weight:300;line-height:1;cursor:pointer}
+:root .project-list-close:focus-visible{outline:1px solid #111;outline-offset:4px}
+:root .project-list-overlay .project-city-list{width:100%;max-width:460px;margin:0;min-height:0}
+:root .project-list-overlay .project-city-list a{padding:17px 0;font-size:22px}
+@media(max-width:620px){:root .project-list-overlay{padding:100px 9vw 45px}:root .project-list-overlay>h2{left:9vw;top:34px;font-size:12px}:root .project-list-close{right:5vw;top:20px}:root .project-list-overlay .project-city-list a{font-size:19px;padding:15px 0}}
