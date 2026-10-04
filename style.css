@@ -509,3 +509,28 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 @media(max-width:980px){.offer .card{min-height:530px}.process-range-hint{display:none}.process-controls{grid-template-columns:auto 1fr}}
 @media(max-width:620px){.offer .cards{gap:28px}.offer .card{min-height:500px;padding:36px 28px 40px}.offer .card h3{font-size:36px;min-height:0}.offer .card p{font-size:15px;margin-top:28px}.process-steps{margin-bottom:22px}.process-steps button{flex-direction:column;gap:9px;padding:10px 2px 14px;min-height:88px;font-size:10px}.process-steps button>span{width:30px;height:30px;font-size:18px}.process .process-card{grid-template-columns:1fr;min-height:0}.process-illustration{height:240px;padding:25px}.process-illustration svg{max-width:240px}.process-visual-caption{left:22px;bottom:16px}.process-card-copy{padding:34px 28px 40px;min-height:280px}.process .process-card h3{font-size:54px;margin-bottom:20px}.process .process-card p{font-size:16px;line-height:1.8}.process .process-card-no{margin-bottom:24px}.process-controls{margin-top:28px;gap:20px}.process-material-board{transform:scale(.7);flex-shrink:0}}
 @media(prefers-reduced-motion:reduce){.offer .card,.process-steps button{transition:none}.offer .card:hover{transform:none}}
+
+/* Visual process: sketches and material compositions on an open paper surface. */
+.process-intro{max-width:1520px;width:100%;margin:0 auto 38px;display:grid;grid-template-columns:1.5fr 1fr;align-items:end;gap:60px}
+.process-intro .process-heading{margin:0}
+.process-intro>p{max-width:360px;margin:0 0 8px;font-size:14px;line-height:1.9;color:var(--muted)}
+.process .process-viewport{scroll-snap-type:x proximity;padding:16px 0 24px}
+.process .process-track{gap:3%;padding:0;width:100%}
+.process-track:after{content:"";flex:0 0 61%}
+.process .process-card{flex:0 0 36%;display:flex;flex-direction:column;min-height:0;margin:0;background:transparent;scroll-snap-align:start;scroll-snap-stop:normal;transition:opacity .5s ease}
+.process .process-card.is-active{background:transparent;transform:none}
+.process .process-illustration{height:360px;display:flex;padding:0 20px;background:transparent;overflow:visible}
+.process-illustration img{width:100%;height:100%;object-fit:contain;user-select:none;transition:transform .65s ease;transform:scale(1.18);transform-origin:center}
+.process-card.is-active .process-illustration img{transform:scale(1.28)}
+.process .process-card-copy{display:grid;grid-template-columns:28px 1fr;column-gap:18px;row-gap:14px;padding:28px 0 0;border-top:1px solid rgba(152,164,172,.28);transition:border-color .4s}
+.process .process-card.is-active .process-card-copy{border-color:#98a4ac}
+.process .process-card-no{font-family:var(--sans);font-size:10px;letter-spacing:.08em;color:#84939d;margin:9px 0 0}
+.process .process-card h3{font-size:clamp(28px,2.7vw,42px);line-height:1.1;margin:0;padding:0;border:0}
+.process .process-card p{grid-column:2;font-size:14px;line-height:1.85;max-width:390px;margin:0;color:var(--muted)}
+.process .process-controls{margin:28px 0 0}
+.process .process-range{height:2px}
+.process .process-range::-webkit-slider-thumb{width:30px;height:30px;border:6px solid var(--paper)}
+@media(min-width:1700px){.process .process-illustration{height:420px}}
+@media(max-width:980px){.process-intro{gap:30px}.process .process-card{flex-basis:58%}.process-track:after{flex-basis:39%}.process .process-illustration{height:330px}}
+@media(max-width:620px){.process-intro{grid-template-columns:1fr;gap:24px;margin-bottom:20px}.process-intro>p{font-size:13px;max-width:290px}.process .process-card{flex-basis:88%}.process-track:after{flex-basis:9%}.process .process-illustration{height:300px;padding:0 8px}.process .process-card-copy{padding-top:24px;column-gap:12px;min-height:180px}.process .process-card h3{font-size:32px}.process .process-card p{font-size:13px;line-height:1.8}.process .process-card-no{margin-top:7px}.process .process-foot{margin-top:32px}}
+@media(prefers-reduced-motion:reduce){.process .process-card,.process .process-card-copy,.process-illustration img{transition:none}}
