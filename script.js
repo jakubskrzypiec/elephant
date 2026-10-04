@@ -157,7 +157,7 @@ const processRange = document.querySelector('[data-process-range]');
 const processCards = [...document.querySelectorAll('.process-card')];
 const processCurrent = document.querySelector('[data-process-current]');
 if (processViewport && processRange && processCards.length) {
-  const numerals = ['I', 'II', 'III', 'IV'];
+  const numerals = ['I', 'II', 'III', 'IV', 'V'];
   const maxScroll = () => Math.max(0, processViewport.scrollWidth - processViewport.clientWidth);
   const syncProcess = () => {
     const max = maxScroll();
