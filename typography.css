@@ -1,0 +1,39 @@
+/* Short text uses the same editorial serif as project city names.
+   Paragraphs, body copy and form values retain their reading typography. */
+:root :is(h1,h2,h3,h4,.portfolio-page .portfolio-meta h2,.eyebrow,.section-label,.section-heading>span,.quiet-link,.btn,.text-link,.desktop-nav,.mobile-menu a,.hero-btn,.card-kicker,.project-meta>p,.project-placeholder b,.project-placeholder>span,.chapter-rail,.pill,.contact-list>li>span,.field>small,.contact-form button,.footer-top nav,.footer-bottom,.copy-kicker,.instagram-post-label,.instagram-preview-link,.booking-slot span,.placeholder-label,.placeholder-index,.portfolio-room,.collection-filters button,.collection-count,.portfolio-continuation,.journal-line,.process-focus-count,.process-focus-note,.process-art-caption,.process-scrubber-top,.process-milestones button,.process-visual-caption,.process-description-index,.process-current,.process-step-title,.review-text strong,.service-number,.card-no,.portfolio-wordmark,.project-next>a,.article-toc .eyebrow){font-family:var(--serif);font-weight:400;letter-spacing:.24em;text-transform:uppercase;font-style:normal}
+:root :is(.about-copy h2,.section-heading h2,.material-copy h2,.philosophy h2,.social-intro h2,.review-intro h2,.contact-copy h2,.process-heading,.faq-layout h2,.comparison-intro h2){font-size:clamp(26px,2.8vw,42px);line-height:1.5}
+:root :is(.offer .card h3,.portfolio-page .portfolio-meta h2,.journal-card h2,.service-panel h2){font-size:22px;line-height:1.6}
+:root :is(.process-focus h4,.article-body h2){font-size:28px;line-height:1.5}
+:root .page-banner h1{font-size:clamp(32px,3.6vw,52px);line-height:1.5;max-width:1100px}
+:root :is(.desktop-nav,.subpage .desktop-nav){font-size:13px}
+:root :is(.btn,.text-link,.quiet-link,.hero-btn,.pill,.contact-form button,.collection-filters button,.footer-top nav){font-size:12px;line-height:1.6}
+:root :is(.eyebrow,.chapter-rail,.card-kicker,.section-label,.section-heading>span,.field>small,.contact-list>li>span,.portfolio-room,.collection-count,.placeholder-label,.placeholder-index,.portfolio-continuation,.journal-line,.footer-bottom,.instagram-preview-link,.instagram-post-label,.process-focus-count,.process-focus-note,.process-art-caption,.process-scrubber-top,.process-milestones button){font-size:11px;line-height:1.7}
+:root .portfolio-meta h2{font-size:18px}
+:root .portfolio-collection-heading h2{font-size:18px}
+:root .portfolio-interlude-copy h2{font-size:15px;line-height:1.6}
+:root .project-meta h3{font-size:20px;line-height:1.5}
+:root .project-next>a{font-size:24px;line-height:1.5}
+:root .mobile-menu a{font-size:26px;line-height:1.5}
+:root .article-toc a{font-family:var(--serif);font-size:13px;font-weight:400;letter-spacing:.12em;line-height:1.7}
+:root .booking h3{font-size:24px;line-height:1.5}
+:root .card-no,:root .service-number{letter-spacing:.05em}
+@media(max-width:620px){
+ :root :is(.about-copy h2,.section-heading h2,.material-copy h2,.philosophy h2,.social-intro h2,.review-intro h2,.contact-copy h2,.process-heading,.faq-layout h2,.comparison-intro h2){font-size:26px;line-height:1.5}
+ :root .page-banner h1{font-size:30px;line-height:1.5}
+ :root :is(.offer .card h3,.journal-card h2,.service-panel h2){font-size:20px;line-height:1.6}
+ :root :is(.process-focus h4,.article-body h2){font-size:22px;line-height:1.5}
+ :root :is(.hero-btn,.process-milestones button,.process-scrubber-top,.chapter-rail,.field>small,.footer-bottom){font-size:10px}
+ :root .portfolio-meta h2{font-size:17px}
+ :root .portfolio-collection-heading h2{font-size:14px}
+ :root .collection-filters button{font-size:11px}
+ :root .placeholder-label{font-size:10px}
+}
+:root .portfolio-page .portfolio-meta h2{font-size:18px}
+:root :is(.faq-layout summary,.portfolio-motion-control button){font-family:var(--serif);font-weight:400;font-size:13px;letter-spacing:.24em;text-transform:uppercase;line-height:1.8}
+:root .article-toc a{letter-spacing:.24em}
+@media(max-width:620px){:root .portfolio-page .portfolio-meta h2{font-size:17px}}
+:root :is(.page-invite>a,.review-text small,.instagram-profile small,.service-bottom small,.comparison-scroll thead th){font-family:var(--serif);font-weight:400;letter-spacing:.24em;text-transform:uppercase;font-style:normal}
+:root .page-invite>a{font-size:28px;line-height:1.6}
+:root :is(.review-text small,.instagram-profile small,.service-bottom small){font-size:11px;line-height:1.8}
+:root .comparison-scroll thead th{font-size:17px;line-height:1.6}
+@media(max-width:620px){:root .page-invite>a{font-size:22px}}
