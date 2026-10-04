@@ -81,30 +81,74 @@ contactForm?.addEventListener('submit', e => {
   location.href = `mailto:elephant.interiordesignstudio@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
 
-// Portfolio remains still until the visitor chooses to browse.
+// A seamless portfolio loop; hover, focus or the pause control stops movement.
 const wrap = document.querySelector('[data-carousel]');
-const projectPrev = document.querySelector('[data-project-prev]');
-const projectNext = document.querySelector('[data-project-next]');
-if (wrap && projectPrev && projectNext) {
-  const updateButtons = () => {
-    projectPrev.disabled = wrap.scrollLeft < 2;
-    projectNext.disabled = wrap.scrollLeft >= wrap.scrollWidth - wrap.clientWidth - 2;
+const track = document.querySelector('[data-track]');
+const pauseControl = document.querySelector('[data-carousel-pause]');
+if (wrap && track) {
+  const preference = matchMedia('(prefers-reduced-motion: reduce)');
+  const originals = [...track.children];
+  originals.forEach(card => {
+    const clone = card.cloneNode(true);
+    clone.dataset.clone = '';
+    clone.setAttribute('aria-hidden', 'true');
+    track.append(clone);
+  });
+  let hovered = false, focused = false, paused = false, visible = false, touching = false, drag = null;
+  let lastTime = 0, position = 0;
+  const cycleWidth = () => track.querySelector('[data-clone]').offsetLeft - originals[0].offsetLeft;
+  const syncControl = () => {
+    pauseControl.hidden = preference.matches;
+    pauseControl.setAttribute('aria-pressed', String(paused));
+    pauseControl.textContent = paused ? 'Wznów ruch' : 'Zatrzymaj ruch';
   };
-  const browse = direction => wrap.scrollBy({left: direction * wrap.clientWidth * .7, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
-  projectPrev.addEventListener('click', () => browse(-1));
-  projectNext.addEventListener('click', () => browse(1));
-  wrap.addEventListener('scroll', updateButtons, {passive: true});
-  let drag = null;
+  const normalize = () => {
+    if (preference.matches) return;
+    const cycle = cycleWidth();
+    if (cycle > 0 && wrap.scrollLeft >= cycle) wrap.scrollLeft -= cycle;
+  };
+  const loop = time => {
+    const elapsed = Math.min(64, time - (lastTime || time));
+    lastTime = time;
+    if (visible && !document.hidden && !preference.matches && !hovered && !focused && !paused && !touching && !drag) {
+      position += elapsed * .028;
+      const cycle = cycleWidth();
+      if (cycle > 0) position %= cycle;
+      wrap.scrollLeft = position;
+    } else position = wrap.scrollLeft;
+    requestAnimationFrame(loop);
+  };
+  wrap.addEventListener('mouseenter', () => hovered = true);
+  wrap.addEventListener('mouseleave', () => hovered = false);
+  wrap.addEventListener('focusin', () => focused = true);
+  wrap.addEventListener('focusout', () => focused = wrap.contains(document.activeElement));
+  wrap.addEventListener('scroll', normalize, {passive:true});
+  let touchEndTimer;
+  wrap.addEventListener('touchstart', () => {clearTimeout(touchEndTimer);touching = true;}, {passive:true});
+  wrap.addEventListener('touchend', () => {touchEndTimer = setTimeout(() => touching = false, 1000);}, {passive:true});
+  wrap.addEventListener('touchcancel', () => touching = false, {passive:true});
   wrap.addEventListener('pointerdown', e => {
     if (e.pointerType !== 'mouse' || e.button !== 0) return;
     drag = {x:e.clientX, scroll:wrap.scrollLeft};
     wrap.setPointerCapture(e.pointerId);
+    wrap.classList.add('is-dragging');
     e.preventDefault();
   });
-  wrap.addEventListener('pointermove', e => { if (drag) wrap.scrollLeft = drag.scroll + drag.x - e.clientX; });
-  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(event => wrap.addEventListener(event, () => drag = null));
-  new ResizeObserver(updateButtons).observe(wrap);
-  updateButtons();
+  wrap.addEventListener('pointermove', e => {
+    if (!drag) return;
+    const cycle = cycleWidth();
+    const next = drag.scroll + drag.x - e.clientX;
+    wrap.scrollLeft = preference.matches ? next : ((next % cycle) + cycle) % cycle;
+  });
+  ['pointerup','pointercancel','lostpointercapture'].forEach(event => wrap.addEventListener(event, () => {
+    drag = null;
+    wrap.classList.remove('is-dragging');
+  }));
+  pauseControl.addEventListener('click', () => {paused = !paused;syncControl();});
+  preference.addEventListener('change', () => {wrap.scrollLeft = position = 0;syncControl();});
+  new IntersectionObserver(entries => {visible = entries[0].isIntersecting;}, {threshold:.05}).observe(wrap);
+  syncControl();
+  requestAnimationFrame(loop);
 }
 
 // Process: the range, touch scrolling and mouse dragging share one position.
