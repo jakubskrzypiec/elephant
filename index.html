@@ -8,7 +8,7 @@
   <title>ELEPHANT — Architecture & Interiors</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="motion.png" fetchpriority="high">
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -53,7 +53,6 @@
       <h1 class="hero-logo">
         <img src="logo-elephant-invert.png" alt="ELEPHANT Interior Design" width="1200" height="156" />
       </h1>
-      <div class="hero-caption"><span>ARCHITECTURE &amp; INTERIORS</span><span>Przestrzeń na dobre życie.</span></div>
       <div class="hero-actions">
         <a href="#omnie" class="hero-btn"><span class="hero-btn-no">I</span><span>Poznaj studio</span></a>
         <a href="#projekty" class="hero-btn"><span class="hero-btn-no">II</span><span>Zobacz realizacje</span></a>
@@ -67,7 +66,7 @@
           <img src="natasza-portrait.jpg" alt="Natasza, projektantka wnętrz i założycielka ELEPHANT Studio" loading="lazy" width="426" height="614" />
         </div>
         <div class="about-copy">
-          <div class="about-welcome"><span class="eyebrow">Natasza / założycielka studia</span><h2 id="about-title">HEJ!</h2><span class="about-signature">Miło Cię tu widzieć.</span></div>
+          <h2 id="about-title">HEJ!</h2>
           <div class="about-text">
             <p>ELEPHANT powstało z przekonania, że nawet niewielki metraż może dawać poczucie jakości, spokoju i komfortu. Projektuję wnętrza tak, aby były estetyczne, ale przede wszystkim dopasowane do codziennego życia.</p>
             <p>Najważniejsze są dla mnie proporcja, światło i decyzje, które realnie porządkują przestrzeń. Zamiast projektować pod chwilowy trend, szukam rozwiązań, które zostają na dłużej i mają sens w praktyce.</p>
@@ -121,7 +120,7 @@
     <section class="projects" id="projekty">
       <header class="section-heading projects-heading section-pad-small">
         <span>III / PORTFOLIO</span>
-        <h2>Wybrane <em>realizacje.</em></h2>
+        <h2>Wybrane realizacje</h2>
         <a class="quiet-link" href="#kontakt">Zobacz wszystkie projekty</a>
       </header>
 
@@ -145,7 +144,7 @@
       </header>
       <div class="process-content section-pad">
 <div class="chapter-rail"><span>IV / Współpraca</span><span>Krok po kroku</span></div>
-        <h3 class="process-heading">Jak wygląda<br><em>proces.</em></h3>
+        <h3 class="process-heading">Jak wygląda<br>proces</h3>
         <div class="process-slider" data-process-slider>
         <div class="process-viewport" data-process-viewport tabindex="0" role="region" aria-label="Etapy współpracy — przewijaj poziomo">
       <ol class="process-track">
@@ -201,7 +200,7 @@
 <div class="chapter-rail"><span>VI / Pracownia</span><span>Wnętrza / materiały / codzienność</span></div>
         <div class="social-intro">
 
-          <h2>Śledź <em>pracownię.</em></h2>
+          <h2>Śledź pracownię.</h2>
           <p>Na Instagramie pokazuję realizacje, szkice, próbki materiałów i codzienną pracę nad projektami. To dobre miejsce, żeby poznać styl ELEPHANT jeszcze przed pierwszą rozmową.</p>
           <div class="pills">
             <a class="pill" href="https://www.instagram.com/elephant.interiordesign.studio/" target="_blank" rel="noopener">
@@ -266,7 +265,7 @@
 <div class="chapter-rail"><span>VIII / Pierwszy krok</span><span>Porozmawiajmy o Twojej przestrzeni</span></div>
       <div class="contact-copy">
 
-        <h2>Zacznijmy<br><em>projekt.</em></h2>
+        <h2>Zacznijmy projekt.</h2>
         <p>Opowiedz krótko o swojej przestrzeni. Wrócę do Ciebie z propozycją kolejnego kroku.</p>
         <ul class="contact-list">
           <li><span>E-mail</span><a href="mailto:elephant.interiordesignstudio@gmail.com">elephant.interiordesignstudio@gmail.com</a></li>
@@ -277,27 +276,36 @@
 
       <div class="contact-main">
       <form class="contact-form" data-contact-form>
-        <div class="form-intro"><span class="eyebrow">Twój nowy początek</span><h3>Opowiedz o swojej przestrzeni.</h3><p>Kilka słów wystarczy, żeby zacząć.</p></div>
-        <fieldset class="form-group"><legend><span>01</span> Poznajmy się</legend>
-          <label class="field"><small>Imię i nazwisko <span aria-hidden="true">*</span></small><input type="text" name="name" required autocomplete="name" placeholder="Jak masz na imię?" /></label>
-          <div class="field-row">
-            <label class="field"><small>E-mail <span aria-hidden="true">*</span></small><input type="email" name="email" required autocomplete="email" placeholder="adres@email.pl" /></label>
-            <label class="field"><small>Telefon <span class="field-optional">opcjonalnie</span></small><input type="tel" name="phone" autocomplete="tel" placeholder="Twój numer telefonu" /></label>
-          </div>
-        </fieldset>
-        <fieldset class="form-group"><legend><span>02</span> Twoja przestrzeń</legend>
-          <label class="field"><small>Jak mogę Ci pomóc?</small><select name="oferta">
-            <option value="">Wybierz zakres współpracy</option><option>Konsultacja</option><option>Projekt koncepcyjny</option><option>Projekt kompleksowy</option><option>Nadzór autorski</option><option>Jeszcze nie wiem</option>
-          </select></label>
-          <div class="field-row">
-            <label class="field"><small>Rodzaj wnętrza</small><select name="typ"><option value="">Wybierz przestrzeń</option><option>Mieszkanie</option><option>Dom</option><option>Pojedyncze pomieszczenie</option><option>Lokal usługowy</option></select></label>
-            <label class="field field-measure"><small>Powierzchnia</small><input type="number" name="metraz" min="1" inputmode="numeric" placeholder="np. 54" /><em>m²</em></label>
-          </div>
-          <label class="field field-area"><small>Twoje pomysły</small><textarea name="message" rows="5" placeholder="Co jest dla Ciebie ważne? Opowiedz o swoim wnętrzu, potrzebach lub planach."></textarea></label>
-        </fieldset>
+        <label class="field"><small>Imię</small><input type="text" name="name" required autocomplete="name" placeholder="Imię i nazwisko" /></label>
+        <div class="field-row">
+          <label class="field"><small>E-mail</small><input type="email" name="email" required autocomplete="email" placeholder="adres@email.pl" /></label>
+          <label class="field"><small>Telefon</small><input type="tel" name="phone" autocomplete="tel" placeholder="opcjonalnie" /></label>
+        </div>
+        <label class="field"><small>Oferta</small>
+          <select name="oferta">
+            <option value="">Czym jesteś zainteresowany/a?</option>
+            <option>Konsultacja</option>
+            <option>Projekt koncepcyjny</option>
+            <option>Projekt kompleksowy</option>
+            <option>Nadzór autorski</option>
+            <option>Jeszcze nie wiem</option>
+          </select>
+        </label>
+        <div class="field-row">
+          <label class="field"><small>Wnętrze</small>
+            <select name="typ">
+              <option value="">Rodzaj przestrzeni</option>
+              <option>Mieszkanie</option>
+              <option>Dom</option>
+              <option>Pojedyncze pomieszczenie</option>
+              <option>Lokal usługowy</option>
+            </select>
+          </label>
+          <label class="field"><small>Metraż</small><input type="number" name="metraz" min="1" inputmode="numeric" placeholder="np. 54" /><em>m²</em></label>
+        </div>
+        <label class="field field-area"><small>Opis</small><textarea name="message" rows="4" placeholder="Krótko opowiedz o projekcie"></textarea></label>
         <label class="consent"><input type="checkbox" name="zgoda" required /><span>Wyrażam zgodę na kontakt w sprawie mojego zapytania.</span></label>
-        <button type="submit"><span>Porozmawiajmy o projekcie</span><span aria-hidden="true">↗</span></button>
-        <p class="form-note" data-form-note role="status">Po wysłaniu otworzy się Twoja aplikacja pocztowa z gotową wiadomością.</p>
+        <button type="submit"><span>Wyślij zapytanie</span><span>↗</span></button>
       </form>
 
       </div>
@@ -305,7 +313,7 @@
       <div class="booking">
         <h3>Umów spotkanie</h3>
         <p>Wolisz od razu wybrać termin? Zarezerwuj pierwszą rozmowę w kalendarzu.</p>
-        <div class="booking-slot"><span class="booking-symbol" aria-hidden="true">↗</span><span>Miejsce na kalendarz rezerwacji spotkań</span></div>
+        <div class="booking-slot"><span>Miejsce na kalendarz rezerwacji spotkań</span></div>
       </div>
     </div>
     </section>
