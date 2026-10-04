@@ -669,3 +669,10 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 .process-scrubber{min-width:0;width:100%}.process-milestones button{min-width:0;overflow-wrap:anywhere}
 .process-art{overflow:hidden}.process-art-caption{bottom:0}
 @media(max-width:620px){.process-milestones button>span:last-child{display:none}.process-milestones button{align-items:center}.process-milestones button>span:first-child{font-size:11px}}
+
+/* Real interior light: move the fabric and foliage region, keep copy still. */
+.living-scene{position:relative;isolation:isolate;overflow:hidden;background:#e8e4dd}
+.living-surface{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+.material-divider.living-scene:after{background:linear-gradient(90deg,rgba(246,244,241,.25),rgba(246,244,241,.06) 58%,transparent);z-index:1}
+.material-divider.living-scene .material-copy{position:relative;z-index:3}
+@media(prefers-reduced-motion:reduce){.living-motion-image{filter:none}}

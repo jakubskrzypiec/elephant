@@ -217,13 +217,13 @@ const visibleScenes = new Set();
 const updateMaterialMotion = () => materialScenes.forEach(scene => {
   const animate = visibleScenes.has(scene) && !document.hidden && !motionPreference.matches;
   scene.classList.toggle('is-visible', animate);
-  const water = scene.querySelector('[data-water-surface]');
+  const water = scene.querySelector('[data-water-surface], [data-living-surface]');
   if (water) {
     if (animate) water.unpauseAnimations();
     else water.pauseAnimations();
   }
 });
-materialScenes.forEach(scene => scene.querySelector('[data-water-surface]')?.pauseAnimations());
+materialScenes.forEach(scene => scene.querySelector('[data-water-surface], [data-living-surface]')?.pauseAnimations());
 const materialObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) visibleScenes.add(entry.target);
