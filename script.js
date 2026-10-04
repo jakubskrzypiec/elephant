@@ -151,13 +151,13 @@ if (wrap && track) {
   requestAnimationFrame(loop);
 }
 
-// A large sketch and its story are controlled by one continuous scrubber.
+// Process stages: continuous scrubber, wheel navigation and horizontal drag.
 const processExperience = document.querySelector('[data-process-experience]');
 if (processExperience) {
   const range = processExperience.querySelector('[data-process-range]');
   const buttons = [...processExperience.querySelectorAll('[data-process-stage]')];
   const images = [...processExperience.querySelectorAll('.process-art-image')];
-  const art = processExperience.querySelector('[data-process-art]');
+  const art = processExperience.querySelector('.process-focus');
   const copy = processExperience.querySelector('.process-focus');
   const name = processExperience.querySelector('[data-process-name]');
   const text = processExperience.querySelector('[data-process-text]');
@@ -185,6 +185,17 @@ if (processExperience) {
     copyAnimation?.cancel();
     if (!reduced.matches) copyAnimation = copy.animate([{opacity:0,transform:`translateX(${direction * 18}px)`},{opacity:1,transform:'translateX(0)'}], {duration:450,easing:'cubic-bezier(.2,.7,.2,1)'});
   };
+  processExperience.addEventListener('wheel', e => {
+    if (e.ctrlKey) return;
+    const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    if (!delta) return;
+    const current = Number(range.value);
+    // Let normal page scrolling resume at either end of the process.
+    if ((delta < 0 && current <= 0) || (delta > 0 && current >= 4)) return;
+    e.preventDefault();
+    const pixels = delta * (e.deltaMode === 1 ? 24 : e.deltaMode === 2 ? processExperience.clientHeight : 1);
+    select(current + pixels / 400);
+  }, {passive:false});
   range.addEventListener('input', () => select(Number(range.value)));
   buttons.forEach((button, index) => button.addEventListener('click', () => select(index)));
   range.addEventListener('keydown', e => {
