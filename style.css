@@ -448,3 +448,20 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 .instagram-post-mark{font-size:30px;line-height:1;font-weight:300;color:var(--muted)}
 .instagram-post-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;text-align:center;color:var(--muted);padding:0 8px}
 @media(max-width:620px){.instagram-post-label{font-size:8px;letter-spacing:.04em}.instagram-post-number{left:8px;top:8px}}
+
+/* Gentle contact refinements, keeping the original arrangement. */
+.contact .contact-main{border-left:0}
+.contact .contact-form{border-top:0}
+.contact .field{background:rgba(255,255,255,.48);border-bottom:1px solid rgba(34,20,11,.08);border-radius:3px;padding:0 14px;margin-bottom:14px;transition:background .2s,border-color .2s}
+.contact .field:focus-within{background:rgba(255,255,255,.85);border-bottom-color:#98a4ac}
+.contact .field input,.contact .field select,.contact .field textarea{padding-top:20px;padding-bottom:20px}
+.contact .field textarea{min-height:145px;resize:vertical}
+.contact .field-area small{padding-top:23px}
+.contact .field-row{gap:20px}
+.contact .contact-list,.contact .contact-list li{border-color:rgba(34,20,11,.12)}
+.contact .contact-list li{padding-top:19px;padding-bottom:19px}
+.contact .contact-form button{min-height:60px;background:rgba(152,164,172,.4);border:0;border-radius:3px;margin-top:24px;padding-left:24px;padding-right:24px}
+.contact .contact-form button:hover{background:rgba(152,164,172,.62)}
+.contact .consent{font-size:12px;line-height:1.7}
+@media(max-width:620px){.contact .field-row{gap:0}.contact .field{padding:0 12px}.contact .field input,.contact .field select,.contact .field textarea{font-size:16px}.contact .contact-form button{padding-left:20px;padding-right:20px}}
+@media(prefers-reduced-motion:reduce){.contact .field{transition:none}}
