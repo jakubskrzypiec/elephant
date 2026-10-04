@@ -37,3 +37,14 @@
 :root :is(.review-text small,.instagram-profile small,.service-bottom small){font-size:11px;line-height:1.8}
 :root .comparison-scroll thead th{font-size:17px;line-height:1.6}
 @media(max-width:620px){:root .page-invite>a{font-size:22px}}
+
+/* Larger chapter titles retain the project archive's spacing and weight. */
+:root .page-banner h1{font-size:clamp(42px,4.8vw,72px)}
+:root :is(.material-copy h2,.philosophy h2){font-size:clamp(36px,4vw,58px)}
+:root .reading-page .page-banner h1{font-size:clamp(36px,4vw,58px)}
+:root .project-page .page-banner h1{font-size:clamp(36px,4vw,58px)}
+@media(max-width:620px){
+ :root .page-banner h1{font-size:38px}
+ :root :is(.material-copy h2,.philosophy h2){font-size:34px}
+ :root .reading-page .page-banner h1,:root .project-page .page-banner h1{font-size:32px}
+}
