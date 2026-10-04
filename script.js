@@ -163,16 +163,20 @@ if (processViewport && processRange && processCards.length) {
     const max = maxScroll();
     const progress = max ? processViewport.scrollLeft / max : 0;
     const index = Math.max(0, Math.min(processCards.length - 1, Math.round(progress * (processCards.length - 1))));
-    processRange.value = String(progress * 100);
+    processRange.value = String(index);
+    document.querySelectorAll('[data-process-step]').forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
     processRange.disabled = max === 0;
     processRange.setAttribute('aria-valuetext', processCards[index].querySelector('h3').textContent);
     processCards.forEach((card, i) => card.classList.toggle('is-active', i === index));
     processCurrent.textContent = `${numerals[index]} / ${numerals[processCards.length - 1]}`;
   };
   processRange.addEventListener('input', () => {
-    processViewport.scrollLeft = Number(processRange.value) / 100 * maxScroll();
+    processViewport.scrollLeft = Number(processRange.value) / (processCards.length - 1) * maxScroll();
     syncProcess();
   });
+  document.querySelectorAll('[data-process-step]').forEach(button => button.addEventListener('click', () => {
+    processViewport.scrollTo({left:Number(button.dataset.processStep) / (processCards.length - 1) * maxScroll(), behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  }));
   processViewport.addEventListener('scroll', syncProcess, { passive: true });
   processViewport.addEventListener('keydown', e => {
     const direction = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;

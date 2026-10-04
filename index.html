@@ -146,35 +146,33 @@
 <div class="chapter-rail"><span>IV / Współpraca</span><span>Krok po kroku</span></div>
         <h3 class="process-heading">Jak wygląda<br>proces</h3>
         <div class="process-slider" data-process-slider>
-        <div class="process-viewport" data-process-viewport tabindex="0" role="region" aria-label="Etapy współpracy — przewijaj poziomo">
-      <ol class="process-track">
-
-        <li class="process-card">
-          <span class="process-card-no">I</span>
-          <h3>Rozmowa</h3>
-          <p>Poznanie potrzeb, stylu życia i tego, jak przestrzeń ma działać na co dzień.</p>
-        </li>
-        <li class="process-card">
-          <span class="process-card-no">II</span>
-          <h3>Kierunek</h3>
-          <p>Układ, proporcje i decyzje, które porządkują projekt i nadają mu właściwy ton.</p>
-        </li>
-        <li class="process-card">
-          <span class="process-card-no">III</span>
-          <h3>Projekt</h3>
-          <p>Rozwinięcie koncepcji w materiały, konkretne rozwiązania i czytelny plan działania.</p>
-        </li>
-        <li class="process-card">
-          <span class="process-card-no">IV</span>
-          <h3>Realizacja</h3>
-          <p>Dopilnowanie, aby końcowy efekt zachował jakość i charakter założony na początku.</p>
-        </li>
-      </ol>
-        </div>
-        <div class="process-controls">
-          <span class="process-current" data-process-current aria-hidden="true">I / IV</span>
-          <input class="process-range" data-process-range type="range" min="0" max="100" step="0.1" value="0" aria-label="Przesuń etapy procesu" aria-valuetext="Rozmowa" />
-        </div>
+          <nav class="process-steps" aria-label="Wybierz etap współpracy">
+            <button type="button" data-process-step="0" aria-pressed="true"><span>I</span>Rozmowa</button>
+            <button type="button" data-process-step="1" aria-pressed="false"><span>II</span>Kierunek</button>
+            <button type="button" data-process-step="2" aria-pressed="false"><span>III</span>Projekt</button>
+            <button type="button" data-process-step="3" aria-pressed="false"><span>IV</span>Realizacja</button>
+          </nav>
+          <div class="process-viewport" data-process-viewport tabindex="0" role="region" aria-label="Etapy współpracy — przewijaj poziomo">
+            <ol class="process-track">
+              <li class="process-card">
+                <div class="process-illustration"><svg viewBox="0 0 400 300" aria-hidden="true"><path d="M75 65h205v130H145l-45 35v-35H75Z"/><path d="M165 115h160v125h-30v32l-43-32h-87"/><path d="M110 110h130M110 140h85M205 160h80M205 190h55"/></svg><span class="process-visual-caption">ELEPHANT / ROZMOWA</span></div>
+                <div class="process-card-copy"><span class="process-card-no">I / IV</span><h3>Rozmowa</h3><p>Poznanie potrzeb, stylu życia i tego, jak przestrzeń ma działać na co dzień.</p></div>
+              </li>
+              <li class="process-card">
+                <div class="process-illustration"><svg viewBox="0 0 400 300" aria-hidden="true"><path class="drawing-wall" d="M90 45h225v210H90ZM210 45v80h105M90 165h90M210 255v-85"/><path d="M180 165a30 30 0 0 1 30 30M210 170v25M210 125a30 30 0 0 0-30-30M180 95h30M115 75h65v60h-65ZM125 220h45v-25h-45ZM245 180h40v40h-40ZM70 45v210M65 45h10M65 255h10M90 275h225M90 270v10M315 270v10"/></svg><span class="process-visual-caption">ELEPHANT / KIERUNEK</span></div>
+                <div class="process-card-copy"><span class="process-card-no">II / IV</span><h3>Kierunek</h3><p>Układ, proporcje i decyzje, które porządkują projekt i nadają mu właściwy ton.</p></div>
+              </li>
+              <li class="process-card">
+                <div class="process-illustration"><div class="process-material-board" aria-hidden="true"><div></div><div></div><div></div><span></span><span></span><span></span></div><span class="process-visual-caption">ELEPHANT / PROJEKT</span></div>
+                <div class="process-card-copy"><span class="process-card-no">III / IV</span><h3>Projekt</h3><p>Rozwinięcie koncepcji w materiały, konkretne rozwiązania i czytelny plan działania.</p></div>
+              </li>
+              <li class="process-card">
+                <div class="process-illustration"><svg viewBox="0 0 400 300" aria-hidden="true"><path d="m65 190 135-78 135 78-135 78ZM65 190V85l135-78 135 78v105M200 7v105M200 268V162M65 85l135 77 135-77"/><path d="m100 170 56-32v-65l-56 32ZM230 180l55-32v40l-55 32ZM130 202l65-38 60 35-65 38ZM130 202v20l60 37 65-38v-22M190 237v22"/></svg><span class="process-visual-caption">ELEPHANT / REALIZACJA</span></div>
+                <div class="process-card-copy"><span class="process-card-no">IV / IV</span><h3>Realizacja</h3><p>Dopilnowanie, aby końcowy efekt zachował jakość i charakter założony na początku.</p></div>
+              </li>
+            </ol>
+          </div>
+          <div class="process-controls"><span class="process-current" data-process-current aria-hidden="true">I / IV</span><input class="process-range" data-process-range type="range" min="0" max="3" step="1" value="0" aria-label="Wybierz etap procesu" aria-valuetext="Rozmowa" /><span class="process-range-hint">Przesuń, aby poznać kolejny etap</span></div>
         </div>
       <div class="process-foot">
         <p>Czas trwania każdego etapu ustalamy wspólnie — zależy od metrażu i zakresu prac.</p>
