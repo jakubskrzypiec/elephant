@@ -594,3 +594,18 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 @media(min-width:1700px){.process .process-card:not(:last-child):after{top:380px}}
 @media(max-width:980px){.process .process-card:not(:last-child):after{top:320px;width:6.25%}}
 @media(max-width:620px){.process .process-card:not(:last-child):after{top:300px;width:3.41%}}
+
+/* The process moves as one continuous strip; the intro sits with its heading. */
+.process .process-intro{display:flex;flex-direction:column;align-items:flex-start;gap:24px;margin-bottom:28px}
+.process .process-intro>p{max-width:470px;margin:0;font-size:14px;line-height:1.85}
+.process .process-viewport{scroll-snap-type:none}
+.process .process-illustration img{transition:transform .75s cubic-bezier(.2,.8,.2,1),opacity .6s}
+.process-drag-cursor{position:fixed;left:0;top:0;z-index:1000;pointer-events:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:88px;height:88px;border-radius:50%;background:rgba(20,20,20,.86);color:#fff;backdrop-filter:blur(6px);opacity:0;transform:translate3d(calc(var(--cursor-x,0px) - 44px),calc(var(--cursor-y,0px) - 44px),0) scale(.8);transition:opacity .2s,scale .2s}
+.process-drag-cursor>span{font-size:25px;line-height:1}
+.process-drag-cursor>small{font-size:8px;letter-spacing:.04em}
+.process-drag-cursor.is-visible{opacity:1;scale:1.08}
+.process-drag-cursor.is-dragging{background:#000;scale:.96}
+@media(hover:hover) and (pointer:fine){.process .process-viewport,.process .process-viewport.is-dragging{cursor:none}}
+@media(hover:none),(pointer:coarse){.process-drag-cursor{display:none}}
+@media(max-width:620px){.process .process-intro{gap:20px;margin-bottom:16px}.process .process-intro>p{max-width:300px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){.process-drag-cursor{transition:none}.process .process-illustration img{transition:none}}

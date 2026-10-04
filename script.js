@@ -151,56 +151,99 @@ if (wrap && track) {
   requestAnimationFrame(loop);
 }
 
-// Process: the range, touch scrolling and mouse dragging share one position.
+// Process: continuous scrolling with eased wheel motion and drag momentum.
 const processViewport = document.querySelector('[data-process-viewport]');
 const processRange = document.querySelector('[data-process-range]');
 const processCards = [...document.querySelectorAll('.process-card')];
 const processCurrent = document.querySelector('[data-process-current]');
 if (processViewport && processRange && processCards.length) {
   const numerals = ['I', 'II', 'III', 'IV', 'V'];
+  const preference = matchMedia('(prefers-reduced-motion: reduce)');
   const maxScroll = () => Math.max(0, processViewport.scrollWidth - processViewport.clientWidth);
+  const clamp = value => Math.max(0, Math.min(maxScroll(), value));
+  let target = processViewport.scrollLeft, frame = 0, drag = null;
+  const stop = () => { cancelAnimationFrame(frame); frame = 0; };
   const syncProcess = () => {
-    const max = maxScroll();
-    const progress = max ? processViewport.scrollLeft / max : 0;
-    const index = Math.max(0, Math.min(processCards.length - 1, Math.round(progress * (processCards.length - 1))));
-    processRange.value = String(index);
-    processRange.style.setProperty('--process-progress', `${progress * 100}%`);
-    document.querySelectorAll('[data-process-step]').forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
+    const max = maxScroll(), progress = max ? processViewport.scrollLeft / max : 0;
+    const index = Math.min(processCards.length - 1, Math.max(0, Math.round(progress * (processCards.length - 1))));
+    processRange.value = String(progress * (processCards.length - 1));
     processRange.disabled = max === 0;
+    processRange.style.setProperty('--process-progress', `${progress * 100}%`);
     processRange.setAttribute('aria-valuetext', processCards[index].querySelector('h3').textContent);
     processCards.forEach((card, i) => card.classList.toggle('is-active', i === index));
     processCurrent.textContent = `${numerals[index]} / ${numerals[processCards.length - 1]}`;
   };
+  let lastFrame = 0;
+  const tick = time => {
+    const dt = Math.min(40, time - lastFrame || 16.7); lastFrame = time;
+    const distance = target - processViewport.scrollLeft;
+    if (Math.abs(distance) < 1) { processViewport.scrollLeft = target; frame = 0; syncProcess(); return; }
+    processViewport.scrollLeft += distance * (1 - Math.exp(-dt / 95));
+    syncProcess(); frame = requestAnimationFrame(tick);
+  };
+  const glideTo = value => {
+    target = clamp(value);
+    if (preference.matches) { stop(); processViewport.scrollLeft = target; syncProcess(); return; }
+    if (!frame) { lastFrame = performance.now(); frame = requestAnimationFrame(tick); }
+  };
   processRange.addEventListener('input', () => {
-    processViewport.scrollLeft = Number(processRange.value) / (processCards.length - 1) * maxScroll();
-    syncProcess();
+    stop(); target = Number(processRange.value) / (processCards.length - 1) * maxScroll();
+    processViewport.scrollLeft = target; syncProcess();
   });
-  document.querySelectorAll('[data-process-step]').forEach(button => button.addEventListener('click', () => {
-    processViewport.scrollTo({left:Number(button.dataset.processStep) / (processCards.length - 1) * maxScroll(), behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
-  }));
-  processViewport.addEventListener('scroll', syncProcess, { passive: true });
+  processViewport.addEventListener('wheel', e => {
+    if (e.ctrlKey || drag) return;
+    const delta = (Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY) * (e.deltaMode === 1 ? 18 : e.deltaMode === 2 ? processViewport.clientWidth : 1);
+    const next = clamp((frame ? target : processViewport.scrollLeft) + delta);
+    if (Math.abs(next - (frame ? target : processViewport.scrollLeft)) < 1) return;
+    e.preventDefault(); glideTo(next);
+  }, {passive:false});
+  processViewport.addEventListener('scroll', () => {
+    if (!frame && !drag) target = processViewport.scrollLeft;
+    syncProcess();
+  }, {passive:true});
   processViewport.addEventListener('keydown', e => {
     const direction = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-    if (!direction) return;
+    if (!direction && e.key !== 'Home' && e.key !== 'End') return;
     e.preventDefault();
-    processViewport.scrollBy({ left: direction * maxScroll() / (processCards.length - 1), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    glideTo(e.key === 'Home' ? 0 : e.key === 'End' ? maxScroll() : (frame ? target : processViewport.scrollLeft) + direction * maxScroll() / (processCards.length - 1));
   });
-  let drag = null;
+  const cursor = document.createElement('span');
+  cursor.className = 'process-drag-cursor'; cursor.setAttribute('aria-hidden', 'true');
+  cursor.innerHTML = '<span>↔</span><small>Przeciągnij</small>';
+  document.body.append(cursor);
   processViewport.addEventListener('pointerdown', e => {
     if (e.pointerType !== 'mouse' || e.button !== 0) return;
-    drag = { x: e.clientX, scroll: processViewport.scrollLeft };
+    stop(); drag = {x:e.clientX, scroll:processViewport.scrollLeft, last:e.clientX, time:performance.now(), velocity:0};
     processViewport.setPointerCapture(e.pointerId);
-    processViewport.classList.add('is-dragging');
+    processViewport.classList.add('is-dragging'); cursor.classList.add('is-dragging');
     e.preventDefault();
   });
   processViewport.addEventListener('pointermove', e => {
-    if (drag) processViewport.scrollLeft = drag.scroll + drag.x - e.clientX;
+    if (e.pointerType === 'mouse') {
+      cursor.style.setProperty('--cursor-x', `${e.clientX}px`); cursor.style.setProperty('--cursor-y', `${e.clientY}px`);
+      cursor.classList.add('is-visible');
+    }
+    if (drag) {
+      const now = performance.now();
+      drag.velocity = (drag.last - e.clientX) / Math.max(8, now - drag.time);
+      drag.last = e.clientX; drag.time = now;
+      processViewport.scrollLeft = clamp(drag.scroll + drag.x - e.clientX);
+      target = processViewport.scrollLeft; syncProcess();
+    }
   });
-  const stopDrag = () => { drag = null; processViewport.classList.remove('is-dragging'); };
+  processViewport.addEventListener('pointerleave', () => cursor.classList.remove('is-visible'));
+  window.addEventListener('scroll', () => cursor.classList.remove('is-visible'), {passive:true});
+  const stopDrag = e => {
+    if (!drag) return;
+    const momentum = e.type === 'pointerup' && performance.now() - drag.time < 100 ? drag.velocity * 150 : 0;
+    drag = null; processViewport.classList.remove('is-dragging'); cursor.classList.remove('is-dragging');
+    glideTo(processViewport.scrollLeft + momentum);
+  };
   processViewport.addEventListener('pointerup', stopDrag);
   processViewport.addEventListener('pointercancel', stopDrag);
   processViewport.addEventListener('lostpointercapture', stopDrag);
-  new ResizeObserver(syncProcess).observe(processViewport);
+  preference.addEventListener('change', () => { stop(); target = processViewport.scrollLeft; });
+  new ResizeObserver(() => { stop(); target = clamp(processViewport.scrollLeft); syncProcess(); }).observe(processViewport);
   syncProcess();
 }
 
