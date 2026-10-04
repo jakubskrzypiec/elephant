@@ -1,17 +1,17 @@
-// Portfolio categories progressively enhance the complete collection.
-const filters = [...document.querySelectorAll('[data-filter]')];
-const portfolioItems = [...document.querySelectorAll('[data-category]')];
-filters.forEach(button => button.addEventListener('click', () => {
-  const category = button.dataset.filter;
-  const grid=document.querySelector(".portfolio-grid");
-  if(grid)grid.dataset.filtered=String(category!=="Wszystkie");
-  document.querySelectorAll("[data-gallery-break]").forEach(section=>section.hidden=category!=="Wszystkie");
-  filters.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-  let visible = 0;
-  portfolioItems.forEach(item => { item.hidden = category !== 'Wszystkie' && item.dataset.category !== category; if (!item.hidden) visible++; });
-  const count = document.querySelector('[data-filter-count]');
-  if (count) count.textContent = `${visible} ${visible === 1 ? 'projekt' : visible < 5 ? 'projekty' : 'projektów'}`;
-}));
+// Switch the portfolio between photographic collection and city index.
+const projectListToggle = document.querySelector('[data-project-list-toggle]');
+if (projectListToggle) {
+  const cityList = document.querySelector('#lista-projektow');
+  const gallery = document.querySelector('#realizacje');
+  projectListToggle.hidden = false;
+  projectListToggle.addEventListener('click', () => {
+    const showList = projectListToggle.getAttribute('aria-expanded') !== 'true';
+    projectListToggle.setAttribute('aria-expanded', String(showList));
+    cityList.hidden = !showList;
+    gallery.hidden = showList;
+    projectListToggle.innerHTML = showList ? 'Galeria projektów <span aria-hidden="true">↗</span>' : 'Lista projektów <span aria-hidden="true">↗</span>';
+  });
+}
 const dialog = document.querySelector('.photo-dialog');
 if (dialog) {
   const photos = [...document.querySelectorAll('[data-photo]')];
