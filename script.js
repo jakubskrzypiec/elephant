@@ -151,132 +151,67 @@ if (wrap && track) {
   requestAnimationFrame(loop);
 }
 
-// Process: continuous scrolling with eased wheel motion and drag momentum.
+// Select a quiet visual milestone; touch scrolling stays native on smaller screens.
 const processViewport = document.querySelector('[data-process-viewport]');
-const processRange = document.querySelector('[data-process-range]');
 const processCards = [...document.querySelectorAll('.process-card')];
-const processCurrent = document.querySelector('[data-process-current]');
-if (processViewport && processRange && processCards.length) {
-  const numerals = ['I', 'II', 'III', 'IV', 'V'];
-  const preference = matchMedia('(prefers-reduced-motion: reduce)');
-  const maxScroll = () => Math.max(0, processViewport.scrollWidth - processViewport.clientWidth);
-  const clamp = value => Math.max(0, Math.min(maxScroll(), value));
-  let target = processViewport.scrollLeft, frame = 0, drag = null;
-  const stop = () => { cancelAnimationFrame(frame); frame = 0; };
-  const syncProcess = () => {
-    const max = maxScroll(), progress = max ? processViewport.scrollLeft / max : 0;
-    const index = Math.min(processCards.length - 1, Math.max(0, Math.round(progress * (processCards.length - 1))));
-    processRange.value = String(progress * (processCards.length - 1));
-    processRange.disabled = max === 0;
-    processRange.style.setProperty('--process-progress', `${progress * 100}%`);
-    processRange.setAttribute('aria-valuetext', processCards[index].querySelector('h3').textContent);
-    processCards.forEach((card, i) => card.classList.toggle('is-active', i === index));
-    processCurrent.textContent = `${numerals[index]} / ${numerals[processCards.length - 1]}`;
-  };
-  let lastFrame = 0;
-  const tick = time => {
-    const dt = Math.min(40, time - lastFrame || 16.7); lastFrame = time;
-    const distance = target - processViewport.scrollLeft;
-    if (Math.abs(distance) < 1) { processViewport.scrollLeft = target; frame = 0; syncProcess(); return; }
-    processViewport.scrollLeft += distance * (1 - Math.exp(-dt / 95));
-    syncProcess(); frame = requestAnimationFrame(tick);
-  };
-  const glideTo = value => {
-    target = clamp(value);
-    if (preference.matches) { stop(); processViewport.scrollLeft = target; syncProcess(); return; }
-    if (!frame) { lastFrame = performance.now(); frame = requestAnimationFrame(tick); }
-  };
-  processRange.addEventListener('input', () => {
-    stop(); target = Number(processRange.value) / (processCards.length - 1) * maxScroll();
-    processViewport.scrollLeft = target; syncProcess();
-  });
-  processViewport.addEventListener('wheel', e => {
-    if (e.ctrlKey || drag) return;
-    const delta = (Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY) * (e.deltaMode === 1 ? 18 : e.deltaMode === 2 ? processViewport.clientWidth : 1);
-    const next = clamp((frame ? target : processViewport.scrollLeft) + delta);
-    if (Math.abs(next - (frame ? target : processViewport.scrollLeft)) < 1) return;
-    e.preventDefault(); glideTo(next);
-  }, {passive:false});
-  processViewport.addEventListener('scroll', () => {
-    if (!frame && !drag) target = processViewport.scrollLeft;
-    syncProcess();
-  }, {passive:true});
-  processViewport.addEventListener('keydown', e => {
-    const direction = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-    if (!direction && e.key !== 'Home' && e.key !== 'End') return;
-    e.preventDefault();
-    glideTo(e.key === 'Home' ? 0 : e.key === 'End' ? maxScroll() : (frame ? target : processViewport.scrollLeft) + direction * maxScroll() / (processCards.length - 1));
-  });
-  const cursor = document.createElement('span');
-  cursor.className = 'process-drag-cursor'; cursor.setAttribute('aria-hidden', 'true');
-  cursor.innerHTML = '<span>↔</span><small>Przeciągnij</small>';
-  document.body.append(cursor);
-  processViewport.addEventListener('pointerdown', e => {
-    if (e.pointerType !== 'mouse' || e.button !== 0) return;
-    stop(); drag = {x:e.clientX, scroll:processViewport.scrollLeft, last:e.clientX, time:performance.now(), velocity:0};
-    processViewport.setPointerCapture(e.pointerId);
-    processViewport.classList.add('is-dragging'); cursor.classList.add('is-dragging');
-    e.preventDefault();
-  });
-  processViewport.addEventListener('pointermove', e => {
-    if (e.pointerType === 'mouse') {
-      cursor.style.setProperty('--cursor-x', `${e.clientX}px`); cursor.style.setProperty('--cursor-y', `${e.clientY}px`);
-      cursor.classList.add('is-visible');
-    }
-    if (drag) {
-      const now = performance.now();
-      drag.velocity = (drag.last - e.clientX) / Math.max(8, now - drag.time);
-      drag.last = e.clientX; drag.time = now;
-      processViewport.scrollLeft = clamp(drag.scroll + drag.x - e.clientX);
-      target = processViewport.scrollLeft; syncProcess();
-    }
-  });
-  processViewport.addEventListener('pointerleave', () => cursor.classList.remove('is-visible'));
-  window.addEventListener('scroll', () => cursor.classList.remove('is-visible'), {passive:true});
-  const stopDrag = e => {
-    if (!drag) return;
-    const momentum = e.type === 'pointerup' && performance.now() - drag.time < 100 ? drag.velocity * 150 : 0;
-    drag = null; processViewport.classList.remove('is-dragging'); cursor.classList.remove('is-dragging');
-    glideTo(processViewport.scrollLeft + momentum);
-  };
-  processViewport.addEventListener('pointerup', stopDrag);
-  processViewport.addEventListener('pointercancel', stopDrag);
-  processViewport.addEventListener('lostpointercapture', stopDrag);
-  preference.addEventListener('change', () => { stop(); target = processViewport.scrollLeft; });
-  new ResizeObserver(() => { stop(); target = clamp(processViewport.scrollLeft); syncProcess(); }).observe(processViewport);
-  syncProcess();
-}
-
-// Reveal once, float only in view, and let the illustrations follow the pointer.
-const processScene = document.querySelector('.process');
-if (processScene && processViewport) {
-  const reducedProcessMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  processScene.classList.add('process-motion-ready');
-  const processObserver = new IntersectionObserver(entries => {
-    const visible = entries.some(entry => entry.isIntersecting);
-    processScene.classList.toggle('is-process-visible', visible && !document.hidden);
-    if (visible) processScene.classList.add('is-process-revealed');
-  }, {threshold:0.08});
-  processObserver.observe(processViewport);
-  document.addEventListener('visibilitychange', () => {
-    const rect = processViewport.getBoundingClientRect();
-    processScene.classList.toggle('is-process-visible', !document.hidden && rect.bottom > 0 && rect.top < innerHeight);
-  });
-  processCards.forEach(card => {
-    const reset = () => {
-      card.style.removeProperty('--process-rx');
-      card.style.removeProperty('--process-ry');
-    };
-    card.addEventListener('pointermove', e => {
-      if (e.pointerType !== 'mouse' || reducedProcessMotion.matches || processViewport.classList.contains('is-dragging')) return;
-      const rect = card.getBoundingClientRect();
-      card.style.setProperty('--process-rx', `${(0.5 - (e.clientY - rect.top) / rect.height) * 5}deg`);
-      card.style.setProperty('--process-ry', `${((e.clientX - rect.left) / rect.width - 0.5) * 7}deg`);
+const processDescription = document.querySelector('#process-description');
+if (processViewport && processDescription && processCards.length) {
+  const text = processDescription.querySelector('p');
+  const counter = processDescription.querySelector('.process-description-index');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  let active = 0, textTimer, scrollTimer, fade;
+  const selectStage = index => {
+    if (index === active) return;
+    active = index;
+    processCards.forEach((card, i) => {
+      card.classList.toggle('is-active', i === index);
+      card.querySelector('button').setAttribute('aria-pressed', String(i === index));
     });
-    card.addEventListener('pointerleave', reset);
-    card.addEventListener('pointerdown', reset);
-    reducedProcessMotion.addEventListener('change', reset);
+    clearTimeout(textTimer); fade?.cancel();
+    const update = () => {
+      text.textContent = processCards[index].dataset.processDescription;
+      counter.textContent = `${String(index + 1).padStart(2, '0')} / 05`;
+      if (!reducedMotion.matches) fade = processDescription.animate([{opacity:0},{opacity:1}], {duration:250,easing:'ease-out'});
+    };
+    if (reducedMotion.matches) update();
+    else {
+      fade = processDescription.animate([{opacity:1},{opacity:0}], {duration:120,fill:'forwards'});
+      textTimer = setTimeout(() => {fade?.cancel(); update();}, 120);
+    }
+  };
+  const revealStage = index => {
+    selectStage(index);
+    if (processViewport.scrollWidth <= processViewport.clientWidth + 1) return;
+    const card = processCards[index].getBoundingClientRect();
+    const viewport = processViewport.getBoundingClientRect();
+    processViewport.scrollTo({left:processViewport.scrollLeft + card.left - viewport.left - (viewport.width - card.width) / 2, behavior:reducedMotion.matches ? 'auto' : 'smooth'});
+  };
+  processCards.forEach((card, index) => {
+    const button = card.querySelector('button');
+    button.addEventListener('click', () => revealStage(index));
+    button.addEventListener('keydown', e => {
+      const direction = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!direction && e.key !== 'Home' && e.key !== 'End') return;
+      e.preventDefault();
+      const next = e.key === 'Home' ? 0 : e.key === 'End' ? processCards.length - 1 : Math.max(0, Math.min(processCards.length - 1, index + direction));
+      processCards[next].querySelector('button').focus({preventScroll:true}); revealStage(next);
+    });
   });
+  processViewport.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      if (processViewport.scrollWidth <= processViewport.clientWidth + 1) return;
+      const viewport = processViewport.getBoundingClientRect();
+      const center = viewport.left + viewport.width / 2;
+      let nearest = 0, distance = Infinity;
+      processCards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const d = Math.abs(rect.left + rect.width / 2 - center);
+        if (d < distance) {distance = d; nearest = index;}
+      });
+      selectStage(nearest);
+    }, 160);
+  }, {passive:true});
 }
 
 // Material light moves only while visible, and respects reduced-motion settings.

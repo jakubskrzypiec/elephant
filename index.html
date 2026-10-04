@@ -146,31 +146,42 @@
 <div class="chapter-rail"><span>IV / Współpraca</span><span>Krok po kroku</span></div>
         <div class="process-intro"><h3 class="process-heading">Jak wygląda<br>proces</h3><p>Od pierwszego szkicu do wnętrza, które możesz sobie wyobrazić. Zobacz, jak krok po kroku pomysł nabiera kształtu.</p></div>
         <div class="process-slider" data-process-slider>
-          <div class="process-viewport" data-process-viewport tabindex="0" role="region" aria-label="Etapy projektowania — przewijaj poziomo">
+          <div class="process-viewport" data-process-viewport role="region" aria-label="Etapy projektowania">
             <ol class="process-track">
-              <li class="process-card is-active">
-                <div class="process-illustration"><img src="assets/process/sketch-plan.webp" alt="Rzut mieszkania w formie szkicu architektonicznego" loading="lazy" draggable="false" /></div>
-                <div class="process-card-copy"><span class="process-card-no">01</span><h3>Układ funkcjonalny</h3><p>Zaczynamy od Twoich potrzeb. Szukamy układu, który porządkuje przestrzeń i codzienne życie.</p></div>
+              <li class="process-card is-active" data-process-description="Zaczynamy od Twoich potrzeb. Szukamy układu, który porządkuje przestrzeń i codzienne życie.">
+                <button class="process-step" type="button" aria-pressed="true" aria-controls="process-description">
+                  <span class="process-illustration"><img src="assets/process/sketch-plan.webp" alt="" loading="lazy" draggable="false" /></span>
+                  <span class="process-card-copy"><span class="process-card-no">01</span><span class="process-step-title">Układ funkcjonalny</span></span>
+                </button>
               </li>
-              <li class="process-card">
-                <div class="process-illustration"><img src="assets/process/sketch-materials.webp" alt="Czarno-biały szkic kompozycji materiałów" loading="lazy" draggable="false" /></div>
-                <div class="process-card-copy"><span class="process-card-no">02</span><h3>Moodboard</h3><p>Wybieramy materiały, faktury i ton wnętrza. Każdy element staje się częścią jednej opowieści.</p></div>
+              <li class="process-card" data-process-description="Wybieramy materiały, faktury i ton wnętrza. Każdy element staje się częścią jednej opowieści.">
+                <button class="process-step" type="button" aria-pressed="false" aria-controls="process-description">
+                  <span class="process-illustration"><img src="assets/process/sketch-materials.webp" alt="" loading="lazy" draggable="false" /></span>
+                  <span class="process-card-copy"><span class="process-card-no">02</span><span class="process-step-title">Moodboard</span></span>
+                </button>
               </li>
-              <li class="process-card">
-                <div class="process-illustration"><img src="assets/process/sketch-axonometric.webp" alt="Aksonometryczny szkic salonu" loading="lazy" draggable="false" /></div>
-                <div class="process-card-copy"><span class="process-card-no">03</span><h3>Model przestrzenny</h3><p>Sprawdzamy bryły i proporcje. Patrzymy na wnętrze jako całość, zanim dopracujemy detale.</p></div>
+              <li class="process-card" data-process-description="Sprawdzamy bryły i proporcje. Patrzymy na wnętrze jako całość, zanim dopracujemy detale.">
+                <button class="process-step" type="button" aria-pressed="false" aria-controls="process-description">
+                  <span class="process-illustration"><img src="assets/process/sketch-axonometric.webp" alt="" loading="lazy" draggable="false" /></span>
+                  <span class="process-card-copy"><span class="process-card-no">03</span><span class="process-step-title">Model przestrzenny</span></span>
+                </button>
               </li>
-              <li class="process-card">
-                <div class="process-illustration"><img src="assets/process/sketch-interior.webp" alt="Perspektywiczny szkic wnętrza łazienki" loading="lazy" draggable="false" /></div>
-                <div class="process-card-copy"><span class="process-card-no">04</span><h3>Wizualizacje</h3><p>Pokazujemy przyszłe wnętrze. Światło, materiały i rozwiązania spotykają się w konkretnym obrazie.</p></div>
+              <li class="process-card" data-process-description="Pokazujemy przyszłe wnętrze. Światło, materiały i rozwiązania spotykają się w konkretnym obrazie.">
+                <button class="process-step" type="button" aria-pressed="false" aria-controls="process-description">
+                  <span class="process-illustration"><img src="assets/process/sketch-interior.webp" alt="" loading="lazy" draggable="false" /></span>
+                  <span class="process-card-copy"><span class="process-card-no">04</span><span class="process-step-title">Wizualizacje</span></span>
+                </button>
               </li>
-              <li class="process-card">
-                <div class="process-illustration"><img src="assets/process/sketch-drawings.webp" alt="Szkice rzutów, rozwinięć ścian i detali technicznych" loading="lazy" draggable="false" /></div>
-                <div class="process-card-copy"><span class="process-card-no">05</span><h3>Dokumentacja</h3><p>Przekładamy projekt na czytelne rysunki i szczegóły, które prowadzą wykonawców przez realizację.</p></div>
+              <li class="process-card" data-process-description="Przekładamy projekt na czytelne rysunki i szczegóły, które prowadzą wykonawców przez realizację.">
+                <button class="process-step" type="button" aria-pressed="false" aria-controls="process-description">
+                  <span class="process-illustration"><img src="assets/process/sketch-drawings.webp" alt="" loading="lazy" draggable="false" /></span>
+                  <span class="process-card-copy"><span class="process-card-no">05</span><span class="process-step-title">Dokumentacja</span></span>
+                </button>
               </li>
             </ol>
           </div>
-          <div class="process-controls"><span class="process-current" data-process-current aria-hidden="true">I / V</span><input class="process-range" data-process-range type="range" min="0" max="4" step="0.001" value="0" aria-label="Wybierz etap procesu" aria-valuetext="Układ funkcjonalny" /><span class="process-range-hint">Przeciągnij lub przewiń</span></div>
+          <div class="process-description" id="process-description" aria-live="polite" aria-atomic="true"><span class="process-description-index" aria-hidden="true">01 / 05</span><p>Zaczynamy od Twoich potrzeb. Szukamy układu, który porządkuje przestrzeń i codzienne życie.</p></div>
+          <p class="process-mobile-hint">Przesuń palcem, aby zobaczyć kolejne etapy</p>
         </div>
       <div class="process-foot">
         <p>Czas trwania każdego etapu ustalamy wspólnie — zależy od metrażu i zakresu prac.</p>
