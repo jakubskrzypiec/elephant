@@ -223,13 +223,3 @@ const materialObserver = new IntersectionObserver(entries => {
 materialScenes.forEach(scene => materialObserver.observe(scene));
 motionPreference.addEventListener('change', updateMaterialMotion);
 document.addEventListener('visibilitychange', updateMaterialMotion);
-
-// A small, one-time entrance keeps the album rhythm without hiding content.
-const albumObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    if (!motionPreference.matches) entry.target.classList.add('album-reveal');
-    albumObserver.unobserve(entry.target);
-  });
-}, {threshold:.15});
-document.querySelectorAll('.about-copy,.section-heading h2,.social-intro,.review-intro,.material-copy,.philosophy-content').forEach(element => albumObserver.observe(element));
