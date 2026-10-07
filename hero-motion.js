@@ -9,16 +9,15 @@
       vec2 cover=aspect<imageAspect?vec2(aspect/imageAspect,1.):vec2(1.,imageAspect/aspect);
       vec2 p=(uv-.5)*cover+.5;
       if(isBanner>.5 && aspect<2.)p.x+=(1.-cover.x)*.22;
-      float sweep=sin(time*.42)*.045;
-      float x=uv.x-sweep;
-      float columns=(1.-smoothstep(.25,.36,x)) + smoothstep(.55,.68,x)*(1.-smoothstep(.85,.98,x));
-      float wave=sin(uv.y*105.+sin(time*.33)*3.);
-      float amount=(.008+.035*columns)*(.65+.35*sin(time*.51+uv.y*7.));
-      vec2 drift=vec2(wave*amount*.06,0.);
+      // Gentle camera drift and a single soft focus plane, with no ripple stripes.
+      p=(p-.5)*.92+.5;
+      p+=vec2(sin(time*.32)*.025,cos(time*.25)*.004);
+      float amount=.014+.013*(.5+.5*sin(time*.4));
       vec3 color=vec3(0.);float weight=0.;
       for(int i=-8;i<=8;i++){
-        float f=float(i)/8.;float w=1.-abs(f)*.6;
-        vec2 sampleAt=clamp(p+drift+vec2(f*amount*cover.x,0.),vec2(.001),vec2(.999));
+        float f=float(i)/8.;float w=exp(-f*f*2.);
+        vec2 offset=vec2(f*amount*cover.x,sin(float(i)*2.4)*amount*.24);
+        vec2 sampleAt=clamp(p+offset,vec2(.001),vec2(.999));
         color+=texture2D(photo,sampleAt).rgb*w;weight+=w;
       }
       gl_FragColor=vec4(color/weight,1.);
@@ -45,7 +44,9 @@
       gl.bindTexture(gl.TEXTURE_2D,gl.createTexture());gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);
       gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
-      gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,img);
+      const softened=document.createElement('canvas');softened.width=img.width;softened.height=img.height;
+      const ctx=softened.getContext('2d');ctx.filter='blur(6px)';ctx.drawImage(img,-12,-12,img.width+24,img.height+24);
+      gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,softened);
       gl.uniform1i(gl.getUniformLocation(program,'photo'),0);gl.uniform1f(gl.getUniformLocation(program,'imageAspect'),img.width/img.height);
       gl.uniform1f(gl.getUniformLocation(program,'isBanner'),host.classList.contains('page-banner')?1:0);
       const time=gl.getUniformLocation(program,'time'),aspect=gl.getUniformLocation(program,'aspect');
