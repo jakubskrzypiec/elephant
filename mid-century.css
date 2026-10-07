@@ -101,3 +101,18 @@
 :root .portfolio-page .portfolio-image{height:auto!important;width:100%;min-width:0}:root .portfolio-page .portfolio-item>a{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}:root .portfolio-page .portfolio-item:nth-child(even)>a{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr)}
 :root .footer-logo img{filter:brightness(0)}:root .offer-page .chapter-rail,:root .journal-page .chapter-rail{border:0;border-top:1px solid var(--line)}
 @media(max-width:620px){:root .page-banner:after{background:linear-gradient(90deg,rgba(246,244,241,.9),rgba(246,244,241,.62))}}
+.hero-motion-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.hero-motion-canvas[hidden]{display:none}
+:root .hero .hero-shade{z-index:2;background:linear-gradient(180deg,rgba(34,20,11,.18),rgba(34,20,11,.08) 25%,rgba(34,20,11,.19) 48%,rgba(34,20,11,.06) 72%,rgba(34,20,11,.22))}
+:root .hero :is(.hero-logo,.hero-actions){z-index:3}
+:root .page-banner:after{background:linear-gradient(90deg,rgba(246,244,241,.24),rgba(246,244,241,.1) 55%,transparent 80%)}
+:root .material-divider.living-scene:after,:root .philosophy.living-scene:before,:root .contact-section .material-divider.living-scene:after{background:linear-gradient(90deg,rgba(246,244,241,.22),rgba(246,244,241,.10) 55%,transparent 75%)}
+:root .material-divider .material-copy :is(h2,p),:root #filozofia :is(h2,p){color:#000}
+:root .material-divider .material-copy p,:root #filozofia .philosophy-simple{max-width:650px}
+:root #filozofia h2{max-width:740px}
+@media(max-width:620px){:root .page-banner:after{background:linear-gradient(90deg,rgba(246,244,241,.82),rgba(246,244,241,.48))}:root .material-divider.living-scene:after,:root .philosophy.living-scene:before,:root .contact-section .material-divider.living-scene:after{background:rgba(246,244,241,.6)}}
+@media(prefers-reduced-motion:reduce){.hero-motion-canvas{display:none}}
+.architectural-shadow{position:absolute;inset:-8% 25% -8% -6%;z-index:1;pointer-events:none;background:linear-gradient(122deg,transparent 35%,rgba(34,20,11,.17) 37%,rgba(34,20,11,.17) 40%,transparent 42%),linear-gradient(122deg,transparent 57%,rgba(34,20,11,.13) 59%,rgba(34,20,11,.13) 61%,transparent 63%);filter:blur(9px);mask-image:linear-gradient(90deg,transparent 20%,#000 45%,#000 72%,transparent 92%);animation:architectural-light 10s ease-in-out infinite alternate;animation-play-state:paused}
+.is-visible .architectural-shadow{animation-play-state:running}
+@keyframes architectural-light{from{transform:translate(-35px,-8px)}to{transform:translate(40px,12px)}}
+@media(prefers-reduced-motion:reduce){.architectural-shadow{animation:none;transform:none}}
