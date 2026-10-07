@@ -1,0 +1,103 @@
+/* Mid-century refresh: a single restrained separator system. */
+:root{--line:rgba(34,20,11,.19);--line-strong:rgba(34,20,11,.36);--studio-blue:#98a4ac}
+:root :is(.site-header,.about,.about-copy,.about-text,.about-layout,.about .chapter-rail,.social-panel,.instagram-preview,.review-links,.contact-main,.page-invite,.service-panel,.service-panel:last-child,.service-panel li,.service-panel ul,.service-bottom .text-link,.offer .card p,.portfolio-page .page-invite,.journal-card>a,.journal-card .text-link,.text-link,.quiet-link,.project-meta,.contact-form,.field,.article-toc,.project-next,.project-detail-rail){border:0}
+:root .chapter-rail{border:0;border-top:1px solid var(--line);padding-top:18px}
+:root .about .chapter-rail{border:0;padding-top:0}
+:root .review-link,:root .instagram-preview-link,:root .process-foot{border:0}
+:root .process-foot{border-top:1px solid var(--line)}
+:root .social-panel,:root .review-panel{border:0}
+:root .page-invite{position:relative;background:var(--paper)}
+:root .page-invite:before{content:'';position:absolute;left:6vw;right:6vw;top:0;height:1px;background:var(--line)}
+:root .desktop-nav a[aria-current=page]{border-bottom-color:var(--line-strong)}
+
+/* The existing hero's horizontal motion is recreated as moving glass bands. */
+.hero-glass{position:absolute;inset:0;overflow:hidden;z-index:1;pointer-events:none;isolation:isolate}
+.hero-glass span{position:absolute;top:-5%;bottom:-5%;width:25%;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);background:linear-gradient(90deg,transparent,rgba(246,244,241,.05),transparent);mask-image:repeating-linear-gradient(0deg,transparent 0,rgba(0,0,0,.15) 5px,#000 10px,#000 17px,transparent 24px);animation:glass-drift 13s ease-in-out infinite alternate;animation-play-state:paused}
+.hero-glass span:nth-child(1){left:-4%;width:29%;animation-delay:-4s}
+.hero-glass span:nth-child(2){left:38%;width:18%;animation-duration:16s;animation-delay:-9s;opacity:.72}
+.hero-glass span:nth-child(3){right:-2%;width:27%;animation-delay:-6s}
+.is-visible .hero-glass span{animation-play-state:running}
+@keyframes glass-drift{from{transform:translateX(-11%);opacity:.75}to{transform:translateX(13%);opacity:1}}
+:root .hero .hero-frames img{object-position:center}
+:root .hero .hero-shade{background:linear-gradient(180deg,rgba(34,20,11,.25),rgba(34,20,11,.06) 35%,rgba(34,20,11,.1) 65%,rgba(34,20,11,.28))}
+.page-banner .hero-glass{z-index:1}
+.page-banner .hero-glass span{backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);opacity:.65}
+:root .page-banner-copy{z-index:3}
+:root .page-banner:after{z-index:2;background:linear-gradient(90deg,rgba(246,244,241,.75),rgba(246,244,241,.28) 50%,transparent 74%)}
+:root .material-copy p,:root .philosophy-simple p{max-width:780px}
+:root .philosophy h2{max-width:800px;font-size:clamp(30px,3.5vw,52px);line-height:1.45}
+:root .philosophy.living-scene:before,:root .contact-section .material-divider.living-scene:after{background:linear-gradient(90deg,rgba(246,244,241,.55),rgba(246,244,241,.3) 55%,transparent 83%)}
+
+/* Square home packages, with a black border appearing without layout shift. */
+:root .offer .cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+:root .offer .card{min-height:0;aspect-ratio:1;border:1px solid transparent;border-radius:0;background:var(--paper);box-shadow:none;padding:28px;transition:border-color .35s}
+:root .offer .card:hover{border-color:#000;background:var(--paper);box-shadow:none;transform:none}
+:root .offer .card-no{font-size:36px;margin-bottom:15px}
+:root .offer .card-kicker{margin-bottom:12px}
+:root .offer .card h3{font-size:20px;line-height:1.5;min-height:60px;letter-spacing:.13em}
+:root .offer .card p{font-size:13px;line-height:1.8;margin:20px 0 0;padding:0}
+:root .offer-cta .btn{transition:background .35s,color .35s,border-color .35s}
+:root .offer-cta .btn:hover,:root .offer-cta .btn:focus-visible{background:#000;border-color:#000;color:#fff}
+:root .about-copy h2{font-size:clamp(28px,3vw,46px);line-height:1.5;letter-spacing:.14em}
+:root .about-text p{font-size:15px;line-height:1.85;margin-bottom:20px}
+
+/* Vertical offer packages: the same paper surface throughout. */
+:root .offer-page main,:root .offer-page .page-section,:root .offer-page .page-invite{background:var(--paper)}
+:root .offer-page .service-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+:root .offer-page .service-panel{display:flex;flex-direction:column;min-height:720px;padding:24px 0;gap:0;background:transparent;border:0;box-shadow:none}
+:root .offer-page .service-number{font-size:42px;margin-bottom:24px}
+:root .offer-page .service-panel>.eyebrow{margin-bottom:18px;font-size:10px}
+:root .offer-page .service-panel h2{font-size:23px;line-height:1.5;letter-spacing:.1em;min-height:105px;margin:0 0 20px}
+:root .offer-page .service-panel p{font-size:14px;line-height:1.85;min-height:105px;max-width:none;margin:0 0 20px}
+:root .offer-page .service-panel ul{display:block;list-style:none;margin:0;padding:0}
+:root .offer-page .service-panel li{font-size:13px;padding:0;margin-bottom:17px;line-height:1.8;border:0}
+:root .offer-page .service-panel li:before{content:none}
+:root .offer-page .service-bottom{margin-top:auto;padding-top:24px;align-self:stretch}
+:root .offer-page .service-bottom small{font-size:11px;margin-bottom:16px;letter-spacing:.1em}
+:root .offer-page .service-bottom .text-link{border:0;font-size:11px;padding:0;letter-spacing:.12em}
+:root .offer-page .offer-note{border:0;font-size:14px}
+
+/* One project frame and description per city. */
+:root .portfolio-page .portfolio-grid{display:flex;flex-direction:column;gap:80px}
+:root .portfolio-page .portfolio-item{padding:0;grid-column:auto}
+:root .portfolio-page .portfolio-item>a{display:grid;grid-template-columns:1.35fr 1fr;gap:6vw;align-items:center}
+:root .portfolio-page .portfolio-image{aspect-ratio:1.4!important;height:auto;min-height:0}
+:root .portfolio-page .portfolio-meta{margin:0;padding:0}
+:root .portfolio-page .portfolio-meta h2{margin:0 0 26px;font-size:25px;line-height:1.6}
+:root .portfolio-page .portfolio-description{font-size:15px;line-height:1.9;max-width:480px}
+:root .portfolio-page .portfolio-room{display:none}
+:root .portfolio-page .portfolio-item:nth-child(even)>a{grid-template-columns:1fr 1.35fr}
+:root .portfolio-page .portfolio-item:nth-child(even) .portfolio-image{grid-column:2;grid-row:1}
+:root .portfolio-page .portfolio-item:nth-child(even) .portfolio-meta{grid-column:1;grid-row:1}
+
+/* Shared quote form, full labels and room for the new fields. */
+:root .contact{background:var(--paper)}
+:root .contact .contact-main{max-width:1120px}
+:root .contact .field{display:flex;flex-direction:column;align-items:stretch;gap:10px;min-height:90px;padding:17px 22px;background:rgba(152,164,172,.08);border:0;border-radius:0}
+:root .contact .field>small{width:auto;flex:none;color:#514b45;font-size:11px;letter-spacing:.15em}
+:root .contact .field :is(input,select,textarea){width:100%;min-width:0;padding:0;font-size:15px;line-height:1.6;background-color:transparent}
+:root .contact .field select{padding-right:25px}
+:root .contact .field :is(input,select,textarea):focus-visible{outline:1px solid #98a4ac;outline-offset:5px}
+:root .contact .field-message{min-height:170px}
+:root .contact .field-row{gap:20px;margin-bottom:14px}
+:root .contact .field-row>.field{margin-bottom:0;flex:1}
+:root .contact-form .form-note{font-size:12px;line-height:1.7}
+:root .process-milestones{grid-template-columns:repeat(6,minmax(0,1fr))}
+:root .journal-page .journal-grid{row-gap:65px}
+:root .journal-page .journal-card h2{font-size:23px;letter-spacing:.1em;line-height:1.6}
+:root .article-reading-title{font-size:clamp(25px,3vw,42px);letter-spacing:.09em;line-height:1.5;max-width:1100px;margin:30px 0}
+:root .reading-page .article-body h2{font-size:27px;line-height:1.5;letter-spacing:.06em}
+:root .reading-page .article-body p{font-size:15px;line-height:1.95}
+:root .site-footer{background:#98a4ac;color:#22140b}
+:root .site-footer :is(a,span,p){color:#22140b}
+:root .site-footer :is(.footer-contact,.footer-top,.footer-bottom){border:0}
+:root .site-footer .footer-contact{border-top:1px solid rgba(34,20,11,.19);border-bottom:1px solid rgba(34,20,11,.19)}
+
+@media(max-width:1500px){:root .offer .cards{grid-template-columns:repeat(2,minmax(0,1fr))}:root .offer .card{padding:36px;max-width:540px;min-height:0}:root .offer .card p{font-size:15px}:root .offer .card h3{font-size:24px}:root .offer .cards{max-width:1080px;margin:0 auto}}
+@media(max-width:1100px){:root .offer-page .service-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:55px}:root .offer-page .service-panel{min-height:640px}:root .offer-page .service-panel h2{min-height:72px}:root .offer-page .service-panel p{min-height:80px}}
+@media(max-width:620px){:root .offer .cards,:root .offer-page .service-grid{grid-template-columns:1fr}:root .offer .card{padding:28px;aspect-ratio:1;max-width:none}:root .offer .card h3{font-size:22px}:root .offer .card p{font-size:14px}:root .offer-page .service-panel{min-height:0;padding:10px 0}:root .offer-page .service-panel h2,:root .offer-page .service-panel p{min-height:0}:root .offer-page .service-panel h2{font-size:25px}:root .offer-page .service-bottom{margin-top:0}:root .portfolio-page .portfolio-item>a,:root .portfolio-page .portfolio-item:nth-child(even)>a{display:flex;flex-direction:column;gap:25px;align-items:stretch}:root .portfolio-page .portfolio-grid{gap:55px}:root .portfolio-page .portfolio-image{aspect-ratio:1.1!important}:root .portfolio-page .portfolio-meta h2{font-size:22px;margin-bottom:18px}:root .contact .field-row{display:flex;flex-direction:column;gap:14px}:root .contact .field{padding:16px;min-height:90px}:root .contact .field :is(input,select,textarea){font-size:16px}:root .philosophy h2{font-size:29px}:root .reading-page .article-body h2{font-size:23px}:root .hero-glass span:nth-child(2){display:none}:root .journal-page .journal-card h2{font-size:24px}}
+@media(prefers-reduced-motion:reduce){.hero-glass{display:none}:root .offer .card,:root .offer-cta .btn{transition:none}}
+:root :is(h1,h2,h3,h4,.chapter-rail,.process-milestones button,.article-toc a){overflow-wrap:anywhere}:root .reading-page .page-banner h1{font-size:clamp(28px,3.5vw,48px);letter-spacing:.16em}@media(max-width:620px){:root .reading-page .page-banner h1{font-size:27px;letter-spacing:.1em}}
+:root .portfolio-page .portfolio-image{height:auto!important;width:100%;min-width:0}:root .portfolio-page .portfolio-item>a{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}:root .portfolio-page .portfolio-item:nth-child(even)>a{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr)}
+:root .footer-logo img{filter:brightness(0)}:root .offer-page .chapter-rail,:root .journal-page .chapter-rail{border:0;border-top:1px solid var(--line)}
+@media(max-width:620px){:root .page-banner:after{background:linear-gradient(90deg,rgba(246,244,241,.9),rgba(246,244,241,.62))}}

@@ -64,7 +64,7 @@ contactForm?.addEventListener('submit', e => {
   e.preventDefault();
   const data = new FormData(contactForm);
   const get = key => (data.get(key) || '').toString().trim();
-  const name = get('name');
+  const name = [get('name'),get('surname')].filter(Boolean).join(' ');
   const metraz = get('metraz');
 
   // Only answered questions go into the e-mail.
@@ -72,6 +72,11 @@ contactForm?.addEventListener('submit', e => {
     ['Oferta', get('oferta')],
     ['Rodzaj przestrzeni', get('typ')],
     ['Metraż', metraz && `${metraz} m²`],
+    ['Miasto', get('city')],
+    ['Stan nieruchomości', get('condition')],
+    ['Rynek', get('market')],
+    ['Planowany start projektu', get('start')],
+    ['Skąd wiesz o pracowni', get('source')],
   ].filter(([, value]) => value).map(([label, value]) => `${label}: ${value}`);
 
   const message = get('message');
@@ -163,11 +168,12 @@ if (processExperience) {
   const text = processExperience.querySelector('[data-process-text]');
   const count = processExperience.querySelector('[data-process-count]');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const lastStage = buttons.length - 1;
   let active = 0, copyAnimation, drag;
   const select = value => {
-    const position = Math.max(0, Math.min(4, value));
+    const position = Math.max(0, Math.min(lastStage, value));
     range.value = String(position);
-    range.style.setProperty('--process-progress', `${position / 4 * 100}%`);
+    range.style.setProperty('--process-progress', `${position / lastStage * 100}%`);
     const index = Math.round(position);
     range.setAttribute('aria-valuetext', buttons[index].dataset.processTitle);
     if (index === active) return;
@@ -181,7 +187,7 @@ if (processExperience) {
     });
     name.textContent = buttons[index].dataset.processTitle;
     text.textContent = buttons[index].dataset.processDescription;
-    count.innerHTML = `${String(index + 1).padStart(2, '0')} <span>/ 05</span>`;
+    count.innerHTML = `${String(index + 1).padStart(2, '0')} <span>/ ${String(buttons.length).padStart(2, '0')}</span>`;
     copyAnimation?.cancel();
     if (!reduced.matches) copyAnimation = copy.animate([{opacity:0,transform:`translateX(${direction * 18}px)`},{opacity:1,transform:'translateX(0)'}], {duration:450,easing:'cubic-bezier(.2,.7,.2,1)'});
   };
@@ -191,7 +197,7 @@ if (processExperience) {
     if (!delta) return;
     const current = Number(range.value);
     // Let normal page scrolling resume at either end of the process.
-    if ((delta < 0 && current <= 0) || (delta > 0 && current >= 4)) return;
+    if ((delta < 0 && current <= 0) || (delta > 0 && current >= lastStage)) return;
     e.preventDefault();
     const pixels = delta * (e.deltaMode === 1 ? 24 : e.deltaMode === 2 ? processExperience.clientHeight : 1);
     select(current + pixels / 400);
@@ -201,7 +207,7 @@ if (processExperience) {
   range.addEventListener('keydown', e => {
     if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(e.key)) return;
     e.preventDefault();
-    select(e.key === 'Home' ? 0 : e.key === 'End' ? 4 : active + (e.key === 'ArrowRight' || e.key === 'ArrowUp' ? 1 : -1));
+    select(e.key === 'Home' ? 0 : e.key === 'End' ? lastStage : active + (e.key === 'ArrowRight' || e.key === 'ArrowUp' ? 1 : -1));
   });
   art.addEventListener('pointerdown', e => {
     if (e.button !== 0) return;
@@ -212,7 +218,7 @@ if (processExperience) {
     if (!drag) return;
     const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
     if (Math.abs(dx) < Math.abs(dy) && Math.abs(dy) > 12) return;
-    select(drag.start - dx / art.clientWidth * 3);
+    select(drag.start - dx / art.clientWidth * lastStage);
   });
   const stop = () => {drag = null; art.classList.remove('is-dragging');};
   art.addEventListener('pointerup', () => {stop(); select(active);});

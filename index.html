@@ -9,9 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="motion.png" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/mid-century/hero-main.webp" fetchpriority="high">
   <link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="typography.css"></head>
+<link rel="stylesheet" href="typography.css"><link rel="stylesheet" href="mid-century.css"></head>
 <body>
   <header class="site-header">
     <nav class="desktop-nav" aria-label="Nawigacja główna"><a href="index.html" aria-current="page">Start</a><a href="oferty.html">Oferta</a><a href="projekty.html">Projekty</a><a href="kontakt.html">Kontakt</a><a href="artykuly.html">Artykuły</a></nav>
@@ -26,18 +26,18 @@
   </aside>
 
   <main id="top">
-    <section class="hero" aria-label="ELEPHANT Architecture & Interiors">
+    <section class="hero material-motion" data-material-motion aria-label="ELEPHANT Architecture & Interiors">
       <div class="hero-frames" data-hero-frames aria-hidden="true">
-        <img src="motion.png" alt="" fetchpriority="high" class="is-on" />
+        <img src="assets/mid-century/hero-main.webp" alt="" fetchpriority="high" class="is-on" />
       </div>
-      <div class="hero-shade"></div>
+      <div class="hero-glass" aria-hidden="true"><span></span><span></span><span></span></div><div class="hero-shade"></div>
 
       <h1 class="hero-logo">
         <img src="logo-elephant-invert.png" alt="ELEPHANT Interior Design" width="1200" height="156" />
       </h1>
       <div class="hero-actions">
         <a href="#omnie" class="hero-btn"><span class="hero-btn-no">I</span><span>Poznaj studio</span></a>
-        <a href="#projekty" class="hero-btn"><span class="hero-btn-no">II</span><span>Zobacz realizacje</span></a>
+        <a href="#projekty" class="hero-btn"><span class="hero-btn-no">II</span><span>Zobacz projekty</span></a>
       </div>
     </section>
 
@@ -48,48 +48,20 @@
           <img src="natasza-portrait.jpg" alt="Natasza, projektantka wnętrz i założycielka ELEPHANT Studio" loading="lazy" width="426" height="614" />
         </div>
         <div class="about-copy">
-          <h2 id="about-title">HEJ!</h2>
-          <div class="about-text">
-            <p>ELEPHANT powstało z przekonania, że nawet niewielki metraż może dawać poczucie jakości, spokoju i komfortu. Projektuję wnętrza tak, aby były estetyczne, ale przede wszystkim dopasowane do codziennego życia.</p>
-            <p>Najważniejsze są dla mnie proporcja, światło i decyzje, które realnie porządkują przestrzeń. Zamiast projektować pod chwilowy trend, szukam rozwiązań, które zostają na dłużej i mają sens w praktyce.</p>
-          </div>
+          <h2 id="about-title">Hej, jestem Natasza!</h2>
+          <div class="about-text"><p>Stworzyłam ELEPHANT Studio z potrzeby projektowania wnętrz skrojonych na miarę i dopasowanych do indywidualnego stylu życia ich mieszkańców. Jako absolwentka architektury patrzę na wnętrza przez pryzmat dwóch perspektyw: precyzji oraz artyzmu.</p><p>Projektowanie to dla mnie coś więcej niż podążanie za ulotnymi trendami czy trzymanie się sztywnych definicji stylu, to dialog między człowiekiem a przestrzenią. Każdy projekt zaczynam od poznania Twojej historii, nawyków, codziennego rytmu i marzeń.</p><p>W ELEPHANT luksus to świadome wybieranie materiałów i proporcji.</p><p>W moich projektach lubię budować neutralne bazy i dodawać kolorystyczne akcenty, to właśnie te detale nadają wnętrzu charakter. Minimalizm nie oznacza dla mnie pustki, a intencjonalna selekcja tego, co naprawdę potrzebne.</p><p>Nie tworzę wnętrz, które mijają wraz z trendami, lecz takie, które dojrzewają razem z mieszkańcami i zyskują z czasem na szlachetności.</p><p>W projektach chętnie współpracuję z polskimi manufakturami i lokalnymi rzemieślnikami, nadając wnętrzom niepowtarzalny i bardzo osobisty charakter.</p></div>
         </div>
       </div>
     </section>
 
     <section class="offer" id="oferta" aria-labelledby="offer-title">
-      <header class="material-divider material-motion living-scene" data-material-motion><svg class="living-surface" data-living-surface data-scene-kind="curtain" viewBox="0 0 2172 724" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><image href="assets/materials/curtain-floor.webp" width="2172" height="724"/></svg>
-        <div class="material-copy"><h2 id="offer-title">Oferta</h2><p>Każda przestrzeń potrzebuje własnego podejścia. Od pierwszej rozmowy i uporządkowania pomysłów, przez koncepcję, aż po projekt i realizację — wybierz zakres wsparcia dopasowany do swoich potrzeb. Wspólnie zadbamy o funkcję, proporcje i detale, które tworzą spokojne, spójne wnętrze.</p></div>
+      <header class="material-divider material-motion living-scene" data-material-motion><svg class="living-surface" data-living-surface data-scene-kind="curtain" viewBox="0 0 2172 724" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><image href="assets/mid-century/curtain-oblique.webp" width="2172" height="724"/></svg>
+        <div class="material-copy"><h2 id="offer-title">Oferta</h2><p>Dostępny zakres usług obejmuje opcje od pojedynczej konsultacji online, przez układ funkcjonalny, po pełny projekt wykonawczy. Każdy pakiet stanowi bazę, którą można elastycznie dopasować do indywidualnych potrzeb.</p></div>
       </header>
 
       <div class="offer-content section-pad">
 <div class="chapter-rail"><span>II / Zakres współpracy</span><span>Od rozmowy do realizacji</span></div>
-      <div class="cards">
-        <article class="card">
-          <span class="card-no">I</span>
-          <span class="card-kicker">Na start</span>
-          <h3>Konsultacja</h3>
-          <p>Rozmowa, która porządkuje kierunek i pozwala spojrzeć na przestrzeń z właściwej perspektywy. Dobry punkt wyjścia, kiedy chcesz uporządkować pomysły i sprawdzić, które decyzje warto podjąć na początku.</p>
-        </article>
-        <article class="card">
-          <span class="card-no">II</span>
-          <span class="card-kicker">Kierunek</span>
-          <h3>Projekt koncepcyjny</h3>
-          <p>Funkcja, proporcje i klimat wnętrza zebrane w jeden czytelny kierunek. Powstaje wizja, która porządkuje charakter wnętrza i sposób korzystania z przestrzeni.</p>
-        </article>
-        <article class="card">
-          <span class="card-no">III</span>
-          <span class="card-kicker">Od A do Z</span>
-          <h3>Projekt kompleksowy</h3>
-          <p>Pełne opracowanie wnętrza — od pierwszych decyzji po rozwiązania gotowe do wdrożenia. Spójna dokumentacja, materiały i detale gotowe do realizacji.</p>
-        </article>
-        <article class="card">
-          <span class="card-no">IV</span>
-          <span class="card-kicker">Na budowie</span>
-          <h3>Nadzór autorski</h3>
-          <p>Wsparcie podczas realizacji, aby finalny efekt zachował jakość, proporcje i charakter projektu — bez gubienia założeń na etapie wykonawczym.</p>
-        </article>
-      </div>
+      <div class="cards"><article class="card"><span class="card-no">00</span><span class="card-kicker">Pierwsze decyzje</span><h3>Konsultacja online</h3><p>Merytoryczne wsparcie bez konieczności zamawiania pełnego projektu. Wyjaśnienie wątpliwości, uporządkowanie pomysłów oraz omówienie układu, materiałów lub koncepcji funkcjonalnej podczas pojedynczego spotkania online.</p></article><article class="card"><span class="card-no">01</span><span class="card-kicker">Funkcja i ergonomia</span><h3>Układ funkcjonalny</h3><p>Absolutny fundament wygodnego wnętrza. Opracowanie ergonomii przestrzeni na rzutach 2D, optymalizacja ciągów komunikacyjnych oraz rozplanowanie stref użytkowych dopasowanych do Twojego rytmu dnia.</p></article><article class="card"><span class="card-no">02</span><span class="card-kicker">Materiały i przestrzeń</span><h3>Projekt koncepcyjny</h3><p>Pełna wizja estetyczno-przestrzenna Twojego wnętrza. Zestawienie materiałów i kolorów na moodboardzie, przestrzenny model 3D, fotorealistyczne wizualizacje oraz zestawienie kluczowych elementów wyposażenia.</p></article><article class="card"><span class="card-no">03</span><span class="card-kicker">Od wizji do wykonania</span><h3>Projekt kompleksowy</h3><p>Pełne opracowanie od A do Z. Połączenie wizji estetycznej z kompletną dokumentacją techniczną dla wykonawców (elektryka, hydraulika, kłady ścian, stolarstwo) oraz szczegółowe zestawienie elementów wyposażenia.</p></article></div>
 
       <div class="offer-cta">
         <a href="#kontakt" class="btn btn-dark">Zapytaj o termin</a>
@@ -100,11 +72,11 @@
     <section class="projects" id="projekty">
       <header class="section-heading projects-heading section-pad-small">
         <span>III / PORTFOLIO</span>
-        <h2>Wybrane realizacje</h2>
+        <h2>Wybrane projekty</h2>
         <a class="quiet-link" href="projekty.html">Zobacz wszystkie projekty</a>
       </header>
 
-      <div class="carousel-wrap" data-carousel tabindex="0" role="region" aria-label="Wybrane realizacje — przewijaj poziomo">
+      <div class="carousel-wrap" data-carousel tabindex="0" role="region" aria-label="Wybrane projekty — przewijaj poziomo">
         <div class="projects-track" data-track>
           <article class="project-card"><div class="project-placeholder"><span>I</span><b>TU BĘDZIE ZDJĘCIE</b><i>ELEPHANT</i></div><div class="project-meta"><h3>Projekt I</h3><p>wnętrze / MMXXVI</p></div></article>
           <article class="project-card"><div class="project-placeholder"><span>II</span><b>TU BĘDZIE ZDJĘCIE</b><i>ELEPHANT</i></div><div class="project-meta"><h3>Projekt II</h3><p>wnętrze / MMXXVI</p></div></article>
@@ -117,21 +89,15 @@
     </section>
 
     <section class="process" id="proces" aria-labelledby="process-title">
-      <header class="material-divider material-motion living-scene" data-material-motion><svg class="living-surface" data-living-surface data-scene-kind="plant" viewBox="0 0 2172 724" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><image href="assets/materials/plant-wall.webp" width="2172" height="724"/></svg>
-        <div class="material-copy"><h2 id="process-title">Proces</h2><p>Dobry projekt powstaje krok po kroku. Zaczynamy od rozmowy o Twojej codzienności, potem szukamy właściwego kierunku i przekładamy go na konkretne rozwiązania. Każdy etap to przestrzeń na dialog i świadome decyzje — od pierwszych pomysłów do gotowego wnętrza.</p></div>
+      <header class="material-divider material-motion living-scene" data-material-motion><svg class="living-surface" data-living-surface data-scene-kind="plant" viewBox="0 0 2172 724" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><image href="assets/mid-century/plant-front.webp" width="2172" height="724"/></svg>
+        <div class="material-copy"><h2 id="process-title">Proces</h2><p>Każdy projekt powstaje krok po kroku. To uporządkowany, kilkutygodniowy proces: od poznania Twoich potrzeb na spotkaniu online, przez układ funkcjonalny i moodboard, model 3D z wizualizacjami, aż po dokumentację techniczną wraz z listą wyposażenia.</p></div>
       </header>
       <div class="process-content section-pad">
 <div class="chapter-rail"><span>IV / Współpraca</span><span>Krok po kroku</span></div>
         <div class="process-intro"><h3 class="process-heading">Jak wygląda<br>proces</h3></div>
         <div class="process-experience" data-process-experience>
-          <div class="process-focus" aria-live="polite" aria-atomic="true"><span class="process-focus-count" data-process-count>01 <span>/ 05</span></span><h4 data-process-name>Układ<br>funkcjonalny</h4><p data-process-text>Zaczynamy od Twoich potrzeb. Szukamy układu, który porządkuje przestrzeń i codzienne życie.</p><span class="process-focus-note">Od pomysłu do przestrzeni.</span></div>
-          <div class="process-scrubber"><div class="process-scrubber-top"><span>Przewiń lub przesuń, aby odkryć kolejny etap</span><span data-process-position>01 — 05</span></div><input class="process-range" data-process-range type="range" min="0" max="4" step="0.01" value="0" aria-label="Etap projektowania" aria-valuetext="Układ funkcjonalny" /><div class="process-milestones" aria-label="Wybierz etap">
-            <button type="button" data-process-stage="0" data-process-title="Układ funkcjonalny" data-process-description="Zaczynamy od Twoich potrzeb. Szukamy układu, który porządkuje przestrzeń i codzienne życie." aria-pressed="true"><span>01</span><span>Układ funkcjonalny</span></button>
-            <button type="button" data-process-stage="1" data-process-title="Moodboard" data-process-description="Wybieramy materiały, faktury i ton wnętrza. Każdy element staje się częścią jednej opowieści." aria-pressed="false"><span>02</span><span>Moodboard</span></button>
-            <button type="button" data-process-stage="2" data-process-title="Model przestrzenny" data-process-description="Sprawdzamy bryły i proporcje. Patrzymy na wnętrze jako całość, zanim dopracujemy detale." aria-pressed="false"><span>03</span><span>Model przestrzenny</span></button>
-            <button type="button" data-process-stage="3" data-process-title="Wizualizacje" data-process-description="Pokazujemy przyszłe wnętrze. Światło, materiały i rozwiązania spotykają się w konkretnym obrazie." aria-pressed="false"><span>04</span><span>Wizualizacje</span></button>
-            <button type="button" data-process-stage="4" data-process-title="Dokumentacja" data-process-description="Przekładamy projekt na czytelne rysunki i szczegóły, które prowadzą wykonawców przez realizację." aria-pressed="false"><span>05</span><span>Dokumentacja</span></button>
-          </div></div>
+          <div class="process-focus" aria-live="polite" aria-atomic="true"><span class="process-focus-count" data-process-count>01 <span>/ 06</span></span><h4 data-process-name>Spotkania online</h4><p data-process-text>Poznajemy Twoje potrzeby, codzienny rytm i oczekiwania. Wspólnie ustalamy kierunek oraz zakres współpracy.</p><span class="process-focus-note">Od pomysłu do przestrzeni.</span></div>
+          <div class="process-scrubber"><div class="process-scrubber-top"><span>Przewiń lub przesuń, aby odkryć kolejny etap</span><span data-process-position>01 — 06</span></div><input class="process-range" data-process-range type="range" min="0" max="5" step="0.01" value="0" aria-label="Etap projektowania" aria-valuetext="Spotkania online" /><div class="process-milestones" aria-label="Wybierz etap"><button type="button" data-process-stage="0" data-process-title="Spotkania online" data-process-description="Poznajemy Twoje potrzeby, codzienny rytm i oczekiwania. Wspólnie ustalamy kierunek oraz zakres współpracy." aria-pressed="true"><span>01</span><span>Spotkania online</span></button><button type="button" data-process-stage="1" data-process-title="Układ funkcjonalny" data-process-description="Przygotowujemy warianty układu i rozplanowujemy strefy tak, żeby wnętrze odpowiadało Twojej codzienności." aria-pressed="false"><span>02</span><span>Układ funkcjonalny</span></button><button type="button" data-process-stage="2" data-process-title="Moodboard" data-process-description="Dobieramy materiały, faktury i kolory. Powstaje spójna baza estetyczna projektu." aria-pressed="false"><span>03</span><span>Moodboard</span></button><button type="button" data-process-stage="3" data-process-title="Projekt 3D" data-process-description="Budujemy przestrzenny model wnętrza i sprawdzamy proporcje oraz relacje między elementami." aria-pressed="false"><span>04</span><span>Projekt 3D</span></button><button type="button" data-process-stage="4" data-process-title="Wizualizacje" data-process-description="Światło, materiały i wyposażenie spotykają się w fotorealistycznym obrazie przyszłego wnętrza." aria-pressed="false"><span>05</span><span>Wizualizacje</span></button><button type="button" data-process-stage="5" data-process-title="Lista wyposażenia" data-process-description="Zbieramy wybrane materiały, meble i oświetlenie w czytelne zestawienie, które pomaga przejść do realizacji." aria-pressed="false"><span>06</span><span>Lista wyposażenia</span></button></div></div>
         </div>
       <div class="process-foot">
         <p>Czas trwania każdego etapu ustalamy wspólnie — zależy od metrażu i zakresu prac.</p>
@@ -141,13 +107,9 @@
     </section>
 
     <section class="philosophy material-motion living-scene" data-material-motion id="filozofia" aria-labelledby="philosophy-title">
-      <svg class="living-surface" data-living-surface data-scene-kind="interior" data-shadow-end="0.77" data-horizon="0.12" viewBox="0 0 2172 724" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><image href="assets/materials/philosophy-interior-v2.webp" width="2172" height="724"/></svg>
+      <svg class="living-surface" data-living-surface data-scene-kind="interior" data-shadow-end="0.77" data-horizon="0.12" viewBox="0 0 2172 724" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><image href="assets/mid-century/curtain-front.webp" width="2172" height="724"/></svg>
       <div class="philosophy-content">
-        <h2 id="philosophy-title">Filozofia</h2>
-      <div class="philosophy-simple">
-        <p>W ELEPHANT najważniejsze są świadome decyzje. Projekt nie zaczyna się od trendu, lecz od człowieka, jego rytmu dnia i potrzeb, które przestrzeń ma wspierać.</p>
-        <p>Dlatego tak dużą wagę przykładam do proporcji, światła i materiału. Minimalizm nie oznacza pustki — oznacza selekcję tego, co naprawdę potrzebne i ponadczasowe.</p>
-      </div>
+        <h2 id="philosophy-title">Projekt zaczyna się od Ciebie</h2><div class="philosophy-simple"><p>W Elephant Studio wnętrze nie jest zbiorem przypadkowych przedmiotów, ale opowieścią o ludziach, którzy w nim żyją. Kluczowym punktem wyjścia jest więc poznanie Twoich potrzeb, nawyków, stylu życia i marzeń.</p></div>
       </div>
     </section>
 
@@ -202,45 +164,14 @@
 
     <section class="contact-section" id="kontakt" aria-labelledby="contact-banner-title">
       <header class="material-divider material-motion living-scene" data-material-motion>
-        <svg class="living-surface" data-living-surface data-scene-kind="interior" data-shadow-end="0.84" data-horizon="-1" viewBox="0 0 2172 724" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><image href="assets/materials/contact-plant-oblique.webp" width="2172" height="724"/></svg>
-        <div class="material-copy"><h2 id="contact-banner-title">Kontakt</h2><p>Każdy projekt zaczyna się od rozmowy. Opowiedz o swojej przestrzeni, potrzebach i pomysłach — wspólnie znajdziemy właściwy kierunek. Niezależnie od metrażu, pierwszy krok jest ten sam: poznać Ciebie i to, jak chcesz mieszkać.</p></div>
+        <svg class="living-surface" data-living-surface data-scene-kind="interior" data-shadow-end="0.84" data-horizon="-1" viewBox="0 0 2172 724" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><image href="assets/mid-century/plant-oblique.webp" width="2172" height="724"/></svg>
+        <div class="material-copy"><h2 id="contact-banner-title">Kontakt</h2><p>Każdy projekt zaczyna się od rozmowy. Opowiedz o swojej przestrzeni, potrzebach i pomysłach — wspólnie znajdziemy właściwy kierunek. Pierwszy krok jest zawsze ten sam: poznać Ciebie i to, jak chcesz mieszkać. Napisz do mnie lub zarezerwuj termin spotkania.</p></div>
       </header>
     <div class="contact section-pad">
 
 
       <div class="contact-main">
-      <form class="contact-form" aria-label="Opowiedz o swoim projekcie" data-contact-form>
-        <label class="field"><small>Imię</small><input type="text" name="name" required autocomplete="name" placeholder="Imię i nazwisko" /></label>
-        <div class="field-row">
-          <label class="field"><small>E-mail</small><input type="email" name="email" required autocomplete="email" placeholder="adres@email.pl" /></label>
-          <label class="field"><small>Telefon</small><input type="tel" name="phone" autocomplete="tel" placeholder="opcjonalnie" /></label>
-        </div>
-        <label class="field"><small>Oferta</small>
-          <select name="oferta">
-            <option value="">Czym jesteś zainteresowany/a?</option>
-            <option>Konsultacja</option>
-            <option>Projekt koncepcyjny</option>
-            <option>Projekt kompleksowy</option>
-            <option>Nadzór autorski</option>
-            <option>Jeszcze nie wiem</option>
-          </select>
-        </label>
-        <div class="field-row">
-          <label class="field"><small>Wnętrze</small>
-            <select name="typ">
-              <option value="">Rodzaj przestrzeni</option>
-              <option>Mieszkanie</option>
-              <option>Dom</option>
-              <option>Pojedyncze pomieszczenie</option>
-              <option>Lokal usługowy</option>
-            </select>
-          </label>
-          <label class="field"><small>Metraż</small><input type="number" name="metraz" min="1" inputmode="numeric" placeholder="np. 54" /><em>m²</em></label>
-        </div>
-        <label class="field field-area"><small>Opis</small><textarea name="message" rows="4" placeholder="Krótko opowiedz o projekcie"></textarea></label>
-        <label class="consent"><input type="checkbox" name="zgoda" required /><span>Wyrażam zgodę na kontakt w sprawie mojego zapytania.</span></label>
-        <button type="submit"><span>Wyślij zapytanie</span><span>↗</span></button>
-      </form>
+      <form class="contact-form" aria-label="Opowiedz o swoim projekcie" data-contact-form><div class="field-row"><label class="field"><small>Imię</small><input type="text" name="name" placeholder="Twoje imię" required autocomplete="given-name"></label><label class="field"><small>Nazwisko</small><input type="text" name="surname" placeholder="Twoje nazwisko" required autocomplete="family-name"></label></div><div class="field-row"><label class="field"><small>E-mail</small><input type="email" name="email" placeholder="adres@email.pl" required autocomplete="email"></label><label class="field"><small>Telefon</small><input type="tel" name="phone" placeholder="Numer telefonu" autocomplete="tel"></label></div><label class="field"><small>Oferta</small><select name="oferta"><option value="">Wybierz zakres współpracy</option><option>Konsultacja online</option><option>Układ funkcjonalny</option><option>Projekt koncepcyjny</option><option>Projekt kompleksowy</option></select></label><div class="field-row"><label class="field"><small>Wnętrze</small><select name="typ"><option value="">Rodzaj przestrzeni</option><option>Mieszkanie</option><option>Dom</option><option>Jedno pomieszczenie</option><option>Przestrzeń usługowa</option><option>Inne</option></select></label><label class="field"><small>Metraż</small><input type="number" name="metraz" placeholder="np. 54" min="1" step="0.1" aria-label="Metraż w metrach kwadratowych"></label></div><div class="field-row"><label class="field"><small>Miasto</small><input type="text" name="city" placeholder="np. Kraków" autocomplete="address-level2"></label><label class="field"><small>Stan</small><select name="condition"><option value="">Stan nieruchomości</option><option>Stan deweloperski</option><option>Do remontu</option><option>W trakcie remontu</option><option>Zamieszkała — zmiana aranżacji</option><option>W budowie</option></select></label></div><div class="field-row"><label class="field"><small>Rynek</small><select name="market"><option value="">Rynek nieruchomości</option><option>Pierwotny</option><option>Wtórny</option><option>Nie dotyczy</option></select></label><label class="field"><small>Start projektu</small><input type="month" name="start" placeholder="" aria-label="Planowany miesiąc rozpoczęcia projektu"></label></div><label class="field"><small>Skąd wiesz?</small><select name="source"><option value="">Skąd wiesz o pracowni?</option><option>Instagram</option><option>Facebook</option><option>Strona internetowa / wyszukiwarka</option><option>Polecenie</option><option>Inne</option></select></label><label class="field field-message"><small>Opis</small><textarea name="message" rows="5" placeholder="Opowiedz o przestrzeni, potrzebach i pomysłach"></textarea></label><label class="consent"><input type="checkbox" name="consent" required><span>Wyrażam zgodę na kontakt w sprawie mojego zapytania.</span></label><button type="submit">Przygotuj wiadomość <span aria-hidden="true">↗</span></button><p class="form-note">Formularz otworzy Twoją aplikację pocztową z przygotowaną wiadomością. Przed wysłaniem możesz uzupełnić lub zmienić jej treść.</p></form>
 
       </div>
 
@@ -260,7 +191,7 @@
         <a href="oferty.html">Oferta</a>
         <a href="projekty.html">Projekty</a>
       </nav>
-      <a class="footer-logo" href="index.html"><img src="logo-elephant-invert.png" alt="ELEPHANT Interior Design" /></a>
+      <a class="footer-logo" href="index.html"><img src="logo-elephant.png" alt="ELEPHANT Interior Design" /></a>
       <nav>
         <a href="kontakt.html">Kontakt</a>
         <a href="artykuly.html">Artykuły</a>
@@ -277,6 +208,6 @@
     </div>
   </footer>
 
-  <script src="living-motion.js?v=4"></script><script src="script.js?v=2"></script>
+  <script src="living-motion.js?v=5"></script><script src="script.js?v=4"></script>
 </body>
 </html>
