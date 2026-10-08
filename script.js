@@ -77,6 +77,8 @@ contactForm?.addEventListener('submit', e => {
     ['Rynek', get('market')],
     ['Planowany start projektu', get('start')],
     ['Skąd wiesz o pracowni', get('source')],
+    ['Preferowany termin konsultacji', get('preferred_date')],
+    ['Preferowana godzina konsultacji', get('preferred_time')],
   ].filter(([, value]) => value).map(([label, value]) => `${label}: ${value}`);
 
   const message = get('message');
