@@ -11,7 +11,7 @@
       if(isBanner>.5 && aspect<2.)p.x+=(1.-cover.x)*.22;
       // Gentle camera drift and a single soft focus plane, with no ripple stripes.
       p=(p-.5)*.92+.5;
-      p+=vec2(sin(time*.32)*.025,cos(time*.25)*.004);
+      p+=vec2(sin(time*.4)*.032,cos(time*.3)*.005);
       float amount=.014+.013*(.5+.5*sin(time*.4));
       vec3 color=vec3(0.);float weight=0.;
       for(int i=-8;i<=8;i++){

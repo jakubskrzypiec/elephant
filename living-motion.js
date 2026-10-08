@@ -14,7 +14,7 @@
       if(interior>.5 && aspect<2.)p.x+=(1.-cover.x)*cropShift;
       float breeze=sin(time*.72); float second=sin(time*.57);
       // The photo texture stays at p. Only its low-frequency illumination shifts.
-      vec2 drift=mix(vec2(.022*breeze,.026*second),vec2(.028*breeze,.016*second),curtain);
+      vec2 drift=mix(vec2(.022*breeze,.026*second),vec2(.055*breeze,.026*second),curtain);
       float start=smoothstep(.25,.42,p.x);
       float objectEdge=mix(.92,.85,curtain);
       float wall=start*(1.-smoothstep(objectEdge-.08,objectEdge,p.x));
