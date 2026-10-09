@@ -164,11 +164,13 @@ if (processExperience) {
   const range = processExperience.querySelector('[data-process-range]');
   const buttons = [...processExperience.querySelectorAll('[data-process-stage]')];
   const images = [...processExperience.querySelectorAll('.process-art-image')];
-  const art = processExperience.querySelector('.process-focus');
+  const dragAreas = [...processExperience.querySelectorAll('.process-focus,.process-mini-art')];
   const copy = processExperience.querySelector('.process-focus');
   const name = processExperience.querySelector('[data-process-name]');
   const text = processExperience.querySelector('[data-process-text]');
   const count = processExperience.querySelector('[data-process-count]');
+  const previous = processExperience.querySelector('[data-process-prev]');
+  const next = processExperience.querySelector('[data-process-next]');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const lastStage = buttons.length - 1;
   let active = 0, copyAnimation, drag;
@@ -177,6 +179,8 @@ if (processExperience) {
     range.value = String(position);
     range.style.setProperty('--process-progress', `${position / lastStage * 100}%`);
     const index = Math.round(position);
+    if (previous) previous.disabled = index === 0;
+    if (next) next.disabled = index === lastStage;
     range.setAttribute('aria-valuetext', buttons[index].dataset.processTitle);
     if (index === active) return;
     const direction = index > active ? 1 : -1;
@@ -206,11 +210,14 @@ if (processExperience) {
   }, {passive:false});
   range.addEventListener('input', () => select(Number(range.value)));
   buttons.forEach((button, index) => button.addEventListener('click', () => select(index)));
+  previous?.addEventListener('click', () => select(active - 1));
+  next?.addEventListener('click', () => select(active + 1));
   range.addEventListener('keydown', e => {
     if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(e.key)) return;
     e.preventDefault();
     select(e.key === 'Home' ? 0 : e.key === 'End' ? lastStage : active + (e.key === 'ArrowRight' || e.key === 'ArrowUp' ? 1 : -1));
   });
+  dragAreas.forEach(art => {
   art.addEventListener('pointerdown', e => {
     if (e.button !== 0) return;
     drag = {x:e.clientX,y:e.clientY,start:Number(range.value)};
@@ -226,6 +233,7 @@ if (processExperience) {
   art.addEventListener('pointerup', () => {stop(); select(active);});
   art.addEventListener('pointercancel', stop);
   art.addEventListener('lostpointercapture', stop);
+  });
   reduced.addEventListener('change', () => copyAnimation?.cancel());
 }
 
