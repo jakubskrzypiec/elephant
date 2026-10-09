@@ -26,7 +26,7 @@
       // A tiny, smooth flex at the outer fabric/leaves; never distort the room.
       float edge=smoothstep(.86,.98,p.x);
       if(curtain<.5)edge*=smoothstep(.45,.7,p.y);
-      if(interior>.5)edge=smoothstep(.955,.99,p.x);
+      if(interior>.5)edge=0.; // Interior objects stay still; only shadows move.
       vec2 objectShift=vec2(.0008*breeze*(1.-p.y),.0004*second)*edge;
       vec3 detail=texture2D(photo,p+objectShift).rgb;
       gl_FragColor=vec4(detail*mix(1.,ratio,wall),1.);
