@@ -195,7 +195,7 @@ if (processExperience) {
     text.textContent = buttons[index].dataset.processDescription;
     count.innerHTML = `${String(index + 1).padStart(2, '0')} <span>/ ${String(buttons.length).padStart(2, '0')}</span>`;
     copyAnimation?.cancel();
-    if (!reduced.matches) copyAnimation = copy.animate([{opacity:0,transform:`translateX(${direction * 18}px)`},{opacity:1,transform:'translateX(0)'}], {duration:450,easing:'cubic-bezier(.2,.7,.2,1)'});
+    if (!reduced.matches) copyAnimation = copy.animate([{opacity:0},{opacity:1}], {duration:350,easing:'ease-out'});
   };
   processExperience.addEventListener('wheel', e => {
     if (e.ctrlKey) return;

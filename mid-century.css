@@ -228,3 +228,12 @@
 @media(max-width:980px){:root .offer .card{min-height:560px;padding:45px 30px}:root .process-experience{grid-template-columns:minmax(0,1fr) minmax(220px,.8fr);gap:20px}.process-mini-art{max-width:320px;height:280px}:root .process-focus h4{font-size:29px;letter-spacing:.12em}:root .process-focus p{font-size:15px}}
 @media(max-width:620px){:root .offer .card{min-height:520px;padding:42px 30px}:root .offer .card h3{min-height:60px}:root .process-experience{display:grid;grid-template-columns:1fr;row-gap:15px}.process-navigation{grid-column:1;gap:12px;margin:0}.process-scroll-cue{font-size:11px;gap:10px}.process-scroll-cue small{font-size:10px}.process-desktop-hint{display:none}.process-mobile-hint{display:inline}.process-arrows{gap:8px}.process-arrows button{width:38px;height:38px;font-size:19px}:root .process-focus{order:0;min-height:260px;padding:25px 0 0}:root .process-focus h4{font-size:26px}:root .process-focus p{font-size:14px;min-height:80px}.process-mini-art{width:100%;max-width:300px;height:235px;margin:0 auto 10px}:root .process-scrubber{margin-top:15px}:root .process-scrubber-top{font-size:9px;letter-spacing:.08em}}
 @media(prefers-reduced-motion:reduce){.process-cue-wheel{animation:none}.process-arrows button{transition:none}}
+
+/* Fixed stage geometry, black line drawings, and bare navigation arrows. */
+:root .process-focus{display:grid;grid-template-rows:24px 132px 140px 20px;row-gap:20px;align-content:start;min-height:0;padding:30px 0}
+:root .process-focus-count,:root .process-focus h4,:root .process-focus p,:root .process-focus-note{margin:0;min-height:0}
+:root .process-mini-art .process-art-image{filter:none;mix-blend-mode:normal;transform:none;transition:opacity .35s}
+.process-arrows button{border:0;border-radius:0;background:none;color:#000;font-size:30px;transition:opacity .2s}
+.process-arrows button:hover:not(:disabled){background:none;border:0;color:#000;opacity:.55}
+@media(max-width:980px){:root .process-focus{grid-template-rows:24px 132px 160px 20px}}
+@media(max-width:620px){:root .process-focus{grid-template-rows:24px 90px 130px;row-gap:16px;padding:25px 0 0;min-height:0}.process-arrows button{font-size:27px}}
