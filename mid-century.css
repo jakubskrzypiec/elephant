@@ -118,8 +118,14 @@
 #proces .architectural-shadow{animation-delay:-4s;animation-duration:6s}
 #filozofia .architectural-shadow{animation-delay:-2s;animation-duration:5.5s}
 #kontakt .architectural-shadow{animation-delay:-6s;animation-duration:6.5s}
+/* More legible shadow motion in scenes 1, 2 and 4; unchanged shadow size and travel. */
+#oferta .architectural-shadow,#proces .architectural-shadow,#kontakt .architectural-shadow{opacity:.32;filter:blur(5px)}
+#oferta .architectural-shadow{animation-duration:3.8s}
+#proces .architectural-shadow{animation-duration:4.2s}
+#kontakt .architectural-shadow{animation-duration:4.6s}
 @keyframes window-shadow-sway{from{transform:translate(-75px,-15px) rotate(-2deg)}to{transform:translate(75px,20px) rotate(2deg)}}
 @media(max-width:620px){.architectural-shadow{inset:-8% -5% -8% -35%;opacity:.16;filter:blur(4px)}}
+@media(max-width:620px){#oferta .architectural-shadow,#proces .architectural-shadow,#kontakt .architectural-shadow{opacity:.27;filter:blur(4px)}}
 @media(prefers-reduced-motion:reduce){.architectural-shadow{animation:none;transform:none;will-change:auto}}
 
 /* Raised, slightly larger paper cards. */

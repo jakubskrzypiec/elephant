@@ -6,13 +6,13 @@
     void main(){uv=position*.5+.5;gl_Position=vec4(position,0.,1.);}`;
   const fragment = `precision mediump float;
     varying vec2 uv; uniform sampler2D photo; uniform sampler2D light;
-    uniform float time; uniform float aspect; uniform float curtain; uniform float interior; uniform float shadowEnd; uniform float horizon; uniform float cropShift;
+    uniform float time; uniform float aspect; uniform float curtain; uniform float interior; uniform float shadowEnd; uniform float horizon; uniform float cropShift; uniform float shadowStrength; uniform float shadowSpeed;
     float luma(vec3 c){return dot(c,vec3(.2126,.7152,.0722));}
     void main(){
       vec2 cover=aspect<3.?vec2(aspect/3.,1.):vec2(1.,3./aspect);
       vec2 p=(uv-.5)*cover+.5;
       if(interior>.5 && aspect<2.)p.x+=(1.-cover.x)*cropShift;
-      float breeze=sin(time*.72); float second=sin(time*.57);
+      float breeze=sin(time*.72*shadowSpeed); float second=sin(time*.57*shadowSpeed);
       // The photo texture stays at p. Only its low-frequency illumination shifts.
       vec2 drift=mix(vec2(.022*breeze,.026*second),vec2(.055*breeze,.026*second),curtain);
       float start=smoothstep(.25,.42,p.x);
@@ -22,7 +22,7 @@
       if(interior>.5){wall=start*(1.-smoothstep(shadowEnd-.06,shadowEnd,p.x));wall*=smoothstep(.012,.035,abs(p.y-horizon));}
       float originalLight=luma(texture2D(light,p).rgb);
       float movedLight=luma(texture2D(light,p+drift).rgb);
-      float ratio=clamp(movedLight/max(originalLight,.08),.70,1.40);
+      float ratio=clamp(1.+(movedLight/max(originalLight,.08)-1.)*shadowStrength,shadowStrength>1.?.65:.70,shadowStrength>1.?1.45:1.40);
       // A tiny, smooth flex at the outer fabric/leaves; never distort the room.
       float edge=smoothstep(.86,.98,p.x);
       if(curtain<.5)edge*=smoothstep(.45,.7,p.y);
@@ -59,6 +59,8 @@
       gl.uniform1f(gl.getUniformLocation(program,'shadowEnd'),Number(svg.dataset.shadowEnd||.70));
       gl.uniform1f(gl.getUniformLocation(program,'horizon'),Number(svg.dataset.horizon||.315));
       gl.uniform1f(gl.getUniformLocation(program,'cropShift'),Number(svg.dataset.cropShift||.32));
+      gl.uniform1f(gl.getUniformLocation(program,'shadowStrength'),Number(svg.dataset.shadowStrength||1));
+      gl.uniform1f(gl.getUniformLocation(program,'shadowSpeed'),Number(svg.dataset.shadowSpeed||1));
       let seconds=0,last=0,frame=0,visible=false;
       const render=()=>{const rect=host.getBoundingClientRect();const dpr=Math.min(devicePixelRatio,1.5);const width=Math.round(rect.width*dpr),height=Math.round(rect.height*dpr);if(!width||!height)return;if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;gl.viewport(0,0,width,height);}gl.uniform1f(aspect,rect.width/rect.height);gl.uniform1f(time,seconds);gl.drawArrays(gl.TRIANGLES,0,6);};
       const tick=now=>{frame=0;if(last)seconds+=(now-last)/1000;last=now;render();frame=requestAnimationFrame(tick);};
