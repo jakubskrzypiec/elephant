@@ -89,7 +89,8 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 @media(max-width:620px){:root .process-milestones button{align-items:center;padding:0 2px}}
 
 /* Compact portrait composition, centered banner descriptions and wall-only light. */
-:root .about,:root .about-layout{min-height:0}
+:root .about{width:100%;min-height:100svh;background:var(--paper)}
+:root .about-layout{min-height:100svh;align-content:center}
 :root .about-layout{max-width:1440px;padding-top:55px;padding-bottom:60px;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);column-gap:6vw;row-gap:40px;align-items:stretch}
 :root .about-media{position:relative;align-self:stretch;margin:22px 0 0;max-width:none;overflow:hidden;min-height:0}
 :root .about-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 73%;max-height:none}
