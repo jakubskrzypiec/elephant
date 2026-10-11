@@ -1,0 +1,74 @@
+/* October client review: quiet photography and one reading typeface. */
+:root{--serif:'Montserrat',sans-serif}
+body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
+:root :is(h1,h2,h3,h4,.eyebrow,.chapter-rail,.desktop-nav,.mobile-menu a,.btn,.text-link,.quiet-link,.hero-btn,.field>small,.footer-top nav,.footer-bottom,.card-no,.service-number,.service-bottom small,.process-milestones button,.calendar-selection,.article-toc a){font-family:'Montserrat',sans-serif;font-weight:400;letter-spacing:.06em;font-style:normal}
+:root :is(h1,h2,h3,h4){letter-spacing:.055em!important}
+:root .desktop-nav a{font-size:11px;letter-spacing:.14em}
+:root .chapter-rail{font-size:10px;letter-spacing:.12em}
+.brand-lockup{display:grid;width:100%;gap:10px;line-height:1}
+.brand-word{font-family:'Cormorant Garamond',serif;display:flex;justify-content:space-between;font-size:30px;font-weight:400;letter-spacing:0;text-transform:uppercase}
+.brand-descriptor{display:flex;justify-content:space-between;font-family:'Montserrat',sans-serif;font-size:7px;letter-spacing:0;line-height:1.3;white-space:nowrap}
+:root .hero-logo{width:clamp(300px,49vw,780px);max-width:84vw}
+.hero-logo .brand-word{font-size:clamp(42px,6.5vw,100px)}
+.hero-logo .brand-lockup{color:#f6f4f1}
+.hero-logo .brand-descriptor{font-size:clamp(10px,1.5vw,21px);margin-top:10px}
+:root .hero-btn{border:0;font-size:11px;letter-spacing:.12em}
+.page-logo .brand-lockup{width:215px;color:#22140b}
+.footer-logo .brand-lockup{width:260px;color:#f6f4f1}
+:root .page-banner:after{background:rgba(25,20,17,.39)}
+:root .page-banner-copy{max-width:960px;margin:auto;text-align:center;width:100%;padding:50px 6vw;color:#fff}
+:root .page-banner-copy h1{color:#f6f4f1;font-size:clamp(30px,3.2vw,48px);margin:0 auto 24px}
+:root .page-banner-copy p{color:#f6f4f1!important;margin:0 auto;max-width:780px;font-size:15px;line-height:1.85}
+:root .material-divider.living-scene:after,:root .philosophy.living-scene:before,:root .contact-section .material-divider.living-scene:after{background:rgba(25,20,17,.39);z-index:2}
+:root .material-copy,:root .philosophy-content{position:relative;z-index:3;text-align:center;max-width:1150px;margin:auto;padding:65px 7vw;width:100%}
+:root .material-divider{min-height:440px;display:flex;align-items:center}
+:root #filozofia{min-height:480px;display:flex;align-items:center}
+:root :is(.material-copy h2,#filozofia h2){color:#f6f4f1!important;font-size:clamp(27px,3vw,43px);max-width:none;margin:0 auto 30px;line-height:1.4}
+:root :is(.material-copy p,#filozofia .philosophy-simple p){color:#f6f4f1!important;max-width:850px;margin:0 auto;font-size:16px;line-height:1.9}
+:root #filozofia .philosophy-simple{max-width:none}
+.architectural-shadow{z-index:2;background:url('assets/materials/shadow-leaves-soft.svg') center/cover no-repeat;opacity:.28!important;filter:blur(6px)!important;mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);inset:-10%;animation-duration:6s!important}
+:root .about-layout{align-items:stretch;column-gap:6vw}
+:root .about-media{position:relative;margin:0;align-self:stretch;min-height:0;min-width:0;width:100%;aspect-ratio:auto}
+:root .about-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;max-height:none}
+:root .about-copy{padding:0;justify-content:flex-start}
+:root .about-copy h2{font-size:clamp(25px,2.5vw,35px);margin-bottom:30px;line-height:1.4;min-height:0}
+:root .about-text{padding-top:0;margin-top:0}
+:root .about-text p{font-size:14px;line-height:1.85;margin:0 0 18px}
+:root .about-text p:last-child{margin-bottom:0}
+:root .offer{border-bottom:0}
+:root .offer-content{border-bottom:0}
+:root .offer .card h3{font-size:18px;line-height:1.6}
+:root .offer .card-no{font-size:27px}
+:root .process-heading{font-size:clamp(25px,2.5vw,37px);line-height:1.4;max-width:none}
+:root .process-experience{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);column-gap:6%;row-gap:20px}
+:root .process-focus{display:grid;grid-template-rows:25px 130px;row-gap:25px;min-height:270px;padding:30px 0;align-content:center}
+:root .process-focus h4{font-size:clamp(23px,2.4vw,35px);line-height:1.5;letter-spacing:.055em;align-self:start}
+:root .process-mini-art{width:100%;max-width:620px;height:380px;margin:0;background:none}
+:root .process-art-image{mix-blend-mode:multiply!important;filter:none}
+:root .process-focus p[hidden]{display:none}
+:root .process-milestones button{font-size:10px;letter-spacing:.025em;line-height:1.6}
+:root .process-milestones{gap:20px}
+:root .offer-page .service-panel>.eyebrow{display:none}
+:root .offer-page .service-panel h2{font-size:19px;line-height:1.6;min-height:90px}
+:root .offer-page .service-panel :is(p,li){color:#65625d;font-size:13px;line-height:1.85}
+:root .offer-page .service-panel ul{padding-left:18px;list-style:disc}
+:root .offer-page .service-panel li{display:list-item;padding:0 0 0 3px}
+:root .offer-page .service-panel li:before{content:none}
+:root .offer-page .service-number{font-size:31px}
+:root .service-bottom small{font-size:12px;letter-spacing:0;font-weight:400;line-height:1.8}
+:root .portfolio-page .portfolio-meta{max-width:900px;text-align:left}
+:root .portfolio-page .portfolio-description{max-width:780px;margin:0}
+:root .page-invite{justify-content:center;text-align:center;padding:55px 6vw}
+:root .page-invite:before{display:none}
+:root .site-footer,:root .site-footer :is(a,span,p){color:#f6f4f1}
+:root .site-footer .footer-contact{border-color:rgba(246,244,241,.25)}
+:root .contact-direct,:root .contact-quote{width:100%;margin-bottom:80px}
+:root :is(.contact-direct h2,.contact-quote h2){font-size:28px;line-height:1.5;margin:0 0 18px}
+:root :is(.contact-direct>p,.contact-quote>p){font-size:14px;line-height:1.8;margin:0 0 35px}
+:root .contact-form .field>small{font-size:10px;letter-spacing:.08em}
+:root .calendar-intro h2{font-size:25px;letter-spacing:.04em}
+:root .calendar-toolbar h3{font-size:16px}
+@media(max-width:980px){:root .about-layout{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);column-gap:35px}:root .process-mini-art{height:320px}:root .process-experience{column-gap:30px}:root .process-focus h4{font-size:25px}}
+@media(max-width:620px){.page-logo .brand-lockup{width:170px}.brand-word{font-size:25px}.brand-descriptor{font-size:6px}.hero-logo .brand-lockup{gap:6px}.hero-logo .brand-descriptor{margin-top:5px}:root .page-banner-copy{padding:40px 7vw}:root .page-banner-copy p{font-size:13px}:root .material-copy,:root .philosophy-content{padding:55px 7vw}:root :is(.material-copy h2,#filozofia h2){font-size:27px}:root :is(.material-copy p,#filozofia .philosophy-simple p){font-size:14px}:root .material-divider{min-height:440px}:root .about-layout{grid-template-columns:1fr;gap:30px}:root .about-media img{height:auto;max-height:600px;object-fit:contain}:root .about-copy h2{font-size:25px}:root .process-experience{grid-template-columns:1fr;gap:15px}:root .process-focus{grid-template-rows:24px 95px;row-gap:20px;padding:15px 0;min-height:170px}:root .process-focus h4{font-size:24px}:root .process-mini-art{height:280px;max-width:none}:root .process-milestones{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}:root .process-milestones button{font-size:10px}:root .page-invite{padding:40px 7vw}:root .footer-logo .brand-lockup{width:230px}:root .contact-direct,:root .contact-quote{margin-bottom:50px}:root .calendar-intro h2{font-size:21px}}
+@media(prefers-reduced-motion:reduce){.architectural-shadow{animation:none!important}}
+@media(max-width:620px){:root .about-media img{position:static}:root .process-milestones button>span:first-child{white-space:nowrap;flex-shrink:0}:root .process-milestones button{align-items:flex-start}}

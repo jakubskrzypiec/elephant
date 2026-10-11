@@ -47,7 +47,7 @@
       const ctx=softened.getContext('2d');ctx.filter='blur(6px)';ctx.drawImage(img,-12,-12,img.width+24,img.height+24);
       gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,softened);
       gl.uniform1i(gl.getUniformLocation(program,'photo'),0);gl.uniform1f(gl.getUniformLocation(program,'imageAspect'),img.width/img.height);
-      gl.uniform1f(gl.getUniformLocation(program,'isBanner'),host.classList.contains('page-banner')?1:0);
+      gl.uniform1f(gl.getUniformLocation(program,'isBanner'),host.classList.contains('hero')?0:1);
       const aspect=gl.getUniformLocation(program,'aspect');
       let visible=false;
       const render=()=>{
@@ -63,7 +63,7 @@
       canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();canvas.remove();observer.disconnect();resize.disconnect();});
     }catch{canvas.remove();}
   };
-  document.querySelectorAll('.hero,.page-banner').forEach(create);
+  document.querySelectorAll('.hero,.page-banner,.material-divider,#filozofia').forEach(create);
   preference.addEventListener('change',()=>updates.forEach(fn=>fn()));
   document.addEventListener('visibilitychange',()=>updates.forEach(fn=>fn()));
 })();

@@ -59,8 +59,7 @@ if (heroFrames.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').mat
 }
 
 // Contact form: no backend yet, so open the visitor's mail app with the message filled in.
-const contactForm = document.querySelector('[data-contact-form]');
-contactForm?.addEventListener('submit', e => {
+document.querySelectorAll('[data-contact-form]').forEach(contactForm => contactForm.addEventListener('submit', e => {
   e.preventDefault();
   const data = new FormData(contactForm);
   const get = key => (data.get(key) || '').toString().trim();
@@ -76,7 +75,7 @@ contactForm?.addEventListener('submit', e => {
     ['Stan nieruchomości', get('condition')],
     ['Rynek', get('market')],
     ['Planowany start projektu', get('start')],
-    ['Skąd wiesz o pracowni', get('source')],
+    ['Jak do nas trafiłeś / trafiłaś', get('source')],
     ['Preferowany termin konsultacji', get('preferred_date')],
     ['Preferowana godzina konsultacji', get('preferred_time')],
   ].filter(([, value]) => value).map(([label, value]) => `${label}: ${value}`);
@@ -86,7 +85,7 @@ contactForm?.addEventListener('submit', e => {
   const subject = `Zapytanie ze strony${get('oferta') ? ' — ' + get('oferta') : ''}${name ? ' — ' + name : ''}`;
   const body = [rows.join('\n'), message && `Opis:\n${message}`, contact].filter(Boolean).join('\n\n');
   location.href = `mailto:elephant.interiordesignstudio@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-});
+}));
 
 // A seamless portfolio loop; hover, focus or the pause control stops movement.
 const wrap = document.querySelector('[data-carousel]');
@@ -206,7 +205,8 @@ if (processExperience) {
     if ((delta < 0 && current <= 0) || (delta > 0 && current >= lastStage)) return;
     e.preventDefault();
     const pixels = delta * (e.deltaMode === 1 ? 24 : e.deltaMode === 2 ? processExperience.clientHeight : 1);
-    select(current + pixels / 400);
+    const step = Math.sign(pixels) * Math.max(.55, Math.min(1, Math.abs(pixels) / 160));
+    select(current + step);
   }, {passive:false});
   range.addEventListener('input', () => select(Number(range.value)));
   buttons.forEach((button, index) => button.addEventListener('click', () => select(index)));
