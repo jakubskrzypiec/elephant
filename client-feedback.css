@@ -109,3 +109,14 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 @media(max-width:980px){:root .about-layout{grid-template-columns:1fr;gap:28px}:root .about-media{height:450px;width:100%;max-width:500px;margin:0 auto}:root .about-media img{object-position:center 73%}:root .about-copy{max-width:680px;margin:auto}:root .about-copy h2{margin-bottom:25px}}
 @media(max-width:620px){:root .about-layout{padding-top:40px;padding-bottom:45px}:root .about-media{height:380px}:root .about-text p{font-size:14px}:root body .page-banner .page-banner-copy p{max-width:100%;font-size:13px}:root .architectural-shadow{display:none}}
 @media(prefers-reduced-motion:reduce){:root .architectural-shadow:before{animation:none!important;transform:none;will-change:auto}}
+
+/* Restore the original studio composition; align the text and portrait bottoms. */
+:root .about-layout{max-width:1600px;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:10vw;row-gap:48px;padding-top:48px;padding-bottom:72px}
+:root .about-media{margin:26px 0 0;align-self:stretch}
+:root .about-copy h2{font-family:'Cormorant Garamond',serif!important;font-size:clamp(32px,2.8vw,42px);font-weight:400;line-height:1.5;letter-spacing:.24em!important;margin:0 0 60px}
+:root .about-text{max-width:none}
+:root .about-text p{font-size:13.5px;line-height:1.8;margin:0 0 16px}
+:root .about-text p:last-child{margin-bottom:0}
+@media(max-width:980px){:root .about-layout{grid-template-columns:1fr;gap:32px}:root .about-media{margin:0 auto;height:450px;max-width:500px}:root .about-copy{max-width:680px}:root .about-copy h2{font-size:32px;margin-bottom:32px}}
+@media(max-width:620px){:root .about-layout{padding-top:40px;padding-bottom:45px}:root .about-media{height:380px}:root .about-copy h2{font-size:28px}:root .about-text p{font-size:14px}}
+@media(min-width:981px) and (max-width:1400px){:root .about-layout{column-gap:8vw;row-gap:30px;padding-top:32px;padding-bottom:44px}:root .about-copy h2{font-size:32px;margin-bottom:42px}:root .about-text p{font-size:13px;line-height:1.75;margin-bottom:14px}:root .about-text p:last-child{margin-bottom:0}}
