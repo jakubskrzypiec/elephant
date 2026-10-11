@@ -174,7 +174,7 @@ if (processExperience) {
   const lastStage = buttons.length - 1;
   let active = 0, copyAnimation, drag;
   const select = value => {
-    const position = Math.max(0, Math.min(lastStage, value));
+    const position = Math.max(0, Math.min(lastStage, Math.round(value)));
     range.value = String(position);
     range.style.setProperty('--process-progress', `${position / lastStage * 100}%`);
     const index = Math.round(position);
@@ -204,9 +204,7 @@ if (processExperience) {
     // Let normal page scrolling resume at either end of the process.
     if ((delta < 0 && current <= 0) || (delta > 0 && current >= lastStage)) return;
     e.preventDefault();
-    const pixels = delta * (e.deltaMode === 1 ? 24 : e.deltaMode === 2 ? processExperience.clientHeight : 1);
-    const step = Math.sign(pixels) * Math.max(.55, Math.min(1, Math.abs(pixels) / 160));
-    select(current + step);
+    select(active + Math.sign(delta));
   }, {passive:false});
   range.addEventListener('input', () => select(Number(range.value)));
   buttons.forEach((button, index) => button.addEventListener('click', () => select(index)));

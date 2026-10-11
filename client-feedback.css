@@ -72,3 +72,18 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 @media(max-width:620px){.page-logo .brand-lockup{width:170px}.brand-word{font-size:25px}.brand-descriptor{font-size:6px}.hero-logo .brand-lockup{gap:6px}.hero-logo .brand-descriptor{margin-top:5px}:root .page-banner-copy{padding:40px 7vw}:root .page-banner-copy p{font-size:13px}:root .material-copy,:root .philosophy-content{padding:55px 7vw}:root :is(.material-copy h2,#filozofia h2){font-size:27px}:root :is(.material-copy p,#filozofia .philosophy-simple p){font-size:14px}:root .material-divider{min-height:440px}:root .about-layout{grid-template-columns:1fr;gap:30px}:root .about-media img{height:auto;max-height:600px;object-fit:contain}:root .about-copy h2{font-size:25px}:root .process-experience{grid-template-columns:1fr;gap:15px}:root .process-focus{grid-template-rows:24px 95px;row-gap:20px;padding:15px 0;min-height:170px}:root .process-focus h4{font-size:24px}:root .process-mini-art{height:280px;max-width:none}:root .process-milestones{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}:root .process-milestones button{font-size:10px}:root .page-invite{padding:40px 7vw}:root .footer-logo .brand-lockup{width:230px}:root .contact-direct,:root .contact-quote{margin-bottom:50px}:root .calendar-intro h2{font-size:21px}}
 @media(prefers-reduced-motion:reduce){.architectural-shadow{animation:none!important}}
 @media(max-width:620px){:root .about-media img{position:static}:root .process-milestones button>span:first-child{white-space:nowrap;flex-shrink:0}:root .process-milestones button{align-items:flex-start}}
+
+/* Full original frames and discrete, aligned process stages. */
+:root .about-layout{align-items:start}
+:root .about-media{align-self:start;overflow:visible}
+:root .about-media img{position:static;display:block;width:100%;height:auto;max-height:none;object-fit:contain}
+:root .projects{border-top:0}
+:root .process-mini-art .process-art-image{object-fit:contain;mix-blend-mode:normal!important}
+:root .process .process-scrubber .process-range{width:calc(83.333333% + 28px);margin-left:calc(8.333333% - 14px)}
+:root .process-milestones{grid-template-columns:repeat(6,minmax(0,1fr));gap:0}
+:root .process-milestones button{flex-direction:column;align-items:center;text-align:center;gap:6px;padding:0 6px}
+:root .instagram-avatar{overflow:hidden}
+:root .instagram-profile>span:nth-child(2){min-width:0}
+:root .process-foot{justify-content:center}
+@media(max-width:980px){:root .about-layout{grid-template-columns:1fr;gap:35px}:root .about-media{max-width:500px;margin:auto}}
+@media(max-width:620px){:root .process-milestones button{align-items:center;padding:0 2px}}
