@@ -13,16 +13,16 @@
       if(isBanner>.5 && aspect<2.)p.x+=(1.-cover.x)*.22;
       // Fixed crop and focus: hero artwork never moves.
       p=(p-.5)*.92+.5;
-      float amount=.065*mix(.72,1.,smoothstep(.1,.9,uv.x));
+      float amount=.18*mix(.80,1.,smoothstep(.1,.9,uv.x));
       vec3 color=vec3(0.);float weight=0.;
-      for(int i=-32;i<=32;i++){
-        float f=float(i)/32.;float w=1.-abs(f)*.45;
+      for(int i=-96;i<=96;i++){
+        float f=float(i)/96.;float w=1.-abs(f)*.25;
         // A strictly horizontal exposure path keeps vertical texture readable.
         vec2 offset=vec2(f*amount*cover.x,0.);
         vec2 sampleAt=clamp(p+offset,vec2(.001),vec2(.999));
         color+=texture2D(photo,sampleAt).rgb*w;weight+=w;
       }
-      gl_FragColor=vec4(mix(color/weight,texture2D(photo,p).rgb,.10),1.);
+      gl_FragColor=vec4(color/weight,1.);
     }`;
   const compile=(gl,type,source)=>{
     const shader=gl.createShader(type);gl.shaderSource(shader,source);gl.compileShader(shader);
