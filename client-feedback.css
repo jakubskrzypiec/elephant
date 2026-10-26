@@ -133,3 +133,6 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 :root .process .process-scrubber .process-range{width:calc(80% + 28px);margin-left:calc(10% - 14px)}
 :root #oferta .architectural-shadow,:root #proces .architectural-shadow,:root #filozofia .architectural-shadow,:root #kontakt .architectural-shadow{clip-path:polygon(0 0,58% 0,58% 100%,0 100%);mask-image:linear-gradient(90deg,#000,transparent 58%)}
 :root .architectural-shadow:before{opacity:.10}
+
+/* Animate the original photo lighting instead of stacking an unrelated leaf pattern. */
+:root .living-light-ready>.architectural-shadow{display:none}
