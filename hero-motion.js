@@ -13,8 +13,20 @@
       if(isBanner>.5 && aspect<2.)p.x+=(1.-cover.x)*.22;
       // Fixed crop and focus: hero artwork never moves.
       p=(p-.5)*.92+.5;
-      // These images already contain the original selective optical treatment.
-      if(optical>.5){gl_FragColor=vec4(texture2D(photo,p).rgb,1.);return;}
+      // Keep the generated selective trails, with a softer photographic focus.
+      if(optical>.5){
+        vec3 softened=vec3(0.);float total=0.;
+        for(int j=-24;j<=24;j++){
+          float f=float(j)/24.;
+          for(int k=-2;k<=2;k++){
+            float vertical=float(k)/2.;float w=exp(-f*f*2.-vertical*vertical*2.);
+            vec2 offset=vec2(f*.016*cover.x,vertical*.003*cover.y);
+            softened+=texture2D(photo,clamp(p+offset,vec2(.001),vec2(.999))).rgb*w;
+            total+=w;
+          }
+        }
+        gl_FragColor=vec4(softened/total,1.);return;
+      }
       float amount=.095*mix(.80,1.,smoothstep(.1,.9,uv.x));
       vec3 color=vec3(0.);float weight=0.;
       for(int i=-96;i<=96;i++){
