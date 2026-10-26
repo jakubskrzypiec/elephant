@@ -1,4 +1,4 @@
-/* Static directional blur across every hero, without blurring the copy. */
+/* Static horizontal camera-motion trails across heroes; copy remains sharp. */
 (() => {
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
   const updates = [];
@@ -13,15 +13,16 @@
       if(isBanner>.5 && aspect<2.)p.x+=(1.-cover.x)*.22;
       // Fixed crop and focus: hero artwork never moves.
       p=(p-.5)*.92+.5;
-      float amount=.0205;
+      float amount=.065*mix(.72,1.,smoothstep(.1,.9,uv.x));
       vec3 color=vec3(0.);float weight=0.;
-      for(int i=-8;i<=8;i++){
-        float f=float(i)/8.;float w=exp(-f*f*2.);
-        vec2 offset=vec2(f*amount*cover.x,sin(float(i)*2.4)*amount*.24);
+      for(int i=-32;i<=32;i++){
+        float f=float(i)/32.;float w=1.-abs(f)*.45;
+        // A strictly horizontal exposure path keeps vertical texture readable.
+        vec2 offset=vec2(f*amount*cover.x,0.);
         vec2 sampleAt=clamp(p+offset,vec2(.001),vec2(.999));
         color+=texture2D(photo,sampleAt).rgb*w;weight+=w;
       }
-      gl_FragColor=vec4(color/weight,1.);
+      gl_FragColor=vec4(mix(color/weight,texture2D(photo,p).rgb,.10),1.);
     }`;
   const compile=(gl,type,source)=>{
     const shader=gl.createShader(type);gl.shaderSource(shader,source);gl.compileShader(shader);
@@ -45,9 +46,7 @@
       gl.bindTexture(gl.TEXTURE_2D,gl.createTexture());gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);
       gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
-      const softened=document.createElement('canvas');softened.width=img.width;softened.height=img.height;
-      const ctx=softened.getContext('2d');ctx.filter='blur(6px)';ctx.drawImage(img,-12,-12,img.width+24,img.height+24);
-      gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,softened);
+      gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,img);
       gl.uniform1i(gl.getUniformLocation(program,'photo'),0);gl.uniform1f(gl.getUniformLocation(program,'imageAspect'),img.width/img.height);
       gl.uniform1f(gl.getUniformLocation(program,'focusX'),Number(host.dataset.heroFocusX||.5));
       gl.uniform1f(gl.getUniformLocation(program,'focusY'),Number(host.dataset.heroFocusY||.5));
