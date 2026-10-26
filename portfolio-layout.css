@@ -1,0 +1,14 @@
+/* One realization per row: photograph on the left, description on the right. */
+:root .portfolio-page .portfolio-grid{align-items:stretch;gap:90px}
+:root .portfolio-page .portfolio-item{width:100%;max-width:1380px;margin:0 auto}
+:root .portfolio-page .portfolio-item>a,
+:root .portfolio-page .portfolio-item:nth-child(even)>a{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center;gap:clamp(30px,5vw,84px);width:100%;max-width:none;margin:0}
+:root .portfolio-page .portfolio-item:nth-child(n) .portfolio-image{grid-column:1;grid-row:1;width:100%;max-width:none;height:auto!important;aspect-ratio:4/3!important}
+:root .portfolio-page .portfolio-item:nth-child(n) .portfolio-meta{grid-column:2;grid-row:1;width:100%;max-width:none;text-align:left;padding:0;margin:0}
+:root .portfolio-page .portfolio-description{max-width:560px;margin:0;line-height:1.9}
+@media(max-width:700px){
+ :root .portfolio-page .portfolio-grid{gap:55px}
+ :root .portfolio-page .portfolio-item>a,
+ :root .portfolio-page .portfolio-item:nth-child(even)>a{display:flex;flex-direction:column;align-items:stretch;gap:25px}
+ :root .portfolio-page .portfolio-item:nth-child(n) .portfolio-image{aspect-ratio:4/3!important}
+}
