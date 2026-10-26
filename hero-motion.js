@@ -4,11 +4,12 @@
   const updates = [];
   const vertex = 'attribute vec2 pos;varying vec2 uv;void main(){uv=pos*.5+.5;gl_Position=vec4(pos,0.,1.);}';
   const fragment = `precision mediump float;
-    varying vec2 uv;uniform sampler2D photo;uniform float aspect,imageAspect,isBanner,focusX;
+    varying vec2 uv;uniform sampler2D photo;uniform float aspect,imageAspect,isBanner,focusX,focusY;
     void main(){
       vec2 cover=aspect<imageAspect?vec2(aspect/imageAspect,1.):vec2(1.,imageAspect/aspect);
       vec2 p=(uv-.5)*cover+.5;
       p.x+=(1.-cover.x)*(focusX-.5);
+      p.y+=(1.-cover.y)*(.5-focusY);
       if(isBanner>.5 && aspect<2.)p.x+=(1.-cover.x)*.22;
       // Fixed crop and focus: hero artwork never moves.
       p=(p-.5)*.92+.5;
@@ -49,6 +50,7 @@
       gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,softened);
       gl.uniform1i(gl.getUniformLocation(program,'photo'),0);gl.uniform1f(gl.getUniformLocation(program,'imageAspect'),img.width/img.height);
       gl.uniform1f(gl.getUniformLocation(program,'focusX'),Number(host.dataset.heroFocusX||.5));
+      gl.uniform1f(gl.getUniformLocation(program,'focusY'),Number(host.dataset.heroFocusY||.5));
       gl.uniform1f(gl.getUniformLocation(program,'isBanner'),host.classList.contains('hero')?0:1);
       const aspect=gl.getUniformLocation(program,'aspect');
       let visible=false;
