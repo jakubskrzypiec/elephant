@@ -138,8 +138,8 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 :root .living-light-ready>.architectural-shadow{display:none}
 
 /* Feedback received 27 October: soft focus, quieter labels and calls to action. */
-:root .hero .hero-frames img{filter:blur(20px);transform:scale(1.07);animation:none;transition:none;object-position:90% center}
-:root .page-banner .living-surface{filter:blur(20px);transform:scale(1.12);transform-origin:center;width:100%;left:0;animation:none}
+:root .hero .hero-frames img{filter:blur(8px);transform:scale(1.07);animation:none;transition:none;object-position:90% center}
+:root .page-banner .living-surface{filter:blur(8px);transform:scale(1.12);transform-origin:center;width:100%;left:0;animation:none}
 :root .hero-glass{display:none}
 :root .chapter-rail>span:first-child{color:var(--ink);text-align:left;max-width:none}
 :root .offer .card,:root .offer-page .service-panel{background:#fff}
@@ -153,3 +153,13 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 :root .contact .contact-form button:hover{background:#7f8e98;color:#fff}
 :root .calendar-days button[aria-pressed=true]{color:#fff}
 @media(max-width:620px){:root .offer-page .service-panel h2,:root .offer-page .service-panel>p{min-height:0}}
+
+/* Overlay navigation like the home page; reserve a real border on every package. */
+:root .subpage .site-header{position:absolute;top:0;left:0;right:0;height:100px;background:transparent;color:#fff;justify-content:flex-end;z-index:50}
+:root .subpage .site-header .page-logo{display:none}
+:root .subpage .desktop-nav a[aria-current=page]{border-bottom-color:rgba(255,255,255,.55)}
+:root .subpage .page-banner{height:clamp(340px,30vw,440px);box-sizing:border-box;padding-top:100px}
+:root .offer-page .service-grid .service-panel{border:1px solid transparent}
+:root .offer-page .service-grid .service-panel:hover,:root .offer-page .service-grid .service-panel:focus-within{border:1px solid #000}
+@media(max-width:900px){:root .subpage .site-header{height:80px}:root .subpage .page-banner{padding-top:80px}}
+@media(max-width:620px){:root .subpage .page-banner{height:auto;min-height:340px}:root .subpage .page-banner-copy{padding-top:35px;padding-bottom:40px}}
