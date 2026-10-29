@@ -1,7 +1,8 @@
 /* Preference calendar prototype. It does not expose availability or create bookings. */
 document.querySelectorAll('[data-consultation-calendar]').forEach(calendar => {
-  const form = calendar.closest('.contact-main')?.querySelector('[data-contact-form]');
-  if (!form) return;
+  const form = calendar.dataset.calendarForm ? document.getElementById(calendar.dataset.calendarForm) : calendar.closest('.contact-main')?.querySelector('[data-contact-form]');
+  const target = calendar.dataset.calendarTarget;
+  if (!form && !target) return;
   const today = new Date(); today.setHours(0, 0, 0, 0);
   const firstMonth = new Date(today.getFullYear(), today.getMonth(), 1);
   let monthOffset = 0, selected = null;
@@ -15,10 +16,19 @@ document.querySelectorAll('[data-consultation-calendar]').forEach(calendar => {
   const status = calendar.querySelector('[data-calendar-status]');
   const format = new Intl.DateTimeFormat('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
   const iso = date => `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
+  const showSummary = message => {
+    if (!form) return;
+    let summary = form.querySelector('.consultation-form-summary');
+    if (!summary) { summary = document.createElement('p'); summary.className = 'consultation-form-summary'; form.prepend(summary); }
+    summary.textContent = message; summary.hidden = !message;
+  };
   const resetDraft = () => {
-    form.elements.preferred_date.value = '';
-    form.elements.preferred_time.value = '';
+    if (form) {
+      form.elements.preferred_date.value = '';
+      form.elements.preferred_time.value = '';
+    }
     status.textContent = '';
+    showSummary('');
   };
   const render = () => {
     const month = new Date(firstMonth.getFullYear(), firstMonth.getMonth()+monthOffset, 1);
@@ -54,10 +64,38 @@ document.querySelectorAll('[data-consultation-calendar]').forEach(calendar => {
   time.addEventListener('change', resetDraft);
   apply.addEventListener('click', () => {
     if (!selected) return;
+    if (target) {
+      const url = new URL(target, location.href);
+      url.searchParams.set('oferta', 'Konsultacja online');
+      url.searchParams.set('consultation_date', iso(selected));
+      if (time.value) url.searchParams.set('consultation_time', time.value);
+      location.assign(url.href);
+      return;
+    }
     form.elements.preferred_date.value = format.format(selected);
     form.elements.preferred_time.value = time.value;
     status.textContent = `Termin ${format.format(selected)}${time.value ? ', '+time.value : ''} został dodany do zapytania. Wyślij formularz powyżej, aby zapytać o dostępność.`;
+    showSummary(`Wybrany termin: ${format.format(selected)}${time.value ? ', ' + time.value : ''}. Został dołączony do zapytania.`);
+    form.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
     calendar.dispatchEvent(new CustomEvent('consultation-preference', { bubbles:true, detail:{ date:iso(selected), time:time.value } }));
   });
+  const params = new URLSearchParams(location.search);
+  const incoming = params.get('consultation_date') || '';
+  if (form && /^\d{4}-\d{2}-\d{2}$/.test(incoming)) {
+    const [year, month, day] = incoming.split('-').map(Number);
+    const date = new Date(year, month - 1, day);
+    const offset = (year - firstMonth.getFullYear()) * 12 + month - 1 - firstMonth.getMonth();
+    if (iso(date) === incoming && date >= today && offset >= 0 && offset <= 12) {
+      selected = date; monthOffset = offset;
+      const hour = params.get('consultation_time');
+      if ([...time.options].some(option => option.value === hour)) time.value = hour;
+      selection.textContent = format.format(selected);
+      apply.disabled = false;
+      form.elements.preferred_date.value = format.format(selected);
+      form.elements.preferred_time.value = time.value;
+      status.textContent = `Wybrany termin: ${format.format(selected)}${time.value ? ', ' + time.value : ''}. Został dołączony do zapytania.`;
+      showSummary(status.textContent);
+    }
+  }
   render();
 });

@@ -163,3 +163,14 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 :root .offer-page .service-grid .service-panel:hover,:root .offer-page .service-grid .service-panel:focus-within{border:1px solid #000}
 @media(max-width:900px){:root .subpage .site-header{height:80px}:root .subpage .page-banner{padding-top:80px}}
 @media(max-width:620px){:root .subpage .page-banner{height:auto;min-height:340px}:root .subpage .page-banner-copy{padding-top:35px;padding-bottom:40px}}
+
+/* 29 October: lighter calls to action, a larger wordmark and consultation calendars. */
+:root .hero-logo{width:clamp(320px,54vw,860px)}
+:root .hero-logo .brand-word{font-size:clamp(46px,7.2vw,110px)}
+:root .page-invite>.text-link{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:400;letter-spacing:.12em;line-height:1.7;padding:12px 0;border:0;white-space:normal}
+:root .page-invite>.text-link>span{font-size:14px;margin-left:18px}
+:root .offer-consultation .consultation-calendar{margin:0;scroll-margin-top:30px}
+:root .contact-page main>.consultation-calendar{margin:0 auto;max-width:1380px;padding:40px 6vw 80px;scroll-margin-top:30px}
+:root .consultation-calendar{scroll-margin-top:30px}
+.consultation-form-summary{font-size:14px;line-height:1.8;padding:16px;background:rgba(152,164,172,.12)}
+@media(max-width:620px){:root .hero-logo{max-width:88vw}:root .hero-logo .brand-word{font-size:clamp(38px,9.5vw,58px)}:root .contact-page main>.consultation-calendar{padding:35px 7vw 55px}}
