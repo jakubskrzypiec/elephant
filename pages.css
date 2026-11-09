@@ -60,6 +60,7 @@
 .project-photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .project-photo{position:relative;border:0;padding:0;background:#e8e2d9;cursor:zoom-in;aspect-ratio:1;overflow:hidden}
 .project-photo:first-child{grid-column:1/-1;aspect-ratio:1.5}
+.project-photo-grid-even .project-photo:first-child{grid-column:auto;aspect-ratio:1}
 .project-photo img{height:100%;object-fit:cover}
 .project-photo>span{position:absolute;right:20px;bottom:18px;background:var(--paper);padding:7px 13px;font-size:16px}
 .project-next{display:flex;align-items:baseline;justify-content:space-between;gap:35px;border-top:1px solid var(--line);margin-top:65px;padding-top:32px}
