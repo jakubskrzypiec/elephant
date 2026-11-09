@@ -82,7 +82,7 @@ document.querySelectorAll('[data-contact-form]').forEach(contactForm => contactF
 
   const message = get('message');
   const contact = [name, get('email'), get('phone')].filter(Boolean).join('\n');
-  const subject = `Zapytanie ze strony${get('oferta') ? ' — ' + get('oferta') : ''}${name ? ' — ' + name : ''}`;
+  const subject = `Zapytanie ze strony${get('oferta') ? ' - ' + get('oferta') : ''}${name ? ' - ' + name : ''}`;
   const body = [rows.join('\n'), message && `Opis:\n${message}`, contact].filter(Boolean).join('\n\n');
   location.href = `mailto:elephant.kontakt@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }));

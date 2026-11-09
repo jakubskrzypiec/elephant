@@ -18,6 +18,9 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 :root .page-banner:after{background:rgba(25,20,17,.39)}
 :root .page-banner-copy{max-width:960px;margin:auto;text-align:center;width:100%;padding:50px 6vw;color:#fff}
 :root .page-banner-copy h1{color:#f6f4f1;font-size:clamp(30px,3.2vw,48px);margin:0 auto 24px}
+:root .portfolio-page .page-banner-copy{max-width:1250px}
+:root .portfolio-page .page-banner-copy h1{font-size:clamp(22px,3.5vw,48px);white-space:nowrap}
+@media(max-width:620px){:root .portfolio-page .page-banner-copy h1{font-size:clamp(13px,4.35vw,25px)}}
 :root .page-banner-copy p{color:#f6f4f1!important;margin:0 auto;max-width:780px;font-size:15px;line-height:1.85}
 :root .material-divider.living-scene:after,:root .philosophy.living-scene:before,:root .contact-section .material-divider.living-scene:after{background:rgba(25,20,17,.39);z-index:2}
 :root .material-copy,:root .philosophy-content{position:relative;z-index:3;text-align:center;max-width:1150px;margin:auto;padding:65px 7vw;width:100%}
@@ -165,7 +168,7 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 @media(max-width:620px){:root .subpage .page-banner{height:auto;min-height:340px}:root .subpage .page-banner-copy{padding-top:35px;padding-bottom:40px}}
 
 /* 29 October: lighter calls to action, a larger wordmark and consultation calendars. */
-:root .hero-logo{top:47%;width:clamp(320px,54vw,860px)}
+:root .hero-logo{top:42%;width:clamp(320px,54vw,860px)}
 :root .hero-logo .brand-word{font-size:clamp(46px,7.2vw,110px)}
 :root .page-invite>.text-link{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:400;letter-spacing:.12em;line-height:1.7;padding:12px 0;border:0;white-space:normal}
 :root .page-invite>.text-link>span{font-size:14px;margin-left:18px}
