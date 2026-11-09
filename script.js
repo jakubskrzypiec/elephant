@@ -84,7 +84,7 @@ document.querySelectorAll('[data-contact-form]').forEach(contactForm => contactF
   const contact = [name, get('email'), get('phone')].filter(Boolean).join('\n');
   const subject = `Zapytanie ze strony${get('oferta') ? ' — ' + get('oferta') : ''}${name ? ' — ' + name : ''}`;
   const body = [rows.join('\n'), message && `Opis:\n${message}`, contact].filter(Boolean).join('\n\n');
-  location.href = `mailto:elephant.interiordesignstudio@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  location.href = `mailto:elephant.kontakt@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }));
 
 // A seamless portfolio loop; hover, focus or the pause control stops movement.
