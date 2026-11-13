@@ -94,15 +94,25 @@ const pauseControl = document.querySelector('[data-carousel-pause]');
 if (wrap && track) {
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
   const originals = [...track.children];
-  originals.forEach(card => {
+  const appendCopies = () => originals.forEach(card => {
     const clone = card.cloneNode(true);
     clone.dataset.clone = '';
     clone.setAttribute('aria-hidden', 'true');
+    clone.querySelectorAll('a').forEach(link => { link.tabIndex = -1; });
     track.append(clone);
   });
+  appendCopies();
   let hovered = false, focused = false, paused = false, visible = false, touching = false, drag = null;
   let lastTime = 0, position = 0;
   const cycleWidth = () => track.querySelector('[data-clone]').offsetLeft - originals[0].offsetLeft;
+  const fillTrack = () => {
+    const cycle = cycleWidth();
+    if (cycle <= 0 || preference.matches) return;
+    const copies = Math.ceil(wrap.clientWidth / cycle) + 1;
+    while (track.children.length < copies * originals.length) appendCopies();
+  };
+  new ResizeObserver(fillTrack).observe(wrap);
+  fillTrack();
   const syncControl = () => {
     pauseControl.hidden = preference.matches;
     pauseControl.setAttribute('aria-pressed', String(paused));
@@ -133,18 +143,35 @@ if (wrap && track) {
   wrap.addEventListener('touchstart', () => {clearTimeout(touchEndTimer);touching = true;}, {passive:true});
   wrap.addEventListener('touchend', () => {touchEndTimer = setTimeout(() => touching = false, 1000);}, {passive:true});
   wrap.addEventListener('touchcancel', () => touching = false, {passive:true});
-  wrap.addEventListener('pointerdown', e => {
-    if (e.pointerType !== 'mouse' || e.button !== 0) return;
-    drag = {x:e.clientX, scroll:wrap.scrollLeft};
-    wrap.setPointerCapture(e.pointerId);
-    wrap.classList.add('is-dragging');
+  let suppressClick = false;
+  wrap.addEventListener('dragstart', e => e.preventDefault());
+  wrap.addEventListener('click', e => {
+    if (!suppressClick || e.detail === 0) return;
     e.preventDefault();
+    suppressClick = false;
+  }, true);
+  wrap.addEventListener('pointerdown', e => {
+    suppressClick = false;
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    drag = {x:e.clientX, scroll:wrap.scrollLeft, moved:false};
   });
   wrap.addEventListener('pointermove', e => {
     if (!drag) return;
+    if (!(e.buttons & 1)) {
+      drag = null;
+      return;
+    }
+    const dx = e.clientX - drag.x;
+    if (!drag.moved && Math.abs(dx) < 6) return;
+    if (!drag.moved) {
+      drag.moved = true;
+      suppressClick = true;
+      wrap.setPointerCapture(e.pointerId);
+      wrap.classList.add('is-dragging');
+    }
     const cycle = cycleWidth();
-    const next = drag.scroll + drag.x - e.clientX;
-    wrap.scrollLeft = preference.matches ? next : ((next % cycle) + cycle) % cycle;
+    const next = drag.scroll - dx;
+    wrap.scrollLeft = preference.matches || cycle <= 0 ? next : ((next % cycle) + cycle) % cycle;
   });
   ['pointerup','pointercancel','lostpointercapture'].forEach(event => wrap.addEventListener(event, () => {
     drag = null;

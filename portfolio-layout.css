@@ -12,3 +12,5 @@
  :root .portfolio-page .portfolio-item:nth-child(even)>a{display:flex;flex-direction:column;align-items:stretch;gap:25px}
  :root .portfolio-page .portfolio-item:nth-child(n) .portfolio-image{aspect-ratio:4/3!important}
 }
+
+:root .portfolio-page .portfolio-item.portfolio-realization .portfolio-image{aspect-ratio:1!important}

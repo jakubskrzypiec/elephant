@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/client-oct25/kitchen-person.webp" fetchpriority="high">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=1" />
 <link rel="stylesheet" href="typography.css"><link rel="stylesheet" href="mid-century.css?v=11"><link rel="stylesheet" href="client-feedback.css?v=31"></head>
 <body>
   <header class="site-header">
@@ -78,11 +78,18 @@
 
       <div class="carousel-wrap" data-carousel tabindex="0" role="region" aria-label="Wybrane projekty - przewijaj poziomo">
         <div class="projects-track" data-track>
-          <article class="project-card"><div class="project-placeholder"><span>I</span><b>TU BĘDZIE ZDJĘCIE</b><i>ELEPHANT</i></div><div class="project-meta"><h3>Projekt I</h3><p>wnętrze / MMXXVI</p></div></article>
-          <article class="project-card"><div class="project-placeholder"><span>II</span><b>TU BĘDZIE ZDJĘCIE</b><i>ELEPHANT</i></div><div class="project-meta"><h3>Projekt II</h3><p>wnętrze / MMXXVI</p></div></article>
-          <article class="project-card"><div class="project-placeholder"><span>III</span><b>TU BĘDZIE ZDJĘCIE</b><i>ELEPHANT</i></div><div class="project-meta"><h3>Projekt III</h3><p>wnętrze / MMXXVI</p></div></article>
-          <article class="project-card"><div class="project-placeholder"><span>IV</span><b>TU BĘDZIE ZDJĘCIE</b><i>ELEPHANT</i></div><div class="project-meta"><h3>Projekt IV</h3><p>wnętrze / MMXXVI</p></div></article>
-          <article class="project-card"><div class="project-placeholder"><span>V</span><b>TU BĘDZIE ZDJĘCIE</b><i>ELEPHANT</i></div><div class="project-meta"><h3>Projekt V</h3><p>wnętrze / MMXXVI</p></div></article>
+          <article class="project-card">
+            <a href="projekt-lazienka.html">
+              <img class="project-card-photo" src="assets/projects/lazienka-0.webp" alt="" width="1600" height="1600" loading="lazy">
+              <div class="project-meta"><h3>Łazienka z motywem żurawi</h3><p>Łazienka / projekt wnętrza</p></div>
+            </a>
+          </article>
+          <article class="project-card">
+            <a href="projekt-sypialnia.html">
+              <img class="project-card-photo" src="assets/projects/sypialnia-0.webp" alt="" width="1600" height="1600" loading="lazy">
+              <div class="project-meta"><h3>Sypialnia</h3><p>Sypialnia / projekt wnętrza</p></div>
+            </a>
+          </article>
         </div>
       </div>
       <div class="portfolio-motion-control"><button type="button" data-carousel-pause aria-pressed="false">Zatrzymaj ruch</button></div>
@@ -198,6 +205,6 @@
     </div>
   </footer>
 
-  <script src="living-motion.js?v=26"></script><script src="script.js?v=27"></script><script src="calendar.js?v=2"></script>
+  <script src="living-motion.js?v=26"></script><script src="script.js?v=28"></script><script src="calendar.js?v=2"></script>
 </body>
 </html>
