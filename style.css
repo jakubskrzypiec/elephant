@@ -337,8 +337,8 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 .carousel-wrap.is-dragging{cursor:grabbing;user-select:none}
 .instagram-preview{min-width:0;width:100%;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0}
 .instagram-profile{display:flex;align-items:center;gap:16px;margin-bottom:26px}
-.instagram-avatar{width:66px;height:66px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;padding:8px;background:var(--paper);flex:none}
-.instagram-avatar img{width:100%;height:auto;max-height:100%;object-fit:contain}
+.instagram-avatar{width:66px;height:66px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;padding:2px;background:var(--paper);flex:none}
+.instagram-profile .instagram-avatar{font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:600;line-height:1;letter-spacing:.02em;color:var(--ink)}
 .instagram-profile strong{font-size:12px;font-weight:500;display:block;overflow-wrap:anywhere}
 .instagram-profile small{display:block;font-size:9px;color:var(--muted);margin-top:4px}
 .instagram-profile-arrow{font-size:24px;margin-left:auto}
@@ -356,7 +356,7 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 .footer-logo img{filter:brightness(0) invert(1)}
 @media(max-width:1140px){.cards{gap:20px}.card{padding:34px 24px 38px}.card p{font-size:14px}.card-no{padding-bottom:70px}}
 @media(max-width:980px){.instagram-preview{max-width:720px;justify-self:end}.card{min-height:510px}}
-@media(max-width:620px){.material-divider{min-height:0}.material-copy{padding:58px 7vw 64px}.material-copy h2{margin-bottom:26px;font-size:64px}.material-copy p{font-size:15px;line-height:1.8}.offer-content{padding-left:7vw;padding-right:7vw}.card{min-height:460px;padding:36px 28px}.card-no{font-size:68px;padding-bottom:60px}.card h3{font-size:36px}.card p{font-size:15px}.instagram-profile{gap:12px}.instagram-profile strong{font-size:11px}.instagram-avatar{width:52px;height:52px}.instagram-grid{gap:4px}}
+@media(max-width:620px){.material-divider{min-height:0}.material-copy{padding:58px 7vw 64px}.material-copy h2{margin-bottom:26px;font-size:64px}.material-copy p{font-size:15px;line-height:1.8}.offer-content{padding-left:7vw;padding-right:7vw}.card{min-height:460px;padding:36px 28px}.card-no{font-size:68px;padding-bottom:60px}.card h3{font-size:36px}.card p{font-size:15px}.instagram-profile{gap:12px}.instagram-profile strong{font-size:11px}.instagram-avatar{width:52px;height:52px}.instagram-profile .instagram-avatar{font-size:8.5px}.instagram-grid{gap:4px}}
 @media(prefers-reduced-motion:reduce){.instagram-grid img{transition:none}.project-placeholder i{transition:none}.project-card[data-clone]{display:none}}
 
 /* Editorial rhythm: full-height chapters, finer rules and individual light studies. */
