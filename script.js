@@ -103,15 +103,18 @@ if (wrap && track) {
   });
   appendCopies();
   let hovered = false, focused = false, paused = false, visible = false, touching = false, drag = null;
-  let lastTime = 0, position = 0;
-  const cycleWidth = () => track.querySelector('[data-clone]').offsetLeft - originals[0].offsetLeft;
+  let lastTime = 0, position = 0, cycle = 0, moving = false;
   const fillTrack = () => {
-    const cycle = cycleWidth();
+    // Use the exact repeat distance, including fractional card widths.
+    const firstCopy = track.querySelector('[data-clone]');
+    cycle = firstCopy.getBoundingClientRect().left - originals[0].getBoundingClientRect().left;
     if (cycle <= 0 || preference.matches) return;
     const copies = Math.ceil(wrap.clientWidth / cycle) + 1;
     while (track.children.length < copies * originals.length) appendCopies();
   };
-  new ResizeObserver(fillTrack).observe(wrap);
+  const resizeObserver = new ResizeObserver(fillTrack);
+  resizeObserver.observe(wrap);
+  resizeObserver.observe(originals[0]);
   fillTrack();
   const syncControl = () => {
     pauseControl.hidden = preference.matches;
@@ -119,25 +122,31 @@ if (wrap && track) {
     pauseControl.textContent = paused ? 'Wznów ruch' : 'Zatrzymaj ruch';
   };
   const normalize = () => {
-    if (preference.matches) return;
-    const cycle = cycleWidth();
+    if (preference.matches || moving) return;
     if (cycle > 0 && wrap.scrollLeft >= cycle) wrap.scrollLeft -= cycle;
   };
   const loop = time => {
     const elapsed = Math.min(64, time - (lastTime || time));
     lastTime = time;
-    if (visible && !document.hidden && !preference.matches && !hovered && !focused && !paused && !touching && !drag) {
-      position += elapsed * .028;
-      const cycle = cycleWidth();
-      if (cycle > 0) position %= cycle;
-      wrap.scrollLeft = position;
-    } else position = wrap.scrollLeft;
+    const shouldMove = cycle > 0 && visible && !document.hidden && !preference.matches &&
+      !hovered && !focused && !paused && !touching && !drag;
+    if (shouldMove) {
+      if (!moving) position = wrap.scrollLeft;
+      moving = true;
+      position = (position + elapsed * .028) % cycle;
+      wrap.scrollLeft = Math.floor(position);
+      // Native scrolling rounds to pixels. Keep the remaining fraction in the transform.
+      track.style.transform = `translate3d(${wrap.scrollLeft - position}px, 0, 0)`;
+    } else if (moving) {
+      moving = false;
+      track.style.transform = '';
+    }
     requestAnimationFrame(loop);
   };
   wrap.addEventListener('mouseenter', () => hovered = true);
   wrap.addEventListener('mouseleave', () => hovered = false);
   wrap.addEventListener('focusin', () => focused = true);
-  wrap.addEventListener('focusout', () => focused = wrap.contains(document.activeElement));
+  wrap.addEventListener('focusout', e => focused = wrap.contains(e.relatedTarget));
   wrap.addEventListener('scroll', normalize, {passive:true});
   let touchEndTimer;
   wrap.addEventListener('touchstart', () => {clearTimeout(touchEndTimer);touching = true;}, {passive:true});
@@ -169,7 +178,6 @@ if (wrap && track) {
       wrap.setPointerCapture(e.pointerId);
       wrap.classList.add('is-dragging');
     }
-    const cycle = cycleWidth();
     const next = drag.scroll - dx;
     wrap.scrollLeft = preference.matches || cycle <= 0 ? next : ((next % cycle) + cycle) % cycle;
   });
