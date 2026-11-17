@@ -91,6 +91,7 @@ document.querySelectorAll('[data-contact-form]').forEach(contactForm => contactF
 const wrap = document.querySelector('[data-carousel]');
 const track = document.querySelector('[data-track]');
 const pauseControl = document.querySelector('[data-carousel-pause]');
+const carouselArrows = document.querySelector('[data-carousel-arrows]');
 if (wrap && track) {
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
   const originals = [...track.children];
@@ -186,6 +187,23 @@ if (wrap && track) {
     wrap.classList.remove('is-dragging');
   }));
   pauseControl.addEventListener('click', () => {paused = !paused;syncControl();});
+  carouselArrows?.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', () => {
+      paused = true;
+      syncControl();
+      moving = false;
+      track.style.transform = '';
+
+      const current = wrap.scrollLeft;
+      const limit = wrap.scrollWidth - wrap.clientWidth;
+      const origin = originals[0].getBoundingClientRect().left;
+      const stops = originals.map(card => Math.min(limit, card.getBoundingClientRect().left - origin));
+      const destination = button.dataset.carouselStep === 'next'
+        ? (stops.find(stop => stop > current + 2) ?? 0)
+        : (stops.findLast(stop => stop < current - 2) ?? stops.at(-1));
+      wrap.scrollLeft = destination;
+    });
+  });
   preference.addEventListener('change', () => {wrap.scrollLeft = position = 0;syncControl();});
   new IntersectionObserver(entries => {visible = entries[0].isIntersecting;}, {threshold:.05}).observe(wrap);
   syncControl();
