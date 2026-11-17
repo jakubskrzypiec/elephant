@@ -283,7 +283,7 @@ if (processExperience) {
     if (!reduced.matches) copyAnimation = copy.animate([{opacity:0},{opacity:1}], {duration:350,easing:'ease-out'});
   };
   processExperience.addEventListener('wheel', e => {
-    if (e.ctrlKey) return;
+    if (e.ctrlKey || e.target.closest('.process-stage-detail details[open]')) return;
     const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
     if (!delta) return;
     const current = Number(range.value);
@@ -303,7 +303,7 @@ if (processExperience) {
   });
   dragAreas.forEach(art => {
   art.addEventListener('pointerdown', e => {
-    if (e.button !== 0 || e.target.closest('a')) return;
+    if (e.button !== 0 || e.target.closest('a, details')) return;
     drag = {x:e.clientX,y:e.clientY,start:Number(range.value)};
     art.setPointerCapture(e.pointerId); art.classList.add('is-dragging');
   });
