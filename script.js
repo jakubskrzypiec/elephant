@@ -105,6 +105,7 @@ if (wrap && track) {
   appendCopies();
   let hovered = false, focused = false, paused = false, visible = false, touching = false, drag = null;
   let lastTime = 0, position = 0, cycle = 0, moving = false;
+  let arrowMotion = null;
   const fillTrack = () => {
     // Use the exact repeat distance, including fractional card widths.
     const firstCopy = track.querySelector('[data-clone]');
@@ -123,15 +124,24 @@ if (wrap && track) {
     pauseControl.textContent = paused ? 'Wznów ruch' : 'Zatrzymaj ruch';
   };
   const normalize = () => {
-    if (preference.matches || moving) return;
-    if (cycle > 0 && wrap.scrollLeft >= cycle) wrap.scrollLeft -= cycle;
+    if (preference.matches || moving || arrowMotion) return;
+    const boundary = Math.round(cycle);
+    if (boundary > 0 && wrap.scrollLeft >= boundary) wrap.scrollLeft -= boundary;
   };
   const loop = time => {
     const elapsed = Math.min(64, time - (lastTime || time));
     lastTime = time;
     const shouldMove = cycle > 0 && visible && !document.hidden && !preference.matches &&
       !hovered && !focused && !paused && !touching && !drag;
-    if (shouldMove) {
+    if (arrowMotion) {
+      const {from, to, started} = arrowMotion;
+      const progress = Math.max(0, Math.min(1, (time - started) / 300));
+      wrap.scrollLeft = from + (to - from) * (1 - (1 - progress) ** 3);
+      if (progress === 1) {
+        arrowMotion = null;
+        normalize();
+      }
+    } else if (shouldMove) {
       if (!moving) position = wrap.scrollLeft;
       moving = true;
       position = (position + elapsed * .028) % cycle;
@@ -149,6 +159,7 @@ if (wrap && track) {
   wrap.addEventListener('focusin', () => focused = true);
   wrap.addEventListener('focusout', e => focused = wrap.contains(e.relatedTarget));
   wrap.addEventListener('scroll', normalize, {passive:true});
+  wrap.addEventListener('wheel', () => {arrowMotion = null;}, {passive:true});
   let touchEndTimer;
   wrap.addEventListener('touchstart', () => {clearTimeout(touchEndTimer);touching = true;}, {passive:true});
   wrap.addEventListener('touchend', () => {touchEndTimer = setTimeout(() => touching = false, 1000);}, {passive:true});
@@ -162,6 +173,7 @@ if (wrap && track) {
   }, true);
   wrap.addEventListener('pointerdown', e => {
     suppressClick = false;
+    arrowMotion = null;
     if (e.pointerType !== 'mouse' || e.button !== 0) return;
     drag = {x:e.clientX, scroll:wrap.scrollLeft, moved:false};
   });
@@ -194,17 +206,29 @@ if (wrap && track) {
       moving = false;
       track.style.transform = '';
 
-      const current = wrap.scrollLeft;
+      let current = wrap.scrollLeft;
       const limit = wrap.scrollWidth - wrap.clientWidth;
       const origin = originals[0].getBoundingClientRect().left;
-      const stops = originals.map(card => Math.min(limit, card.getBoundingClientRect().left - origin));
-      const destination = button.dataset.carouselStep === 'next'
-        ? (stops.find(stop => stop > current + 2) ?? 0)
-        : (stops.findLast(stop => stop < current - 2) ?? stops.at(-1));
-      wrap.scrollLeft = destination;
+      const stops = originals.map(card => Math.min(limit, Math.round(card.getBoundingClientRect().left - origin)));
+      const next = button.dataset.carouselStep === 'next';
+      const boundary = Math.round(cycle);
+      if (preference.matches || boundary <= 0 || boundary > limit) {
+        arrowMotion = null;
+        wrap.scrollLeft = next
+          ? (stops.find(stop => stop > current + 2) ?? 0)
+          : (stops.findLast(stop => stop < current - 2) ?? stops.at(-1));
+        return;
+      }
+
+      // Start on the equivalent copy when stepping left from the first card.
+      if (!next && current <= 2) wrap.scrollLeft = current += boundary;
+      const to = next
+        ? (stops.find(stop => stop > current + 2) ?? boundary)
+        : stops.findLast(stop => stop < current - 2);
+      arrowMotion = {from:current, to, started:performance.now()};
     });
   });
-  preference.addEventListener('change', () => {wrap.scrollLeft = position = 0;syncControl();});
+  preference.addEventListener('change', () => {arrowMotion = null;wrap.scrollLeft = position = 0;syncControl();});
   new IntersectionObserver(entries => {visible = entries[0].isIntersecting;}, {threshold:.05}).observe(wrap);
   syncControl();
   requestAnimationFrame(loop);
