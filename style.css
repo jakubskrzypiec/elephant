@@ -346,8 +346,19 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 .instagram-profile small{display:block;font-size:9px;color:var(--muted);margin-top:4px}
 .instagram-profile-arrow{font-size:24px;margin-left:auto}
 .instagram-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;max-width:420px;background:#171717}
-.instagram-grid a{position:relative;overflow:hidden;aspect-ratio:3/4}
+.instagram-grid a{position:relative;overflow:hidden;aspect-ratio:1}
 .instagram-grid img{height:100%;object-fit:cover}
+.instagram-grid .instagram-grid-art{object-fit:contain;background:#fff}
+.instagram-grid-model{container-type:inline-size}
+.instagram-grid-model span{position:absolute;top:3%;left:14%;padding:2% 3%;background:#fff;color:var(--ink);font-size:clamp(8px,7cqw,11px);line-height:1.1;text-transform:uppercase}
+.instagram-grid-carousel img{object-position:center 60%}
+.instagram-grid-carousel::before,.instagram-grid-carousel::after{content:"";position:absolute;width:10%;aspect-ratio:1;border-radius:28%;pointer-events:none}
+.instagram-grid-carousel::before{z-index:1;top:8%;right:7%;border:1px solid #fff}
+.instagram-grid-carousel::after{z-index:1;top:6%;right:9%;background:#fff;box-shadow:0 0 4px #0003}
+.instagram-grid-quote{container-type:inline-size;display:grid;align-items:center;background:#d7d0c8;color:var(--ink);text-transform:uppercase}
+.instagram-grid-quote span{display:grid;gap:4px;padding:0 8%;line-height:1.2}
+.instagram-grid-quote strong{font-size:clamp(10px,10cqw,14px);font-weight:600}
+.instagram-grid-quote small{font-size:clamp(9px,8cqw,11px)}
 .instagram-grid a:focus-visible{z-index:1;outline:2px solid var(--ink);outline-offset:2px}
 
 .instagram-preview-link{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-top:22px}
