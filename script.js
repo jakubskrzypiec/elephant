@@ -252,7 +252,7 @@ if (processExperience) {
   });
   dragAreas.forEach(art => {
   art.addEventListener('pointerdown', e => {
-    if (e.button !== 0) return;
+    if (e.button !== 0 || e.target.closest('a')) return;
     drag = {x:e.clientX,y:e.clientY,start:Number(range.value)};
     art.setPointerCapture(e.pointerId); art.classList.add('is-dragging');
   });
