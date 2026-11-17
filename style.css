@@ -345,9 +345,14 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 .instagram-profile strong{font-size:12px;font-weight:500;display:block;overflow-wrap:anywhere}
 .instagram-profile small{display:block;font-size:9px;color:var(--muted);margin-top:4px}
 .instagram-profile-arrow{font-size:24px;margin-left:auto}
-.instagram-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;max-width:min(340px,69vw)}
-.instagram-grid a{position:relative;overflow:hidden;aspect-ratio:3/4}
+.instagram-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;max-width:420px}
+.instagram-grid a{position:relative;overflow:hidden;aspect-ratio:1}
 .instagram-grid img{height:100%;object-fit:cover;transition:transform .8s}
+.instagram-grid .instagram-grid-art{object-fit:contain;background:#fff}
+.instagram-grid-quote{container-type:inline-size;display:grid;place-items:center;background:#d9d3cb;color:var(--ink);text-align:center;text-transform:uppercase}
+.instagram-grid-quote span{display:grid;gap:6px;width:91%;line-height:1.23}
+.instagram-grid-quote strong{font-size:clamp(10px,11cqw,16px);font-weight:600}
+.instagram-grid-quote small{font-size:clamp(9px,8.5cqw,12px)}
 .instagram-grid a:nth-child(2) img{object-position:65% center}
 .instagram-grid a:nth-child(4) img{object-position:70% center}
 
@@ -399,6 +404,7 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 .social-panel,.review-panel{width:100%;row-gap:64px;column-gap:0;grid-template-columns:1fr 1fr}
 .social-intro,.review-intro{padding-right:6vw}
 .instagram-preview,.review-links{border-left:1px solid var(--line);padding-left:5vw;border-top:0}
+@media(min-width:981px){.instagram-preview{padding-left:clamp(5vw,calc(12vw - 70px),8vw)}}
 .social-intro h2,.review-intro h2,.contact-copy h2{font-size:clamp(58px,6vw,96px)}
 .social-intro p,.review-intro p{font-size:16px;line-height:1.9;max-width:520px}
 .review-link{padding:44px 0;border-top:1px solid var(--line)}
