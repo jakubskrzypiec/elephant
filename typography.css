@@ -29,7 +29,7 @@
  :root .placeholder-label{font-size:10px}
 }
 :root .portfolio-page .portfolio-meta h2{font-size:18px}
-:root :is(.faq-layout summary,.portfolio-motion-control button){font-family:var(--serif);font-weight:400;font-size:13px;letter-spacing:.24em;text-transform:uppercase;line-height:1.8}
+:root .faq-layout summary{font-family:var(--serif);font-weight:400;font-size:13px;letter-spacing:.24em;text-transform:uppercase;line-height:1.8}
 :root .article-toc a{letter-spacing:.24em}
 @media(max-width:620px){:root .portfolio-page .portfolio-meta h2{font-size:17px}}
 :root :is(.page-invite>a,.review-text small,.instagram-profile small,.service-bottom small,.comparison-scroll thead th){font-family:var(--serif);font-weight:400;letter-spacing:.24em;text-transform:uppercase;font-style:normal}

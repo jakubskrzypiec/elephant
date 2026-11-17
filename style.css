@@ -332,13 +332,15 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 .card h3{font-size:clamp(28px,2.3vw,40px);padding-bottom:26px;margin-bottom:24px}
 .card p{font-size:15px;line-height:1.85}
 .card-kicker{font-size:9px;margin-bottom:20px}
-.portfolio-motion-control{display:flex;justify-content:flex-end;align-items:center;gap:20px;margin:0 var(--gutter) 14px}
-.portfolio-motion-control [data-carousel-pause]{font-size:9px;letter-spacing:.12em;text-transform:uppercase;border:0;border-bottom:1px solid var(--line-strong);padding:8px 0;background:transparent;cursor:pointer}
-.portfolio-carousel-arrows{display:flex;gap:9px}
-.portfolio-carousel-arrows button{display:grid;place-items:center;width:46px;height:46px;padding:0;border:1px solid var(--line-strong);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer}
-.portfolio-carousel-arrows button:is(:hover,:focus-visible){background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.portfolio-carousel-arrows svg{width:29px;height:18px;fill:none;stroke:currentColor;stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round}
-@media(prefers-reduced-motion:no-preference){.portfolio-carousel-arrows button{transition:background-color .2s,color .2s,border-color .2s}}
+.portfolio-carousel-arrows{display:flex;justify-content:flex-end;gap:12px;margin:0 var(--gutter) 12px}
+.portfolio-carousel-arrows button{display:grid;place-items:center;width:49px;height:44px;padding:0;border:0;background:transparent;color:var(--muted);cursor:pointer}
+.portfolio-carousel-arrows button:is(:hover,:focus-visible){color:var(--ink)}
+.portfolio-carousel-arrows svg{width:41px;height:20px;fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round}
+@media(prefers-reduced-motion:no-preference){
+  .portfolio-carousel-arrows svg{transition:transform .18s ease}
+  .portfolio-carousel-arrows [data-carousel-step="prev"]:hover svg{transform:translateX(-3px)}
+  .portfolio-carousel-arrows [data-carousel-step="next"]:hover svg{transform:translateX(3px)}
+}
 .carousel-wrap.is-dragging{cursor:grabbing;user-select:none}
 .instagram-preview{min-width:0;width:100%;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0}
 .instagram-profile{display:flex;align-items:center;gap:16px;margin-bottom:26px}

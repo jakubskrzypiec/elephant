@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/client-oct25/kitchen-person.webp" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=6" />
+  <link rel="stylesheet" href="style.css?v=7" />
 <link rel="stylesheet" href="typography.css"><link rel="stylesheet" href="mid-century.css?v=11"><link rel="stylesheet" href="client-feedback.css?v=31"></head>
 <body>
   <header class="site-header">
@@ -76,12 +76,9 @@
         <a class="quiet-link" href="projekty.html">Zobacz wszystkie projekty</a>
       </header>
 
-      <div class="portfolio-motion-control">
-        <button type="button" data-carousel-pause aria-pressed="false">Zatrzymaj ruch</button>
-        <div class="portfolio-carousel-arrows" data-carousel-arrows>
-          <button type="button" data-carousel-step="prev" aria-controls="karuzela-projektow" aria-label="Poprzedni projekt"><svg viewBox="0 0 32 20" aria-hidden="true"><path d="M28 10H4m0 0c4-1 6-3 8-7m-8 7c4 1 6 3 8 7"/></svg></button>
-          <button type="button" data-carousel-step="next" aria-controls="karuzela-projektow" aria-label="Następny projekt"><svg viewBox="0 0 32 20" aria-hidden="true"><path d="M4 10h24m0 0c-4-1-6-3-8-7m8 7c-4 1-6 3-8 7"/></svg></button>
-        </div>
+      <div class="portfolio-carousel-arrows" data-carousel-arrows>
+        <button type="button" data-carousel-step="prev" aria-controls="karuzela-projektow" aria-label="Poprzedni projekt"><svg viewBox="0 0 44 20" aria-hidden="true"><path d="M40 10H4m0 0c5-.6 9-3.6 11-7M4 10c5 .6 9 3.6 11 7"/></svg></button>
+        <button type="button" data-carousel-step="next" aria-controls="karuzela-projektow" aria-label="Następny projekt"><svg viewBox="0 0 44 20" aria-hidden="true"><path d="M4 10h36m0 0c-5-.6-9-3.6-11-7m11 7c-5 .6-9 3.6-11 7"/></svg></button>
       </div>
       <div class="carousel-wrap" id="karuzela-projektow" data-carousel tabindex="0" role="region" aria-label="Wybrane projekty - przewijaj poziomo">
         <div class="projects-track" data-track>
@@ -281,6 +278,6 @@
     </div>
   </footer>
 
-  <script src="living-motion.js?v=26"></script><script src="script.js?v=32"></script>
+  <script src="living-motion.js?v=26"></script><script src="script.js?v=33"></script>
 </body>
 </html>

@@ -87,10 +87,9 @@ document.querySelectorAll('[data-contact-form]').forEach(contactForm => contactF
   location.href = `mailto:elephant.kontakt@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }));
 
-// A seamless portfolio loop; hover, focus or the pause control stops movement.
+// The project strip loops while visible. Swipes and keyboard navigation keep native scrolling.
 const wrap = document.querySelector('[data-carousel]');
 const track = document.querySelector('[data-track]');
-const pauseControl = document.querySelector('[data-carousel-pause]');
 const carouselArrows = document.querySelector('[data-carousel-arrows]');
 if (wrap && track) {
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
@@ -103,8 +102,8 @@ if (wrap && track) {
     track.append(clone);
   });
   appendCopies();
-  let hovered = false, focused = false, paused = false, visible = false, touching = false, drag = null;
-  let lastTime = 0, position = 0, cycle = 0, moving = false;
+  let focused = false, visible = false, touching = false, drag = null;
+  let lastTime = 0, position = null, cycle = 0;
   let arrowMotion = null;
   const fillTrack = () => {
     // Use the exact repeat distance, including fractional card widths.
@@ -118,51 +117,65 @@ if (wrap && track) {
   resizeObserver.observe(wrap);
   resizeObserver.observe(originals[0]);
   fillTrack();
-  const syncControl = () => {
-    pauseControl.hidden = preference.matches;
-    pauseControl.setAttribute('aria-pressed', String(paused));
-    pauseControl.textContent = paused ? 'Wznów ruch' : 'Zatrzymaj ruch';
-  };
   const normalize = () => {
-    if (preference.matches || moving || arrowMotion) return;
+    if (preference.matches || position !== null) return;
     const boundary = Math.round(cycle);
     if (boundary > 0 && wrap.scrollLeft >= boundary) wrap.scrollLeft -= boundary;
+  };
+  const draw = value => {
+    position = ((value % cycle) + cycle) % cycle;
+    track.style.transform = `translate3d(${wrap.scrollLeft - position}px, 0, 0)`;
+  };
+  const useNativeScroll = () => {
+    arrowMotion = null;
+    if (position === null) return;
+    wrap.scrollLeft = Math.round(position);
+    position = null;
+    track.style.transform = '';
+    normalize();
   };
   const loop = time => {
     const elapsed = Math.min(64, time - (lastTime || time));
     lastTime = time;
     const shouldMove = cycle > 0 && visible && !document.hidden && !preference.matches &&
-      !hovered && !focused && !paused && !touching && !drag;
-    if (arrowMotion) {
+      !focused && !touching && !drag;
+    if (arrowMotion && cycle > 0) {
       const {from, to, started} = arrowMotion;
       const progress = Math.max(0, Math.min(1, (time - started) / 300));
-      wrap.scrollLeft = from + (to - from) * (1 - (1 - progress) ** 3);
-      if (progress === 1) {
-        arrowMotion = null;
-        normalize();
-      }
+      draw(from + (to - from) * (1 - (1 - progress) ** 3));
+      if (progress === 1) arrowMotion = null;
     } else if (shouldMove) {
-      if (!moving) position = wrap.scrollLeft;
-      moving = true;
-      position = (position + elapsed * .028) % cycle;
-      wrap.scrollLeft = Math.floor(position);
-      // Native scrolling rounds to pixels. Keep the remaining fraction in the transform.
-      track.style.transform = `translate3d(${wrap.scrollLeft - position}px, 0, 0)`;
-    } else if (moving) {
-      moving = false;
-      track.style.transform = '';
+      // A subpixel transform avoids reconciling native scroll rounding on each frame.
+      draw((position ?? wrap.scrollLeft) + elapsed * .039);
+    } else {
+      useNativeScroll();
     }
     requestAnimationFrame(loop);
   };
-  wrap.addEventListener('mouseenter', () => hovered = true);
-  wrap.addEventListener('mouseleave', () => hovered = false);
-  wrap.addEventListener('focusin', () => focused = true);
-  wrap.addEventListener('focusout', e => focused = wrap.contains(e.relatedTarget));
+  wrap.addEventListener('focusin', e => {
+    focused = e.target.matches(':focus-visible');
+    if (focused) useNativeScroll();
+  });
+  wrap.addEventListener('focusout', () => focused = false);
   wrap.addEventListener('scroll', normalize, {passive:true});
-  wrap.addEventListener('wheel', () => {arrowMotion = null;}, {passive:true});
+  wrap.addEventListener('wheel', e => {
+    if (e.deltaX || e.shiftKey) {
+      useNativeScroll();
+      deferAutoplay();
+    }
+  }, {passive:true});
   let touchEndTimer;
-  wrap.addEventListener('touchstart', () => {clearTimeout(touchEndTimer);touching = true;}, {passive:true});
-  wrap.addEventListener('touchend', () => {touchEndTimer = setTimeout(() => touching = false, 1000);}, {passive:true});
+  const deferAutoplay = () => {
+    clearTimeout(touchEndTimer);
+    touching = true;
+    touchEndTimer = setTimeout(() => touching = false, 800);
+  };
+  wrap.addEventListener('touchstart', () => {
+    clearTimeout(touchEndTimer);
+    touching = true;
+    useNativeScroll();
+  }, {passive:true});
+  wrap.addEventListener('touchend', deferAutoplay, {passive:true});
   wrap.addEventListener('touchcancel', () => touching = false, {passive:true});
   let suppressClick = false;
   wrap.addEventListener('dragstart', e => e.preventDefault());
@@ -173,8 +186,8 @@ if (wrap && track) {
   }, true);
   wrap.addEventListener('pointerdown', e => {
     suppressClick = false;
-    arrowMotion = null;
     if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    useNativeScroll();
     drag = {x:e.clientX, scroll:wrap.scrollLeft, moved:false};
   });
   wrap.addEventListener('pointermove', e => {
@@ -198,39 +211,35 @@ if (wrap && track) {
     drag = null;
     wrap.classList.remove('is-dragging');
   }));
-  pauseControl.addEventListener('click', () => {paused = !paused;syncControl();});
   carouselArrows?.querySelectorAll('button').forEach(button => {
     button.addEventListener('click', () => {
-      paused = true;
-      syncControl();
-      moving = false;
-      track.style.transform = '';
-
-      let current = wrap.scrollLeft;
+      const current = position ?? wrap.scrollLeft;
       const limit = wrap.scrollWidth - wrap.clientWidth;
       const origin = originals[0].getBoundingClientRect().left;
-      const stops = originals.map(card => Math.min(limit, Math.round(card.getBoundingClientRect().left - origin)));
+      const stops = originals.map(card => Math.min(limit, card.getBoundingClientRect().left - origin));
       const next = button.dataset.carouselStep === 'next';
-      const boundary = Math.round(cycle);
-      if (preference.matches || boundary <= 0 || boundary > limit) {
-        arrowMotion = null;
+      const adjacent = next
+        ? stops.find(stop => stop > current + 2)
+        : stops.findLast(stop => stop < current - 2);
+
+      if (preference.matches || cycle <= 0 || cycle > limit) {
+        useNativeScroll();
         wrap.scrollLeft = next
-          ? (stops.find(stop => stop > current + 2) ?? 0)
-          : (stops.findLast(stop => stop < current - 2) ?? stops.at(-1));
+          ? (adjacent ?? 0)
+          : (adjacent ?? stops.at(-1));
         return;
       }
 
-      // Start on the equivalent copy when stepping left from the first card.
-      if (!next && current <= 2) wrap.scrollLeft = current += boundary;
-      const to = next
-        ? (stops.find(stop => stop > current + 2) ?? boundary)
-        : stops.findLast(stop => stop < current - 2);
-      arrowMotion = {from:current, to, started:performance.now()};
+      const destination = adjacent ?? (next ? cycle : stops.at(-1) - cycle);
+      arrowMotion = {from:current, to:destination, started:performance.now()};
     });
   });
-  preference.addEventListener('change', () => {arrowMotion = null;wrap.scrollLeft = position = 0;syncControl();});
+  preference.addEventListener('change', () => {
+    useNativeScroll();
+    wrap.scrollLeft = 0;
+    fillTrack();
+  });
   new IntersectionObserver(entries => {visible = entries[0].isIntersecting;}, {threshold:.05}).observe(wrap);
-  syncControl();
   requestAnimationFrame(loop);
 }
 
