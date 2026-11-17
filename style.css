@@ -345,18 +345,11 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 .instagram-profile strong{font-size:12px;font-weight:500;display:block;overflow-wrap:anywhere}
 .instagram-profile small{display:block;font-size:9px;color:var(--muted);margin-top:4px}
 .instagram-profile-arrow{font-size:24px;margin-left:auto}
-.instagram-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;max-width:420px}
-.instagram-grid a{position:relative;overflow:hidden;aspect-ratio:1}
-.instagram-grid img{height:100%;object-fit:cover;transition:transform .8s}
-.instagram-grid .instagram-grid-art{object-fit:contain;background:#fff}
-.instagram-grid-quote{container-type:inline-size;display:grid;place-items:center;background:#d9d3cb;color:var(--ink);text-align:center;text-transform:uppercase}
-.instagram-grid-quote span{display:grid;gap:6px;width:91%;line-height:1.23}
-.instagram-grid-quote strong{font-size:clamp(10px,11cqw,16px);font-weight:600}
-.instagram-grid-quote small{font-size:clamp(9px,8.5cqw,12px)}
-.instagram-grid a:nth-child(2) img{object-position:65% center}
-.instagram-grid a:nth-child(4) img{object-position:70% center}
+.instagram-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;max-width:420px;background:#171717}
+.instagram-grid a{position:relative;overflow:hidden;aspect-ratio:3/4}
+.instagram-grid img{height:100%;object-fit:cover}
+.instagram-grid a:focus-visible{z-index:1;outline:2px solid var(--ink);outline-offset:2px}
 
-.instagram-grid a:hover img{transform:scale(1.05)}
 .instagram-preview-link{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-top:22px}
 .site-footer{background:#000;color:#fff}
 .footer-contact,.footer-bottom{color:#fff}
@@ -364,8 +357,8 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 .footer-logo img{filter:brightness(0) invert(1)}
 @media(max-width:1140px){.cards{gap:20px}.card{padding:34px 24px 38px}.card p{font-size:14px}.card-no{padding-bottom:70px}}
 @media(max-width:980px){.instagram-preview{max-width:720px;justify-self:end}.card{min-height:510px}}
-@media(max-width:620px){.material-divider{min-height:0}.material-copy{padding:58px 7vw 64px}.material-copy h2{margin-bottom:26px;font-size:64px}.material-copy p{font-size:15px;line-height:1.8}.offer-content{padding-left:7vw;padding-right:7vw}.card{min-height:460px;padding:36px 28px}.card-no{font-size:68px;padding-bottom:60px}.card h3{font-size:36px}.card p{font-size:15px}.instagram-profile{gap:12px}.instagram-profile strong{font-size:11px}.instagram-avatar{width:52px;height:52px}.instagram-profile .instagram-avatar{font-size:8.5px}.instagram-grid{gap:4px}}
-@media(prefers-reduced-motion:reduce){.instagram-grid img{transition:none}.project-placeholder i{transition:none}.project-card[data-clone]{display:none}}
+@media(max-width:620px){.material-divider{min-height:0}.material-copy{padding:58px 7vw 64px}.material-copy h2{margin-bottom:26px;font-size:64px}.material-copy p{font-size:15px;line-height:1.8}.offer-content{padding-left:7vw;padding-right:7vw}.card{min-height:460px;padding:36px 28px}.card-no{font-size:68px;padding-bottom:60px}.card h3{font-size:36px}.card p{font-size:15px}.instagram-profile{gap:12px}.instagram-profile strong{font-size:11px}.instagram-avatar{width:52px;height:52px}.instagram-profile .instagram-avatar{font-size:8.5px}.instagram-grid{gap:1px}}
+@media(prefers-reduced-motion:reduce){.project-placeholder i{transition:none}.project-card[data-clone]{display:none}}
 
 /* Editorial rhythm: full-height chapters, finer rules and individual light studies. */
 :root{--line:rgba(34,20,11,.22);--gutter:6vw}
