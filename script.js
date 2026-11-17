@@ -248,11 +248,10 @@ const processExperience = document.querySelector('[data-process-experience]');
 if (processExperience) {
   const range = processExperience.querySelector('[data-process-range]');
   const buttons = [...processExperience.querySelectorAll('[data-process-stage]')];
-  const images = [...processExperience.querySelectorAll('.process-art-image')];
-  const dragAreas = [...processExperience.querySelectorAll('.process-focus,.process-mini-art')];
+  const panels = [...processExperience.querySelectorAll('[data-process-panel]')];
+  const dragAreas = [...processExperience.querySelectorAll('.process-focus,.process-examples')];
   const copy = processExperience.querySelector('.process-focus');
   const name = processExperience.querySelector('[data-process-name]');
-  const text = processExperience.querySelector('[data-process-text]');
   const count = processExperience.querySelector('[data-process-count]');
   const previous = processExperience.querySelector('[data-process-prev]');
   const next = processExperience.querySelector('[data-process-next]');
@@ -272,18 +271,17 @@ if (processExperience) {
     active = index;
     processExperience.style.setProperty('--process-direction', direction);
     buttons.forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
-    images.forEach((image, i) => {
-      image.classList.toggle('is-current', i === index);
-      image.setAttribute('aria-hidden', String(i !== index));
+    panels.forEach((panel, i) => {
+      panel.classList.toggle('is-current', i === index);
+      panel.setAttribute('aria-hidden', String(i !== index));
     });
     name.textContent = buttons[index].dataset.processTitle;
-    text.textContent = buttons[index].dataset.processDescription;
     count.innerHTML = `${String(index + 1).padStart(2, '0')} <span>/ ${String(buttons.length).padStart(2, '0')}</span>`;
     copyAnimation?.cancel();
     if (!reduced.matches) copyAnimation = copy.animate([{opacity:0},{opacity:1}], {duration:350,easing:'ease-out'});
   };
   processExperience.addEventListener('wheel', e => {
-    if (e.ctrlKey || e.target.closest('.process-stage-detail details[open]')) return;
+    if (e.ctrlKey || e.target.closest('.process-example-notes')) return;
     const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
     if (!delta) return;
     const current = Number(range.value);
@@ -302,18 +300,24 @@ if (processExperience) {
     select(e.key === 'Home' ? 0 : e.key === 'End' ? lastStage : active + (e.key === 'ArrowRight' || e.key === 'ArrowUp' ? 1 : -1));
   });
   dragAreas.forEach(art => {
+  art.addEventListener('dragstart', e => e.preventDefault());
   art.addEventListener('pointerdown', e => {
-    if (e.button !== 0 || e.target.closest('a, details')) return;
-    drag = {x:e.clientX,y:e.clientY,start:Number(range.value)};
-    art.setPointerCapture(e.pointerId); art.classList.add('is-dragging');
+    if (e.button !== 0 || e.target.closest('.process-example-notes')) return;
+    drag = {x:e.clientX,y:e.clientY,start:Number(range.value),captured:false};
   });
   art.addEventListener('pointermove', e => {
     if (!drag) return;
     const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
-    if (Math.abs(dx) < Math.abs(dy) && Math.abs(dy) > 12) return;
+    if (!drag.captured) {
+      if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy)) return;
+      drag.captured = true;
+      art.setPointerCapture(e.pointerId);
+      art.classList.add('is-dragging');
+    }
     select(drag.start - dx / art.clientWidth * lastStage);
   });
   const stop = () => {drag = null; art.classList.remove('is-dragging');};
+  art.addEventListener('pointerleave', () => {if (drag && !drag.captured) stop();});
   art.addEventListener('pointerup', () => {stop(); select(active);});
   art.addEventListener('pointercancel', stop);
   art.addEventListener('lostpointercapture', stop);
