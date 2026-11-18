@@ -31,7 +31,7 @@ if (dialog) {
     const photo = photos[current];
     image.src = photo.dataset.photo;
     image.alt = photo.dataset.caption;
-    caption.textContent = `${current + 1} / ${photos.length} · ${photo.dataset.caption}`;
+    caption.textContent = `${current + 1} / ${photos.length}`;
   };
   caption.setAttribute('aria-live', 'polite');
   if (photos.length > 1) {

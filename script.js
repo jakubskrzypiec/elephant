@@ -2,11 +2,6 @@ const toggle = document.querySelector('[data-menu-toggle]');
 const mobileMenu = document.querySelector('[data-mobile-menu]');
 
 if (toggle && mobileMenu) {
-  const brand = document.createElement('a');
-  brand.className = 'mobile-menu-brand';
-  brand.href = 'index.html';
-  brand.innerHTML = '<span>ELEPHANT</span><small>Interior Design</small>';
-  toggle.before(brand);
   const profile = document.querySelector('.footer-contact a[href*="instagram.com"]');
   if (profile) {
     const social = document.createElement('a');
@@ -32,6 +27,35 @@ if (toggle && mobileMenu) {
     toggle.focus();
   });
 }
+
+// Keep the hero crop stable while mobile browser controls expand or collapse.
+const homeHero = document.querySelector('#top > .hero');
+const mobileViewport = matchMedia('(max-width: 620px)');
+if (homeHero) {
+  let heroWidth = 0;
+  const sizeHero = () => {
+    if (!mobileViewport.matches) {
+      homeHero.style.height = '';
+      heroWidth = 0;
+      return;
+    }
+    const width = document.documentElement.clientWidth;
+    if (width === heroWidth) return;
+    heroWidth = width;
+    homeHero.style.height = '';
+    homeHero.style.height = homeHero.getBoundingClientRect().height + 'px';
+  };
+  sizeHero();
+  window.addEventListener('resize', sizeHero);
+  mobileViewport.addEventListener('change', sizeHero);
+}
+
+const dividerSurfaces = document.querySelectorAll('#top .living-scene > .living-surface');
+const frameDividers = () => dividerSurfaces.forEach(surface => {
+  surface.setAttribute('preserveAspectRatio', mobileViewport.matches ? 'xMaxYMid slice' : 'xMidYMid slice');
+});
+frameDividers();
+mobileViewport.addEventListener('change', frameDividers);
 
 // Hero: frames cross-fade so only the light and shadows move.
 // Each new frame fades in on top of the previous one (no dip in brightness),

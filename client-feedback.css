@@ -190,8 +190,10 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 :root .offer-consultation .consultation-calendar{max-width:1120px;margin:0 auto}
 :root :is(.offer-page,.contact-page) :is(.calendar-month,.calendar-preference,.calendar-time select),
 :root :is(.offer-page,.portfolio-page,.project-page) .page-invite,
-:root .contact-page :is(.contact-direct,.contact-quote,.contact-form .field,.consultation-form-summary),
-:root .contact-section :is(.contact-form,.contact-form .field){background:var(--offer-surface)}
+:root .contact-page .consultation-form-summary{background:var(--offer-surface)}
+:root .contact .contact-form .field{background:transparent;padding:0;min-height:0}
+:root .contact .contact-form .field :is(input,select,textarea){background-color:#fff;padding:14px;min-height:48px}
+:root .contact .contact-form .field select{padding-right:30px}
 :root :is(.offer-page,.contact-page) .calendar-preference,
 :root .contact-page :is(.contact-direct,.contact-quote),
 :root .contact-section .contact-form{padding:clamp(18px,3vw,36px)}
@@ -204,17 +206,17 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 @media(max-width:620px){:root .hero-logo{max-width:88vw}:root .hero-logo .brand-word{font-size:clamp(38px,9.5vw,58px)}:root .contact-page main>.consultation-calendar{padding:35px 7vw 55px}}
 
 .offer-note-mobile{display:none}
-.mobile-menu-brand{display:none}
 @media(max-width:900px){
-  :root .mobile-menu{background:rgba(24,18,15,.72);color:#fff;border:0;max-height:calc(100svh - 80px);overflow-y:auto;backdrop-filter:blur(8px);opacity:0;transform:translateY(-8px);transition:opacity .2s,transform .2s}
+  :root .mobile-menu{background:transparent;color:#fff;border:0;top:80px;bottom:0;height:calc(100svh - 80px);max-height:calc(100svh - 80px);overflow-y:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 7vw;opacity:0;transform:translateY(-8px);transition:opacity .2s,transform .2s}
   :root .mobile-menu.is-open{opacity:1;transform:none}
-  :root .mobile-menu a{display:flex;align-items:center;min-height:44px;font-size:clamp(21px,6vw,28px)}
-  :root .site-header:has(.menu-toggle[aria-expanded="true"]){background:rgba(24,18,15,.72);color:#fff}
-  :root .site-header:has(.menu-toggle[aria-expanded="true"]) .mobile-menu-brand{display:grid;align-content:center;gap:3px;line-height:1.15}
+  :root .mobile-menu nav{width:100%;gap:clamp(12px,3svh,26px)}
+  :root .mobile-menu a{display:flex;align-items:center;justify-content:center;min-height:44px;font-size:clamp(21px,6vw,28px);text-align:center}
+  :root .site-header:has(.menu-toggle[aria-expanded="true"]){position:fixed;background:transparent;color:#fff}
+  :root .mobile-menu.is-open{position:fixed}
+  :root body:has(.mobile-menu.is-open){overflow:hidden}
+  :root body:has(.mobile-menu.is-open):before{content:'';position:fixed;inset:0;z-index:48;background:#594538 url('assets/client-oct25/kitchen-person.webp') center/cover no-repeat;filter:blur(8px);transform:scale(1.05)}
   :root body:has(.mobile-menu.is-open) #top>.hero .hero-logo{visibility:hidden}
-  .mobile-menu-brand span{font-family:var(--serif);font-size:21px;letter-spacing:.16em}
-  .mobile-menu-brand small{font-size:8px;letter-spacing:.21em;text-transform:uppercase}
-  :root .mobile-menu .mobile-menu-social{margin-top:18px;border-top:1px solid #ffffff40;padding-top:10px;font-size:11px;letter-spacing:.18em}
+  :root .mobile-menu .mobile-menu-social{margin-top:24px;padding-top:10px;font-size:11px;letter-spacing:.18em}
   :root .menu-toggle{min-height:44px;-webkit-tap-highlight-color:transparent}
   :root .menu-toggle[aria-expanded="true"] span:first-child{transform:translateY(3.5px) rotate(45deg)}
   :root .menu-toggle[aria-expanded="true"] span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
