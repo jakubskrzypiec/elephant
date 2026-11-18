@@ -7,15 +7,17 @@
     void main(){uv=position*.5+.5;gl_Position=vec4(position,0.,1.);}`;
   const fragment = `precision mediump float;
     varying vec2 uv; uniform sampler2D photo; uniform sampler2D light;
-    uniform float time; uniform float aspect; uniform float imageAspect; uniform float shadowEnd; uniform float shadowStrength; uniform float shadowSpeed;
+    uniform float time; uniform float aspect; uniform float imageAspect; uniform float shadowEnd; uniform float shadowStrength; uniform float shadowSpeed; uniform float compact;
     float luma(vec3 c){return dot(c,vec3(.2126,.7152,.0722));}
     void main(){
       vec2 cover=aspect<imageAspect?vec2(aspect/imageAspect,1.):vec2(1.,imageAspect/aspect);
       vec2 p=(uv-.5)*cover+.5;
+      p.x+=compact*(1.-cover.x)*.5;
       float breeze=sin(time*.68*shadowSpeed); float second=sin(time*.49*shadowSpeed);
       // Move the illumination already present in the photograph, never its geometry.
-      vec2 drift=vec2(.032*breeze,.014*second);
-      float wall=(1.-smoothstep(shadowEnd-.14,shadowEnd,p.x))*smoothstep(.06,.20,p.y);
+      vec2 drift=vec2(mix(.032,.022,compact)*breeze,.014*second);
+      float wallX=mix(p.x,uv.x*shadowEnd,compact);
+      float wall=(1.-smoothstep(shadowEnd-.14,shadowEnd,wallX))*smoothstep(.06,.20,p.y);
       float originalLight=luma(texture2D(light,p).rgb);
       float movedLight=luma(texture2D(light,p+drift).rgb);
       float ratio=clamp(1.+(movedLight/max(originalLight,.08)-1.)*shadowStrength,.60,1.55);
@@ -31,7 +33,7 @@
     const host=svg.parentElement, img=new Image();
     img.src=svg.querySelector('image').getAttribute('href');
     try { await img.decode(); } catch { return; }
-    const canvas=document.createElement('canvas'); canvas.className='living-light-canvas'; canvas.setAttribute('aria-hidden','true');
+    const canvas=document.createElement('canvas'); canvas.className='living-light-canvas'; canvas.setAttribute('aria-hidden','true'); canvas.hidden=true;
     const gl=canvas.getContext('webgl',{alpha:false,antialias:false,powerPreference:'low-power'});
     if(!gl)return;
     try {
@@ -44,28 +46,55 @@
       const illumination=document.createElement('canvas');illumination.width=1200;illumination.height=Math.round(1200*img.height/img.width);
       const context=illumination.getContext('2d');context.filter='blur(9px)';context.drawImage(img,-18,-18,illumination.width+36,illumination.height+36);
       [img,illumination].forEach((source,i)=>{gl.activeTexture(gl.TEXTURE0+i);gl.bindTexture(gl.TEXTURE_2D,gl.createTexture());gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,source);gl.uniform1i(gl.getUniformLocation(program,i?'light':'photo'),i);});
-      const time=gl.getUniformLocation(program,'time'),aspect=gl.getUniformLocation(program,'aspect');
+      const time=gl.getUniformLocation(program,'time'),aspect=gl.getUniformLocation(program,'aspect'),compact=gl.getUniformLocation(program,'compact');
       gl.uniform1f(gl.getUniformLocation(program,'imageAspect'),img.width/img.height);
       gl.uniform1f(gl.getUniformLocation(program,'shadowEnd'),Number(svg.dataset.shadowEnd||.70));
       gl.uniform1f(gl.getUniformLocation(program,'shadowStrength'),Number(svg.dataset.shadowStrength||1));
       gl.uniform1f(gl.getUniformLocation(program,'shadowSpeed'),Number(svg.dataset.shadowSpeed||1));
       let seconds=0,last=0,frame=0,visible=false;
-      const render=()=>{const rect=host.getBoundingClientRect();const dpr=Math.min(devicePixelRatio,1.5);const width=Math.round(rect.width*dpr),height=Math.round(rect.height*dpr);if(!width||!height)return;if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;gl.viewport(0,0,width,height);}gl.uniform1f(aspect,rect.width/rect.height);gl.uniform1f(time,seconds);gl.drawArrays(gl.TRIANGLES,0,6);};
-      const tick=now=>{frame=0;if(last)seconds+=Math.min(now-last,64)/1000;last=now;render();frame=requestAnimationFrame(tick);};
-      const update=()=>{cancelAnimationFrame(frame);frame=0;last=0;canvas.hidden=preference.matches||narrow.matches;if(visible&&!document.hidden&&!canvas.hidden){render();frame=requestAnimationFrame(tick);}};
+      const render=()=>{
+        const rect=host.getBoundingClientRect();
+        const dpr=Math.min(devicePixelRatio,narrow.matches?1:1.5);
+        const width=Math.round(rect.width*dpr),height=Math.round(rect.height*dpr);
+        if(!width||!height)return;
+        if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;gl.viewport(0,0,width,height);}
+        gl.uniform1f(aspect,rect.width/rect.height);
+        gl.uniform1f(compact,Number(narrow.matches));
+        gl.uniform1f(time,seconds);
+        gl.drawArrays(gl.TRIANGLES,0,6);
+      };
+      const tick=now=>{
+        if(!last||!narrow.matches||now-last>=32){
+          if(last)seconds+=Math.min(now-last,64)/1000;
+          last=now;
+          render();
+        }
+        frame=requestAnimationFrame(tick);
+      };
+      const update=()=>{
+        cancelAnimationFrame(frame);
+        frame=0;
+        last=0;
+        const running=visible&&!document.hidden&&!preference.matches;
+        if(running){render();frame=requestAnimationFrame(tick);}
+        canvas.hidden=!running;
+      };
       const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;update();},{threshold:.01});
       host.append(canvas);host.classList.add('living-light-ready');observer.observe(host);scenes.push(update);
-      canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();cancelAnimationFrame(frame);canvas.remove();host.classList.remove('living-light-ready');observer.disconnect();});
-      new ResizeObserver(()=>{if(visible&&!canvas.hidden)render();}).observe(host);
+      const resize=new ResizeObserver(()=>{if(visible&&!canvas.hidden)render();});
+      resize.observe(host);
+      canvas.addEventListener('webglcontextlost',()=>{
+        cancelAnimationFrame(frame);
+        canvas.remove();
+        host.classList.remove('living-light-ready');
+        observer.disconnect();
+        resize.disconnect();
+        const index=scenes.indexOf(update);
+        if(index>=0)scenes.splice(index,1);
+      });
     } catch { canvas.remove(); }
   };
-  const init = () => {
-    if (narrow.matches) return;
-    document.querySelectorAll('[data-living-surface]').forEach(create);
-    narrow.removeEventListener('change', init);
-  };
-  init();
-  if (narrow.matches) narrow.addEventListener('change', init);
+  document.querySelectorAll('[data-living-surface]').forEach(create);
   narrow.addEventListener('change',()=>scenes.forEach(update=>update()));
   preference.addEventListener('change',()=>scenes.forEach(update=>update()));
   document.addEventListener('visibilitychange',()=>scenes.forEach(update=>update()));

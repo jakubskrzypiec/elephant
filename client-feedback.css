@@ -216,11 +216,6 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
   :root .hero .hero-frames{inset:-10px;filter:blur(8px)}
   :root .hero .hero-frames img{filter:none;transform:none;pointer-events:none;user-select:none;-webkit-user-drag:none}
   :root #top .living-scene>.living-surface{inset:0 0 0 auto;width:auto;height:100%;max-width:none;aspect-ratio:4}
-  :root #top .living-scene>.living-light-canvas{display:none}
-  :root #top .living-scene>.architectural-shadow{display:block;clip-path:none;mask-image:linear-gradient(90deg,#000 8%,#000 32%,transparent 75%);z-index:1}
-  :root #top .living-scene>.architectural-shadow:before{inset:-10% -5% -15% -35%;background-position:right top;background-size:auto 100%;opacity:.52;filter:blur(2px)}
-  :root #proces .architectural-shadow:before{animation-duration:4.4s;animation-delay:-1.5s}
-  :root #kontakt .architectural-shadow:before{animation-duration:6s;animation-delay:-2.5s}
   :root #top .material-divider.living-scene:after,:root #top #filozofia.living-scene:before{
     background:linear-gradient(180deg,rgba(25,20,17,.24),rgba(25,20,17,.61) 42%,rgba(25,20,17,.61) 62%,rgba(25,20,17,.3))
   }
@@ -230,7 +225,7 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
   :root .process-experience .process-mini-art .process-art-image{object-position:center top}
   :root .process-experience .process-milestones{grid-template-columns:repeat(6,minmax(0,1fr));gap:8px 6px}
   :root .process-experience .process-milestones button{grid-column:span 2;min-height:44px;letter-spacing:.025em;text-transform:none;font-size:11px}
-  :root .process-experience .process-milestones [data-process-stage="3"]{grid-column:1/span 2}
+  :root .process-experience .process-milestones [data-process-stage="3"]{grid-column:2/span 2}
   :root .process-experience .process-milestones [data-process-stage="4"]{grid-column:4/span 2}
   :root .process-experience .process-milestones button>span:last-child{display:block}
   :root .process .process-scrubber .process-range{width:100%;margin-left:0}
