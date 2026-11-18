@@ -20,11 +20,34 @@ if (projectListToggle) {
 const dialog = document.querySelector('.photo-dialog');
 if (dialog) {
   const photos = [...document.querySelectorAll('[data-photo]')];
+  const image = dialog.querySelector('img');
+  const caption = dialog.querySelector('p');
+  const frame = document.createElement('figure');
+  image.before(frame);
+  frame.append(image, caption);
   let current = 0;
-  const render = index => { current = (index + photos.length) % photos.length; const photo = photos[current]; dialog.querySelector('img').src = photo.dataset.photo; dialog.querySelector('img').alt = photo.dataset.caption; dialog.querySelector('p').textContent = photo.dataset.caption; };
+  const render = index => {
+    current = (index + photos.length) % photos.length;
+    const photo = photos[current];
+    image.src = photo.dataset.photo;
+    image.alt = photo.dataset.caption;
+    caption.textContent = `${current + 1} / ${photos.length} · ${photo.dataset.caption}`;
+  };
+  caption.setAttribute('aria-live', 'polite');
+  if (photos.length > 1) {
+    for (const [step, arrow, label] of [[-1, '←', 'Poprzednie zdjęcie'], [1, '→', 'Następne zdjęcie']]) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = step === -1 ? 'photo-step photo-prev' : 'photo-step photo-next';
+      button.setAttribute('aria-label', label);
+      button.textContent = arrow;
+      button.addEventListener('click', () => render(current + step));
+      dialog.append(button);
+    }
+  }
   photos.forEach((button, index) => button.addEventListener('click', () => {render(index); dialog.showModal();}));
   dialog.querySelector('.photo-close').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', e => {if (e.target === dialog) {const rect=dialog.getBoundingClientRect(); if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) dialog.close();}});
+  dialog.addEventListener('click', e => {if (e.target === dialog || e.target === frame) dialog.close();});
   dialog.addEventListener('keydown', e => {if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {e.preventDefault(); render(current + (e.key === 'ArrowRight' ? 1 : -1));}});
 }
 const offerSelect = document.querySelector('[name="oferta"]');

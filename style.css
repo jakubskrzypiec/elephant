@@ -341,24 +341,13 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 .instagram-preview{min-width:0;width:100%;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0}
 .instagram-profile{display:flex;align-items:center;gap:16px;margin-bottom:26px}
 .instagram-avatar{width:66px;height:66px;border:1px solid var(--line);border-radius:50%;overflow:hidden;background:var(--paper);flex:none}
-.instagram-avatar img{width:100%;height:100%;object-fit:cover}
+.instagram-avatar img{width:100%;height:100%;object-fit:cover;transform:scale(-1.9,1.9);transform-origin:50% 52%}
 .instagram-profile strong{font-size:12px;font-weight:500;display:block;overflow-wrap:anywhere}
 .instagram-profile small{display:block;font-size:9px;color:var(--muted);margin-top:4px}
 .instagram-profile-arrow{font-size:24px;margin-left:auto}
 .instagram-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;max-width:420px}
-.instagram-grid a{position:relative;overflow:hidden;aspect-ratio:1}
+.instagram-grid a{position:relative;overflow:hidden;aspect-ratio:4/5}
 .instagram-grid img{height:100%;object-fit:cover}
-.instagram-grid .instagram-grid-art{object-fit:contain;background:#fff}
-.instagram-grid-model{container-type:inline-size}
-.instagram-grid-model span{position:absolute;top:3%;left:14%;padding:2% 3%;background:#fff;color:var(--ink);font-size:clamp(8px,7cqw,11px);line-height:1.1;text-transform:uppercase}
-.instagram-grid-carousel img{object-position:center 60%}
-.instagram-grid-carousel::before,.instagram-grid-carousel::after{content:"";position:absolute;width:10%;aspect-ratio:1;border-radius:28%;pointer-events:none}
-.instagram-grid-carousel::before{z-index:1;top:8%;right:7%;border:1px solid #fff}
-.instagram-grid-carousel::after{z-index:1;top:6%;right:9%;background:#fff;box-shadow:0 0 4px #0003}
-.instagram-grid-quote{container-type:inline-size;display:grid;align-items:center;background:#d7d0c8;color:var(--ink);text-transform:uppercase}
-.instagram-grid-quote span{display:grid;gap:4px;padding:0 8%;line-height:1.2}
-.instagram-grid-quote strong{font-size:clamp(10px,10cqw,14px);font-weight:600}
-.instagram-grid-quote small{font-size:clamp(9px,8cqw,11px)}
 .instagram-grid a:focus-visible{z-index:1;outline:2px solid var(--ink);outline-offset:2px}
 
 .instagram-preview-link{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-top:22px}
@@ -663,6 +652,7 @@ a:focus-visible,button:focus-visible{outline:1px solid currentColor;outline-offs
 .process-art:before{content:"";position:absolute;inset:4% 6%;z-index:-1;background:radial-gradient(ellipse,rgba(224,222,216,.55),transparent 66%)}
 .process-art-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;filter:grayscale(1) blur(3px);opacity:0;transform:translateX(calc(var(--process-direction) * -35px)) scale(.96);transition:opacity .65s ease,transform .9s cubic-bezier(.16,1,.3,1),filter .65s;user-select:none;pointer-events:none}
 .process-art-image.is-current{opacity:1;transform:translateX(0) scale(1);filter:grayscale(1) blur(0)}
+.process-art-image[src$="/process-moodboard.webp"]{object-position:center bottom}
 :root .process-focus:has(.process-stage-copy){grid-template-rows:auto minmax(195px,auto)}
 .process-stage-copy h4{margin-bottom:0}
 .process-stage-detail{display:none;margin-top:12px;color:var(--ink);font-size:14px;line-height:1.55;max-width:44ch}
