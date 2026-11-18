@@ -55,6 +55,6 @@ const offerParam = new URLSearchParams(location.search).get('oferta');
 if (offerSelect && [...offerSelect.options].some(option => option.value === offerParam)) offerSelect.value = offerParam;
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
-    toggle.setAttribute('aria-expanded', 'false'); mobileMenu.classList.remove('is-open'); mobileMenu.setAttribute('aria-hidden', 'true'); toggle.focus();
+    toggle.setAttribute('aria-expanded', 'false'); mobileMenu.classList.remove('is-open'); mobileMenu.setAttribute('aria-hidden', 'true'); toggle.focus({preventScroll:true});
   }
 });

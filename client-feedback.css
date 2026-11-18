@@ -228,6 +228,10 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 @media(max-width:620px){
   html:has(#top > .hero){overscroll-behavior-y:none}
   :root #top > .hero{min-height:0;background:#594538}
+  :root #top :is(.about,.about-layout,.offer-content,.projects,.process-content,.social,.reviews,.contact){min-height:var(--mobile-page-height,100svh)}
+  :root .review-link{grid-template-columns:56px minmax(0,1fr);gap:18px}
+  :root .review-text{min-width:0}
+  :root .review-text small{overflow-wrap:anywhere}
   :root .hero .hero-frames{inset:-10px;filter:blur(8px)}
   :root .hero .hero-frames img{filter:none;transform:none;pointer-events:none;user-select:none;-webkit-user-drag:none}
   :root #top .material-divider.living-scene:after,:root #top #filozofia.living-scene:before{

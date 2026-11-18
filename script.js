@@ -24,11 +24,11 @@ if (toggle && mobileMenu) {
   document.addEventListener('keydown', event => {
     if (event.key !== 'Escape' || !isOpen()) return;
     setMenuOpen(false);
-    toggle.focus();
+    toggle.focus({preventScroll:true});
   });
 }
 
-// Keep the hero crop stable while mobile browser controls expand or collapse.
+// Keep section heights stable while mobile browser controls expand or collapse.
 const homeHero = document.querySelector('#top > .hero');
 const mobileViewport = matchMedia('(max-width: 620px)');
 if (homeHero) {
@@ -36,6 +36,7 @@ if (homeHero) {
   const sizeHero = () => {
     if (!mobileViewport.matches) {
       homeHero.style.height = '';
+      homeHero.parentElement.style.removeProperty('--mobile-page-height');
       heroWidth = 0;
       return;
     }
@@ -44,6 +45,7 @@ if (homeHero) {
     heroWidth = width;
     homeHero.style.height = '';
     homeHero.style.height = homeHero.getBoundingClientRect().height + 'px';
+    homeHero.parentElement.style.setProperty('--mobile-page-height', homeHero.style.height);
   };
   sizeHero();
   window.addEventListener('resize', sizeHero);
