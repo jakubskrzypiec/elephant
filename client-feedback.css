@@ -137,8 +137,21 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 :root #oferta .architectural-shadow,:root #proces .architectural-shadow,:root #filozofia .architectural-shadow,:root #kontakt .architectural-shadow{clip-path:polygon(0 0,58% 0,58% 100%,0 100%);mask-image:linear-gradient(90deg,#000,transparent 58%)}
 :root .architectural-shadow:before{opacity:.10}
 
-/* Animate the original photo lighting instead of stacking an unrelated leaf pattern. */
-:root .living-light-ready>.architectural-shadow{display:none}
+/* The stationary wall contour clips the moving curtain folds. */
+.curtain-shadow{
+  opacity:.31;
+  transform-origin:50% 0;
+  animation:curtain-sway 7s ease-in-out infinite alternate paused;
+}
+.is-visible .curtain-shadow{animation-play-state:running}
+#proces .curtain-shadow{animation-delay:-1.5s}
+#filozofia .curtain-shadow{animation-delay:-3s}
+#kontakt .curtain-shadow{animation-delay:-4.5s}
+@keyframes curtain-sway{
+  from{transform:translateX(-105px) skewX(-4deg) scaleX(.98)}
+  to{transform:translateX(125px) skewX(5deg) scaleX(1.04)}
+}
+@media(prefers-reduced-motion:reduce){.curtain-shadow{animation:none}}
 
 /* Feedback received 27 October: soft focus, quieter labels and calls to action. */
 :root .hero .hero-frames img{filter:blur(8px);transform:scale(1.07);animation:none;transition:none;object-position:90% center}
@@ -215,7 +228,6 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
   :root #top > .hero{min-height:0;background:#594538}
   :root .hero .hero-frames{inset:-10px;filter:blur(8px)}
   :root .hero .hero-frames img{filter:none;transform:none;pointer-events:none;user-select:none;-webkit-user-drag:none}
-  :root #top .living-scene>.living-surface{inset:0 0 0 auto;width:auto;height:100%;max-width:none;aspect-ratio:4}
   :root #top .material-divider.living-scene:after,:root #top #filozofia.living-scene:before{
     background:linear-gradient(180deg,rgba(25,20,17,.24),rgba(25,20,17,.61) 42%,rgba(25,20,17,.61) 62%,rgba(25,20,17,.3))
   }
