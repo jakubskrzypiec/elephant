@@ -177,9 +177,11 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 :root .offer-consultation .consultation-calendar{max-width:1120px;margin:0 auto}
 :root :is(.offer-page,.contact-page) :is(.calendar-month,.calendar-preference,.calendar-time select),
 :root :is(.offer-page,.portfolio-page,.project-page) .page-invite,
-:root .contact-page :is(.contact-direct,.contact-quote,.contact-form .field,.consultation-form-summary){background:var(--offer-surface)}
+:root .contact-page :is(.contact-direct,.contact-quote,.contact-form .field,.consultation-form-summary),
+:root .contact-section :is(.contact-form,.contact-form .field){background:var(--offer-surface)}
 :root :is(.offer-page,.contact-page) .calendar-preference,
-:root .contact-page :is(.contact-direct,.contact-quote){padding:clamp(18px,3vw,36px)}
+:root .contact-page :is(.contact-direct,.contact-quote),
+:root .contact-section .contact-form{padding:clamp(18px,3vw,36px)}
 :root :is(.offer-page,.contact-page) .calendar-time select{border:1px solid var(--line)}
 @media(max-width:620px){:root .offer-page .offer-consultation{padding-inline:7vw}}
 :root .contact-page main>.consultation-calendar{margin:0 auto;max-width:1380px;padding:40px 6vw 80px;scroll-margin-top:30px}

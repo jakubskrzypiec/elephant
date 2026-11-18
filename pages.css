@@ -75,8 +75,10 @@
 .photo-dialog button{display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;background:transparent;color:#fff;font-size:28px;line-height:1;cursor:pointer}
 .photo-dialog button:hover{background:rgba(255,255,255,.14)}
 .photo-close{position:absolute;top:0;right:0;z-index:1}
-.photo-step{grid-row:1;align-self:center}
+.photo-step{grid-row:1;place-self:center}
+.photo-step svg{display:block;width:30px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5}
 .photo-prev{grid-column:1}
+.photo-prev svg{transform:scaleX(-1)}
 .photo-next{grid-column:3}
 .journal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:35px}
 .journal-card>a{display:block}

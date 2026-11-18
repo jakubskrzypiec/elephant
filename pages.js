@@ -35,12 +35,12 @@ if (dialog) {
   };
   caption.setAttribute('aria-live', 'polite');
   if (photos.length > 1) {
-    for (const [step, arrow, label] of [[-1, '←', 'Poprzednie zdjęcie'], [1, '→', 'Następne zdjęcie']]) {
+    for (const [step, label] of [[-1, 'Poprzednie zdjęcie'], [1, 'Następne zdjęcie']]) {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = step === -1 ? 'photo-step photo-prev' : 'photo-step photo-next';
       button.setAttribute('aria-label', label);
-      button.textContent = arrow;
+      button.innerHTML = '<svg viewBox="0 0 30 16" aria-hidden="true" focusable="false"><path d="M3 8h24m-5-4 5 4-5 4"/></svg>';
       button.addEventListener('click', () => render(current + step));
       dialog.append(button);
     }
