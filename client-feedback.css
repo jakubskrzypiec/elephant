@@ -189,3 +189,39 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 .calendar-selection:empty{margin:0}
 .consultation-form-summary{font-size:14px;line-height:1.8;padding:16px;background:rgba(152,164,172,.12)}
 @media(max-width:620px){:root .hero-logo{max-width:88vw}:root .hero-logo .brand-word{font-size:clamp(38px,9.5vw,58px)}:root .contact-page main>.consultation-calendar{padding:35px 7vw 55px}}
+
+.offer-note-mobile{display:none}
+@media(max-width:900px){
+  :root .mobile-menu{background:rgba(24,18,15,.72);color:#fff;border:0;max-height:calc(100svh - 80px);overflow-y:auto;backdrop-filter:blur(8px);opacity:0;transform:translateY(-8px);transition:opacity .2s,transform .2s}
+  :root .mobile-menu.is-open{opacity:1;transform:none}
+  :root .mobile-menu a{display:flex;align-items:center;min-height:44px;font-size:clamp(21px,6vw,28px)}
+  :root .menu-toggle{min-height:44px;-webkit-tap-highlight-color:transparent}
+  :root .menu-toggle[aria-expanded="true"] span:first-child{transform:translateY(3.5px) rotate(45deg)}
+  :root .menu-toggle[aria-expanded="true"] span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+  :root .footer-logo .brand-lockup{width:min(230px,100%);margin-inline:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  :root .mobile-menu{transition:none}
+}
+@media(max-width:620px){
+  html:has(#top > .hero){overscroll-behavior-y:none}
+  :root #top > .hero{min-height:0}
+  :root .hero .hero-frames img{pointer-events:none;user-select:none;-webkit-user-drag:none}
+  :root #top .living-scene>.living-surface{inset:0 0 0 auto;width:auto;height:100%;max-width:none;aspect-ratio:4}
+  :root #top .living-scene>.living-light-canvas{display:none}
+  :root #top .material-divider.living-scene:after,:root #top #filozofia.living-scene:before{
+    background:linear-gradient(180deg,rgba(25,20,17,.24),rgba(25,20,17,.61) 42%,rgba(25,20,17,.61) 62%,rgba(25,20,17,.3))
+  }
+  :root .process-experience .process-arrows button{width:44px;height:44px}
+  :root .process-experience .process-focus{touch-action:pan-y}
+  :root .process-experience .process-mini-art{height:clamp(200px,59vw,265px)}
+  :root .process-experience .process-mini-art .process-art-image{object-position:center top}
+  :root .process-experience .process-milestones{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 12px}
+  :root .process-experience .process-milestones button{min-height:44px;letter-spacing:.025em;text-transform:none;font-size:11px}
+  :root .process-experience .process-milestones button>span:last-child{display:block}
+  :root .process .process-scrubber .process-range{width:100%;margin-left:0}
+  :root .offer-page .service-bottom .text-link{display:inline-flex;align-items:center;min-height:44px;touch-action:manipulation}
+  :root .offer-page .service-grid .service-panel:active{border-color:var(--ink)}
+  :root .offer-page .offer-note-desktop{display:none}
+  :root .offer-page .offer-note-mobile{display:block;margin:-16px 0 0;color:var(--ink);font-size:13px;line-height:1.7}
+}

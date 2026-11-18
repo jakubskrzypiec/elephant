@@ -1,6 +1,7 @@
 /* Separate slow illumination from surface detail: move light, not plaster or floor. */
 (() => {
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
+  const narrow = matchMedia('(max-width: 620px)');
   const scenes = [];
   const vertex = `attribute vec2 position; varying vec2 uv;
     void main(){uv=position*.5+.5;gl_Position=vec4(position,0.,1.);}`;
@@ -50,16 +51,22 @@
       gl.uniform1f(gl.getUniformLocation(program,'shadowSpeed'),Number(svg.dataset.shadowSpeed||1));
       let seconds=0,last=0,frame=0,visible=false;
       const render=()=>{const rect=host.getBoundingClientRect();const dpr=Math.min(devicePixelRatio,1.5);const width=Math.round(rect.width*dpr),height=Math.round(rect.height*dpr);if(!width||!height)return;if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;gl.viewport(0,0,width,height);}gl.uniform1f(aspect,rect.width/rect.height);gl.uniform1f(time,seconds);gl.drawArrays(gl.TRIANGLES,0,6);};
-      const tick=now=>{frame=0;if(last)seconds+=(now-last)/1000;last=now;render();frame=requestAnimationFrame(tick);};
-      const update=()=>{cancelAnimationFrame(frame);frame=0;last=0;canvas.hidden=preference.matches;if(visible&&!document.hidden&&!preference.matches){render();frame=requestAnimationFrame(tick);}};
+      const tick=now=>{frame=0;if(last)seconds+=Math.min(now-last,64)/1000;last=now;render();frame=requestAnimationFrame(tick);};
+      const update=()=>{cancelAnimationFrame(frame);frame=0;last=0;canvas.hidden=preference.matches||narrow.matches;if(visible&&!document.hidden&&!canvas.hidden){render();frame=requestAnimationFrame(tick);}};
       const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;update();},{threshold:.01});
       host.append(canvas);host.classList.add('living-light-ready');observer.observe(host);scenes.push(update);
       canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();cancelAnimationFrame(frame);canvas.remove();host.classList.remove('living-light-ready');observer.disconnect();});
-      canvas.addEventListener('webglcontextrestored',()=>location.reload(),{once:true});
-      new ResizeObserver(()=>{if(visible&&!preference.matches)render();}).observe(host);
+      new ResizeObserver(()=>{if(visible&&!canvas.hidden)render();}).observe(host);
     } catch { canvas.remove(); }
   };
-  document.querySelectorAll('[data-living-surface]').forEach(create);
+  const init = () => {
+    if (narrow.matches) return;
+    document.querySelectorAll('[data-living-surface]').forEach(create);
+    narrow.removeEventListener('change', init);
+  };
+  init();
+  if (narrow.matches) narrow.addEventListener('change', init);
+  narrow.addEventListener('change',()=>scenes.forEach(update=>update()));
   preference.addEventListener('change',()=>scenes.forEach(update=>update()));
   document.addEventListener('visibilitychange',()=>scenes.forEach(update=>update()));
 })();

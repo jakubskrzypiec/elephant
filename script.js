@@ -1,18 +1,22 @@
 const toggle = document.querySelector('[data-menu-toggle]');
 const mobileMenu = document.querySelector('[data-mobile-menu]');
 
-toggle?.addEventListener('click', () => {
-  const open = toggle.getAttribute('aria-expanded') === 'true';
-  toggle.setAttribute('aria-expanded', String(!open));
-  mobileMenu?.classList.toggle('is-open', !open);
-  mobileMenu?.setAttribute('aria-hidden', String(open));
-});
-
-mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  toggle?.setAttribute('aria-expanded','false');
-  mobileMenu.classList.remove('is-open');
-  mobileMenu.setAttribute('aria-hidden','true');
-}));
+if (toggle && mobileMenu) {
+  const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
+  const setMenuOpen = open => {
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
+    mobileMenu.classList.toggle('is-open', open);
+    mobileMenu.setAttribute('aria-hidden', String(!open));
+  };
+  toggle.addEventListener('click', () => setMenuOpen(!isOpen()));
+  mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenuOpen(false)));
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || !isOpen()) return;
+    setMenuOpen(false);
+    toggle.focus();
+  });
+}
 
 // Hero: frames cross-fade so only the light and shadows move.
 // Each new frame fades in on top of the previous one (no dip in brightness),
@@ -132,7 +136,7 @@ if (wrap && track) {
     wrap.scrollLeft = Math.round(position);
     position = null;
     track.style.transform = '';
-    normalize();
+    if (!touching) normalize();
   };
   const loop = time => {
     const elapsed = Math.min(64, time - (lastTime || time));
@@ -157,26 +161,37 @@ if (wrap && track) {
     if (focused) useNativeScroll();
   });
   wrap.addEventListener('focusout', () => focused = false);
-  wrap.addEventListener('scroll', normalize, {passive:true});
+  wrap.addEventListener('scroll', () => {
+    if (touching) {
+      if (!fingerDown) deferAutoplay();
+    } else {
+      normalize();
+    }
+  }, {passive:true});
   wrap.addEventListener('wheel', e => {
     if (e.deltaX || e.shiftKey) {
       useNativeScroll();
       deferAutoplay();
     }
   }, {passive:true});
-  let touchEndTimer;
+  let touchEndTimer, fingerDown = false;
   const deferAutoplay = () => {
     clearTimeout(touchEndTimer);
     touching = true;
-    touchEndTimer = setTimeout(() => touching = false, 800);
+    touchEndTimer = setTimeout(() => touching = false, 240);
   };
   wrap.addEventListener('touchstart', () => {
     clearTimeout(touchEndTimer);
-    touching = true;
+    touching = fingerDown = true;
     useNativeScroll();
   }, {passive:true});
-  wrap.addEventListener('touchend', deferAutoplay, {passive:true});
-  wrap.addEventListener('touchcancel', () => touching = false, {passive:true});
+  const finishTouch = event => {
+    if (event.touches.length) return;
+    fingerDown = false;
+    deferAutoplay();
+  };
+  wrap.addEventListener('touchend', finishTouch, {passive:true});
+  wrap.addEventListener('touchcancel', finishTouch, {passive:true});
   let suppressClick = false;
   wrap.addEventListener('dragstart', e => e.preventDefault());
   wrap.addEventListener('click', e => {
@@ -283,7 +298,7 @@ if (processExperience) {
     if (!reduced.matches) copyAnimation = copy.animate([{opacity:0},{opacity:1}], {duration:350,easing:'ease-out'});
   };
   processExperience.addEventListener('wheel', e => {
-    if (e.ctrlKey || e.target.closest('.process-stage-detail details[open]')) return;
+    if (e.ctrlKey) return;
     const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
     if (!delta) return;
     const current = Number(range.value);
@@ -303,7 +318,7 @@ if (processExperience) {
   });
   dragAreas.forEach(art => {
   art.addEventListener('pointerdown', e => {
-    if (e.button !== 0 || e.target.closest('a, details')) return;
+    if (e.button !== 0) return;
     drag = {x:e.clientX,y:e.clientY,start:Number(range.value)};
     art.setPointerCapture(e.pointerId); art.classList.add('is-dragging');
   });
