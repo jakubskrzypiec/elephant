@@ -2,6 +2,21 @@ const toggle = document.querySelector('[data-menu-toggle]');
 const mobileMenu = document.querySelector('[data-mobile-menu]');
 
 if (toggle && mobileMenu) {
+  const brand = document.createElement('a');
+  brand.className = 'mobile-menu-brand';
+  brand.href = 'index.html';
+  brand.innerHTML = '<span>ELEPHANT</span><small>Interior Design</small>';
+  toggle.before(brand);
+  const profile = document.querySelector('.footer-contact a[href*="instagram.com"]');
+  if (profile) {
+    const social = document.createElement('a');
+    social.className = 'mobile-menu-social';
+    social.href = profile.href;
+    social.target = '_blank';
+    social.rel = 'noopener';
+    social.textContent = 'Instagram';
+    mobileMenu.append(social);
+  }
   const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
   const setMenuOpen = open => {
     toggle.setAttribute('aria-expanded', String(open));
