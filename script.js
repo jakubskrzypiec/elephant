@@ -54,7 +54,8 @@ if (homeHero) {
 
 const dividerSurfaces = document.querySelectorAll('#top .living-scene > .living-surface');
 const frameDividers = () => dividerSurfaces.forEach(surface => {
-  surface.setAttribute('preserveAspectRatio', mobileViewport.matches ? 'xMaxYMid slice' : 'xMidYMid slice');
+  surface.setAttribute('viewBox', mobileViewport.matches ? surface.dataset.mobileViewBox : '0 0 3000 750');
+  surface.setAttribute('preserveAspectRatio', 'xMidYMid slice');
 });
 frameDividers();
 mobileViewport.addEventListener('change', frameDividers);
@@ -308,7 +309,6 @@ if (processExperience) {
   const dragAreas = [...processExperience.querySelectorAll('.process-focus,.process-mini-art')];
   const copy = processExperience.querySelector('.process-focus');
   const name = processExperience.querySelector('[data-process-name]');
-  const text = processExperience.querySelector('[data-process-text]');
   const count = processExperience.querySelector('[data-process-count]');
   const previous = processExperience.querySelector('[data-process-prev]');
   const next = processExperience.querySelector('[data-process-next]');
@@ -333,7 +333,6 @@ if (processExperience) {
       image.setAttribute('aria-hidden', String(i !== index));
     });
     name.textContent = buttons[index].dataset.processTitle;
-    text.textContent = buttons[index].dataset.processDescription;
     count.innerHTML = `${String(index + 1).padStart(2, '0')} <span>/ ${String(buttons.length).padStart(2, '0')}</span>`;
     copyAnimation?.cancel();
     if (!reduced.matches) copyAnimation = copy.animate([{opacity:0},{opacity:1}], {duration:350,easing:'ease-out'});
@@ -376,6 +375,16 @@ if (processExperience) {
   });
   reduced.addEventListener('change', () => copyAnimation?.cancel());
 }
+
+// Tapping an offer card exposes the same selected state as desktop hover.
+document.querySelectorAll('.offer .card,.offer-page .service-panel').forEach(card => {
+  card.tabIndex = 0;
+  card.addEventListener('click', () => {
+    const selected = card.parentElement.querySelector('.is-selected');
+    if (selected && selected !== card) selected.classList.remove('is-selected');
+    card.classList.add('is-selected');
+  });
+});
 
 // Material light moves only while visible, and respects reduced-motion settings.
 const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');

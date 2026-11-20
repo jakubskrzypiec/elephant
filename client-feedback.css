@@ -19,8 +19,7 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 :root .page-banner-copy{max-width:960px;margin:auto;text-align:center;width:100%;padding:50px 6vw;color:#fff}
 :root .page-banner-copy h1{color:#f6f4f1;font-size:clamp(30px,3.2vw,48px);margin:0 auto 24px}
 :root .portfolio-page .page-banner-copy{max-width:1250px}
-:root .portfolio-page .page-banner-copy h1{font-size:clamp(22px,3.5vw,48px);white-space:nowrap}
-@media(max-width:620px){:root .portfolio-page .page-banner-copy h1{font-size:clamp(13px,4.35vw,25px)}}
+:root .portfolio-page .page-banner-copy h1{font-size:clamp(30px,3.2vw,48px);white-space:normal}
 :root .page-banner-copy p{color:#f6f4f1!important;margin:0 auto;max-width:780px;font-size:15px;line-height:1.85}
 :root .material-divider.living-scene:after,:root .philosophy.living-scene:before,:root .contact-section .material-divider.living-scene:after{background:rgba(25,20,17,.39);z-index:2}
 :root .material-copy,:root .philosophy-content{position:relative;z-index:3;text-align:center;max-width:1150px;margin:auto;padding:65px 7vw;width:100%}
@@ -187,7 +186,7 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 :root .page-invite>.text-link{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:400;letter-spacing:.12em;line-height:1.7;padding:12px 0;border:0;white-space:normal}
 :root .page-invite>.text-link>span{font-size:14px;margin-left:18px}
 :root .offer-page .offer-consultation{padding-inline:6vw}
-:root .offer-consultation .consultation-calendar{max-width:1120px;margin:0 auto}
+:root .offer-consultation .consultation-calendar{max-width:none;margin:0}
 :root :is(.offer-page,.contact-page) :is(.calendar-month,.calendar-preference,.calendar-time select),
 :root :is(.offer-page,.portfolio-page,.project-page) .page-invite,
 :root .contact-page .consultation-form-summary{background:var(--offer-surface)}
@@ -251,4 +250,35 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
   :root .offer-page .service-grid .service-panel:active{border-color:var(--ink)}
   :root .offer-page .offer-note-desktop{display:none}
   :root .offer-page .offer-note-mobile{display:block;margin:-16px 0 0;color:var(--ink);font-size:13px;line-height:1.7}
+}
+
+/* Client feedback of 19 November, with the terminology corrected on 20 November. */
+:root .offer-page .calendar-layout .calendar-preference,:root .contact-page .calendar-layout .calendar-preference{background:transparent}
+:root :is(.offer-page,.contact-page) :is(.calendar-time select,.calendar-apply){background-color:#fff}
+:root .calendar-apply:hover:not(:disabled){background:var(--ink);color:#fff}
+:root .subpage .page-invite{background:var(--paper);align-items:center;justify-content:center;text-align:center}
+:root .portfolio-page .page-invite{background:var(--paper)}
+:root .site-footer .footer-contact{border-bottom:0}
+.footer-contact a{display:inline-flex;align-items:center;justify-content:center;gap:9px}
+.footer-contact-icon{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+:root .instagram-avatar img{transform:scaleX(-1);object-fit:cover;object-position:center}
+:root .instagram-preview-link{justify-content:center;margin-top:34px;text-align:center}
+:root .offer-page .service-bottom small{color:#7b7771}
+:root .page-banner .living-surface{filter:blur(12px)}
+:root .process-focus .process-stage-copy{align-self:center}
+:root .offer .card.is-selected,:root .offer .card:focus-visible,
+:root .offer-page .service-panel.is-selected,:root .offer-page .service-panel:focus-visible{
+  border:1px solid var(--ink);
+  box-shadow:9px 14px 26px rgba(34,20,11,.1);
+  transform:translateY(-3px);
+  outline:none;
+}
+@media(max-width:620px){
+  :root .offer-page .comparison-scroll table{border-collapse:separate;border-spacing:0;table-layout:fixed;min-width:680px}
+  :root .offer-page .comparison-scroll th:first-child{position:sticky;left:0;z-index:1;width:150px;min-width:150px;padding-left:10px;padding-right:12px;background:var(--paper);box-shadow:1px 0 0 var(--line)}
+  :root .offer-page .comparison-scroll thead th:first-child{z-index:2}
+  :root .process-experience .process-focus{grid-template-rows:24px 95px}
+}
+@media(prefers-reduced-motion:reduce){
+  :root .offer .card.is-selected,:root .offer-page .service-panel.is-selected{transform:none}
 }
