@@ -60,6 +60,15 @@ const frameDividers = () => dividerSurfaces.forEach(surface => {
 frameDividers();
 mobileViewport.addEventListener('change', frameDividers);
 
+const pageSurface = document.querySelector('.page-banner .living-surface');
+if (pageSurface) {
+  const framePageHero = () => {
+    pageSurface.setAttribute('viewBox', mobileViewport.matches ? '1850 0 950 750' : '0 0 3000 750');
+  };
+  framePageHero();
+  mobileViewport.addEventListener('change', framePageHero);
+}
+
 // Hero: frames cross-fade so only the light and shadows move.
 // Each new frame fades in on top of the previous one (no dip in brightness),
 // and the order runs forth and back (1→9→1) so the loop never jumps.
