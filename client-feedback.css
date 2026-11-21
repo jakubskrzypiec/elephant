@@ -298,3 +298,11 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 :root .footer-bottom{gap:18px 28px;flex-wrap:wrap;align-items:center}
 :root .footer-service-area{font-size:9px;line-height:1.8;letter-spacing:.08em;text-align:right}
 @media(max-width:620px){:root .calendly-frame{height:1050px}:root .footer-service-area{text-align:center}}
+
+/* Quiet two-column scheduling section; hide duplicated event details via Calendly. */
+:root .calendly-booking{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1fr);align-items:start;gap:48px}
+:root .calendly-booking .calendar-intro{margin:0;max-width:380px;padding-top:20px}
+:root .calendly-panel{min-width:0;background:#fff;border:1px solid var(--line)}
+:root .calendly-panel .calendly-frame{height:740px}
+:root .calendly-panel .calendly-fallback{margin:0;padding:18px 24px;border-top:1px solid var(--line);font-size:11px;line-height:1.8}
+@media(max-width:900px){:root .calendly-booking{grid-template-columns:minmax(0,1fr);gap:28px}:root .calendly-booking .calendar-intro{max-width:650px;padding-top:0}:root .calendly-panel .calendly-frame{height:740px}}
