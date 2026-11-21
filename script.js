@@ -113,34 +113,7 @@ if (heroFrames.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').mat
   else window.addEventListener('load', start);
 }
 
-// Contact form: no backend yet, so open the visitor's mail app with the message filled in.
-document.querySelectorAll('[data-contact-form]').forEach(contactForm => contactForm.addEventListener('submit', e => {
-  e.preventDefault();
-  const data = new FormData(contactForm);
-  const get = key => (data.get(key) || '').toString().trim();
-  const name = [get('name'),get('surname')].filter(Boolean).join(' ');
-  const metraz = get('metraz');
-
-  // Only answered questions go into the e-mail.
-  const rows = [
-    ['Oferta', get('oferta')],
-    ['Rodzaj przestrzeni', get('typ')],
-    ['Metraż', metraz && `${metraz} m²`],
-    ['Miasto', get('city')],
-    ['Stan nieruchomości', get('condition')],
-    ['Rynek', get('market')],
-    ['Planowany start projektu', get('start')],
-    ['Jak do nas trafiłeś / trafiłaś', get('source')],
-    ['Preferowany termin konsultacji', get('preferred_date')],
-    ['Preferowana godzina konsultacji', get('preferred_time')],
-  ].filter(([, value]) => value).map(([label, value]) => `${label}: ${value}`);
-
-  const message = get('message');
-  const contact = [name, get('email'), get('phone')].filter(Boolean).join('\n');
-  const subject = `Zapytanie ze strony${get('oferta') ? ' - ' + get('oferta') : ''}${name ? ' - ' + name : ''}`;
-  const body = [rows.join('\n'), message && `Opis:\n${message}`, contact].filter(Boolean).join('\n\n');
-  location.href = `mailto:elephant.kontakt@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}));
+// Contact forms use native POST to FormSubmit, including browser validation and spam verification.
 
 // The project strip loops while visible. Swipes and keyboard navigation keep native scrolling.
 const wrap = document.querySelector('[data-carousel]');

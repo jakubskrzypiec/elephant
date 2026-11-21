@@ -16,6 +16,6 @@ Nawigacja: Start (`index.html`), Oferty (`oferty.html`), Projekty (`projekty.htm
 
 Portfolio zawiera sześć projektów i 18 zoptymalizowanych zdjęć ze starej strony https://elephant.com.pl/services/. Pakiety i ceny konsultacji odtworzono na podstawie https://elephant.com.pl/oferta2/. Artykuły są nowymi tekstami przygotowanymi dla strony, bez fikcyjnych dat publikacji.
 
-Każdy projekt ma osobną galerię z powiększaniem zdjęć (Escape zamyka; strzałki zmieniają zdjęcie). Linki ofert przekazują wybrany pakiet do formularza. Formularz przygotowuje wiadomość mailto; automatyczna wysyłka wymaga podłączenia usługi formularzy lub backendu. Nie zawiera pozornego potwierdzenia wysyłki.
+Każdy projekt ma osobną galerię z powiększaniem zdjęć (Escape zamyka; strzałki zmieniają zdjęcie). Linki ofert przekazują wybrany pakiet do formularza. Trzy formularze wysyłają zgłoszenia przez FormSubmit na elephant.interiordesignstudio@gmail.com. Pierwsze zgłoszenie wymaga aktywacji adresu przez właścicielkę; doręczenie należy sprawdzić po aktywacji. Włączona jest standardowa ochrona antyspamowa FormSubmit oraz honeypot. Kalendarz zapisuje preferowany termin; integracja Calendly oczekuje na link do wydarzenia klientki.
 
 Walidacja: 14 stron, lokalne pliki i kotwice, 1440/768/390/320 px, filtry portfolio, galerie, FAQ, menu mobilne, wybór oferty i walidacja formularza. Nie wysyłano wiadomości testowych.

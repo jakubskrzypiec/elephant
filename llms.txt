@@ -35,4 +35,4 @@ Wrocław, Kraków, Poznań, Łódź, Warszawa i okolice tych miast. Dostępna je
 
 Konsultacja online, układ funkcjonalny, projekt koncepcyjny i projekt kompleksowy. Dokumentacja techniczna obejmuje plany elektryki, instalacji wodno-kanalizacyjnej, kłady ścian, podłóg oraz rysunki mebli na wymiar. Szczegóły i aktualne warunki znajdują się na stronie oferty.
 
-Formularze otwierają aplikację pocztową. Wybrany termin konsultacji wymaga potwierdzenia przez pracownię.
+Formularze przesyłają zgłoszenia przez FormSubmit. Wybrany termin konsultacji wymaga potwierdzenia przez pracownię.

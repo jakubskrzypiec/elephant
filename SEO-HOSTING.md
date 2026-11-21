@@ -11,7 +11,7 @@ Repozytorium jest statyczną stroną. Pliki należy opublikować w katalogu gł�
 - `sitemap.xml` obejmuje 16 właściwych stron. Nie zawiera sześciu dawnych szablonów projektów; mają one `noindex, follow`.
 - `robots.txt` pozwala na indeksowanie i wskazuje mapę strony.
 - `llms.txt` to dodatkowy, tekstowy spis usług i materiałów dla narzędzi, które go obsługują. Nie jest wyszukiwarką ani gwarancją widoczności w AI. Nie dodano pozornej wyszukiwarki ani danych SearchAction, skoro strona nie ma funkcji wyszukiwania.
-- Formularze nadal przygotowują wiadomość w aplikacji pocztowej. SEO nie zmienia sposobu ich wysyłania.
+- Trzy formularze (start, kontakt i zapytanie o projekt) wysyłają POST do FormSubmit na `elephant.interiordesignstudio@gmail.com`. Usunięto przechwytywanie wysyłki przez mailto. Zachowano weryfikację antyspamową i dodano honeypot. Po pierwszym zgłoszeniu właścicielka musi potwierdzić adres linkiem aktywacyjnym FormSubmit; potem należy sprawdzić rzeczywiste doręczenie. Testy techniczne nie wysyłały maili. Calendly wymaga linku do wydarzenia klientki; obecny kalendarz nadal zapisuje preferencję, nie dokonuje rezerwacji.
 
 ## Przy uruchomieniu hostingu
 
