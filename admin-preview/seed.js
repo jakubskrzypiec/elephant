@@ -1,0 +1,306 @@
+window.ELEPHANT_SEED = {
+  "version": 1,
+  "projects": [
+    {
+      "id": "project-0",
+      "title": "Łazienka z motywem żurawi",
+      "slug": "projekt-lazienka",
+      "description": "Projekt łazienki z motywem żurawi i wolnostojącą umywalką. Zobacz materiały, oświetlenie i detale aranżacji w portfolio ELEPHANT Interior Design.",
+      "status": "published",
+      "featured": true,
+      "order": 1,
+      "photos": [
+        {
+          "src": "../assets/projects/lazienka-0.webp",
+          "alt": "Łazienka z wolnostojącą umywalką i ścianą z motywem żurawi"
+        },
+        {
+          "src": "../assets/projects/lazienka-1.webp",
+          "alt": "Widok na drzwi, umywalkę, lustro i drewnianą zabudowę"
+        },
+        {
+          "src": "../assets/projects/lazienka-2.webp",
+          "alt": "Zbliżenie na wzór żurawi i baterię umywalkową"
+        },
+        {
+          "src": "../assets/projects/lazienka-3.webp",
+          "alt": "Zbliżenie na umywalkę i okrągły kinkiet"
+        }
+      ]
+    },
+    {
+      "id": "project-1",
+      "title": "Sypialnia w odcieniu khaki",
+      "slug": "projekt-sypialnia",
+      "description": "Projekt sypialni w odcieniu khaki. Zobacz spokojną kolorystykę, tapicerowane łóżko i dopracowane detale w portfolio ELEPHANT Interior Design.",
+      "status": "published",
+      "featured": true,
+      "order": 2,
+      "photos": [
+        {
+          "src": "../assets/projects/sypialnia-0.webp",
+          "alt": "Widok na łóżko, drewnianą zabudowę i rysunek nad wezgłowiem"
+        },
+        {
+          "src": "../assets/projects/sypialnia-1.webp",
+          "alt": "Łóżko i szafa w drewnianej zabudowie"
+        },
+        {
+          "src": "../assets/projects/sypialnia-2.webp",
+          "alt": "Sypialnia z widokiem w stronę okna"
+        },
+        {
+          "src": "../assets/projects/sypialnia-3.webp",
+          "alt": "Detal wezgłowia, lampy i stolika nocnego"
+        },
+        {
+          "src": "../assets/projects/sypialnia-4.webp",
+          "alt": "Detal lustra i konsoli przy łóżku"
+        },
+        {
+          "src": "../assets/projects/sypialnia-5.webp",
+          "alt": "Widok na konsolę i dekorację ściany"
+        },
+        {
+          "src": "../assets/projects/sypialnia-6.webp",
+          "alt": "Widok od strony łóżka na ekran i zasłony"
+        }
+      ]
+    },
+    {
+      "id": "project-2",
+      "title": "Kuchnia z zielonym kamieniem",
+      "slug": "projekt-kuchnia",
+      "description": "Projekt kuchni z zielonym kamieniem, drewnianymi frontami i burgundowymi uchwytami. Zobacz aranżację i detale w portfolio ELEPHANT Interior Design.",
+      "status": "published",
+      "featured": true,
+      "order": 3,
+      "photos": [
+        {
+          "src": "../assets/projects/kuchnia-0.webp",
+          "alt": "Widok na drewnianą zabudowę, kamienny blat i geometryczną posadzkę"
+        },
+        {
+          "src": "../assets/projects/kuchnia-1-nov18.webp",
+          "alt": "Kuchnia widziana zza stołu z kwiatami"
+        },
+        {
+          "src": "../assets/projects/kuchnia-2.webp",
+          "alt": "Detal kamiennego blatu i zaokrąglonej szafki"
+        },
+        {
+          "src": "../assets/projects/kuchnia-3.webp",
+          "alt": "Widok na wysoką drewnianą zabudowę"
+        }
+      ]
+    },
+    {
+      "id": "project-3",
+      "title": "Salon z antresolą",
+      "slug": "projekt-salon",
+      "description": "Projekt salonu z antresolą, zabudową ściany telewizyjnej i naturalnymi materiałami. Zobacz portfolio ELEPHANT Interior Design.",
+      "status": "published",
+      "featured": true,
+      "order": 4,
+      "photos": [
+        {
+          "src": "../assets/projects/salon-nov20-1.webp",
+          "alt": "Salon z antresolą i ścianą telewizyjną"
+        },
+        {
+          "src": "../assets/projects/salon-nov20-2.webp",
+          "alt": "Detal telewizora, lamp i drewnianej zabudowy"
+        },
+        {
+          "src": "../assets/projects/salon-nov20-3.webp",
+          "alt": "Strefa wypoczynkowa pod antresolą"
+        },
+        {
+          "src": "../assets/projects/salon-nov20-4.webp",
+          "alt": "Salon od strony sofy"
+        },
+        {
+          "src": "../assets/projects/salon-nov20-5.webp",
+          "alt": "Detal biblioteczki i jasnych lamp"
+        },
+        {
+          "src": "../assets/projects/salon-nov20-6.webp",
+          "alt": "Widok salonu z antresoli"
+        }
+      ]
+    },
+    {
+      "id": "project-4",
+      "title": "Małe WC w odcieniach beżu",
+      "slug": "projekt-wc",
+      "description": "Projekt małego WC w odcieniach beżu. Zobacz funkcjonalną aranżację niewielkiej przestrzeni i detale w portfolio ELEPHANT Interior Design.",
+      "status": "published",
+      "featured": true,
+      "order": 5,
+      "photos": [
+        {
+          "src": "../assets/projects/wc-0.webp",
+          "alt": "Widok na umywalkę, lustro i okrągłe kinkiety"
+        },
+        {
+          "src": "../assets/projects/wc-1.webp",
+          "alt": "Detal lustra, umywalki i faktury ściany"
+        },
+        {
+          "src": "../assets/projects/wc-2.webp",
+          "alt": "Widok na toaletę i zabudowę z otwartymi półkami"
+        },
+        {
+          "src": "../assets/projects/wc-3.webp",
+          "alt": "Umywalka i toaleta na tle jasnych płytek"
+        }
+      ]
+    }
+  ],
+  "articles": [
+    {
+      "id": "article-0",
+      "title": "Projekt zaczyna się od Ciebie: Jak stworzyć autentyczne wnętrze dopasowane do Twojego życia?",
+      "slug": "artykul-autentyczne-wnetrze",
+      "excerpt": "Chcesz wiedzieć, jak urządzić mieszkanie z duszą, unikając sterylnego efektu katalogu? Poznaj podejście ELEPHANT Interior Design - projektowanie zorientowane na człowieka.",
+      "body": "Współczesne wnętrza bardzo często cierpią na grzech powtarzalności. Sterylne, idealnie wyreżyserowane kadry z katalogów wykończeniowych wyglądają efektownie na ekranie komputera, jednak po przeprowadzce okazują się trudne do życia.\n\nW ELEPHANT Interior Design wierzę, że udany projekt wnętrza nie powstaje z kopiowania aktualnych schematów, lecz z dokładnego poznania człowieka, który będzie w nim mieszkał.\n\nCzym jest autentyczność w architekturze wnętrz?\n\nAutentyczne wnętrze to takie, które nie udaje czegoś, czym nie jest. To przestrzeń, w której priorytetem są realne nawyki, pasje oraz rytm dnia domowników.\n\nUrządzanie mieszkania „z duszą” polega na odwadze odrzucenia tego, co niepotrzebne, na rzecz elementów posiadających dla nas osobiste znaczenie. Mieszkanie powinno rosnąć wraz z mieszkańcami - posiadać miejsce na pamiątki z podróży, ulubione książki, obrazy czy starzejące się z godnością naturalne materiały.\n\nJak uniknąć efektu „stoiska wystawowego”?\n\nAby mieszkanie zachowało indywidualny charakter i przytulność, warto wdrożyć kilka zasad już na etapie projektowania: Projektuj pod własne nawyki, nie pod opinie gości: Jeśli nie jadasz formalnych posiłków przy dużym stole, zastąp go funkcjonalną wyspą lub przeznacz ten metraż na wygodniejszą strefę czytelniczą.\n\nŁącz stare z nowym: Wprowadzenie do nowoczesnego wnętrza jednego mebla z historią (np.\n\nodrestaurowanego fotela, komody po dziadkach czy autorskiego obrazu) natychmiast przełamuje chłodny, sterylny klimat.\n\nStawiaj na szczere materiały: Naturalne drewno, len, ceramika, wełna, kamień i tynki o nieregularnej fakturze wprowadzają do wnętrza fizyczną miękkość i autentyczność, której nie zapewnią syntetyczne imitacje.\n\nHistoria klienta jako główny materiał projektowy\n\nZanim narysuję pierwszą kreskę układu funkcjonalnego, zadaję pytania. Pytam o to, jak spędzasz poranki, czy pracujesz z domu, jak odpoczywasz i jakie przedmioty budzą w Tobie dobre emocje.\n\nArchitekt nie powinien być autorem, który narzuca swój arbitralny styl. Moja rola polega na byciu przewodniczką i tłumaczką: biorę Twoją historię, potrzeby oraz estetyczne wrażliwości, a następnie nadaję im dojrzałą, funkcjonalną i piękną formę architektoniczną.\n\nTwój projekt w ELEPHANT Interior Design\n\nProjektowanie w ELEPHANT Interior Design zaczyna się od Ciebie. Nie tworzę bezosobowych przestrzeni „pod sprzedaż”. Tworzę trwałe, ergonomiczne i estetyczne tło dla Twojego życia. Skontaktuj się ze mną, opowiedz o swoim miejscu i zróbmy pierwszy krok w stronę wnętrza, w którym naprawdę zechcesz mieszkać.",
+      "status": "published",
+      "seoTitle": "Jak stworzyć autentyczne wnętrze? | ELEPHANT Interior Design",
+      "seoDescription": "Chcesz wiedzieć, jak urządzić mieszkanie z duszą, unikając sterylnego efektu katalogu? Poznaj podejście ELEPHANT Interior Design - projektowanie zorientowane na człowieka."
+    },
+    {
+      "id": "article-1",
+      "title": "Ergonomia w praktyce: Jak rozplanować funkcjonalne mieszkanie bez marnowania metrażu?",
+      "slug": "artykul-maly-metraz",
+      "excerpt": "Zastanawiasz się, jak rozplanować układ funkcjonalny mieszkania? Poznaj zasady ergonomii i dowiedz się, dlaczego projektowanie wnętrza zaczynam od rzutu, a nie od wyboru sofy.",
+      "body": "Gdy myślisz o urządzeniu nowego mieszkania, intuicyjnie zaczynasz od estetyki: przeglądasz palety barw, wybierasz odcienie drewna czy oprawy oświetleniowe. Jednak z mojego punktu widzenia jako architektki, najpiękniejsze wykończenie nie obroni się, jeśli przestrzeń będzie niefunkcjonalna.\n\nErgonomia to cichy bohater każdego dobrze zaprojektowanego wnętrza - niezauważalny, gdy działa prawidłowo, ale uciążliwy każdego dnia, gdy zostanie zaniedbany.\n\nW ELEPHANT Interior Design wychodzę z założenia, że proces projektowy nie zaczyna się w salonie meblowym, lecz na płaskim rzucie technicznym. To tam decyduje się, jak będzie wyglądać Twoja codzienność.\n\nDlaczego układ funkcjonalny to najważniejszy etap projektu?\n\nUkład funkcjonalny to szkielet całego wnętrza. Określa on relacje między poszczególnymi strefami, definiuje ciągi komunikacyjne oraz ustala proporcje wyposażenia względem przestrzeni. Niewłaściwie usytuowana ściana działowa, zbyt wąskie przejście między wyspą a zabudową czy otwierające się na siebie drzwi potrafią skutecznie obniżyć komfort użytkowania nawet największego metrażu.\n\nTworzenie układu funkcjonalnego polega na wyeliminowaniu tzw. pustych przelotów i martwych stref.\n\nKażdy metr kwadratowy powinien służyć Twoim nawykom - nie odwrotnie.\n\nNajczęstsze błędy w rozplanowaniu przestrzeni\n\nPraca nad ergonomią polega przede wszystkim na unikaniu błędów, które ujawniają się dopiero podczas codziennego użytkowania: Zaburzone ciągi komunikacyjne: Ścieżki, po których poruszasz się między kuchnią, salonem a przedpokojem, powinny być intuicyjne i wolne od przeszkód. Minimalna szerokość przejścia dla jednej osoby to 80 cm, jednak dla pełnego komfortu warto dążyć do 90-100 cm.\n\nBrak strefowania w przestrzeniach otwartych: Łączenie salonu z aneksem kuchennym wymaga jasnego podziału na strefę pracy, spożywania posiłków oraz odpoczynku. Brak czytelnych granic wizualnych i użytkowych wprowadza do wnętrza optyczny chaos.\n\nNiewłaściwa wysokość i odległości montażowe: Gniazda wtykowe ukryte za ciężką zabudową, blat kuchenny niedostosowany do wzrostu domowników czy blat roboczy bez bezpośredniego dostępu do światła to efekty pominięcia analizy ergonomicznej.\n\nTrójkąt roboczy i ergonomia w strefie dziennej\n\nJednym z najważniejszych sprawdzianów ergonomii jest kuchnia. Klasyczna zasada trójkąta roboczego definiuje optymalne odległości pomiędzy trzema głównymi punktami: lodówką, zlewozmywakiem i płytą grzewczą.\n\nLodówka - Zlew: Strefa rozładunku i mycia (zalecana odległość: 120-210 cm).\n\nZlew - Płyta grzewcza: Główny blat roboczy (zalecana odległość: 120-210 cm; minimalny blat przygotowawczy to 80 cm).\n\nPłyta grzewcza - Lodówka: Strefa przechowywania i serwowania (zalecana odległość: 120-250 cm).\n\nRównie istotne jest dla mnie zaplanowanie ergonomii w strefie wypoczynkowej: zachowanie odpowiedniego dystansu między sofą a ekranem oraz zapewnienie wygodnego dostępu do stolika kawowego.\n\nJak projektuję ergonomię w ELEPHANT Interior Design?\n\nW ELEPHANT Interior Design nie narzucam schematów. Rozpoczynam od wnikliwej analizy Twojego rytmu dnia, liczby domowników oraz codziennych zwyczajów. Tworząc układy funkcjonalne, przygotowuję rzetelne warianty przestrzenne, które pozwalają Ci świadomie zdecydować o podziale wnętrza.\n\nPrecyzyjnie rozplanowana przestrzeń to fundament, na którym w kolejnych etapach buduję warstwę wizualną, dopasowując materiały, oświetlenie oraz indywidualny charakter wnętrza.",
+      "status": "published",
+      "seoTitle": "Funkcjonalne mieszkanie: ergonomia i układ | ELEPHANT",
+      "seoDescription": "Zastanawiasz się, jak rozplanować układ funkcjonalny mieszkania? Poznaj zasady ergonomii i dowiedz się, dlaczego projektowanie wnętrza zaczynam od rzutu, a nie od wyboru sofy."
+    },
+    {
+      "id": "article-2",
+      "title": "Trendy we wnętrzach a ponadczasowość: Co przetrwa próbę czasu?",
+      "slug": "artykul-materialy",
+      "excerpt": "Szukasz równowagi między aktualnymi trendami a trwałością? Dowiedz się, jak projektuję ponadczasowe wnętrza, które nie tracą na wartości po jednym sezonie.",
+      "body": "Świat architektury wnętrz podlega nieustannej dynamice. Co sezon w mediach społecznościowych i katalogach pojawiają się nowe kolory roku, mikrotrendy materiałowe czy charakterystyczne formy meblarskie. Uleganie chwilowym modom w przestrzeni prywatnej wiąże się jednak z dużym ryzykiem: wnętrze zaaranżowane według wzorca z jednego sezonu szybko zaczyna zdradzać wiek swojego powstania.\n\nJak buduję przestrzeń, która zachowuje świeżość, spójność i klasę przez długie lata? Odpowiedzią jest dla mnie świadome projektowanie w oparciu o ponadczasową bazę.\n\nPułapka chwilowej mody - dlaczego filtruję rynkowe inspiracje?\n\nKatalogowe trendy tworzone są z myślą o natychmiastowym efekcie wizualnym. Ich zadaniem jest przyciągnięcie uwagi w kadrze fotograficznym. Rzeczywistość domowa stawia jednak inne wymagania.\n\nPrzetwarzanie tysięcy zdjęć z platform społecznościowych często prowadzi do tzw. szumu inspiracyjnego - zebrania w jednym projekcie zbyt wielu wyrazistych elementów, które szybko się nudzą lub po prostu do siebie nie pasują.\n\nProjektowanie ponadczasowe polega na intencjonalnej selekcji. Rezygnuję z rozwiązań będących wyłącznie sezonową modą na rzecz tych, które wynikają z dopracowanych proporcji, operowania światłem i właściwości naturalnych surowców.\n\nFundament ponadczasowego wnętrza: Szlachetna baza\n\nSercem wnętrza odpornego na upływ czasu jest dla mnie wysoka jakość bazy wykończeniowej. To elementy składowe, których wymiana wiąże się z kosztownym i czasochłonnym remontem: Podłogi: Naturalne drewno układane w klasyczną jodłę lub proste deski, a także wielkoformatowy kamień czy mikrocement z wiekiem zyskują patynę i szlachetność.\n\nStolarka drzwiowa i zabudowy: Proste, czyste formy pozbawione zbędnych frezowań i przesadnych ozdobników bronią się bez względu na panujące mody.\n\nNeutralna paleta barw: Odcienie bieli, złamanych szarości, beżów oraz barw ziemi stanowią idealne tło dla zmieniającego się otoczenia i naturalnego światła.\n\nGdzie jest miejsce na trendy?\n\nOdrzucenie ślepego podążania za modą nie oznacza dla mnie rezygnacji ze współczesnych akcentów.\n\nKluczem jest właściwe ulokowanie trendu. Powinien on pojawiać się w elementach łatwych do modyfikacji: Oświetlenie i dodatki: Tkaniny, poduszki, sztuka czy ceramika to detale, które mogą wprowadzać mocniejszy akcent kolorystyczny lub modną strukturę.\n\nKolor na wybranej ścianie: Pomalowanie płaszczyzny wymaga minimalnego nakładu pracy, a pozwala całkowicie odmienić nastrój pomieszczenia.\n\nWolnostojące meble: Jedno charakterystyczne krzesło lub stolik kawowy o nowoczesnej formie stanowią ciekawy kontrast dla stonowanej bazy.\n\nFilozofia trwałości w ELEPHANT Interior Design\n\nW ELEPHANT Interior Design nie projektuję wnętrz „na jeden sezon”. Filtruję rynkowe nowości przez pryzmat jakości, ergonomii i autentycznych potrzeb użytkownika. Dbam o to, aby architektura Twojego mieszkania zachowywała wartość estetyczną i użytkową przez dziesięciolecia, będąc elastycznym tłem dla zmieniającego się życia.",
+      "status": "published",
+      "seoTitle": "Ponadczasowe wnętrza: materiały i trendy | ELEPHANT",
+      "seoDescription": "Szukasz równowagi między aktualnymi trendami a trwałością? Dowiedz się, jak projektuję ponadczasowe wnętrza, które nie tracą na wartości po jednym sezonie."
+    },
+    {
+      "id": "article-3",
+      "title": "Polski design we wnętrzu: Jakość, rzemiosło i meble na lata",
+      "slug": "artykul-polski-design",
+      "excerpt": "Odkryj potencjał polskiego designu i rzemiosła. Dowiedz się, dlaczego w moich projektach stawiam na rodzime marki meblowe i wykończeniowe przy tworzeniu trwałych wnętrz.",
+      "body": "Polska architektura wnętrz i wzornictwo przeżywają dojrzały renesans. Dziś polski design to dla mnie nie tylko odwołania do ikonicznych projektów z połowy XX wieku, ale przede wszystkim prężnie rozwijający się sektor nowoczesnego rzemiosła, autorskich manufaktur oraz marek produkujących wyposażenie na najwyższym europejskim poziomie.\n\nGdy wybieram rodzime produkty w procesie projektowym, podejmuję decyzję wspierającą jakość, transparentność produkcji oraz zrównoważony rozwój.\n\nDlaczego stawiam na lokalne rzemiosło i autorskie manufaktury?\n\nW erze masowej produkcji powtarzalnych mebli z płyt drewnopochodnych, powrót do autentycznego rzemiosła staje się dla mnie wartością nadrzędną. Polskie manufaktury dają mi możliwość pracy z prawdziwym materiałem: litym drewnem, stalą, szkłem czy ceramiką.\n\nGłówne zalety, dla których wybieram lokalne marki wykończeniowe: Trwałość i naprawialność: Meble wykonane z litych surowców przez lokalnych rzemieślników można poddawać renowacji, co wydłuża ich cykl życia do dekad.\n\nIndywidualizacja: Możliwość modyfikacji wymiarów, wykończeń czy odcieni dokładnie pod mój projekt wnętrza.\n\nKrótszy łańcuch dostaw: Odpowiedzialność środowiskowa i mniejsze ryzyko opóźnień na Twojej budowie.\n\nPolskie marki meblowe i oświetleniowe w nowoczesnym wnętrzu\n\nWspółczesny polski rynek oferuje pełne spectrum wyposażenia - od elementów stolarki po wyrafinowane oprawy oświetleniowe. Rodzimi projektanci doskonale łączą zaawansowane technologie obróbki materiałów z pracą ręczną.\n\nW swoich projektach z powodzeniem wykorzystuję polskie stoły z litego dębu, tapicerowane meble wypoczynkowe o dopracowanych proporcjach czy autorskie oprawy świetlne wykonane z mosiądzu i ręcznie dmuchanego szkła. Wybierając te produkty, inwestujesz w przedmioty posiadające własną tożsamość i historię.\n\nJak buduję tożsamość wnętrza za pomocą rodzimego wzornictwa?\n\nWłączenie polskich marek meblowych do aranżacji wymaga ode mnie umiaru i wyczucia kontekstu.\n\nNie chodzi o stworzenie ekspozycji, lecz o harmonijne wplecenie unikalnego przedmiotu w tkankę mieszkania.\n\nStół rzemieślniczy usytuowany w strefie jadalnianej, rzeźbiarska lampa polskiego projektanta nad wyspą czy autorska ceramika na regale dodają wnętrzu faktury i dojrzałego charakteru, którego nie jestem w stanie uzyskać za pomocą masowych zamienników.\n\nŚwiadomy dobór materiałów w ELEPHANT Interior Design\n\nW ELEPHANT Interior Design cenię autentyczność materiałową oraz lokalne rzemiosło. W moich wykazach wyposażenia priorytetowo traktuję marki, które gwarantują najwyższą jakość i ponadprzeciętną trwałość. Tworzę wnętrza oparte na prawdzie materiału, wspierając to, co najlepsze w polskim wzornictwie.",
+      "status": "published",
+      "seoTitle": "Polski design we wnętrzu: meble i rzemiosło | ELEPHANT",
+      "seoDescription": "Odkryj potencjał polskiego designu i rzemiosła. Dowiedz się, dlaczego w moich projektach stawiam na rodzime marki meblowe i wykończeniowe przy tworzeniu trwałych wnętrz."
+    },
+    {
+      "id": "article-4",
+      "title": "Projektowanie wnętrz online krok po kroku: Jak wygląda sprawny proces zdalny?",
+      "slug": "artykul-projektowanie-online",
+      "excerpt": "Zastanawiasz się, jak wygląda projektowanie wnętrz online? Poznaj czytelny proces współpracy zdalnej z ELEPHANT Interior Design - od konsultacji po dokumentację technologiczną.",
+      "body": "Rozwój cyfrowych narzędzi komunikacji i modelowania 3D sprawił, że profesjonalne projektowanie wnętrz przestało być ograniczone lokalizacją geograficzną. Współpraca zdalna ze mną oferuje pełną precyzję, oszczędność czasu i pełną kontrolę nad procesem, bez konieczności odbywania wielogodzinnych spotkań stacjonarnych.\n\nJak przebiega projektowanie wnętrz online w mojej praktyce i dlaczego jest równie skuteczne jak tradycyjny model pracy?\n\nEtap 1: Inwentaryzacja i pierwsza rozmowa online\n\nKażdy proces zdalny rozpoczynamy od bezpiecznej wymiany informacji. Przekazujesz mi rzut deweloperski lub wykonujesz prosty pomiar przestrzeni na podstawie przygotowanych przeze mnie wytycznych.\n\nPodczas pierwszego spotkania online omawiam z Tobą kluczowe kwestie: Rytm życia, potrzeby i oczekiwania funkcjonalne domowników.\n\nZakładany budżet na realizację.\n\nWstępne preferencje estetyczne i materiałowe.\n\nEtap 2: Układ funkcjonalny i moodboard\n\nNa podstawie zebranych danych tworzę układ funkcjonalny w postaci rzutów 2D. Wskazuję w nim optymalne rozmieszczenie ścian, stref użytkowych i mebli.\n\nRównolegle opracowuję moodboard - zestawienie materiałowe i kolorystyczne, które definiuje estetyczny kierunek projektu. Wszelkie uwagi i poprawki omawiamy na bieżąco podczas spotkań online.\n\nEtap 3: Model 3D i fotorealistyczne wizualizacje\n\nPo akceptacji układu i moodboardu przenoszę przestrzeń do cyfrowego środowiska trójwymiarowego.\n\nBudowa przeze mnie precyzyjnego modelu 3D pozwala na dokładne przeanalizowanie proporcji mebli, opraw oświetleniowych oraz relacji między materiałami.\n\nEfektem tego etapu są fotorealistyczne wizualizacje, które precyzyjnie oddają docelowy wygląd wnętrza. Dzięki nim zyskujesz pełną pewność, jak będzie prezentować się Twoja przestrzeń przed podjęciem jakichkolwiek prac budowlanych.\n\nEtap 4: Kompleksowa dokumentacja techniczna i lista zakupów\n\nKluczem do udanej realizacji zdalnej jest dla mnie bezbłędna dokumentacja. Zamknięcie etapu wizualnego pozwala mi na przygotowanie precyzyjnych rysunków wykonawczych dla ekipy remontowej: Rysunki wyburzeń i postawień ścian.\n\nSchematy instalacji elektrycznej i wodno-kanalizacyjnej.\n\nKłady ścian łazienek i kuchni z rozrysowaniem płyt.\n\nRysunki wykonawcze dla stolarza.\n\nUzupełnieniem dokumentacji jest gotowa lista zakupowa zawierająca dokładne zestawienie materiałów, mebli i oświetlenia zebranymi ilościami oraz bezpośrednimi linkami do sklepów.\n\nDlaczego projektowanie zdalne w ELEPHANT Interior Design się sprawdza?\n\nW ELEPHANT Interior Design dbam o to, aby proces online był maksymalnie uporządkowany. Bazuję na jasnych harmonogramach, precyzyjnych rysunkach i przejrzystej komunikacji. Dzięki temu otrzymujesz pełnoprawny, kompletny i dopracowany technicznie projekt wykonawczy bez względu na to, gdzie znajduje się Twoja nieruchomość.",
+      "status": "published",
+      "seoTitle": "Projektowanie wnętrz online krok po kroku | ELEPHANT",
+      "seoDescription": "Zastanawiasz się, jak wygląda projektowanie wnętrz online? Poznaj czytelny proces współpracy zdalnej z ELEPHANT Interior Design - od konsultacji po dokumentację technologiczną."
+    },
+    {
+      "id": "article-5",
+      "title": "Siła detalu: Jak spójnie zestawić materiały, tekstury i oświetlenie?",
+      "slug": "artykul-swiatlo",
+      "excerpt": "Problemy ze spójnością we wnętrzu? Dowiedz się, jak w swoich projektach łączę materiały, tekstury i oświetlenie, aby stworzyć harmonijną przestrzeń opartą na detalu.",
+      "body": "Często po zakończeniu remontu pojawia się wrażenie, że mimo zakupu wysokiej jakości mebli i ładnych okładzin, wnętrzu brakuje spójności. Powodem jest zazwyczaj brak przemyślanej mikroarchitektury - mikro-relacji zachodzących między fakturami, podziałami płaszczyzn i światłem.\n\nW mojej pracy o odbiorze architektury wnętrz decyduje wnikliwość w traktowaniu detalu. To detal buduje nastrój i świadczy o dojrzałości projektu.\n\nZasada kontrastu i harmonii faktur\n\nJednym z najczęstszych błędów jest zestawianie ze sobą materiałów o identycznej wykończeniowej strukturze (np. wyłącznie matowych lub wyłącznie połyskujących płaszczyzn). Wnętrze zyskuje głębię wtedy, gdy operujemy subtelnym kontrastem faktur: Mat i połysk: Gładka, matowa płaszczyzna ściany w zestawieniu ze szklanym, lekko odbijającym światło kloszem lampy.\n\nCiepło i chłód: Naturalny, ciepły rysunek drewna przełamany surowym mikrocementem lub chłodną stalą szczotkowaną.\n\nMiękkość i struktura: Tkana, strukturalna tkanina na sofie zestawiona z gładką powierzchnią kamiennego blatu.\n\nZrównoważenie tych właściwości fizycznych sprawia, że przestrzeń staje się wielowymiarowa, a jednocześnie zachowuje spokój wizualny.\n\nJak spójnie połączyć materiały i kolory we wnętrzu?\n\nAby uniknąć chaosu wizualnego, pracuję w oparciu o zasadę ograniczonej palety. Bezpiecznym i eleganckim wzorcem jest dla mnie reguła 3 materiałów bazowych: Materiał dominujący (ok. 60%): Najczęściej kolor ścian, podłoga lub duże zabudowy stolarskie.\n\nMateriał uzupełniający (ok. 30%): Fronty meblowe, okładziny ścienne, miękkie meble.\n\nAkcent (ok. 10%): Detale metalowe (stal, mosiądz), uchwyty, oprawy oświetleniowe, wyrazista ceramika.\n\nŚcisłe trzymanie się wybranej palety w całym mieszkaniu - a nie tworzenie osobnej historii w każdym pokoju - tworzy poczucie pełnej spójności architektonicznej.\n\nRola światła jako łącznika detali\n\nNawet najbardziej precyzyjnie dobrany detal materiałowy nie ujawni swojego waloru bez odpowiedniego oświetlenia. Światło traktuję jako równorzędny budulec wnętrza.\n\nW projektach dzielę sceny świetlne na trzy poziomy: Światło ogólne: Zapewniające bezpieczne i równomierne naświetlenie całej przestrzeni.\n\nŚwiatło zadaniowe: Skierowane na blat roboczy, strefę czytania czy biurko.\n\nŚwiatło nastrojowe/akcentujące: Ukryte paski LED, podświetlenia wnęk czy lampy stojące, które wydobywają fakturę tynku, drewna lub kamienia po zmroku.\n\nDopracowany detal w ELEPHANT Interior Design\n\nW ELEPHANT Interior Design spójność nie jest przypadkiem. Na etapie koncepcyjnym oraz wykonawczym precyzyjnie analizuję połączenie materiałów: ułożenie spoin, cokoły przypodłogowe, krawędzie blatów i dopasowanie uchwytów. Efektem mojej pracy są przemyślane zestawienia materiałowe i czytelne listy zakupowe, które gwarantują harmonijny efekt końcowy.",
+      "status": "published",
+      "seoTitle": "Jak łączyć materiały, tekstury i oświetlenie? | ELEPHANT",
+      "seoDescription": "Problemy ze spójnością we wnętrzu? Dowiedz się, jak w swoich projektach łączę materiały, tekstury i oświetlenie, aby stworzyć harmonijną przestrzeń opartą na detalu."
+    }
+  ],
+  "inquiries": [
+    {
+      "id": "inquiry-example-1",
+      "name": "Anna (przykład)",
+      "email": "anna@example.com",
+      "phone": "",
+      "topic": "Projekt mieszkania · 54 m²",
+      "message": "Przykładowe zapytanie do sprawdzenia panelu. Chciałabym zapytać o projekt mieszkania i dostępne terminy współpracy.",
+      "status": "new",
+      "date": "2026-11-21T10:20:00+01:00",
+      "notes": ""
+    },
+    {
+      "id": "inquiry-example-2",
+      "name": "Michał (przykład)",
+      "email": "michal@example.com",
+      "phone": "",
+      "topic": "Konsultacja online",
+      "message": "To dane demonstracyjne. Interesuje mnie konsultacja dotycząca układu kuchni.",
+      "status": "read",
+      "date": "2026-11-20T14:10:00+01:00",
+      "notes": ""
+    }
+  ],
+  "bookings": [
+    {
+      "id": "booking-example-1",
+      "name": "Anna (przykład)",
+      "email": "anna@example.com",
+      "date": "2026-11-23",
+      "time": "10:00",
+      "status": "pending",
+      "notes": "Przykładowa rezerwacja, bez wysyłki maili."
+    }
+  ],
+  "availability": {
+    "weekly": [
+      {
+        "enabled": true,
+        "start": "09:00",
+        "end": "17:00"
+      },
+      {
+        "enabled": true,
+        "start": "09:00",
+        "end": "17:00"
+      },
+      {
+        "enabled": true,
+        "start": "09:00",
+        "end": "17:00"
+      },
+      {
+        "enabled": true,
+        "start": "09:00",
+        "end": "17:00"
+      },
+      {
+        "enabled": true,
+        "start": "09:00",
+        "end": "15:00"
+      },
+      {
+        "enabled": false,
+        "start": "09:00",
+        "end": "17:00"
+      },
+      {
+        "enabled": false,
+        "start": "09:00",
+        "end": "17:00"
+      }
+    ],
+    "duration": 60,
+    "buffer": 15,
+    "notice": 24,
+    "blockedDates": []
+  },
+  "settings": {
+    "name": "ELEPHANT Interior Design",
+    "email": "elephant.kontakt@gmail.com",
+    "phone": "+48 573 720 580",
+    "url": "https://elephant.com.pl/"
+  }
+};
