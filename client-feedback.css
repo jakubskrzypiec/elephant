@@ -1,8 +1,8 @@
 /* October client review: quiet photography and one reading typeface. */
 :root{--serif:'Montserrat',sans-serif}
 body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
-:root :is(h1,h2,h3,h4,.eyebrow,.chapter-rail,.desktop-nav,.mobile-menu a,.btn,.text-link,.quiet-link,.hero-btn,.field>small,.footer-top nav,.footer-bottom,.card-no,.service-number,.service-bottom small,.process-milestones button,.calendar-selection,.article-toc a){font-family:'Montserrat',sans-serif;font-weight:400;letter-spacing:.06em;font-style:normal}
-:root :is(h1,h2,h3,h4){letter-spacing:.055em!important}
+:root :is(h1,h2,h3,h4,.banner-topic,.eyebrow,.chapter-rail,.desktop-nav,.mobile-menu a,.btn,.text-link,.quiet-link,.hero-btn,.field>small,.footer-top nav,.footer-bottom,.card-no,.service-number,.service-bottom small,.process-milestones button,.calendar-selection,.article-toc a){font-family:'Montserrat',sans-serif;font-weight:400;letter-spacing:.06em;font-style:normal}
+:root :is(h1,h2,h3,h4,.banner-topic){letter-spacing:.055em!important}
 :root .desktop-nav a{font-size:11px;letter-spacing:.14em}
 :root .chapter-rail{font-size:10px;letter-spacing:.12em}
 .brand-lockup{display:grid;width:100%;gap:10px;line-height:1}
@@ -17,9 +17,9 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 .footer-logo .brand-lockup{width:260px;color:#f6f4f1}
 :root .page-banner:after{background:rgba(25,20,17,.39)}
 :root .page-banner-copy{max-width:960px;margin:auto;text-align:center;width:100%;padding:50px 6vw;color:#fff}
-:root .page-banner-copy h1{color:#f6f4f1;font-size:clamp(30px,3.2vw,48px);margin:0 auto 24px}
+:root .page-banner-copy :is(h1,.banner-topic){color:#f6f4f1;font-size:clamp(30px,3.2vw,48px);margin:0 auto 24px}
 :root .portfolio-page .page-banner-copy{max-width:1250px}
-:root .portfolio-page .page-banner-copy h1{font-size:clamp(30px,3.2vw,48px);white-space:normal}
+:root .portfolio-page .page-banner-copy :is(h1,.banner-topic){font-size:clamp(30px,3.2vw,48px);white-space:normal}
 :root .page-banner-copy p{color:#f6f4f1!important;margin:0 auto;max-width:780px;font-size:15px;line-height:1.85}
 :root .material-divider.living-scene:after,:root .philosophy.living-scene:before,:root .contact-section .material-divider.living-scene:after{background:rgba(25,20,17,.39);z-index:2}
 :root .material-copy,:root .philosophy-content{position:relative;z-index:3;text-align:center;max-width:1150px;margin:auto;padding:65px 7vw;width:100%}
@@ -284,3 +284,9 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
 @media(prefers-reduced-motion:reduce){
   :root .offer .card.is-selected,:root .offer-page .service-panel.is-selected{transform:none}
 }
+
+/* Center offer actions on desktop and mobile. */
+:root .offer-page .service-bottom .text-link{width:100%;text-align:center}
+
+/* Preserve the former hero heading spacing after promoting article titles to H1. */
+:root .reading-page .page-banner .banner-topic{max-width:1100px;margin:0 0 24px}
