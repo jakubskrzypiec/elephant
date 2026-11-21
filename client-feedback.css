@@ -246,7 +246,7 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
   :root .process-experience .process-milestones [data-process-stage="4"]{grid-column:4/span 2}
   :root .process-experience .process-milestones button>span:last-child{display:block}
   :root .process .process-scrubber .process-range{width:100%;margin-left:0}
-  :root .offer-page .service-bottom .text-link{display:inline-flex;align-items:center;min-height:44px;touch-action:manipulation}
+  :root .offer-page .service-bottom .text-link{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;touch-action:manipulation}
   :root .offer-page .service-grid .service-panel:active{border-color:var(--ink)}
   :root .offer-page .offer-note-desktop{display:none}
   :root .offer-page .offer-note-mobile{display:block;margin:-16px 0 0;color:var(--ink);font-size:13px;line-height:1.7}
