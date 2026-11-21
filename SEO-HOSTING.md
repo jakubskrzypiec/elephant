@@ -7,11 +7,11 @@ Repozytorium jest statyczną stroną. Pliki należy opublikować w katalogu gł�
 - Unikalne tytuły, opisy, adresy canonical i podglądy Open Graph dla 16 właściwych stron.
 - Jeden H1 na każdej stronie. W artykułach H1 jest pełnym tytułem tekstu, a H2 opisują kolejne zagadnienia. Zachowano styl dotychczasowych nagłówków.
 - Dane JSON-LD: Organization, WebSite, WebPage / ContactPage / CollectionPage, Article, BreadcrumbList oraz usługi na stronie oferty. Bez wymyślonych dat publikacji, adresów siedziby, oddziałów i ocen.
-- Obszar współpracy potwierdzony przez właściciela projektu: Wrocław, Kraków, Poznań, Łódź, Warszawa i okolice. To obszar usług, nie lista biur.
+- Obszar współpracy potwierdzony przez właściciela projektu: Wrocław, Kraków, Poznań i Warszawa oraz online w całej Polsce. To obszar usług, nie lista biur.
 - `sitemap.xml` obejmuje 16 właściwych stron. Nie zawiera sześciu dawnych szablonów projektów; mają one `noindex, follow`.
 - `robots.txt` pozwala na indeksowanie i wskazuje mapę strony.
 - `llms.txt` to dodatkowy, tekstowy spis usług i materiałów dla narzędzi, które go obsługują. Nie jest wyszukiwarką ani gwarancją widoczności w AI. Nie dodano pozornej wyszukiwarki ani danych SearchAction, skoro strona nie ma funkcji wyszukiwania.
-- Trzy formularze (start, kontakt i zapytanie o projekt) wysyłają POST do FormSubmit na `elephant.interiordesignstudio@gmail.com`. Usunięto przechwytywanie wysyłki przez mailto. Zachowano weryfikację antyspamową i dodano honeypot. Po pierwszym zgłoszeniu właścicielka musi potwierdzić adres linkiem aktywacyjnym FormSubmit; potem należy sprawdzić rzeczywiste doręczenie. Testy techniczne nie wysyłały maili. Calendly wymaga linku do wydarzenia klientki; obecny kalendarz nadal zapisuje preferencję, nie dokonuje rezerwacji.
+- Trzy formularze (start, kontakt i zapytanie o projekt) wysyłają POST do FormSubmit na `elephant.kontakt@gmail.com`. Usunięto przechwytywanie wysyłki przez mailto. Zachowano weryfikację antyspamową i dodano honeypot. Po pierwszym zgłoszeniu właścicielka musi potwierdzić adres linkiem aktywacyjnym FormSubmit; potem należy sprawdzić rzeczywiste doręczenie. Testy techniczne nie wysyłały maili. Rezerwacja konsultacji działa przez osadzony Calendly w ofercie i kontakcie: https://calendly.com/elephant-kontakt/konsultacja-online. Poprzedni kalendarz preferencji nie jest już wyświetlany.
 
 ## Przy uruchomieniu hostingu
 

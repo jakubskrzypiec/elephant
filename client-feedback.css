@@ -285,8 +285,16 @@ body,button,input,select,textarea{font-family:'Montserrat',sans-serif}
   :root .offer .card.is-selected,:root .offer-page .service-panel.is-selected{transform:none}
 }
 
-/* Center offer actions on desktop and mobile. */
-:root .offer-page .service-bottom .text-link{width:100%;text-align:center}
+/* Client review: left-aligned offer actions on desktop; centered on mobile. */
+@media(min-width:621px){:root .offer-page .service-bottom .text-link{width:auto;text-align:left}}
 
 /* Preserve the former hero heading spacing after promoting article titles to H1. */
 :root .reading-page .page-banner .banner-topic{max-width:1100px;margin:0 0 24px}
+
+/* Calendly replaces the preference-only calendar in offer and contact. */
+:root .calendly-frame{display:block;width:100%;height:800px;min-width:0;border:0;background:#fff}
+:root .calendly-fallback{margin-top:14px;line-height:1.7}
+:root .calendly-fallback a{text-decoration:underline;text-underline-offset:3px}
+:root .footer-bottom{gap:18px 28px;flex-wrap:wrap;align-items:center}
+:root .footer-service-area{font-size:9px;line-height:1.8;letter-spacing:.08em;text-align:right}
+@media(max-width:620px){:root .calendly-frame{height:1050px}:root .footer-service-area{text-align:center}}
