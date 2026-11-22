@@ -58,7 +58,7 @@ function inject_runtime(string $html,string $path): string {
     $html=preg_replace('~<input type="hidden" name="_(?:subject|template)"[^>]*>~','',$html);
     $html=preg_replace('~<p class="form-note">.*?</p>~s','<p class="form-note" role="status">Po wysłaniu zapytanie trafi bezpośrednio do pracowni.</p>',$html);
     if(in_array($path,['oferty.html','kontakt.html','index.html'],true))$html=str_replace('</body>','<script src="'.html(base('panel-backend/public/runtime.js?v=1')).'" data-elephant-api="'.html(base('api.php')).'"></script></body>',$html);
-    $html=str_replace('</head>','<link rel="stylesheet" href="'.html(base('panel-backend/public/runtime.css?v=1')).'"></head>',$html);
+    $html=str_replace('</head>','<link rel="stylesheet" href="'.html(base('panel-backend/public/runtime.css?v=2')).'"></head>',$html);
     return $html;
 }
 function public_metadata(string $html,string $path,array $state): string {
