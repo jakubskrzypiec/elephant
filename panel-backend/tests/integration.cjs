@@ -51,6 +51,18 @@ function client(base){const cookies=new Map();return async(action,method='GET',b
   for(const [legacy,target] of Object.entries({'/contact/':'/kontakt.html','/oferta2/':'/oferty.html','/services/':'/projekty.html','/wp-sitemap.xml':'/sitemap.xml'})){const moved=await fetch(base+legacy,{redirect:'manual'});assert.equal(moved.status,301);assert.equal(moved.headers.get('location'),target);}
   for(const blocked of ['/panel-backend/src/bootstrap.php','/panel-backend/config.example.php','/panel-backend/seed.json','/.git/config'])assert.equal((await fetch(base+blocked)).status,404,blocked);
   run('worker.php',['30'],env);const health=(await admin('delivery')).data.delivery;assert.equal(health.pending,0);assert.equal(health.sent,0);assert(health.simulated>=5);assert(fs.readdirSync(path.join(privateDir,'mail')).some(f=>f.endsWith('.eml')));
+  const otherDevice=client(base);let otherSession=(await otherDevice('session')).data;assert.equal((await otherDevice('login','POST',{email:'admin@elephant.local',password},otherSession.csrf)).status,200);
+  const changedPassword='Changed-local-test-password-2026';
+  assert.equal((await publicClient('change-password','POST',{currentPassword:password,newPassword:changedPassword,confirmPassword:changedPassword},publicToken)).status,401);
+  assert.equal((await admin('change-password','POST',{currentPassword:password,newPassword:changedPassword,confirmPassword:changedPassword})).status,403);
+  assert.equal((await admin('change-password','POST',{currentPassword:'incorrect',newPassword:changedPassword,confirmPassword:changedPassword},token)).status,403);
+  assert.equal((await admin('change-password','POST',{currentPassword:password,newPassword:'short',confirmPassword:'short'},token)).status,422);
+  assert.equal((await admin('change-password','POST',{currentPassword:password,newPassword:changedPassword,confirmPassword:'does-not-match'},token)).status,422);
+  assert.equal((await admin('change-password','POST',{currentPassword:password,newPassword:changedPassword,confirmPassword:changedPassword},token)).status,200);
+  assert.equal((await admin('state')).status,401);assert.equal((await otherDevice('state')).status,401);
+  token=(await admin('session')).data.csrf;
+  assert.equal((await admin('login','POST',{email:'admin@elephant.local',password},token)).status,401);
+  signed=await admin('login','POST',{email:'admin@elephant.local',password:changedPassword},token);assert.equal(signed.status,200);token=signed.data.csrf;
   assert.equal((await admin('logout','POST',{},token)).status,200);assert.equal((await admin('state')).status,401);
   let badToken=(await attacker('session')).data.csrf;let limit;for(let n=0;n<9;n++)limit=await attacker('login','POST',{email:'admin@elephant.local',password:'wrong'},badToken);assert.equal(limit.status,429);
   assert(!/PHP (?:Warning|Fatal|Parse)|Uncaught/.test(serverLog),serverLog);

@@ -20,7 +20,21 @@ try {
         $row=query('SELECT email,password_hash FROM admin_users WHERE email=?',[$address])->fetch();
         $hash=$row['password_hash']??'$2y$12$ImiTXuWVxfMxfq/qkzBF5OUlpwJRhE4E4hiJcJIJDfCtCDOzh4PzG';
         $valid=password_verify($password,$hash);if(!$row||!$valid)problem('Nieprawidłowy e-mail lub hasło.',401);
-        session_regenerate_id(true);$_SESSION=['user'=>['email'=>$row['email']],'csrf'=>bin2hex(random_bytes(32)),'last_seen'=>time(),'signed_in'=>time()];json_response(['ok'=>true,'csrf'=>$_SESSION['csrf']]);
+        session_regenerate_id(true);$_SESSION=['user'=>['email'=>$row['email']],'credential_version'=>hash('sha256',$row['password_hash']),'csrf'=>bin2hex(random_bytes(32)),'last_seen'=>time(),'signed_in'=>time()];json_response(['ok'=>true,'csrf'=>$_SESSION['csrf']]);
+    }
+    if($action==='change-password'){
+        method('POST');$user=require_user();require_csrf();rate_limit('change-password',8,900);$d=request_data();
+        $current=$d['currentPassword']??null;$next=$d['newPassword']??null;$confirm=$d['confirmPassword']??null;
+        if(!is_string($current)||!is_string($next)||!is_string($confirm))invalid('Uzupełnij wszystkie pola hasła.');
+        if(strlen($next)<14||strlen($next)>72)invalid('Nowe hasło musi mieć od 14 do 72 bajtów.');
+        if($next!==$confirm)invalid('Nowe hasła nie są takie same.');
+        $row=query('SELECT password_hash FROM admin_users WHERE email=?',[$user['email']])->fetch();
+        if(!$row||!password_verify($current,$row['password_hash']))problem('Obecne hasło jest nieprawidłowe.',403);
+        if(password_verify($next,$row['password_hash']))invalid('Nowe hasło musi różnić się od obecnego.');
+        $hash=password_hash($next,PASSWORD_DEFAULT);
+        $updated=query('UPDATE admin_users SET password_hash=? WHERE email=? AND password_hash=?',[$hash,$user['email'],$row['password_hash']]);
+        if($updated->rowCount()!==1)problem('Hasło zostało już zmienione. Zaloguj się ponownie.',409);
+        $_SESSION=[];session_regenerate_id(true);session_destroy();json_response(['ok'=>true]);
     }
     if($action==='logout'){method('POST');require_csrf();$_SESSION=[];session_regenerate_id(true);session_destroy();json_response(['ok'=>true]);}
     if($action==='slots'){

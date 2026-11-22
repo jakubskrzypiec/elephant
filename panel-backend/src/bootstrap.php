@@ -55,6 +55,12 @@ function session_start_safe(): void {
     if($c['environment']==='local'&&!in_array($_SERVER['REMOTE_ADDR']??'',['127.0.0.1','::1'],true)&&PHP_SAPI!=='cli')problem('Środowisko lokalne jest dostępne tylko na tym komputerze.',403);
     ini_set('session.use_strict_mode','1');ini_set('session.use_only_cookies','1');
     session_name('elephant_session');session_set_cookie_params(['httponly'=>true,'secure'=>$https,'samesite'=>'Strict','path'=>($c['base_path']?:'').'/']);session_start();
+    if(isset($_SESSION['user'])){
+        $credential=query('SELECT password_hash FROM admin_users WHERE email=?',[$_SESSION['user']['email']])->fetch();
+        if(!$credential||!hash_equals(hash('sha256',$credential['password_hash']),$_SESSION['credential_version']??'')){
+            $_SESSION=[];session_regenerate_id(true);
+        }
+    }
     if(!isset($_SESSION['csrf']))$_SESSION['csrf']=bin2hex(random_bytes(32));
     if(isset($_SESSION['user'])&&(time()-($_SESSION['last_seen']??0)>1800||time()-($_SESSION['signed_in']??0)>28800)) { $_SESSION=[];session_regenerate_id(true);$_SESSION['csrf']=bin2hex(random_bytes(32)); }
 }
