@@ -66,6 +66,15 @@ try {
         });respond_after_mail($result,201);
     }
     require_user();
+    if($action==='delete-inquiry'){
+        method('POST');require_csrf();$d=request_data();$id=item_id($d['id']??'');$revision=integer($d['revision']??null,1,PHP_INT_MAX);
+        $result=transaction(function()use($id,$revision){
+            $row=state_row(true);if($row['revision']!==$revision)invalid('Dane zmieniły się w innej karcie lub wpłynęło nowe zgłoszenie. Odśwież panel przed usunięciem.',409);
+            $next=$row['state'];$next['inquiries']=array_values(array_filter($next['inquiries'],fn($inquiry)=>$inquiry['id']!==$id));
+            if(count($next['inquiries'])===count($row['state']['inquiries']))problem('Nie znaleziono zapytania.',404);
+            write_state($next,$revision);return ['ok'=>true,'state'=>$next,'revision'=>$revision+1];
+        });json_response($result);
+    }
     if($action==='state'){
         if($_SERVER['REQUEST_METHOD']==='GET'){$row=state_row();json_response(['ok'=>true]+$row+['delivery'=>mail_health(),'environment'=>config()['environment']]);}
         method('PUT');require_csrf();$d=request_data();$revision=integer($d['revision']??null,1,PHP_INT_MAX);if(!is_array($d['state']??null))invalid('Nieprawidłowy zapis panelu.');

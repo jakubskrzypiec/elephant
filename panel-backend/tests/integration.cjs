@@ -51,6 +51,15 @@ function client(base){const cookies=new Map();return async(action,method='GET',b
   for(const [legacy,target] of Object.entries({'/contact/':'/kontakt.html','/oferta2/':'/oferty.html','/services/':'/projekty.html','/wp-sitemap.xml':'/sitemap.xml'})){const moved=await fetch(base+legacy,{redirect:'manual'});assert.equal(moved.status,301);assert.equal(moved.headers.get('location'),target);}
   for(const blocked of ['/panel-backend/src/bootstrap.php','/panel-backend/config.example.php','/panel-backend/seed.json','/.git/config'])assert.equal((await fetch(base+blocked)).status,404,blocked);
   run('worker.php',['30'],env);const health=(await admin('delivery')).data.delivery;assert.equal(health.pending,0);assert.equal(health.sent,0);assert(health.simulated>=5);assert(fs.readdirSync(path.join(privateDir,'mail')).some(f=>f.endsWith('.eml')));
+  snapshot=(await admin('state')).data;const beforeDeletion=structuredClone(snapshot.state),deleteId=snapshot.state.inquiries[0].id,deleteRevision=snapshot.revision;
+  assert.equal((await publicClient('delete-inquiry','POST',{id:deleteId,revision:deleteRevision},publicToken)).status,401);
+  assert.equal((await admin('delete-inquiry','POST',{id:deleteId,revision:deleteRevision})).status,403);
+  assert.equal((await admin('delete-inquiry','GET')).status,405);
+  assert.equal((await admin('delete-inquiry','POST',{id:deleteId,revision:deleteRevision-1},token)).status,409);
+  assert.equal((await admin('delete-inquiry','POST',{id:'missing-inquiry',revision:deleteRevision},token)).status,404);
+  response=await admin('delete-inquiry','POST',{id:deleteId,revision:deleteRevision},token);assert.equal(response.status,200,response.raw);assert.equal(response.data.revision,deleteRevision+1);
+  beforeDeletion.inquiries=beforeDeletion.inquiries.filter(i=>i.id!==deleteId);assert.deepEqual(response.data.state,beforeDeletion);assert.deepEqual((await admin('state')).data.state,beforeDeletion);
+  assert.equal((await admin('delete-inquiry','POST',{id:deleteId,revision:deleteRevision},token)).status,409);
   const otherDevice=client(base);let otherSession=(await otherDevice('session')).data;assert.equal((await otherDevice('login','POST',{email:'admin@elephant.local',password},otherSession.csrf)).status,200);
   const changedPassword='Changed-local-test-password-2026';
   assert.equal((await publicClient('change-password','POST',{currentPassword:password,newPassword:changedPassword,confirmPassword:changedPassword},publicToken)).status,401);
