@@ -7,6 +7,11 @@ function queue_mail(string $recipient,string $subject,string $body,string $key):
     query('INSERT INTO mail_outbox(id,deduplication_key,recipient,subject,body,status,attempts,available_at) VALUES(?,?,?,?,?,?,?,?)',[id(),$key,$recipient,$subject,$body,'pending',0,time()]);
 }
 function mail_health(): array { $rows=query('SELECT status, COUNT(*) AS total FROM mail_outbox GROUP BY status')->fetchAll();$out=['transport'=>config()['mail_transport'],'pending'=>0,'sent'=>0,'simulated'=>0,'failed'=>0];foreach($rows as $r)$out[$r['status']]=(int)$r['total'];return $out; }
+function respond_after_mail(array $response,int $status=200): never {
+    if(session_status()===PHP_SESSION_ACTIVE)session_write_close();
+    try{for($i=0;$i<2&&deliver_one();$i++);}catch(\Throwable $e){error_log('[Elephant mail queue] '.$e->getMessage());}
+    json_response($response,$status);
+}
 function deliver_one(): bool {
     $mail=transaction(function(){query("UPDATE mail_outbox SET status='pending' WHERE status='processing' AND claimed_at < ?",[time()-600]);$q=query("SELECT * FROM mail_outbox WHERE status='pending' AND available_at<=? ORDER BY available_at LIMIT 1".(driver()==='mysql'?' FOR UPDATE':''),[time()]);$r=$q->fetch();if(!$r)return null;query("UPDATE mail_outbox SET status='processing',claimed_at=? WHERE id=?",[time(),$r['id']]);return $r;});
     if(!$mail)return false;

@@ -61,12 +61,21 @@ do domeny technicznej, więc nie służy do wdrożenia ELEPHANT.
    jako `config.php`, uzupełnić bazę, losowy sekret i autoryzowane SMTP. Domyślna
    ścieżka to `../elephant-private/config.php` względem web root; można użyć
    `ELEPHANT_CONFIG`. W podkatalogu ustawić `base_path` i `site_url` z jego adresem.
+   Wersja testowa umieszczona bezpośrednio w podkatalogu `public_html` może odczytać
+   konfigurację z `elephant-private` obok całego `public_html`; dane prywatne nadal
+   muszą być poza publicznym katalogiem WWW.
 5. Uruchomić CLI: `php panel-backend/migrate.php`, następnie
    `php panel-backend/create-admin.php EMAIL /prywatna/sciezka/haslo.txt`.
    Hasło 14–72 bajty. Nie ma domyślnego konta. Skrypty odmawiają działania przez HTTP.
    Przy nieaktywnym SSH można wykonać te polecenia jednorazowym zadaniem cron
    z właściwym katalogiem roboczym, konfiguracją i ścieżką PHP.
-6. Ustawić cron co minutę: `php /sciezka/aplikacji/panel-backend/worker.php 20`.
+   Przy dostępie wyłącznie FTP można jednorazowo wgrać osobny `setup.php`.
+   Wymaga HTTPS, losowego tokenu z prywatnego `install-token.txt` w nagłówku
+   `X-Elephant-Install` i prywatnego `admin-password.txt`. Po instalacji znacznik
+   `.installed` blokuje ponowne wykonanie. Usunąć instalator z katalogu WWW.
+   Instalator nie jest częścią standardowej paczki.
+6. Formularze po zapisaniu w bazie od razu próbują dostarczyć powiadomienia SMTP.
+   Do automatycznego ponawiania nieudanych wysyłek ustawić cron co minutę: `php /sciezka/aplikacji/panel-backend/worker.php 20`.
    Kolejka ponawia błędy SMTP do 5 prób. `sent` oznacza sukces SMTP; sprawdzić też
    doręczenie na uzgodnioną skrzynkę. Odbiorca startowo: `elephant.kontakt@gmail.com`.
    Sam adres odbiorcy Gmail nie konfiguruje nadawcy SMTP.
@@ -88,3 +97,16 @@ Testy używają odizolowanych lokalnych baz i nie wysyłają prawdziwych maili.
 Sprawdzają logowanie, uprawnienia, CSRF, rewizje, formularze, rezerwacje i kolizje,
 weekendy, upload, publikację/szkice, sitemapę oraz przepływ w Edge i WebKit.
 Testy SQLite nie zastępują testów MySQL, Apache i SMTP na docelowym serwerze.
+
+## Paczka plików
+
+`node panel-backend/build-package.cjs` tworzy czysty katalog do wgrania, bez haseł,
+lokalnej bazy i danych klientów. Następnie użyć:
+
+```
+node panel-backend/pack-tar.cjs KATALOG PACZKA.tar.gz
+```
+
+Archiwum jawnie ustawia katalogi 755 i pliki 644. Nie używać domyślnego ZIP
+tworzonego przez Windows tar: zapisuje prawa 777/666, które hosting może odrzucać
+przy wykonywaniu PHP. Tryb `--private` ustawia 700/600 dla osobnej paczki prywatnej.

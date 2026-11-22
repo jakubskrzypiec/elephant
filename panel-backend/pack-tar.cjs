@@ -1,0 +1,8 @@
+/* POSIX modes are explicit: Windows ZIP defaults (666/777) break PHP hosting. */
+const fs=require('node:fs'),path=require('node:path'),zlib=require('node:zlib');
+const [source,target,privateFlag]=process.argv.slice(2);if(!source||!target)throw Error('Usage: pack-tar.cjs SOURCE TARGET.tar.gz [--private]');
+const root=path.resolve(source),parts=[],privateMode=privateFlag==='--private';
+function field(header,offset,length,value){const b=Buffer.from(value);if(b.length>length)throw Error('Tar field too long: '+value);b.copy(header,offset);}
+function octal(h,o,n,v){field(h,o,n,v.toString(8).padStart(n-1,'0')+'\0');}
+function add(relative,directory){const file=path.join(root,relative),stat=fs.statSync(file),name='./'+relative.split(path.sep).join('/')+(directory&&relative?'/':''),h=Buffer.alloc(512);let leaf=name,prefix='';if(Buffer.byteLength(name)>100){const i=name.lastIndexOf('/',name.length-2);prefix=name.slice(0,i);leaf=name.slice(i+1);}field(h,0,100,leaf);field(h,345,155,prefix);octal(h,100,8,directory?(privateMode?0o700:0o755):(privateMode?0o600:0o644));octal(h,108,8,0);octal(h,116,8,0);octal(h,124,12,directory?0:stat.size);octal(h,136,12,Math.floor(stat.mtimeMs/1000));h.fill(32,148,156);h[156]=directory?53:48;field(h,257,6,'ustar\0');field(h,263,2,'00');const sum=h.reduce((a,b)=>a+b,0);field(h,148,8,sum.toString(8).padStart(6,'0')+'\0 ');parts.push(h);if(directory){for(const e of fs.readdirSync(file,{withFileTypes:true}))add(path.join(relative,e.name),e.isDirectory());}else{parts.push(fs.readFileSync(file));if(stat.size%512)parts.push(Buffer.alloc(512-stat.size%512));}}
+add('',true);parts.push(Buffer.alloc(1024));fs.writeFileSync(target,zlib.gzipSync(Buffer.concat(parts),{level:6}));console.log('POSIX archive ready: '+path.resolve(target));

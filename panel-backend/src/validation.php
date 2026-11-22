@@ -53,6 +53,7 @@ function validate_state(array $input,array $old): array {
     foreach(list_value($input['bookings']??null,10000) as $b){
         $id=item_id($b['id']??'');if(isset($handled[$id]))invalid('Powtórzone spotkanie.');$handled[$id]=true;$previous=$oldBookings[$id]??null;
         $booking=['id'=>$id,'name'=>text($b['name']??'',300,true),'email'=>email($b['email']??''),'date'=>iso_date($b['date']??''),'time'=>time_value($b['time']??''),'status'=>choice($b['status']??'',['pending','confirmed','cancelled']),'notes'=>text($b['notes']??'',20000),'duration'=>$previous['duration']??$out['availability']['duration'],'buffer'=>$previous['buffer']??$out['availability']['buffer'],'createdAt'=>$previous['createdAt']??gmdate(DATE_ATOM)];
+        $booking['phone']=text($previous['phone']??$b['phone']??'',80);$booking['consentAt']=$previous['consentAt']??null;
         $start=local_datetime($booking['date'],$booking['time'])->setTimezone(new \DateTimeZone('UTC'));$booking['startsAt']=$start->format(DATE_ATOM);$booking['endsAt']=$start->modify('+'.$booking['duration'].' minutes')->format(DATE_ATOM);$out['bookings'][]=$booking;
     }
     foreach($oldBookings as $id=>$b)if(!isset($handled[$id]))invalid('Spotkania należy anulować, nie usuwać.');

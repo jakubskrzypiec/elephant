@@ -11,6 +11,7 @@ RewriteRule \.(sql|sqlite|eml|md|cjs|ps1|bak|zip)$ - [F,L,NC]
 RewriteRule ^$ site.php [END]
 RewriteRule ^(?:[a-z0-9-]+\.html|sitemap\.xml|llms\.txt)$ site.php [END]
 RewriteRule ^panel$ panel/ [R=301,L]
+RewriteRule ^panel/$ panel/index.php [END]
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [END]

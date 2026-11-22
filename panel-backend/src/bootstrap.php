@@ -7,13 +7,16 @@ function config(): array {
     static $config;
     if (isset($config)) return $config;
     $file = getenv('ELEPHANT_CONFIG') ?: dirname(realpath(ROOT)) . '/elephant-private/config.php';
+    // Staging lives inside public_html; configuration stays outside the entire public directory.
+    if(!getenv('ELEPHANT_CONFIG')&&!is_file($file)&&basename(dirname(realpath(ROOT)))==='public_html')$file=dirname(realpath(ROOT),2).'/elephant-private/config.php';
     if (!is_file($file)) throw new \RuntimeException('Panel nie jest jeszcze skonfigurowany na tym serwerze.');
     $value = require $file;
     if (!is_array($value) || strlen($value['secret'] ?? '') < 32) throw new \RuntimeException('Nieprawidłowa konfiguracja panelu.');
     if (!in_array($value['environment'] ?? '', ['local','production'], true)) throw new \RuntimeException('Nieprawidłowe środowisko.');
     $root = str_replace('\\','/',realpath(ROOT));
     $private = str_replace('\\','/',realpath($value['private_dir'] ?? '') ?: '');
-    if (!$private || str_starts_with(strtolower($private . '/'), strtolower($root . '/'))) throw new \RuntimeException('Dane prywatne muszą znajdować się poza katalogiem strony.');
+    $publicRoot=basename(dirname($root))==='public_html'?dirname($root):$root;
+    if (!$private || str_starts_with(strtolower($private . '/'), strtolower($publicRoot . '/'))) throw new \RuntimeException('Dane prywatne muszą znajdować się poza katalogiem strony.');
     if ($value['environment'] === 'production' && !str_starts_with($value['dsn'] ?? '', 'mysql:')) throw new \RuntimeException('Produkcja wymaga skonfigurowanej bazy MySQL.');
     if (!preg_match('~^(/[a-zA-Z0-9_-]+)*$~', $value['base_path'] ?? '')) throw new \RuntimeException('Nieprawidłowy katalog strony.');
     return $config = $value;

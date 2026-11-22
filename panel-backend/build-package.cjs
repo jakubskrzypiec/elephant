@@ -3,7 +3,7 @@ const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),cp=r
 const repo=path.resolve(__dirname,'..');
 const output=fs.mkdtempSync(path.join(os.tmpdir(),'elephant-hosting-'));
 const tracked=cp.execFileSync('git',['ls-files','-z'],{cwd:repo,encoding:'utf8'}).split('\0').filter(Boolean);
-const files=tracked.filter(p=>/^(?:assets\/|[^/]+\.(?:html|css|js|png|svg|ico|webp|txt)$)/.test(p));
+const files=tracked.filter(p=>/^(?:assets\/|[^/]+\.(?:html|css|js|png|jpe?g|svg|ico|webp|txt)$)/.test(p));
 for(const p of ['api.php','site.php','panel/index.php','panel/login.php','panel/login.js','admin-preview/index.html','admin-preview/panel.css','admin-preview/panel.js','panel-backend/migrate.php','panel-backend/create-admin.php','panel-backend/worker.php','panel-backend/seed.json','panel-backend/.htaccess'])files.push(p);
 function walk(dir){for(const e of fs.readdirSync(path.join(repo,dir),{withFileTypes:true})){const p=dir+'/'+e.name;if(e.isDirectory())walk(p);else files.push(p);}}
 for(const dir of ['panel-backend/src','panel-backend/public','panel-backend/vendor'])walk(dir);
