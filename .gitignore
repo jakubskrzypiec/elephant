@@ -1,0 +1,10 @@
+# Credentials and runtime state must never enter the repository.
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-*
+*.eml
+panel-backend/config.local.php
+panel-backend/runtime/
+node_modules/

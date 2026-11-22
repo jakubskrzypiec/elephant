@@ -1,0 +1,4 @@
+Require all granted
+<FilesMatch "\.(?:php|phtml|phar)$">
+Require all denied
+</FilesMatch>

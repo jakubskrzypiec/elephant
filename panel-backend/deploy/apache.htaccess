@@ -1,0 +1,21 @@
+# Deployment template: NEW application only. Do not overwrite WordPress during testing.
+Options -Indexes
+DirectoryIndex site.php
+RewriteEngine On
+RewriteRule (^|/)\. - [F,L]
+RewriteRule ^panel-backend/public/[a-z-]+\.(css|js)$ - [END]
+RewriteRule ^panel-backend/ - [F,L]
+RewriteRule ^admin-preview/(?!panel\.(css|js)$) - [F,L]
+RewriteRule \.(sql|sqlite|eml|md|cjs|ps1|bak|zip)$ - [F,L,NC]
+# HTML files are templates, so route BEFORE the existing-file check.
+RewriteRule ^$ site.php [END]
+RewriteRule ^(?:[a-z0-9-]+\.html|sitemap\.xml|llms\.txt)$ site.php [END]
+RewriteRule ^panel$ panel/ [R=301,L]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [END]
+RewriteRule ^ site.php [END]
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

@@ -1,0 +1,15 @@
+.native-booking .native-slots{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.native-booking .native-slot{padding:10px 15px;border:1px solid var(--line);color:var(--ink);background:#fff;min-height:44px;cursor:pointer}
+.native-booking .native-slot[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.native-booking [data-native-form]{margin-top:22px}
+.native-booking [data-native-form][hidden]{display:none}
+.native-booking [data-native-status]{font-size:12px;line-height:1.8;margin-top:18px}
+.native-booking .calendar-days button[aria-pressed=true]{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.native-booking .calendar-days button:disabled{opacity:.3;cursor:default}
+.native-booking .calendar-apply:disabled{opacity:.5;cursor:wait}
+.native-booking [data-native-selection]{font-size:14px;line-height:1.8}
+.native-booking .consent{align-items:flex-start;font-size:11px}
+.native-booking .consent input{flex:none}
+.native-booking .calendar-month,.native-booking .calendar-preference{min-width:0}
+.native-booking .calendar-preference{background:transparent}
+.native-booking .calendar-days button,.native-booking .calendar-weekdays span{font-family:inherit}
