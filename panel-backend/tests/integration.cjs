@@ -19,6 +19,13 @@ function client(base){const cookies=new Map();return async(action,method='GET',b
   let signed=await admin('login','POST',{email:'admin@elephant.local',password},token);assert.equal(signed.status,200);assert.notEqual(signed.data.csrf,token);token=signed.data.csrf;
   assert.equal((await admin('state','PUT',{},'invalid')).status,403);
   let snapshot=(await admin('state')).data;assert.equal(snapshot.state.projects.length,5);assert.equal(snapshot.state.articles.length,6);assert.equal(snapshot.state.inquiries.length,0);assert.equal(snapshot.state.bookings.length,0);
+  assert.deepEqual(snapshot.google,{configured:false,connected:false,email:null});
+  assert.equal((await admin('google-connect','POST',{},'invalid')).status,403);
+  assert.equal((await admin('google-connect','GET')).status,405);
+  assert.equal((await admin('google-connect','POST',{},token)).status,503);
+  assert.equal((await attacker('google-connect','POST',{},token)).status,401);
+  assert.equal((await admin('google-disconnect','POST',{},'invalid')).status,403);
+  assert.equal((await fetch(base+'/panel/google.php?state=invalid')).status,400);
   const initialRevision=snapshot.revision;
   const publicToken=(await publicClient('public')).data.csrf;
   assert.equal((await publicClient('contact','POST',{name:'Test',email:'test@example.com',message:'Test',consent:true},publicToken,{Origin:'https://evil.invalid'})).status,403);

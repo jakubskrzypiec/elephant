@@ -7,6 +7,7 @@ if($path==='/api.php'){require $root.'/api.php';return;}
 if($path==='/panel'){header('Location: /panel/',true,301);return;}
 if($path==='/panel/'||$path==='/panel/index.php'){require $root.'/panel/index.php';return;}
 if($path==='/panel/login.php'){require $root.'/panel/login.php';return;}
+if($path==='/panel/google.php'){require $root.'/panel/google.php';return;}
 if($path==='/panel/login.js')return false;
 if(preg_match('~^/panel-backend/public/[a-z-]+\.(?:css|js)$~D',$path)&&is_file($root.$path))return false;
 if($path==='/admin-preview/'||$path==='/admin-preview/index.html')return false;

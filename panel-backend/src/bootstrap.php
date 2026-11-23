@@ -97,3 +97,4 @@ function base(string $path=''): string { return (config()['base_path']??'').'/'.
 require_once __DIR__.'/validation.php';
 require_once __DIR__.'/booking.php';
 require_once __DIR__.'/mail.php';
+require_once __DIR__.'/google-calendar.php';

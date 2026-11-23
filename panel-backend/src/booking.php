@@ -32,7 +32,7 @@ function booking_notifications(array $new,array $old): void {
     foreach($new['bookings'] as $b){$p=$previous[$b['id']]??null;if($p&&$p['status']===$b['status']&&$p['date']===$b['date']&&$p['time']===$b['time']&&$p['email']===$b['email'])continue;
         $details=booking_details($b);$key=$b['id'].':'.id();
         if($b['status']==='cancelled')queue_mail($b['email'],'Anulowanie konsultacji ELEPHANT',"Twoja konsultacja została anulowana.\n\n".$details,$key.':cancelled');
-        elseif($b['status']==='confirmed')queue_mail($b['email'],'Potwierdzenie konsultacji ELEPHANT',"Potwierdzamy termin konsultacji. Szczegóły spotkania przekaże pracownia.\n\n".$details,$key.':confirmed');
+        elseif($b['status']==='confirmed')queue_mail($b['email'],'Potwierdzenie konsultacji ELEPHANT',"Potwierdzamy termin konsultacji. ".(!empty($b['meetingUrl'])?"Dołącz do spotkania Google Meet:\n".$b['meetingUrl']:"Szczegóły spotkania przekaże pracownia.")."\n\n".$details,$key.':confirmed');
         else queue_mail($b['email'],'Zgłoszenie konsultacji ELEPHANT',"Otrzymaliśmy Twoją rezerwację. Termin oczekuje na potwierdzenie pracowni.\n\n".$details,$key.':pending');
     }
 }

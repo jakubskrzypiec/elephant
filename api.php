@@ -66,6 +66,15 @@ try {
         });respond_after_mail($result,201);
     }
     require_user();
+    if($action==='google-connect'){
+        method('POST');require_csrf();rate_limit('google-connect',10,900);json_response(['ok'=>true,'authorizationUrl'=>google_start($_SESSION['user'])]);
+    }
+    if($action==='google-disconnect'){
+        method('POST');require_csrf();google_with_lock(function(&$d){
+            if(!empty($d['refresh_token'])){$r=google_http('POST','https://oauth2.googleapis.com/revoke',['token'=>$d['refresh_token']],null,true);if(!in_array($r['status'],[200,400],true))invalid('Nie udało się rozłączyć Google. Spróbuj ponownie.',502);}
+            unset($d['refresh_token'],$d['access_token'],$d['expires_at']);
+        });json_response(['ok'=>true,'google'=>google_status()]);
+    }
     if($action==='delete-inquiry'){
         method('POST');require_csrf();$d=request_data();$id=item_id($d['id']??'');$revision=integer($d['revision']??null,1,PHP_INT_MAX);
         $result=transaction(function()use($id,$revision){
@@ -76,9 +85,9 @@ try {
         });json_response($result);
     }
     if($action==='state'){
-        if($_SERVER['REQUEST_METHOD']==='GET'){$row=state_row();json_response(['ok'=>true]+$row+['delivery'=>mail_health(),'environment'=>config()['environment']]);}
+        if($_SERVER['REQUEST_METHOD']==='GET'){$row=state_row();json_response(['ok'=>true]+$row+['delivery'=>mail_health(),'environment'=>config()['environment'],'google'=>google_status()]);}
         method('PUT');require_csrf();$d=request_data();$revision=integer($d['revision']??null,1,PHP_INT_MAX);if(!is_array($d['state']??null))invalid('Nieprawidłowy zapis panelu.');
-        $result=transaction(function()use($d,$revision){$row=state_row(true);if($row['revision']!==$revision)invalid('Dane zmieniły się w innej karcie lub wpłynęło nowe zgłoszenie. Odśwież panel przed zapisem.',409);$next=validate_state($d['state'],$row['state']);booking_notifications($next,$row['state']);write_state($next,$revision);return ['ok'=>true,'state'=>$next,'revision'=>$revision+1];});respond_after_mail($result);
+        $result=google_save_panel_state($d['state'],$revision);respond_after_mail($result);
     }
     if($action==='upload'){
         method('POST');require_csrf();rate_limit('upload',100,3600);$f=$_FILES['photo']??null;

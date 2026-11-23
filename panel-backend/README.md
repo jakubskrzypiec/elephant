@@ -98,6 +98,42 @@ Sprawdzają logowanie, uprawnienia, CSRF, rewizje, formularze, rezerwacje i koli
 weekendy, upload, publikację/szkice, sitemapę oraz przepływ w Edge i WebKit.
 Testy SQLite nie zastępują testów MySQL, Apache i SMTP na docelowym serwerze.
 
+## Kalendarz Google i Google Meet
+
+Wykonawca jednorazowo konfiguruje projekt Google Cloud, włącza Calendar API i tworzy
+klienta OAuth typu aplikacja internetowa. Dokładny redirect URI dla produkcji:
+`https://elephant.com.pl/panel/google.php`. JSON klienta zapisuje się jako
+`google-client.json` w prywatnym katalogu obok `config.php`, nigdy w repo ani WWW.
+Obsługiwany jest standardowy plik pobrany z Google z kluczem `web`.
+
+Zakres `calendar.app.created` pozwala utworzyć osobny kalendarz „ELEPHANT — konsultacje”
+i zarządzać tylko kalendarzami utworzonymi przez aplikację. Panel nie czyta prywatnego
+kalendarza właścicielki. Pozostałe zakresy to `openid email` do identyfikacji konta.
+Natasza wybiera swoje konto i akceptuje dostęp przyciskiem w ustawieniach panelu.
+Godziny dostępności nadal określa panel, a nie prywatne wydarzenia w Google.
+
+Przy potwierdzeniu konsultacji tworzony jest prywatny wpis i link Meet. Dopiero po
+otrzymaniu poprawnego linku zapisywana jest zmiana i kolejkowany mail z linkiem.
+Zmiana terminu aktualizuje ten sam wpis, anulowanie usuwa go z Google. Identyfikatory
+zdarzeń są deterministyczne, aby ponowienie żądania nie tworzyło duplikatów. Konflikt
+rewizji zatrzymuje zapis i wysyłkę; po odświeżeniu ponowienie używa istniejącego wpisu.
+Przejściowy błąd Google lub oczekujący link Meet wymaga ponowienia zapisu, nie wysyła
+potwierdzenia bez linku. Google może na chwilę zawierać wpis przed zatwierdzeniem
+lokalnej transakcji; nie wysyła on osobnego zaproszenia ani powiadomienia Google.
+
+Tokeny i mapa wydarzeń są szyfrowane AES-GCM poza WWW. OAuth ma jednorazowy state,
+PKCE i krótki dodatkowy cookie SameSite=Lax; główna sesja pozostaje SameSite=Strict.
+Callback nie tworzy konta ani sesji panelu. Utrata zgody wymaga ponownego połączenia.
+Zmiana sekretu szyfrowania również wymaga ponownego połączenia.
+
+Przed oddaniem sprawdzić status publikacji aplikacji i wymagania weryfikacyjne Google.
+Tryb zewnętrzny Testing daje krótkotrwałe refresh tokeny dla dostępu do kalendarza;
+nie traktować go jako docelowego stałego połączenia. Konto musi obsługiwać tworzenie
+konferencji Google Meet. Realny test zgody na koncie właścicielki pozostaje konieczny.
+
+Test bez wywołań Google i bez prawdziwych maili:
+`php panel-backend/tests/google-calendar.php`.
+
 ## Paczka plików
 
 `node panel-backend/build-package.cjs` tworzy czysty katalog do wgrania, bez haseł,
